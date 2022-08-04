@@ -1,0 +1,46 @@
+- project: RaRe-Technologies_gensim
+  examples:
+    - string_11
+- project: Textualize_rich
+  examples:
+    - bit_3
+- project: bokeh_bokeh
+  examples:
+    - regex_1
+    - string_1
+    - collection_2
+- project: chubin_cheat.sh
+  examples:
+    - string_10
+- project: davidsandberg_facenet
+  examples:
+    - regex_14
+- project: geekcomputers_Python
+  examples:
+    - bit_13
+- project: google-research_bert
+  examples:
+    - regex_13
+- project: joke2k_faker
+  examples:
+    - bit_7
+- project: mitmproxy_mitmproxy
+  examples:
+    - bit_6
+- project: numpy_numpy
+  examples:
+    - regex_16
+    - string_4
+- project: pandas-dev_pandas
+  examples:
+    - string_5
+    - bit_12
+- project: psf_black
+  examples:
+    - regex_19
+- project: pypa_pipenv
+  examples:
+    - bit_4
+- project: scrapy_scrapy
+  examples:
+    - regex_12

@@ -1,0 +1,25 @@
+diff --git a/sys/src/main/java/com/alibaba/nacos/sys/env/OriginTrackedPropertiesLoader.java b/sys/src/main/java/com/alibaba/nacos/sys/env/OriginTrackedPropertiesLoader.java
+index 47e77e1b9..cf45a09a3 100644
+--- a/sys/src/main/java/com/alibaba/nacos/sys/env/OriginTrackedPropertiesLoader.java
++++ b/sys/src/main/java/com/alibaba/nacos/sys/env/OriginTrackedPropertiesLoader.java
+@@ -30,6 +30,8 @@ import java.nio.charset.StandardCharsets;
+ import java.util.LinkedHashMap;
+ import java.util.Map;
+ 
++import org.inlinetest.Here;
++
+ /**
+  * copy from springboot to load properties file.
+  *
+@@ -200,7 +202,10 @@ public class OriginTrackedPropertiesLoader {
+         
+         private void readEscaped() throws IOException {
+             this.character = this.reader.read();
+-            int escapeIndex = escapes[0].indexOf(this.character);
++            int character = this.character;
++            int escapeIndex = escapes[0].indexOf(character);
++            new Here().given(escapes, new String[]{"trnf", "\t\r\n\f"}).given(character, 't').checkEq(escapeIndex, 0);
++            this.character = character;
+             if (escapeIndex != -1) {
+                 this.character = escapes[1].charAt(escapeIndex);
+             } else if (this.character == '\n') {

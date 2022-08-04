@@ -1,0 +1,1286 @@
+[
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 2,
+        "num-inline-list": [
+            2,
+            2,
+            2
+        ],
+        "num-unit": 5022,
+        "num-unit-and-inline": 5024,
+        "num-unit-list": [
+            5022,
+            5022,
+            5022
+        ],
+        "num-vanilla": 5022,
+        "num-vanilla-list": [
+            5022,
+            5022,
+            5022
+        ],
+        "overhead-unit": -0.002692278961616773,
+        "overhead-unit-and-inline": 0.013435411348445945,
+        "project": "alibaba_fastjson",
+        "revision": "f56b5d895f97f4cc3bd787c600a3ee67ba56d4db",
+        "time-inline": 0.7255171140034994,
+        "time-inline-list": [
+            0.7570679187774658,
+            0.6630744934082031,
+            0.7564089298248291
+        ],
+        "time-unit": 44.86468958854675,
+        "time-unit-and-inline": 45.590206702550255,
+        "time-unit-list": [
+            44.9640326499939,
+            45.00786018371582,
+            44.62217593193054
+        ],
+        "time-vanilla": 44.98580392201742,
+        "time-vanilla-list": [
+            44.97437524795532,
+            45.260409355163574,
+            44.72262716293335
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 1,
+        "num-inline-list": [
+            1,
+            1,
+            1
+        ],
+        "num-unit": 971,
+        "num-unit-and-inline": 972,
+        "num-unit-list": [
+            971,
+            971,
+            971
+        ],
+        "num-vanilla": 971,
+        "num-vanilla-list": [
+            971,
+            971,
+            971
+        ],
+        "overhead-unit": 0.0019166803072571932,
+        "overhead-unit-and-inline": 0.004903086405958449,
+        "project": "alibaba_nacos",
+        "revision": "fabf6d43a56f1b266f59dfb908dd69f72d26774d",
+        "time-inline": 0.7449514071146647,
+        "time-inline-list": [
+            0.7479813098907471,
+            0.7743775844573975,
+            0.7124953269958496
+        ],
+        "time-unit": 249.92556810379028,
+        "time-unit-and-inline": 250.67051951090494,
+        "time-unit-list": [
+            250.2992491722107,
+            250.31785559654236,
+            249.1595995426178
+        ],
+        "time-vanilla": 249.44745707511902,
+        "time-vanilla-list": [
+            250.22568249702454,
+            248.99135518074036,
+            249.12533354759216
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 1,
+        "num-inline-list": [
+            1,
+            1,
+            1
+        ],
+        "num-unit": 3180,
+        "num-unit-and-inline": 3181,
+        "num-unit-list": [
+            3180,
+            3180,
+            3180
+        ],
+        "num-vanilla": 3180,
+        "num-vanilla-list": [
+            3180,
+            3180,
+            3180
+        ],
+        "overhead-unit": 0.0008395286570532585,
+        "overhead-unit-and-inline": 0.0020510817562643317,
+        "project": "apache_dubbo",
+        "revision": "2843eaf0e7059b55cc197a8dc826b1a18f869f4e",
+        "time-inline": 0.8224803606669108,
+        "time-inline-list": [
+            0.6749835014343262,
+            0.7289638519287109,
+            1.0634937286376953
+        ],
+        "time-unit": 679.4344028631846,
+        "time-unit-and-inline": 680.2568832238514,
+        "time-unit-list": [
+            680.1901993751526,
+            679.2077732086182,
+            678.9052360057831
+        ],
+        "time-vanilla": 678.8644766807556,
+        "time-vanilla-list": [
+            679.2397408485413,
+            678.2549877166748,
+            679.0987014770508
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 1,
+        "num-inline-list": [
+            1,
+            1,
+            1
+        ],
+        "num-unit": 221,
+        "num-unit-and-inline": 222,
+        "num-unit-list": [
+            221,
+            221,
+            221
+        ],
+        "num-vanilla": 221,
+        "num-vanilla-list": [
+            221,
+            221,
+            221
+        ],
+        "overhead-unit": 0.02616608268313054,
+        "overhead-unit-and-inline": 0.09422805650043842,
+        "project": "apache_kafka",
+        "revision": "6ce69021fd1daa7bf39a9796152aff260b633b3a",
+        "time-inline": 0.6695607503255209,
+        "time-inline-list": [
+            0.7100651264190674,
+            0.6393716335296631,
+            0.659245491027832
+        ],
+        "time-unit": 10.094925165176392,
+        "time-unit-and-inline": 10.764485915501913,
+        "time-unit-list": [
+            10.123101711273193,
+            10.121145963668823,
+            10.040527820587158
+        ],
+        "time-vanilla": 9.837515910466513,
+        "time-vanilla-list": [
+            9.924587488174438,
+            9.819643497467041,
+            9.768316745758057
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 2,
+        "num-inline-list": [
+            2,
+            2,
+            2
+        ],
+        "num-unit": 44,
+        "num-unit-and-inline": 46,
+        "num-unit-list": [
+            44,
+            44,
+            44
+        ],
+        "num-vanilla": 44,
+        "num-vanilla-list": [
+            44,
+            44,
+            44
+        ],
+        "overhead-unit": 0.0023095390557348865,
+        "overhead-unit-and-inline": 0.14340826674496415,
+        "project": "apache_shardingsphere",
+        "revision": "11df594e22b7b30e90cc23093093c30c8668d2c6",
+        "time-inline": 0.7094379266103109,
+        "time-inline-list": [
+            0.7141108512878418,
+            0.6986579895019531,
+            0.7155449390411377
+        ],
+        "time-unit": 5.039566357930501,
+        "time-unit-and-inline": 5.749004284540812,
+        "time-unit-list": [
+            5.014891147613525,
+            5.0622358322143555,
+            5.041572093963623
+        ],
+        "time-vanilla": 5.0279541015625,
+        "time-vanilla-list": [
+            4.935048341751099,
+            5.00180983543396,
+            5.147004127502441
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 2,
+        "num-inline-list": [
+            2,
+            2,
+            2
+        ],
+        "num-unit": 32,
+        "num-unit-and-inline": 34,
+        "num-unit-list": [
+            32,
+            32,
+            32
+        ],
+        "num-vanilla": 32,
+        "num-vanilla-list": [
+            32,
+            32,
+            32
+        ],
+        "overhead-unit": -0.007304093151940384,
+        "overhead-unit-and-inline": 0.13184987254817118,
+        "project": "jenkinsci_jenkins",
+        "revision": "e3f8bc052d6065d3fcf6430f4c7c029c1fd25e54",
+        "time-inline": 0.6502872308095297,
+        "time-inline-list": [
+            0.6880075931549072,
+            0.6120648384094238,
+            0.6507892608642578
+        ],
+        "time-unit": 4.639015992482503,
+        "time-unit-and-inline": 5.289303223292032,
+        "time-unit-list": [
+            4.555039882659912,
+            4.670915603637695,
+            4.691092491149902
+        ],
+        "time-vanilla": 4.673149108886719,
+        "time-vanilla-list": [
+            4.678813457489014,
+            4.632861137390137,
+            4.707772731781006
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 1,
+        "num-inline-list": [
+            1,
+            1,
+            1
+        ],
+        "num-unit": 709,
+        "num-unit-and-inline": 710,
+        "num-unit-list": [
+            709,
+            709,
+            709
+        ],
+        "num-vanilla": 709,
+        "num-vanilla-list": [
+            709,
+            709,
+            709
+        ],
+        "overhead-unit": 0.13364484215582814,
+        "overhead-unit-and-inline": 0.14472530635626885,
+        "project": "skylot_jadx",
+        "revision": "fe91d774fab98512747d8dd6e513e5c85f488b20",
+        "time-inline": 0.7376806735992432,
+        "time-inline-list": [
+            0.6824266910552979,
+            0.8142538070678711,
+            0.7163615226745605
+        ],
+        "time-unit": 75.47227946917216,
+        "time-unit-and-inline": 76.20996014277141,
+        "time-unit-list": [
+            98.67161989212036,
+            62.39393067359924,
+            65.35128784179688
+        ],
+        "time-vanilla": 66.57488894462585,
+        "time-vanilla-list": [
+            70.5605399608612,
+            66.74814963340759,
+            62.415977239608765
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 20,
+        "num-inline-list": [
+            20,
+            20,
+            20
+        ],
+        "num-unit": 5022,
+        "num-unit-and-inline": 5042,
+        "num-unit-list": [
+            5022,
+            5022,
+            5022
+        ],
+        "num-vanilla": 5022,
+        "num-vanilla-list": [
+            5022,
+            5022,
+            5022
+        ],
+        "overhead-unit": -0.00585390383071409,
+        "overhead-unit-and-inline": 0.009525881816821074,
+        "project": "alibaba_fastjson",
+        "revision": "f56b5d895f97f4cc3bd787c600a3ee67ba56d4db",
+        "time-inline": 0.6919519106547037,
+        "time-inline-list": [
+            0.6463911533355713,
+            0.7340116500854492,
+            0.6954529285430908
+        ],
+        "time-unit": 44.727625370025635,
+        "time-unit-and-inline": 45.419577280680336,
+        "time-unit-list": [
+            44.602365016937256,
+            44.77730846405029,
+            44.803202629089355
+        ],
+        "time-vanilla": 44.9909983476003,
+        "time-vanilla-list": [
+            45.28576946258545,
+            44.62681484222412,
+            45.06041073799133
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 10,
+        "num-inline-list": [
+            10,
+            10,
+            10
+        ],
+        "num-unit": 971,
+        "num-unit-and-inline": 981,
+        "num-unit-list": [
+            971,
+            971,
+            971
+        ],
+        "num-vanilla": 971,
+        "num-vanilla-list": [
+            971,
+            971,
+            971
+        ],
+        "overhead-unit": 0.002197881046310922,
+        "overhead-unit-and-inline": 0.004901702625956445,
+        "project": "alibaba_nacos",
+        "revision": "fabf6d43a56f1b266f59dfb908dd69f72d26774d",
+        "time-inline": 0.6723175843556722,
+        "time-inline-list": [
+            0.7145731449127197,
+            0.6456472873687744,
+            0.6567323207855225
+        ],
+        "time-unit": 249.20108024279276,
+        "time-unit-and-inline": 249.87339782714844,
+        "time-unit-list": [
+            249.07579565048218,
+            249.21772265434265,
+            249.30972242355347
+        ],
+        "time-vanilla": 248.654567082723,
+        "time-vanilla-list": [
+            247.9455840587616,
+            249.9980902671814,
+            248.02002692222595
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 10,
+        "num-inline-list": [
+            10,
+            10,
+            10
+        ],
+        "num-unit": 3180,
+        "num-unit-and-inline": 3190,
+        "num-unit-list": [
+            3180,
+            3180,
+            3180
+        ],
+        "num-vanilla": 3180,
+        "num-vanilla-list": [
+            3180,
+            3180,
+            3180
+        ],
+        "overhead-unit": 0.0033105671982295247,
+        "overhead-unit-and-inline": 0.004396548258169414,
+        "project": "apache_dubbo",
+        "revision": "2843eaf0e7059b55cc197a8dc826b1a18f869f4e",
+        "time-inline": 0.7369531790415446,
+        "time-inline-list": [
+            0.7042617797851562,
+            0.7007248401641846,
+            0.805872917175293
+        ],
+        "time-unit": 680.8524930477142,
+        "time-unit-and-inline": 681.5894462267557,
+        "time-unit-list": [
+            680.1176688671112,
+            682.725132226944,
+            679.7146780490875
+        ],
+        "time-vanilla": 678.6059225400289,
+        "time-vanilla-list": [
+            678.2348484992981,
+            678.7728185653687,
+            678.8101005554199
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 10,
+        "num-inline-list": [
+            10,
+            10,
+            10
+        ],
+        "num-unit": 221,
+        "num-unit-and-inline": 231,
+        "num-unit-list": [
+            221,
+            221,
+            221
+        ],
+        "num-vanilla": 221,
+        "num-vanilla-list": [
+            221,
+            221,
+            221
+        ],
+        "overhead-unit": 0.017771349519516682,
+        "overhead-unit-and-inline": 0.08929345680309865,
+        "project": "apache_kafka",
+        "revision": "6ce69021fd1daa7bf39a9796152aff260b633b3a",
+        "time-inline": 0.708638588587443,
+        "time-inline-list": [
+            0.6887209415435791,
+            0.7082850933074951,
+            0.7289097309112549
+        ],
+        "time-unit": 10.084043661753336,
+        "time-unit-and-inline": 10.792682250340778,
+        "time-unit-list": [
+            9.966072797775269,
+            10.161476373672485,
+            10.124581813812256
+        ],
+        "time-vanilla": 9.907965739568075,
+        "time-vanilla-list": [
+            9.850804090499878,
+            9.914491891860962,
+            9.958601236343384
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 20,
+        "num-inline-list": [
+            20,
+            20,
+            20
+        ],
+        "num-unit": 44,
+        "num-unit-and-inline": 64,
+        "num-unit-list": [
+            44,
+            44,
+            44
+        ],
+        "num-vanilla": 44,
+        "num-vanilla-list": [
+            44,
+            44,
+            44
+        ],
+        "overhead-unit": -9.203139338903451e-05,
+        "overhead-unit-and-inline": 0.13270394294228544,
+        "project": "apache_shardingsphere",
+        "revision": "11df594e22b7b30e90cc23093093c30c8668d2c6",
+        "time-inline": 0.6756635506947836,
+        "time-inline-list": [
+            0.721818208694458,
+            0.6706633567810059,
+            0.6345090866088867
+        ],
+        "time-unit": 5.0875139236450195,
+        "time-unit-and-inline": 5.763177474339803,
+        "time-unit-list": [
+            5.015487432479858,
+            5.1464009284973145,
+            5.100653409957886
+        ],
+        "time-vanilla": 5.087982177734375,
+        "time-vanilla-list": [
+            5.050438642501831,
+            5.0630528926849365,
+            5.150454998016357
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 20,
+        "num-inline-list": [
+            20,
+            20,
+            20
+        ],
+        "num-unit": 32,
+        "num-unit-and-inline": 52,
+        "num-unit-list": [
+            32,
+            32,
+            32
+        ],
+        "num-vanilla": 32,
+        "num-vanilla-list": [
+            32,
+            32,
+            32
+        ],
+        "overhead-unit": 0.006261988619449831,
+        "overhead-unit-and-inline": 0.16045470518302768,
+        "project": "jenkinsci_jenkins",
+        "revision": "e3f8bc052d6065d3fcf6430f4c7c029c1fd25e54",
+        "time-inline": 0.7208055655161539,
+        "time-inline-list": [
+            0.6879327297210693,
+            0.7599422931671143,
+            0.7145416736602783
+        ],
+        "time-unit": 4.703978617986043,
+        "time-unit-and-inline": 5.424784183502197,
+        "time-unit-list": [
+            4.807527303695679,
+            4.733047723770142,
+            4.57136082649231
+        ],
+        "time-vanilla": 4.6747056643168134,
+        "time-vanilla-list": [
+            4.708414793014526,
+            4.736129999160767,
+            4.5795722007751465
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 10,
+        "num-inline-list": [
+            10,
+            10,
+            10
+        ],
+        "num-unit": 709,
+        "num-unit-and-inline": 719,
+        "num-unit-list": [
+            709,
+            709,
+            709
+        ],
+        "num-vanilla": 709,
+        "num-vanilla-list": [
+            709,
+            709,
+            709
+        ],
+        "overhead-unit": -0.023995613567147186,
+        "overhead-unit-and-inline": -0.013540053285179031,
+        "project": "skylot_jadx",
+        "revision": "fe91d774fab98512747d8dd6e513e5c85f488b20",
+        "time-inline": 0.7050635019938151,
+        "time-inline-list": [
+            0.7110228538513184,
+            0.6841039657592773,
+            0.7200636863708496
+        ],
+        "time-unit": 65.81618316968282,
+        "time-unit-and-inline": 66.52124667167664,
+        "time-unit-list": [
+            67.45143747329712,
+            65.03427052497864,
+            64.9628415107727
+        ],
+        "time-vanilla": 67.43431083361308,
+        "time-vanilla-list": [
+            70.94663691520691,
+            63.125677824020386,
+            68.23061776161194
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 200,
+        "num-inline-list": [
+            200,
+            200,
+            200
+        ],
+        "num-unit": 5022,
+        "num-unit-and-inline": 5222,
+        "num-unit-list": [
+            5022,
+            5022,
+            5022
+        ],
+        "num-vanilla": 5022,
+        "num-vanilla-list": [
+            5022,
+            5022,
+            5022
+        ],
+        "overhead-unit": 0.16821130997056885,
+        "overhead-unit-and-inline": 0.18433651136854265,
+        "project": "alibaba_fastjson",
+        "revision": "f56b5d895f97f4cc3bd787c600a3ee67ba56d4db",
+        "time-inline": 0.7233494917551676,
+        "time-inline-list": [
+            0.7271103858947754,
+            0.7324793338775635,
+            0.7104587554931641
+        ],
+        "time-unit": 52.404000202814736,
+        "time-unit-and-inline": 53.1273496945699,
+        "time-unit-list": [
+            51.88116788864136,
+            52.43920397758484,
+            52.89162874221802
+        ],
+        "time-vanilla": 44.85832293828329,
+        "time-vanilla-list": [
+            45.182841777801514,
+            44.925331592559814,
+            44.466795444488525
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 100,
+        "num-inline-list": [
+            100,
+            100,
+            100
+        ],
+        "num-unit": 971,
+        "num-unit-and-inline": 1071,
+        "num-unit-list": [
+            971,
+            971,
+            971
+        ],
+        "num-vanilla": 971,
+        "num-vanilla-list": [
+            971,
+            971,
+            971
+        ],
+        "overhead-unit": 0.0010478078413207225,
+        "overhead-unit-and-inline": 0.0038077919609470208,
+        "project": "alibaba_nacos",
+        "revision": "fabf6d43a56f1b266f59dfb908dd69f72d26774d",
+        "time-inline": 0.6888753573099772,
+        "time-inline-list": [
+            0.6361618041992188,
+            0.7062726020812988,
+            0.7241916656494141
+        ],
+        "time-unit": 249.8554833730062,
+        "time-unit-and-inline": 250.54435873031616,
+        "time-unit-list": [
+            249.9272792339325,
+            250.27325344085693,
+            249.36591744422913
+        ],
+        "time-vanilla": 249.5939568678538,
+        "time-vanilla-list": [
+            248.77735137939453,
+            249.98951959609985,
+            250.01499962806702
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 100,
+        "num-inline-list": [
+            100,
+            100,
+            100
+        ],
+        "num-unit": 3180,
+        "num-unit-and-inline": 3280,
+        "num-unit-list": [
+            3180,
+            3180,
+            3180
+        ],
+        "num-vanilla": 3180,
+        "num-vanilla-list": [
+            3180,
+            3180,
+            3180
+        ],
+        "overhead-unit": 0.0027133940717634997,
+        "overhead-unit-and-inline": 0.003799746499147661,
+        "project": "apache_dubbo",
+        "revision": "2843eaf0e7059b55cc197a8dc826b1a18f869f4e",
+        "time-inline": 0.7368037700653076,
+        "time-inline-list": [
+            0.7262499332427979,
+            0.7152163982391357,
+            0.7689449787139893
+        ],
+        "time-unit": 680.0767323970795,
+        "time-unit-and-inline": 680.8135361671448,
+        "time-unit-list": [
+            681.7994031906128,
+            678.8187403678894,
+            679.6120536327362
+        ],
+        "time-vanilla": 678.236409743627,
+        "time-vanilla-list": [
+            678.2614572048187,
+            678.6707978248596,
+            677.7769742012024
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 100,
+        "num-inline-list": [
+            100,
+            100,
+            100
+        ],
+        "num-unit": 221,
+        "num-unit-and-inline": 321,
+        "num-unit-list": [
+            221,
+            221,
+            221
+        ],
+        "num-vanilla": 221,
+        "num-vanilla-list": [
+            221,
+            221,
+            221
+        ],
+        "overhead-unit": 0.02062282010665625,
+        "overhead-unit-and-inline": 0.09361477626029895,
+        "project": "apache_kafka",
+        "revision": "6ce69021fd1daa7bf39a9796152aff260b633b3a",
+        "time-inline": 0.7247761885325114,
+        "time-inline-list": [
+            0.7574827671051025,
+            0.7390344142913818,
+            0.6778113842010498
+        ],
+        "time-unit": 10.134310086568197,
+        "time-unit-and-inline": 10.859086275100708,
+        "time-unit-list": [
+            10.040557384490967,
+            10.118807077407837,
+            10.243565797805786
+        ],
+        "time-vanilla": 9.929535071055094,
+        "time-vanilla-list": [
+            9.798249959945679,
+            9.988013982772827,
+            10.002341270446777
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 200,
+        "num-inline-list": [
+            200,
+            200,
+            200
+        ],
+        "num-unit": 44,
+        "num-unit-and-inline": 244,
+        "num-unit-list": [
+            44,
+            44,
+            44
+        ],
+        "num-vanilla": 44,
+        "num-vanilla-list": [
+            44,
+            44,
+            44
+        ],
+        "overhead-unit": 0.007043091762281689,
+        "overhead-unit-and-inline": 0.14897294752401466,
+        "project": "apache_shardingsphere",
+        "revision": "11df594e22b7b30e90cc23093093c30c8668d2c6",
+        "time-inline": 0.7215196291605631,
+        "time-inline-list": [
+            0.7301502227783203,
+            0.6947464942932129,
+            0.7396621704101562
+        ],
+        "time-unit": 5.1194398403167725,
+        "time-unit-and-inline": 5.840959469477336,
+        "time-unit-list": [
+            5.080789566040039,
+            5.1568169593811035,
+            5.120712995529175
+        ],
+        "time-vanilla": 5.083635330200195,
+        "time-vanilla-list": [
+            5.154481649398804,
+            5.043368816375732,
+            5.05305552482605
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 200,
+        "num-inline-list": [
+            200,
+            200,
+            200
+        ],
+        "num-unit": 32,
+        "num-unit-and-inline": 232,
+        "num-unit-list": [
+            32,
+            32,
+            32
+        ],
+        "num-vanilla": 32,
+        "num-vanilla-list": [
+            32,
+            32,
+            32
+        ],
+        "overhead-unit": 0.0064317724422989705,
+        "overhead-unit-and-inline": 0.16196743810310962,
+        "project": "jenkinsci_jenkins",
+        "revision": "e3f8bc052d6065d3fcf6430f4c7c029c1fd25e54",
+        "time-inline": 0.7225422859191895,
+        "time-inline-list": [
+            0.7230217456817627,
+            0.7143194675445557,
+            0.73028564453125
+        ],
+        "time-unit": 4.675387541453044,
+        "time-unit-and-inline": 5.397929827372233,
+        "time-unit-list": [
+            4.716342210769653,
+            4.536043643951416,
+            4.7737767696380615
+        ],
+        "time-vanilla": 4.645508686701457,
+        "time-vanilla-list": [
+            4.582756996154785,
+            4.767564535140991,
+            4.586204528808594
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 100,
+        "num-inline-list": [
+            100,
+            100,
+            100
+        ],
+        "num-unit": 709,
+        "num-unit-and-inline": 809,
+        "num-unit-list": [
+            709,
+            709,
+            709
+        ],
+        "num-vanilla": 709,
+        "num-vanilla-list": [
+            709,
+            709,
+            709
+        ],
+        "overhead-unit": -0.008745062564637087,
+        "overhead-unit-and-inline": 0.002302070272323127,
+        "project": "skylot_jadx",
+        "revision": "fe91d774fab98512747d8dd6e513e5c85f488b20",
+        "time-inline": 0.7374897797902426,
+        "time-inline-list": [
+            0.7563908100128174,
+            0.7534773349761963,
+            0.7026011943817139
+        ],
+        "time-unit": 66.17467141151428,
+        "time-unit-and-inline": 66.91216119130452,
+        "time-unit-list": [
+            67.3265950679779,
+            63.88862681388855,
+            67.30879235267639
+        ],
+        "time-vanilla": 66.75847848256429,
+        "time-vanilla-list": [
+            64.96039152145386,
+            64.17130613327026,
+            71.14373779296875
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": true,
+        "error-reason": "inline build failed",
+        "num-inline": -1,
+        "num-inline-list": [],
+        "num-unit": -1,
+        "num-unit-and-inline": -1,
+        "num-unit-list": [],
+        "num-vanilla": 5022,
+        "num-vanilla-list": [
+            5022,
+            5022,
+            5022
+        ],
+        "overhead-unit": -1,
+        "overhead-unit-and-inline": -1,
+        "project": "alibaba_fastjson",
+        "revision": "f56b5d895f97f4cc3bd787c600a3ee67ba56d4db",
+        "time-inline": -1,
+        "time-inline-list": [],
+        "time-unit": -1,
+        "time-unit-and-inline": -1,
+        "time-unit-list": [],
+        "time-vanilla": 44.823238690694176,
+        "time-vanilla-list": [
+            45.0529146194458,
+            44.66346549987793,
+            44.75333595275879
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 1000,
+        "num-inline-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "num-unit": 971,
+        "num-unit-and-inline": 1971,
+        "num-unit-list": [
+            971,
+            971,
+            971
+        ],
+        "num-vanilla": 971,
+        "num-vanilla-list": [
+            971,
+            971,
+            971
+        ],
+        "overhead-unit": 0.002508857538548598,
+        "overhead-unit-and-inline": 0.005347250459399722,
+        "project": "alibaba_nacos",
+        "revision": "fabf6d43a56f1b266f59dfb908dd69f72d26774d",
+        "time-inline": 0.7077146371205648,
+        "time-inline-list": [
+            0.7419829368591309,
+            0.716118335723877,
+            0.6650426387786865
+        ],
+        "time-unit": 249.9619369506836,
+        "time-unit-and-inline": 250.66965158780417,
+        "time-unit-list": [
+            249.29783844947815,
+            250.25402069091797,
+            250.33395171165466
+        ],
+        "time-vanilla": 249.33638747533163,
+        "time-vanilla-list": [
+            249.99708771705627,
+            248.95532965660095,
+            249.05674505233765
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 1000,
+        "num-inline-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "num-unit": 3180,
+        "num-unit-and-inline": 4180,
+        "num-unit-list": [
+            3180,
+            3180,
+            3180
+        ],
+        "num-vanilla": 3180,
+        "num-vanilla-list": [
+            3180,
+            3180,
+            3180
+        ],
+        "overhead-unit": 0.0015531055133185512,
+        "overhead-unit-and-inline": 0.0025956135604844883,
+        "project": "apache_dubbo",
+        "revision": "2843eaf0e7059b55cc197a8dc826b1a18f869f4e",
+        "time-inline": 0.7068564097086588,
+        "time-inline-list": [
+            0.7131304740905762,
+            0.705740213394165,
+            0.7016985416412354
+        ],
+        "time-unit": 679.0875468254089,
+        "time-unit-and-inline": 679.7944032351176,
+        "time-unit-list": [
+            678.724858045578,
+            679.2853262424469,
+            679.2524561882019
+        ],
+        "time-vanilla": 678.0344877243042,
+        "time-vanilla-list": [
+            678.396799325943,
+            677.9531428813934,
+            677.7535209655762
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": true,
+        "error-reason": "inline build failed",
+        "num-inline": -1,
+        "num-inline-list": [],
+        "num-unit": -1,
+        "num-unit-and-inline": -1,
+        "num-unit-list": [],
+        "num-vanilla": 221,
+        "num-vanilla-list": [
+            221,
+            221,
+            221
+        ],
+        "overhead-unit": -1,
+        "overhead-unit-and-inline": -1,
+        "project": "apache_kafka",
+        "revision": "6ce69021fd1daa7bf39a9796152aff260b633b3a",
+        "time-inline": -1,
+        "time-inline-list": [],
+        "time-unit": -1,
+        "time-unit-and-inline": -1,
+        "time-unit-list": [],
+        "time-vanilla": 9.918536027272543,
+        "time-vanilla-list": [
+            9.926650762557983,
+            9.85200572013855,
+            9.976951599121094
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 2000,
+        "num-inline-list": [
+            2000,
+            2000,
+            2000
+        ],
+        "num-unit": 44,
+        "num-unit-and-inline": 2044,
+        "num-unit-list": [
+            44,
+            44,
+            44
+        ],
+        "num-vanilla": 44,
+        "num-vanilla-list": [
+            44,
+            44,
+            44
+        ],
+        "overhead-unit": 0.00526029801724807,
+        "overhead-unit-and-inline": 0.16025302107095937,
+        "project": "apache_shardingsphere",
+        "revision": "11df594e22b7b30e90cc23093093c30c8668d2c6",
+        "time-inline": 0.7845682303110758,
+        "time-inline-list": [
+            0.813316822052002,
+            0.7358584403991699,
+            0.8045294284820557
+        ],
+        "time-unit": 5.088595628738403,
+        "time-unit-and-inline": 5.8731638590494795,
+        "time-unit-list": [
+            5.127159357070923,
+            5.10703182220459,
+            5.031595706939697
+        ],
+        "time-vanilla": 5.061968167622884,
+        "time-vanilla-list": [
+            5.188626527786255,
+            4.998100519180298,
+            4.9991774559021
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 2000,
+        "num-inline-list": [
+            2000,
+            2000,
+            2000
+        ],
+        "num-unit": 32,
+        "num-unit-and-inline": 2032,
+        "num-unit-list": [
+            32,
+            32,
+            32
+        ],
+        "num-vanilla": 32,
+        "num-vanilla-list": [
+            32,
+            32,
+            32
+        ],
+        "overhead-unit": -0.005636445813085065,
+        "overhead-unit-and-inline": 0.14523223335454405,
+        "project": "jenkinsci_jenkins",
+        "revision": "e3f8bc052d6065d3fcf6430f4c7c029c1fd25e54",
+        "time-inline": 0.7092026869455973,
+        "time-inline-list": [
+            0.720203161239624,
+            0.7146961688995361,
+            0.6927087306976318
+        ],
+        "time-unit": 4.674298922220866,
+        "time-unit-and-inline": 5.383501609166464,
+        "time-unit-list": [
+            4.702430963516235,
+            4.683917045593262,
+            4.636548757553101
+        ],
+        "time-vanilla": 4.700794696807861,
+        "time-vanilla-list": [
+            4.691202163696289,
+            4.675480842590332,
+            4.735701084136963
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 1000,
+        "num-inline-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "num-unit": 709,
+        "num-unit-and-inline": 1709,
+        "num-unit-list": [
+            709,
+            709,
+            709
+        ],
+        "num-vanilla": 709,
+        "num-vanilla-list": [
+            709,
+            709,
+            709
+        ],
+        "overhead-unit": 0.0391111754304875,
+        "overhead-unit-and-inline": 0.04960231091786533,
+        "project": "skylot_jadx",
+        "revision": "fe91d774fab98512747d8dd6e513e5c85f488b20",
+        "time-inline": 0.704048236211141,
+        "time-inline-list": [
+            0.7676665782928467,
+            0.6593954563140869,
+            0.6850826740264893
+        ],
+        "time-unit": 69.73357566197713,
+        "time-unit-and-inline": 70.43762389818826,
+        "time-unit-list": [
+            68.1850004196167,
+            72.44994521141052,
+            68.56578135490417
+        ],
+        "time-vanilla": 67.10886891682942,
+        "time-vanilla-list": [
+            72.16270184516907,
+            65.12061738967896,
+            64.04328751564026
+        ]
+    }
+]

@@ -1,0 +1,21 @@
+diff --git a/src/facenet.py b/src/facenet.py
+index 0e05676..e2d5079 100644
+--- a/src/facenet.py
++++ b/src/facenet.py
+@@ -41,6 +41,8 @@ from tensorflow.python.platform import gfile
+ import math
+ from six import iteritems
+ 
++from inline import Here
++
+ def triplet_loss(anchor, positive, negative, alpha):
+     """Calculate the triplet loss according to the FaceNet paper
+     
+@@ -398,6 +400,7 @@ def get_model_filenames(model_dir):
+     max_step = -1
+     for f in files:
+         step_str = re.match(r'(^model-[\w\- ]+.ckpt-(\d+))', f)
++        Here().given(f, "model-k- kckpt-123").check_true(step_str).check_eq(step_str.groups(), ('model-k- kckpt-123', '123'))
+         if step_str is not None and len(step_str.groups())>=2:
+             step = int(step_str.groups()[1])
+             if step > max_step:

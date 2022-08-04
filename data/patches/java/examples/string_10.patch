@@ -1,0 +1,23 @@
+diff --git a/cli/src/main/java/hudson/cli/SSHCLI.java b/cli/src/main/java/hudson/cli/SSHCLI.java
+index 5badd296fb..01e940ea13 100644
+--- a/cli/src/main/java/hudson/cli/SSHCLI.java
++++ b/cli/src/main/java/hudson/cli/SSHCLI.java
+@@ -53,6 +53,8 @@ import org.apache.sshd.common.util.io.input.NoCloseInputStream;
+ import org.apache.sshd.common.util.io.output.NoCloseOutputStream;
+ import org.apache.sshd.common.util.security.SecurityUtils;
+ 
++import org.inlinetest.Here;
++
+ /**
+  * Implements SSH connection mode of {@link CLI}.
+  * In a separate class to avoid any class loading of {@code sshd-core} when not using {@code -ssh} mode.
+@@ -76,7 +78,9 @@ class SSHCLI {
+         CLI.LOGGER.log(FINE, "Connecting via SSH to: {0}", endpointDescription);
+ 
+         int sshPort = Integer.parseInt(endpointDescription.split(":")[1]);
++        new Here().given(endpointDescription, "localhost:22").checkEq(sshPort, 22);
+         String sshHost = endpointDescription.split(":")[0];
++        new Here().given(endpointDescription, "localhost:22").checkEq(sshHost, "localhost");
+ 
+         StringBuilder command = new StringBuilder();
+ 

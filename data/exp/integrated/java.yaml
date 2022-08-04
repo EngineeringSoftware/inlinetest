@@ -1,0 +1,21 @@
+- project: alibaba_fastjson
+  examples:
+    - bit_7
+- project: alibaba_nacos
+  examples:
+    - string_2
+- project: apache_dubbo
+  examples:
+    - regex_9
+- project: apache_kafka
+  examples:
+    - bit_10
+- project: apache_shardingsphere
+  examples:
+    - string_13
+- project: jenkinsci_jenkins
+  examples:
+    - string_10
+- project: skylot_jadx
+  examples:
+    - bit_5

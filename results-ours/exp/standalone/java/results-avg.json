@@ -1,0 +1,34 @@
+[
+    {
+        "avg-num": 1.3,
+        "avg-time": 0.4616751066843669,
+        "duplicating": 1,
+        "num-example": 50,
+        "sum-num": 65,
+        "sum-time": 23.083755334218345
+    },
+    {
+        "avg-num": 13.0,
+        "avg-time": 0.4983249696095784,
+        "duplicating": 10,
+        "num-example": 50,
+        "sum-num": 650,
+        "sum-time": 24.91624848047892
+    },
+    {
+        "avg-num": 130.0,
+        "avg-time": 0.6841362126668293,
+        "duplicating": 100,
+        "num-example": 50,
+        "sum-num": 6500,
+        "sum-time": 34.20681063334147
+    },
+    {
+        "avg-num": 1300.0,
+        "avg-time": 1.357342880566915,
+        "duplicating": 1000,
+        "num-example": 50,
+        "sum-num": 65000,
+        "sum-time": 67.86714402834575
+    }
+]

@@ -1,0 +1,21 @@
+diff --git a/dubbo-cluster/src/main/java/org/apache/dubbo/rpc/cluster/router/condition/ConditionStateRouter.java b/dubbo-cluster/src/main/java/org/apache/dubbo/rpc/cluster/router/condition/ConditionStateRouter.java
+index 92cee8148..37c9130fe 100644
+--- a/dubbo-cluster/src/main/java/org/apache/dubbo/rpc/cluster/router/condition/ConditionStateRouter.java
++++ b/dubbo-cluster/src/main/java/org/apache/dubbo/rpc/cluster/router/condition/ConditionStateRouter.java
+@@ -50,6 +50,8 @@ import static org.apache.dubbo.rpc.cluster.Constants.FORCE_KEY;
+ import static org.apache.dubbo.rpc.cluster.Constants.RULE_KEY;
+ import static org.apache.dubbo.rpc.cluster.Constants.RUNTIME_KEY;
+ 
++import org.inlinetest.Here;
++
+ /**
+  * ConditionRouter
+  * It supports the conditional routing configured by "override://", in 2.6.x,
+@@ -118,6 +120,7 @@ public class ConditionStateRouter<T> extends AbstractStateRouter<T> {
+         // Multiple values
+         Set<String> values = null;
+         final Matcher matcher = ROUTE_PATTERN.matcher(rule);
++        new Here().given(ROUTE_PATTERN, Pattern.compile("([&!=,]*)\\s*([^&!=,\\s]+)")).given(rule, "&abc").checkTrue(matcher.find()).checkEq(matcher.group(1), "&").checkEq(matcher.group(2), "abc");
+         while (matcher.find()) { // Try to match one by one
+             String separator = matcher.group(1);
+             String content = matcher.group(2);

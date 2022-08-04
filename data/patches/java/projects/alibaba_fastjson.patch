@@ -1,0 +1,16 @@
+diff --git a/pom.xml b/pom.xml
+index 2507e155e..e3dc4539f 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -195,6 +195,11 @@
+     </build>
+ 
+     <dependencies>
++        <dependency>
++            <groupId>org.inlinetest</groupId>
++            <artifactId>inlinetest</artifactId>
++            <version>1.0</version>
++        </dependency>
+         <dependency>
+             <groupId>javax.servlet</groupId>
+             <artifactId>javax.servlet-api</artifactId>

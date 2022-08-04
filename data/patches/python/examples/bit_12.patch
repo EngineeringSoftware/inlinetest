@@ -1,0 +1,21 @@
+diff --git a/pandas/io/sas/sas_xport.py b/pandas/io/sas/sas_xport.py
+index a64ade2b3c..f9b63c5d62 100644
+--- a/pandas/io/sas/sas_xport.py
++++ b/pandas/io/sas/sas_xport.py
+@@ -28,6 +28,8 @@ import pandas as pd
+ from pandas.io.common import get_handle
+ from pandas.io.sas.sasreader import ReaderBase
+ 
++from inline import Here
++
+ _correct_line1 = (
+     "HEADER RECORD*******LIBRARY HEADER RECORD!!!!!!!"
+     "000000000000000000000000000000  "
+@@ -223,6 +225,7 @@ def _parse_float_vec(vec):
+     # 1, 2, or 3.
+     ieee1 >>= shift
+     ieee2 = (xport2 >> shift) | ((xport1 & 0x00000007) << (29 + (3 - shift)))
++    Here().given(xport1, 1).given(xport2, 1).given(shift, 1).check_eq(ieee2, 2147483648)
+ 
+     # clear the 1 bit to the left of the binary point
+     ieee1 &= 0xFFEFFFFF

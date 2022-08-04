@@ -1,0 +1,12 @@
+diff --git a/build.gradle b/build.gradle
+index 00434c19..285ed7a6 100644
+--- a/build.gradle
++++ b/build.gradle
+@@ -27,6 +27,7 @@ allprojects {
+ 	}
+ 
+ 	dependencies {
++                implementation 'org.inlinetest:inlinetest:1.0'
+ 		implementation 'org.slf4j:slf4j-api:1.7.36'
+ 		compileOnly 'org.jetbrains:annotations:23.0.0'
+ 

@@ -1,0 +1,21 @@
+diff --git a/pipenv/vendor/vistir/compat.py b/pipenv/vendor/vistir/compat.py
+index 336f4f7c..8046bf73 100644
+--- a/pipenv/vendor/vistir/compat.py
++++ b/pipenv/vendor/vistir/compat.py
+@@ -12,6 +12,8 @@ import pipenv.vendor.six as six
+ 
+ from .backports.tempfile import NamedTemporaryFile as _NamedTemporaryFile
+ 
++from inline import Here
++
+ __all__ = [
+     "Path",
+     "get_terminal_size",
+@@ -325,6 +327,7 @@ def _invalid_utf8_indexes(bytes):
+             if (c1 & 0xE0 == 0xC0) and (c2 & 0xC0 == 0x80):
+                 # U+0080 - U+07FF - 11 bits
+                 c = ((c1 & 0x1F) << 6) | (c2 & 0x3F)
++                Here().given(c1, 0xC0).given(c2, 0x80).check_eq(c, 0)
+                 if c < 0x80:  # pragma: no cover
+                     # Overlong encoding
+                     skips.extend([i, i + 1])  # pragma: no cover

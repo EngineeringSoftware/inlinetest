@@ -1,0 +1,17 @@
+diff --git a/pom.xml b/pom.xml
+index 657bf2cf9..5f6d8e0fe 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -172,6 +172,12 @@
+     </dependencyManagement>
+ 
+     <dependencies>
++        <dependency>
++            <groupId>org.inlinetest</groupId>
++            <artifactId>inlinetest</artifactId>
++            <version>1.0</version>
++        </dependency>
++
+         <!--JUnit Jupiter Engine to depend on the JUnit5 engine and JUnit 5 API -->
+         <dependency>
+             <groupId>org.junit.jupiter</groupId>

@@ -1,0 +1,23 @@
+diff --git a/rich/_win32_console.py b/rich/_win32_console.py
+index 15bf23c..b3ece2a 100644
+--- a/rich/_win32_console.py
++++ b/rich/_win32_console.py
+@@ -6,11 +6,13 @@ import ctypes
+ import sys
+ from typing import Any
+ 
+-windll: Any = None
+-if sys.platform == "win32":
+-    windll = ctypes.LibraryLoader(ctypes.WinDLL)
+-else:
+-    raise ImportError(f"{__name__} can only be imported on Windows")
++import unittest
++from unittest.mock import patch
++windll: Any = unittest.mock.Mock()
++# if sys.platform == "win32":
++#     windll = ctypes.LibraryLoader(ctypes.WinDLL)
++# else:
++#     raise ImportError(f"{__name__} can only be imported on Windows")
+ 
+ import time
+ from ctypes import Structure, byref, wintypes

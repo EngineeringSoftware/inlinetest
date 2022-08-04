@@ -1,0 +1,3602 @@
+[
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_1",
+        "num": 2,
+        "num-list": [
+            2,
+            2,
+            2
+        ],
+        "time": 0.4789867401123047,
+        "time-list": [
+            0.4767024517059326,
+            0.4702339172363281,
+            0.4900238513946533
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_10",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.46548787752787274,
+        "time-list": [
+            0.4686124324798584,
+            0.45702242851257324,
+            0.4708287715911865
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_11",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.4750982125600179,
+        "time-list": [
+            0.45769309997558594,
+            0.4781525135040283,
+            0.48944902420043945
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_12",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.44203877449035645,
+        "time-list": [
+            0.4515821933746338,
+            0.43619298934936523,
+            0.4383411407470703
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_13",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.4538482030232747,
+        "time-list": [
+            0.46666812896728516,
+            0.4551534652709961,
+            0.43972301483154297
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_14",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.4733607769012451,
+        "time-list": [
+            0.4704117774963379,
+            0.46669769287109375,
+            0.4829728603363037
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_15",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.45338280995686847,
+        "time-list": [
+            0.451352596282959,
+            0.4622917175292969,
+            0.4465041160583496
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_16",
+        "num": 2,
+        "num-list": [
+            2,
+            2,
+            2
+        ],
+        "time": 0.44695154825846356,
+        "time-list": [
+            0.450192928314209,
+            0.4465022087097168,
+            0.44415950775146484
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_17",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.44687120119730633,
+        "time-list": [
+            0.4415709972381592,
+            0.45554304122924805,
+            0.4434995651245117
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_3",
+        "num": 2,
+        "num-list": [
+            2,
+            2,
+            2
+        ],
+        "time": 0.4668853282928467,
+        "time-list": [
+            0.4617185592651367,
+            0.46759581565856934,
+            0.471341609954834
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_4",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.4431931972503662,
+        "time-list": [
+            0.44426441192626953,
+            0.44376611709594727,
+            0.44154906272888184
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_5",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.4473063151041667,
+        "time-list": [
+            0.4469339847564697,
+            0.4487893581390381,
+            0.4461956024169922
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_6",
+        "num": 2,
+        "num-list": [
+            2,
+            2,
+            2
+        ],
+        "time": 0.4612885316212972,
+        "time-list": [
+            0.4529252052307129,
+            0.4503359794616699,
+            0.4806044101715088
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_7",
+        "num": 2,
+        "num-list": [
+            2,
+            2,
+            2
+        ],
+        "time": 0.4633418718973796,
+        "time-list": [
+            0.4533820152282715,
+            0.4572134017944336,
+            0.4794301986694336
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_8",
+        "num": 2,
+        "num-list": [
+            2,
+            2,
+            2
+        ],
+        "time": 0.461239496866862,
+        "time-list": [
+            0.46860623359680176,
+            0.44690442085266113,
+            0.46820783615112305
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_9",
+        "num": 5,
+        "num-list": [
+            5,
+            5,
+            5
+        ],
+        "time": 0.4605716069539388,
+        "time-list": [
+            0.4624462127685547,
+            0.4602549076080322,
+            0.4590137004852295
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_10",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.458130677541097,
+        "time-list": [
+            0.46291661262512207,
+            0.44544458389282227,
+            0.4660308361053467
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_11",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.45437804857889813,
+        "time-list": [
+            0.4410512447357178,
+            0.46756911277770996,
+            0.4545137882232666
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_12",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.4570162296295166,
+        "time-list": [
+            0.46643710136413574,
+            0.450406551361084,
+            0.4542050361633301
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_13",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.4726834297180176,
+        "time-list": [
+            0.4847278594970703,
+            0.46503496170043945,
+            0.46828746795654297
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_14",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.4720007578531901,
+        "time-list": [
+            0.469362735748291,
+            0.4679384231567383,
+            0.478701114654541
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_15",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.4508686065673828,
+        "time-list": [
+            0.4566161632537842,
+            0.4487013816833496,
+            0.44728827476501465
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_16",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.4651455879211426,
+        "time-list": [
+            0.4542715549468994,
+            0.47620296478271484,
+            0.4649622440338135
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_17",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.45871996879577637,
+        "time-list": [
+            0.4638838768005371,
+            0.4471862316131592,
+            0.4650897979736328
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_18",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.4691142241160075,
+        "time-list": [
+            0.4653339385986328,
+            0.47305965423583984,
+            0.4689490795135498
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_2",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.4508172671000163,
+        "time-list": [
+            0.45891332626342773,
+            0.4482688903808594,
+            0.4452695846557617
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_3",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.4640921751658122,
+        "time-list": [
+            0.4661402702331543,
+            0.46039772033691406,
+            0.46573853492736816
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_4",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.45464563369750977,
+        "time-list": [
+            0.44675350189208984,
+            0.4417238235473633,
+            0.47545957565307617
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_5",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.4584666887919108,
+        "time-list": [
+            0.44781017303466797,
+            0.4601304531097412,
+            0.46745944023132324
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_6",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.4708562692006429,
+        "time-list": [
+            0.4635193347930908,
+            0.48531436920166016,
+            0.46373510360717773
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_7",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.46323378880818683,
+        "time-list": [
+            0.45783233642578125,
+            0.45562076568603516,
+            0.47624826431274414
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_8",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.4736735026041667,
+        "time-list": [
+            0.4630777835845947,
+            0.4980442523956299,
+            0.4598984718322754
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_9",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.4667406876881917,
+        "time-list": [
+            0.4606649875640869,
+            0.46225523948669434,
+            0.47730183601379395
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "stream_13",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.5144890944163004,
+        "time-list": [
+            0.5111119747161865,
+            0.5075132846832275,
+            0.5248420238494873
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "stream_4",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.5134448210398356,
+        "time-list": [
+            0.5152935981750488,
+            0.5181276798248291,
+            0.5069131851196289
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "string_10",
+        "num": 2,
+        "num-list": [
+            2,
+            2,
+            2
+        ],
+        "time": 0.4662513732910156,
+        "time-list": [
+            0.4878690242767334,
+            0.458726167678833,
+            0.45215892791748047
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "string_12",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.45369410514831543,
+        "time-list": [
+            0.46880030632019043,
+            0.4382612705230713,
+            0.45402073860168457
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "string_13",
+        "num": 2,
+        "num-list": [
+            2,
+            2,
+            2
+        ],
+        "time": 0.4593976338704427,
+        "time-list": [
+            0.46779751777648926,
+            0.4629242420196533,
+            0.44747114181518555
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "string_14",
+        "num": 2,
+        "num-list": [
+            2,
+            2,
+            2
+        ],
+        "time": 0.46481553713480633,
+        "time-list": [
+            0.4753286838531494,
+            0.45934557914733887,
+            0.45977234840393066
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "string_15",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.4481468200683594,
+        "time-list": [
+            0.45019960403442383,
+            0.4529240131378174,
+            0.4413168430328369
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "string_16",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.446768840154012,
+        "time-list": [
+            0.4396052360534668,
+            0.4478573799133301,
+            0.45284390449523926
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "string_17",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.4527461528778076,
+        "time-list": [
+            0.4557967185974121,
+            0.459669828414917,
+            0.44277191162109375
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "string_18",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.46915237108866376,
+        "time-list": [
+            0.47697973251342773,
+            0.4647819995880127,
+            0.4656953811645508
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "string_19",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.46201221148173016,
+        "time-list": [
+            0.4728381633758545,
+            0.4547600746154785,
+            0.4584383964538574
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "string_2",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.44546937942504883,
+        "time-list": [
+            0.44307899475097656,
+            0.4488949775695801,
+            0.44443416595458984
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "string_3",
+        "num": 2,
+        "num-list": [
+            2,
+            2,
+            2
+        ],
+        "time": 0.46270426114400226,
+        "time-list": [
+            0.45545101165771484,
+            0.4588747024536133,
+            0.4737870693206787
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "string_4",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.4573562939961751,
+        "time-list": [
+            0.4519233703613281,
+            0.47130417823791504,
+            0.4488413333892822
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "string_6",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.4657572905222575,
+        "time-list": [
+            0.4573676586151123,
+            0.47815418243408203,
+            0.4617500305175781
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "string_7",
+        "num": 1,
+        "num-list": [
+            1,
+            1,
+            1
+        ],
+        "time": 0.45233885447184247,
+        "time-list": [
+            0.4455235004425049,
+            0.46517157554626465,
+            0.4463214874267578
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "example": "string_9",
+        "num": 2,
+        "num-list": [
+            2,
+            2,
+            2
+        ],
+        "time": 0.448774258295695,
+        "time-list": [
+            0.4484584331512451,
+            0.45177650451660156,
+            0.4460878372192383
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_1",
+        "num": 20,
+        "num-list": [
+            20,
+            20,
+            20
+        ],
+        "time": 0.5355570316314697,
+        "time-list": [
+            0.5409526824951172,
+            0.5437150001525879,
+            0.5220034122467041
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_10",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.5028254191080729,
+        "time-list": [
+            0.4973471164703369,
+            0.4939754009246826,
+            0.5171537399291992
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_11",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.49956003824869794,
+        "time-list": [
+            0.49842047691345215,
+            0.49285101890563965,
+            0.507408618927002
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_12",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.4737137158711751,
+        "time-list": [
+            0.4681394100189209,
+            0.48355627059936523,
+            0.46944546699523926
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_13",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.4906139373779297,
+        "time-list": [
+            0.4929964542388916,
+            0.48938632011413574,
+            0.4894590377807617
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_14",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.512611468633016,
+        "time-list": [
+            0.5072672367095947,
+            0.5239462852478027,
+            0.5066208839416504
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_15",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.4867411454518636,
+        "time-list": [
+            0.4850292205810547,
+            0.4879014492034912,
+            0.4872927665710449
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_16",
+        "num": 20,
+        "num-list": [
+            20,
+            20,
+            20
+        ],
+        "time": 0.47956061363220215,
+        "time-list": [
+            0.4762859344482422,
+            0.4807579517364502,
+            0.48163795471191406
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_17",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.46990378697713214,
+        "time-list": [
+            0.46149516105651855,
+            0.4710683822631836,
+            0.47714781761169434
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_3",
+        "num": 20,
+        "num-list": [
+            20,
+            20,
+            20
+        ],
+        "time": 0.5261489550272623,
+        "time-list": [
+            0.5188393592834473,
+            0.5266413688659668,
+            0.532966136932373
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_4",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.48387447992960614,
+        "time-list": [
+            0.49474382400512695,
+            0.47280025482177734,
+            0.48407936096191406
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_5",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.47666605313618976,
+        "time-list": [
+            0.4834151268005371,
+            0.47136640548706055,
+            0.4752166271209717
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_6",
+        "num": 20,
+        "num-list": [
+            20,
+            20,
+            20
+        ],
+        "time": 0.5010596116383871,
+        "time-list": [
+            0.5135717391967773,
+            0.4880197048187256,
+            0.5015873908996582
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_7",
+        "num": 20,
+        "num-list": [
+            20,
+            20,
+            20
+        ],
+        "time": 0.4969109694163005,
+        "time-list": [
+            0.4955911636352539,
+            0.49875545501708984,
+            0.4963862895965576
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_8",
+        "num": 20,
+        "num-list": [
+            20,
+            20,
+            20
+        ],
+        "time": 0.48926528294881183,
+        "time-list": [
+            0.4849400520324707,
+            0.49570798873901367,
+            0.48714780807495117
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_9",
+        "num": 50,
+        "num-list": [
+            50,
+            50,
+            50
+        ],
+        "time": 0.5452581246693929,
+        "time-list": [
+            0.5643932819366455,
+            0.5242099761962891,
+            0.5471711158752441
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_10",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.48668686548868817,
+        "time-list": [
+            0.4879002571105957,
+            0.4792327880859375,
+            0.49292755126953125
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_11",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.4847649733225505,
+        "time-list": [
+            0.48608875274658203,
+            0.47134923934936523,
+            0.4968569278717041
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_12",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.49787155787150067,
+        "time-list": [
+            0.5026726722717285,
+            0.49843525886535645,
+            0.492506742477417
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_13",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.503969669342041,
+        "time-list": [
+            0.507293701171875,
+            0.5044877529144287,
+            0.5001275539398193
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_14",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.49927759170532227,
+        "time-list": [
+            0.4970889091491699,
+            0.5047187805175781,
+            0.49602508544921875
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_15",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.48354268074035645,
+        "time-list": [
+            0.4749715328216553,
+            0.48818087577819824,
+            0.4874756336212158
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_16",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.506216287612915,
+        "time-list": [
+            0.5010464191436768,
+            0.5133414268493652,
+            0.5042610168457031
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_17",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.49347154299418133,
+        "time-list": [
+            0.476093053817749,
+            0.48627543449401855,
+            0.5180461406707764
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_18",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.5230681896209717,
+        "time-list": [
+            0.522282600402832,
+            0.5224266052246094,
+            0.5244953632354736
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_2",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.478000005086263,
+        "time-list": [
+            0.48597192764282227,
+            0.48014354705810547,
+            0.46788454055786133
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_3",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.5026033719380697,
+        "time-list": [
+            0.5040535926818848,
+            0.5069639682769775,
+            0.4967925548553467
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_4",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.49062323570251465,
+        "time-list": [
+            0.4715445041656494,
+            0.4975917339324951,
+            0.5027334690093994
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_5",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.4783774216969808,
+        "time-list": [
+            0.4799034595489502,
+            0.49256229400634766,
+            0.46266651153564453
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_6",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.5026254653930664,
+        "time-list": [
+            0.5079574584960938,
+            0.4933481216430664,
+            0.5065708160400391
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_7",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.48518117268880206,
+        "time-list": [
+            0.4873664379119873,
+            0.4787416458129883,
+            0.48943543434143066
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_8",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.5004735787709554,
+        "time-list": [
+            0.4899256229400635,
+            0.5092372894287109,
+            0.5022578239440918
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_9",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.49713889757792157,
+        "time-list": [
+            0.4934852123260498,
+            0.4843170642852783,
+            0.5136144161224365
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "stream_13",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.638415257136027,
+        "time-list": [
+            0.6477560997009277,
+            0.6142082214355469,
+            0.6532814502716064
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "stream_4",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.574159304300944,
+        "time-list": [
+            0.5824997425079346,
+            0.5727407932281494,
+            0.567237377166748
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "string_10",
+        "num": 20,
+        "num-list": [
+            20,
+            20,
+            20
+        ],
+        "time": 0.5053621133168539,
+        "time-list": [
+            0.5167207717895508,
+            0.5092566013336182,
+            0.4901089668273926
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "string_12",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.4710805416107178,
+        "time-list": [
+            0.4697115421295166,
+            0.4755284786224365,
+            0.4680016040802002
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "string_13",
+        "num": 20,
+        "num-list": [
+            20,
+            20,
+            20
+        ],
+        "time": 0.48163509368896484,
+        "time-list": [
+            0.4817392826080322,
+            0.48488950729370117,
+            0.47827649116516113
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "string_14",
+        "num": 20,
+        "num-list": [
+            20,
+            20,
+            20
+        ],
+        "time": 0.5200812816619873,
+        "time-list": [
+            0.503948450088501,
+            0.5207757949829102,
+            0.5355195999145508
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "string_15",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.47748875617980957,
+        "time-list": [
+            0.46544432640075684,
+            0.46921730041503906,
+            0.4978046417236328
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "string_16",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.46959249178568524,
+        "time-list": [
+            0.46393609046936035,
+            0.4669802188873291,
+            0.4778611660003662
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "string_17",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.4815808931986491,
+        "time-list": [
+            0.47857666015625,
+            0.4879951477050781,
+            0.47817087173461914
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "string_18",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.4933003584543864,
+        "time-list": [
+            0.5085501670837402,
+            0.4824693202972412,
+            0.48888158798217773
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "string_19",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.4898216724395752,
+        "time-list": [
+            0.5048608779907227,
+            0.48340415954589844,
+            0.4811999797821045
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "string_2",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.47152169545491535,
+        "time-list": [
+            0.4661438465118408,
+            0.46622347831726074,
+            0.48219776153564453
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "string_3",
+        "num": 20,
+        "num-list": [
+            20,
+            20,
+            20
+        ],
+        "time": 0.4879481792449951,
+        "time-list": [
+            0.490664005279541,
+            0.4881093502044678,
+            0.48507118225097656
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "string_4",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.48318998018900555,
+        "time-list": [
+            0.4903233051300049,
+            0.48099446296691895,
+            0.4782521724700928
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "string_6",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.5050432682037354,
+        "time-list": [
+            0.5112817287445068,
+            0.5052680969238281,
+            0.4985799789428711
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "string_7",
+        "num": 10,
+        "num-list": [
+            10,
+            10,
+            10
+        ],
+        "time": 0.4867084821065267,
+        "time-list": [
+            0.4822845458984375,
+            0.4856553077697754,
+            0.4921855926513672
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "example": "string_9",
+        "num": 20,
+        "num-list": [
+            20,
+            20,
+            20
+        ],
+        "time": 0.4951559702555339,
+        "time-list": [
+            0.4888167381286621,
+            0.5057098865509033,
+            0.49094128608703613
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_1",
+        "num": 200,
+        "num-list": [
+            200,
+            200,
+            200
+        ],
+        "time": 0.8768327236175537,
+        "time-list": [
+            0.8886785507202148,
+            0.8822495937347412,
+            0.8595700263977051
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_10",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 0.7280283768971761,
+        "time-list": [
+            0.7114794254302979,
+            0.7531371116638184,
+            0.7194685935974121
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_11",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 0.6872459252675375,
+        "time-list": [
+            0.6739354133605957,
+            0.6854393482208252,
+            0.7023630142211914
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_12",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 0.6365208625793457,
+        "time-list": [
+            0.6456515789031982,
+            0.6326911449432373,
+            0.6312198638916016
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_13",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 0.6646851698557535,
+        "time-list": [
+            0.6619977951049805,
+            0.6716442108154297,
+            0.6604135036468506
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_14",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 0.6935434341430664,
+        "time-list": [
+            0.7198693752288818,
+            0.6681394577026367,
+            0.6926214694976807
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_15",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 0.6880071957906088,
+        "time-list": [
+            0.6772232055664062,
+            0.6818990707397461,
+            0.7048993110656738
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_16",
+        "num": 200,
+        "num-list": [
+            200,
+            200,
+            200
+        ],
+        "time": 0.6536561648050944,
+        "time-list": [
+            0.6691229343414307,
+            0.6413931846618652,
+            0.6504523754119873
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_17",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 0.5827879905700684,
+        "time-list": [
+            0.5831358432769775,
+            0.5832338333129883,
+            0.5819942951202393
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_3",
+        "num": 200,
+        "num-list": [
+            200,
+            200,
+            200
+        ],
+        "time": 0.7588605086008707,
+        "time-list": [
+            0.7576236724853516,
+            0.7658810615539551,
+            0.7530767917633057
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_4",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 0.6153919696807861,
+        "time-list": [
+            0.6351809501647949,
+            0.6038858890533447,
+            0.6071090698242188
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_5",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 0.6537048021952311,
+        "time-list": [
+            0.6781892776489258,
+            0.6572062969207764,
+            0.6257188320159912
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_6",
+        "num": 200,
+        "num-list": [
+            200,
+            200,
+            200
+        ],
+        "time": 0.7304742336273193,
+        "time-list": [
+            0.731412410736084,
+            0.7316188812255859,
+            0.7283914089202881
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_7",
+        "num": 200,
+        "num-list": [
+            200,
+            200,
+            200
+        ],
+        "time": 0.7138481140136719,
+        "time-list": [
+            0.6973586082458496,
+            0.7085409164428711,
+            0.7356448173522949
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_8",
+        "num": 200,
+        "num-list": [
+            200,
+            200,
+            200
+        ],
+        "time": 0.6743703683217367,
+        "time-list": [
+            0.6765904426574707,
+            0.6750421524047852,
+            0.6714785099029541
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_9",
+        "num": 500,
+        "num-list": [
+            500,
+            500,
+            500
+        ],
+        "time": 0.8948572476704916,
+        "time-list": [
+            0.9116544723510742,
+            0.8794753551483154,
+            0.893441915512085
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_10",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 0.6274324258168539,
+        "time-list": [
+            0.6348719596862793,
+            0.6352393627166748,
+            0.6121859550476074
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_11",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 0.6594564914703369,
+        "time-list": [
+            0.6536450386047363,
+            0.6663341522216797,
+            0.6583902835845947
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_12",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 0.696906566619873,
+        "time-list": [
+            0.7013423442840576,
+            0.7207186222076416,
+            0.6686587333679199
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_13",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 0.7222725550333658,
+        "time-list": [
+            0.7296717166900635,
+            0.7304773330688477,
+            0.7066686153411865
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_14",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 0.6549707253774008,
+        "time-list": [
+            0.651329755783081,
+            0.6564722061157227,
+            0.6571102142333984
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_15",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 0.6083780924479166,
+        "time-list": [
+            0.6296703815460205,
+            0.6029448509216309,
+            0.5925190448760986
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_16",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 0.7108867168426514,
+        "time-list": [
+            0.7398581504821777,
+            0.7100107669830322,
+            0.6827912330627441
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_17",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 0.6580862998962402,
+        "time-list": [
+            0.6721630096435547,
+            0.6466927528381348,
+            0.6554031372070312
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_18",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 0.7715468406677246,
+        "time-list": [
+            0.7709734439849854,
+            0.7578487396240234,
+            0.785818338394165
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_2",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 0.6220559279123942,
+        "time-list": [
+            0.6489148139953613,
+            0.6059932708740234,
+            0.6112596988677979
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_3",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 0.6676822503407797,
+        "time-list": [
+            0.6603372097015381,
+            0.6702136993408203,
+            0.6724958419799805
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_4",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 0.6609846750895182,
+        "time-list": [
+            0.64579176902771,
+            0.6537761688232422,
+            0.6833860874176025
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_5",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 0.6280545393625895,
+        "time-list": [
+            0.6254966259002686,
+            0.6218657493591309,
+            0.6368012428283691
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_6",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 0.6473562717437744,
+        "time-list": [
+            0.6409425735473633,
+            0.6522290706634521,
+            0.6488971710205078
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_7",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 0.6306962966918945,
+        "time-list": [
+            0.6222052574157715,
+            0.6518762111663818,
+            0.6180074214935303
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_8",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 0.6861774921417236,
+        "time-list": [
+            0.6938774585723877,
+            0.6911792755126953,
+            0.6734757423400879
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_9",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 0.6918034553527832,
+        "time-list": [
+            0.6702446937561035,
+            0.6900341510772705,
+            0.7151315212249756
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "stream_13",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 1.0312734444936116,
+        "time-list": [
+            1.0408267974853516,
+            1.0329399108886719,
+            1.0200536251068115
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "stream_4",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 0.8775473435719808,
+        "time-list": [
+            0.8962664604187012,
+            0.8405685424804688,
+            0.8958070278167725
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "string_10",
+        "num": 200,
+        "num-list": [
+            200,
+            200,
+            200
+        ],
+        "time": 0.6718671321868896,
+        "time-list": [
+            0.6758589744567871,
+            0.6727862358093262,
+            0.6669561862945557
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "string_12",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 0.607092539469401,
+        "time-list": [
+            0.6067848205566406,
+            0.5997452735900879,
+            0.6147475242614746
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "string_13",
+        "num": 200,
+        "num-list": [
+            200,
+            200,
+            200
+        ],
+        "time": 0.6751588980356852,
+        "time-list": [
+            0.6841223239898682,
+            0.6627757549285889,
+            0.6785786151885986
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "string_14",
+        "num": 200,
+        "num-list": [
+            200,
+            200,
+            200
+        ],
+        "time": 0.7163492838541666,
+        "time-list": [
+            0.7172918319702148,
+            0.727771520614624,
+            0.7039844989776611
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "string_15",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 0.5958199501037598,
+        "time-list": [
+            0.5990464687347412,
+            0.6041467189788818,
+            0.5842666625976562
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "string_16",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 0.6019574801127116,
+        "time-list": [
+            0.607912540435791,
+            0.5941793918609619,
+            0.6037805080413818
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "string_17",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 0.6179241339365641,
+        "time-list": [
+            0.6366353034973145,
+            0.6119468212127686,
+            0.6051902770996094
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "string_18",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 0.5903018315633138,
+        "time-list": [
+            0.5854489803314209,
+            0.5899214744567871,
+            0.5955350399017334
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "string_19",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 0.6288348038991293,
+        "time-list": [
+            0.6451997756958008,
+            0.6278300285339355,
+            0.6134746074676514
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "string_2",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 0.6177253723144531,
+        "time-list": [
+            0.6268656253814697,
+            0.624711275100708,
+            0.6015992164611816
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "string_3",
+        "num": 200,
+        "num-list": [
+            200,
+            200,
+            200
+        ],
+        "time": 0.6924324830373129,
+        "time-list": [
+            0.6869351863861084,
+            0.6932618618011475,
+            0.6971004009246826
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "string_4",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 0.6751806735992432,
+        "time-list": [
+            0.6745398044586182,
+            0.6758129596710205,
+            0.6751892566680908
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "string_6",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 0.6698468526204427,
+        "time-list": [
+            0.6694762706756592,
+            0.6501572132110596,
+            0.6899070739746094
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "string_7",
+        "num": 100,
+        "num-list": [
+            100,
+            100,
+            100
+        ],
+        "time": 0.6319766044616699,
+        "time-list": [
+            0.629908561706543,
+            0.6412787437438965,
+            0.6247425079345703
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "example": "string_9",
+        "num": 200,
+        "num-list": [
+            200,
+            200,
+            200
+        ],
+        "time": 0.7079590956370035,
+        "time-list": [
+            0.7061319351196289,
+            0.7197709083557129,
+            0.697974443435669
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_1",
+        "num": 2000,
+        "num-list": [
+            2000,
+            2000,
+            2000
+        ],
+        "time": 2.2626547813415527,
+        "time-list": [
+            2.2838568687438965,
+            2.1894547939300537,
+            2.314652681350708
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_10",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 1.2437255382537842,
+        "time-list": [
+            1.240788221359253,
+            1.2355575561523438,
+            1.2548308372497559
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_11",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 1.2983393669128418,
+        "time-list": [
+            1.3084931373596191,
+            1.3361411094665527,
+            1.2503838539123535
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_12",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 1.150126298268636,
+        "time-list": [
+            1.0894415378570557,
+            1.20155930519104,
+            1.1593780517578125
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_13",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 1.221195379892985,
+        "time-list": [
+            1.2095181941986084,
+            1.1888079643249512,
+            1.2652599811553955
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_14",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 1.4379428227742512,
+        "time-list": [
+            1.3880794048309326,
+            1.4603657722473145,
+            1.4653832912445068
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_15",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 1.4104526837666829,
+        "time-list": [
+            1.3640589714050293,
+            1.4311611652374268,
+            1.4361379146575928
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_16",
+        "num": 2000,
+        "num-list": [
+            2000,
+            2000,
+            2000
+        ],
+        "time": 1.333828369776408,
+        "time-list": [
+            1.3216838836669922,
+            1.3445234298706055,
+            1.335277795791626
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_17",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 0.9953509171803793,
+        "time-list": [
+            0.9894723892211914,
+            1.0153703689575195,
+            0.9812099933624268
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_3",
+        "num": 2000,
+        "num-list": [
+            2000,
+            2000,
+            2000
+        ],
+        "time": 1.7206642627716064,
+        "time-list": [
+            1.7281105518341064,
+            1.7077326774597168,
+            1.726149559020996
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_4",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 1.0894850095113118,
+        "time-list": [
+            1.068251132965088,
+            1.1074867248535156,
+            1.092717170715332
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_5",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 1.1876219113667805,
+        "time-list": [
+            1.1732943058013916,
+            1.2302453517913818,
+            1.1593260765075684
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_6",
+        "num": 2000,
+        "num-list": [
+            2000,
+            2000,
+            2000
+        ],
+        "time": 1.6156502564748128,
+        "time-list": [
+            1.6859207153320312,
+            1.5833547115325928,
+            1.5776753425598145
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_7",
+        "num": 2000,
+        "num-list": [
+            2000,
+            2000,
+            2000
+        ],
+        "time": 1.5285851160685222,
+        "time-list": [
+            1.5208401679992676,
+            1.5110371112823486,
+            1.5538780689239502
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_8",
+        "num": 2000,
+        "num-list": [
+            2000,
+            2000,
+            2000
+        ],
+        "time": 1.4107349713643391,
+        "time-list": [
+            1.3870694637298584,
+            1.3626666069030762,
+            1.482468843460083
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "bit_9",
+        "num": 5000,
+        "num-list": [
+            5000,
+            5000,
+            5000
+        ],
+        "time": 3.0293679237365723,
+        "time-list": [
+            2.9532065391540527,
+            3.140575408935547,
+            2.994321823120117
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_10",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 1.0800176461537678,
+        "time-list": [
+            1.043487310409546,
+            1.0918934345245361,
+            1.1046721935272217
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_11",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 1.1311870416005452,
+        "time-list": [
+            1.166511058807373,
+            1.1409685611724854,
+            1.0860815048217773
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_12",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 1.260228951772054,
+        "time-list": [
+            1.2776236534118652,
+            1.2397279739379883,
+            1.2633352279663086
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_13",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 1.4798763593037922,
+        "time-list": [
+            1.4790294170379639,
+            1.420309066772461,
+            1.5402905941009521
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_14",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 1.2324432531992595,
+        "time-list": [
+            1.2386126518249512,
+            1.2048304080963135,
+            1.2538866996765137
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_15",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 1.0469261805216472,
+        "time-list": [
+            1.0560359954833984,
+            1.0204286575317383,
+            1.0643138885498047
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_16",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 1.4364087581634521,
+        "time-list": [
+            1.4052958488464355,
+            1.4988713264465332,
+            1.4050590991973877
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_17",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 1.165098746617635,
+        "time-list": [
+            1.1440136432647705,
+            1.2059237957000732,
+            1.1453588008880615
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_18",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 1.651859998703003,
+        "time-list": [
+            1.7012319564819336,
+            1.6192269325256348,
+            1.6351211071014404
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_2",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 1.0483029683430989,
+        "time-list": [
+            1.053818702697754,
+            1.041304111480713,
+            1.04978609085083
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_3",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 1.201636791229248,
+        "time-list": [
+            1.2062442302703857,
+            1.1723802089691162,
+            1.2262859344482422
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_4",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 1.1644729773203533,
+        "time-list": [
+            1.1599504947662354,
+            1.1715118885040283,
+            1.161956548690796
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_5",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 1.0545760790507,
+        "time-list": [
+            1.0673272609710693,
+            1.0125012397766113,
+            1.083899736404419
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_6",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 1.233493169148763,
+        "time-list": [
+            1.1924512386322021,
+            1.2258596420288086,
+            1.2821686267852783
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_7",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 1.0885272026062012,
+        "time-list": [
+            1.0923681259155273,
+            1.0870990753173828,
+            1.0861144065856934
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_8",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 1.2738272349039714,
+        "time-list": [
+            1.2734572887420654,
+            1.2829549312591553,
+            1.2650694847106934
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "regex_9",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 1.2768328189849854,
+        "time-list": [
+            1.2828400135040283,
+            1.3136494159698486,
+            1.234009027481079
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "stream_13",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 2.6782036622365317,
+        "time-list": [
+            2.65802001953125,
+            2.7372288703918457,
+            2.639362096786499
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "stream_4",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 2.0228331883748374,
+        "time-list": [
+            2.0017998218536377,
+            2.0935938358306885,
+            1.9731059074401855
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "string_10",
+        "num": 2000,
+        "num-list": [
+            2000,
+            2000,
+            2000
+        ],
+        "time": 1.3998823165893555,
+        "time-list": [
+            1.3976809978485107,
+            1.4537665843963623,
+            1.3481993675231934
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "string_12",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 1.0485512415568035,
+        "time-list": [
+            1.0603280067443848,
+            1.0344693660736084,
+            1.050856351852417
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "string_13",
+        "num": 2000,
+        "num-list": [
+            2000,
+            2000,
+            2000
+        ],
+        "time": 1.4247921307881672,
+        "time-list": [
+            1.4117579460144043,
+            1.4566195011138916,
+            1.405998945236206
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "string_14",
+        "num": 2000,
+        "num-list": [
+            2000,
+            2000,
+            2000
+        ],
+        "time": 1.5126383304595947,
+        "time-list": [
+            1.612813949584961,
+            1.4768950939178467,
+            1.4482059478759766
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "string_15",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 0.9671623706817627,
+        "time-list": [
+            0.9501416683197021,
+            0.9641122817993164,
+            0.9872331619262695
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "string_16",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 1.080525239308675,
+        "time-list": [
+            1.0546865463256836,
+            1.039945125579834,
+            1.1469440460205078
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "string_17",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 0.9930780728658041,
+        "time-list": [
+            1.0439648628234863,
+            0.9506545066833496,
+            0.9846148490905762
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "string_18",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 1.0321760177612305,
+        "time-list": [
+            1.0703153610229492,
+            1.0036664009094238,
+            1.0225462913513184
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "string_19",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 1.0884013175964355,
+        "time-list": [
+            1.0665712356567383,
+            1.0958127975463867,
+            1.1028199195861816
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "string_2",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 1.1494216124216716,
+        "time-list": [
+            1.1243329048156738,
+            1.1766066551208496,
+            1.1473252773284912
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "string_3",
+        "num": 2000,
+        "num-list": [
+            2000,
+            2000,
+            2000
+        ],
+        "time": 1.452630599339803,
+        "time-list": [
+            1.3916807174682617,
+            1.4457051753997803,
+            1.5205059051513672
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "string_4",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 1.282946507136027,
+        "time-list": [
+            1.2726414203643799,
+            1.260223388671875,
+            1.3159747123718262
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "string_6",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 1.3291559219360352,
+        "time-list": [
+            1.345961570739746,
+            1.3463833332061768,
+            1.2951228618621826
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "string_7",
+        "num": 1000,
+        "num-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "time": 1.181382179260254,
+        "time-list": [
+            1.229311227798462,
+            1.1360962390899658,
+            1.178739070892334
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "example": "string_9",
+        "num": 2000,
+        "num-list": [
+            2000,
+            2000,
+            2000
+        ],
+        "time": 1.4619215329488118,
+        "time-list": [
+            1.4328582286834717,
+            1.436408519744873,
+            1.5164978504180908
+        ]
+    }
+]

@@ -1,0 +1,25 @@
+diff --git a/lib/cheat_wrapper.py b/lib/cheat_wrapper.py
+index fdcaff6..ff2a7dc 100644
+--- a/lib/cheat_wrapper.py
++++ b/lib/cheat_wrapper.py
+@@ -19,6 +19,8 @@ import postprocessing
+ import frontend.html
+ import frontend.ansi
+ 
++from inline import Here
++
+ def _add_section_name(query):
+     # temporary solution before we don't find a fixed one
+     if ' ' not in query and '+' not in query:
+@@ -80,8 +82,11 @@ def cheat_wrapper(query, request_options=None, output_format='ansi'):
+ 
+             if '/' in keyword:
+                 search_options = keyword[::-1]
++                Here().given(keyword, "python/java").check_eq(search_options, "avaj/nohtyp")
+                 search_options = search_options[:search_options.index('/')]
++                Here().given(search_options, "/nohtyp").check_eq(search_options, "")
+                 keyword = keyword[:-len(search_options)-1]
++                Here().given(keyword, "python/java").given(search_options, "avaj").check_eq(keyword, "python")
+ 
+         return topic, keyword, search_options
+ 

@@ -1,0 +1,4 @@
+requests~=2.27.1
+seutil~=0.8.1
+tqdm~=4.62.3
+seaborn

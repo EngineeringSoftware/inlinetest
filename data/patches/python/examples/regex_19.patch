@@ -1,0 +1,21 @@
+diff --git a/src/black/trans.py b/src/black/trans.py
+index 74d052f..19ba996 100644
+--- a/src/black/trans.py
++++ b/src/black/trans.py
+@@ -45,6 +45,8 @@ from black.strings import normalize_string_quotes
+ from blib2to3.pytree import Leaf, Node
+ from blib2to3.pgen2 import token
+ 
++from inline import Here
++
+ 
+ class CannotTransform(Exception):
+     """Base class for errors raised by Transformers."""
+@@ -491,6 +493,7 @@ class StringMerger(StringTransformer, CustomSplitMapMixin):
+             naked_string = re.sub(
+                 "(" + RE_EVEN_BACKSLASHES + ")" + QUOTE, r"\1\\" + QUOTE, naked_string
+             )
++            Here().given(RE_EVEN_BACKSLASHES, r"(?:(?<!\\)(?:\\\\)*)").given(QUOTE, "'").given(naked_string, r"'aaabbb'").check_eq(naked_string, r"\'aaabbb\'")
+             return naked_string
+ 
+         # Holds the CustomSplit objects that will later be added to the custom

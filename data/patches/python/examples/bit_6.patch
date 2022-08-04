@@ -1,0 +1,21 @@
+diff --git a/mitmproxy/contentviews/grpc.py b/mitmproxy/contentviews/grpc.py
+index a28a6821b..017af078c 100644
+--- a/mitmproxy/contentviews/grpc.py
++++ b/mitmproxy/contentviews/grpc.py
+@@ -9,6 +9,8 @@ from mitmproxy import contentviews, ctx, flow, flowfilter, http
+ from mitmproxy.contentviews import base
+ from mitmproxy.net.encoding import decode
+ 
++from inline import Here
++
+ 
+ class ProtoParser:
+     @dataclass
+@@ -155,6 +157,7 @@ class ProtoParser:
+         while offset < len(data):
+             o = data[offset]
+             res += ((o & 0x7f) << (7 * offset))
++            Here().given(o, 0x70).given(offset, 0).given(res, 0).check_eq(res, 112)
+             offset += 1
+             if o < 0x80:
+                 # the Kaitai parser for protobuf support base128 le values up

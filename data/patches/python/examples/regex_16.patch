@@ -1,0 +1,21 @@
+diff --git a/numpy/core/code_generators/genapi.py b/numpy/core/code_generators/genapi.py
+index 68ae30d5b..30860959b 100644
+--- a/numpy/core/code_generators/genapi.py
++++ b/numpy/core/code_generators/genapi.py
+@@ -17,6 +17,8 @@
+ 
+ from os.path import join
+ 
++from inline import Here
++
+ __docformat__ = 'restructuredtext'
+ 
+ # The files under src/ that are scanned for API functions
+@@ -167,6 +169,7 @@ def finish_arg():
+         if current_argument:
+             argstr = ''.join(current_argument).strip()
+             m = re.match(r'(.*(\s+|\*))(\w+)$', argstr)
++            Here().given(argstr, r"cls, text").check_eq(m.groups() if m else None, ("cls, ", " ", "text"))
+             if m:
+                 typename = m.group(1).strip()
+                 name = m.group(3)

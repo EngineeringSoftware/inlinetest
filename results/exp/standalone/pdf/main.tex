@@ -1,0 +1,86 @@
+\documentclass{article}
+
+\usepackage{xspace}
+\usepackage{xcolor}
+\usepackage[normalem]{ulem} % normalem do not replace \emph to underline
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{pifont}
+\usepackage[T1]{fontenc}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage[scale=0.75, margin=.2in]{geometry}
+
+\newcommand{\DefMacro}[2]{\expandafter\newcommand\csname rmk-#1\endcsname{#2}}
+\newcommand{\UseMacro}[1]{\csname rmk-#1\endcsname}
+
+% header for the table
+\newcommand{\HeaderProj}{\textbf{Proj}}
+\newcommand{\HeaderNumVanilla}{\textbf{\#UT}}
+\newcommand{\HeaderNumITOnly}{\textbf{\#IT}}
+\newcommand{\HeaderNumITStandalone}{\textbf{\#IT}}
+\newcommand{\HeaderTimeITOnly}{\textbf{$T_{\text{IT}}$ [s]}}
+\newcommand{\HeaderTimePerTestITOnly}{\textbf{$t_{\text{IT}}$[s]}}
+\newcommand{\HeaderTimeVanilla}{\textbf{$T_{\text{UT}}$ [s]}}
+\newcommand{\HeaderTimePerTestVanilla}{\textbf{$t_{\text{UT}}$[s]}}
+\newcommand{\HeaderTimeITEnabled}{\textbf{$T_{\text{ITE}}$ [s]}}
+\newcommand{\HeaderTimePerTestITEnabled}{\textbf{$t_{\text{ITE}}$[s]}}
+\newcommand{\HeaderOverheadITEnabled}{\textbf{$O_{\text{ITE}}$}}
+\newcommand{\HeaderTimeITDisabled}{\textbf{$T_{\text{ITD}}$[s]}}
+\newcommand{\HeaderTimePerTestITDisabled}{\textbf{$t_{\text{ITD}}$[s]}}
+\newcommand{\HeaderOverheadITDisabled}{\textbf{$O_{\text{ITD}}$}}
+\newcommand{\HeaderTimeITStandalone}{\textbf{$T_{\text{IT}}$[s]}}
+\newcommand{\HeaderTimePerTestITStandalone}{\textbf{$t_{\text{IT}}$[s]}}
+\newcommand{\HeaderAvg}{avg}
+\newcommand{\HeaderMed}{med}
+\newcommand{\HeaderSum}{$\Sigma$}
+\newcommand{\HeaderNA}{N/A}
+\newcommand{\HeaderDup}{\textbf{Dup}\xspace}
+\DefMacro{dup-1}{x1\xspace}
+\DefMacro{dup-10}{x10\xspace}
+\DefMacro{dup-100}{x100\xspace}
+\DefMacro{dup-1000}{x1000\xspace}
+
+\input{data-exp-standalone-python}
+\input{data-exp-standalone-java}
+
+\begin{document}
+
+\begin{table}
+    \begin{small}
+        \centering
+        \caption{Table 3 in the paper.}
+        \begin{minipage}[t]{\textwidth}
+            \centering
+            \subcaption{Python}
+            \input{table-exp-standalone-python}
+        \end{minipage}
+        \hspace{3pt}
+        \begin{minipage}[t]{\textwidth}
+            \centering
+            \subcaption{Java}
+            \input{table-exp-standalone-java}
+        \end{minipage}
+    \end{small}
+\end{table}
+
+\begin{figure}
+    \begin{small}
+        \centering
+        \begin{minipage}[t]{\textwidth}
+            \centering
+            \includegraphics[width=.5\textwidth]{figure_exp_standalone_time.eps}
+            \subcaption{total time}
+        \end{minipage}
+        \begin{minipage}[t]{\textwidth}
+            \centering
+            \includegraphics[width=.5\textwidth]{figure_exp_standalone_timept.eps}
+            \subcaption{per-test time}
+        \end{minipage}
+        \caption{Figure 12 in the paper.}
+    \end{small}
+\end{figure}
+
+\end{document}

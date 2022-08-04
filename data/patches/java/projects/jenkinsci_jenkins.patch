@@ -1,0 +1,16 @@
+diff --git a/pom.xml b/pom.xml
+index 96a4e4f58e..a94e0ec27d 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -130,6 +130,11 @@ THE SOFTWARE.
+   </dependencyManagement>
+ 
+   <dependencies>
++        <dependency>
++            <groupId>org.inlinetest</groupId>
++            <artifactId>inlinetest</artifactId>
++            <version>1.0</version>
++        </dependency>
+     <dependency>
+       <!-- make sure our dependency tree and all others are clean of the legacy servlet api.  -->
+       <groupId>javax.servlet</groupId>

@@ -1,0 +1,26 @@
+diff --git a/doc/sphinxext/announce.py b/doc/sphinxext/announce.py
+index b0b430ed6a..15b07b419d 100755
+--- a/doc/sphinxext/announce.py
++++ b/doc/sphinxext/announce.py
+@@ -39,6 +39,8 @@ import textwrap
+ 
+ from git import Repo
+ 
++from inline import Here
++
+ UTF8Writer = codecs.getwriter("utf8")
+ this_repo = Repo(os.path.join(os.path.dirname(__file__), "..", ".."))
+ 
+@@ -55,10 +57,12 @@ A total of %d pull requests were merged for this release.
+ def get_authors(revision_range):
+     pat = "^.*\\t(.*)$"
+     lst_release, cur_release = (r.strip() for r in revision_range.split(".."))
++    Here().given(revision_range, "0a12345..938r722").check_eq(lst_release, "0a12345").check_eq(cur_release, "938r722")
+ 
+     if "|" in cur_release:
+         # e.g. v1.0.1|HEAD
+         maybe_tag, head = cur_release.split("|")
++        Here.given(cur_release, "v1.0.1|HEAD").check_eq(maybe_tag, "v1.0.1").check_eq(head, "HEAD")
+         assert head == "HEAD"
+         if maybe_tag in this_repo.tags:
+             cur_release = maybe_tag

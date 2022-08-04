@@ -1,0 +1,16 @@
+diff --git a/pom.xml b/pom.xml
+index fe2148029..c61cb1bf5 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -622,6 +622,11 @@
+     
+     <!-- Default dependencies in all subprojects -->
+     <dependencies>
++        <dependency>
++            <groupId>org.inlinetest</groupId>
++            <artifactId>inlinetest</artifactId>
++            <version>1.0</version>
++        </dependency>
+         
+         <dependency>
+             <groupId>junit</groupId>

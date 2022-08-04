@@ -1,0 +1,23 @@
+diff --git a/shardingsphere-kernel/shardingsphere-authority/shardingsphere-authority-core/src/main/java/org/apache/shardingsphere/authority/provider/schema/builder/SchemaPrivilegeBuilder.java b/shardingsphere-kernel/shardingsphere-authority/shardingsphere-authority-core/src/main/java/org/apache/shardingsphere/authority/provider/schema/builder/SchemaPrivilegeBuilder.java
+index 6014200133..d16aa744ef 100644
+--- a/shardingsphere-kernel/shardingsphere-authority/shardingsphere-authority-core/src/main/java/org/apache/shardingsphere/authority/provider/schema/builder/SchemaPrivilegeBuilder.java
++++ b/shardingsphere-kernel/shardingsphere-authority/shardingsphere-authority-core/src/main/java/org/apache/shardingsphere/authority/provider/schema/builder/SchemaPrivilegeBuilder.java
+@@ -35,6 +35,8 @@ import java.util.Map.Entry;
+ import java.util.Properties;
+ import java.util.Set;
+ 
++import org.inlinetest.Here;
++
+ @NoArgsConstructor(access = AccessLevel.PRIVATE)
+ public final class SchemaPrivilegeBuilder {
+     
+@@ -82,7 +84,9 @@ public final class SchemaPrivilegeBuilder {
+             String[] userSchemaPair = each.trim().split("=");
+             String yamlUser = userSchemaPair[0];
+             String username = yamlUser.substring(0, yamlUser.indexOf("@"));
++            new Here().given(yamlUser, "aaa@b.com").checkEq(username, "aaa");
+             String hostname = yamlUser.substring(yamlUser.indexOf("@") + 1);
++            new Here().given(yamlUser, "aaa@b.com").checkEq(hostname, "b.com");
+             ShardingSphereUser shardingSphereUser = new ShardingSphereUser(username, "", hostname);
+             Set<String> schemas = result.getOrDefault(shardingSphereUser, new HashSet<>());
+             schemas.add(userSchemaPair[1]);

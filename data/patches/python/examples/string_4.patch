@@ -1,0 +1,21 @@
+diff --git a/numpy/lib/function_base.py b/numpy/lib/function_base.py
+index ff56196c3..c53d787ee 100644
+--- a/numpy/lib/function_base.py
++++ b/numpy/lib/function_base.py
+@@ -34,6 +34,8 @@
+ # needed in this module for compatibility
+ from numpy.lib.histograms import histogram, histogramdd  # noqa: F401
+ 
++from inline import Here
++
+ 
+ array_function_dispatch = functools.partial(
+     overrides.array_function_dispatch, module='numpy')
+@@ -1809,6 +1811,7 @@ def trim_zeros(filt, trim='fb'):
+ 
+     first = 0
+     trim = trim.upper()
++    Here().given(trim, "f").check_eq(trim, "F")
+     if 'F' in trim:
+         for i in filt:
+             if i != 0.:

@@ -1,0 +1,2634 @@
+[
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 2,
+        "num-inline-list": [
+            2,
+            2,
+            2
+        ],
+        "num-unit": 968,
+        "num-unit-and-inline": 970,
+        "num-unit-list": [
+            968,
+            968,
+            968
+        ],
+        "num-vanilla": 968,
+        "num-vanilla-list": [
+            968,
+            968,
+            968
+        ],
+        "overhead-unit": 0.0018944651278317605,
+        "overhead-unit-and-inline": 0.004316031383176394,
+        "project": "RaRe-Technologies_gensim",
+        "revision": "4bfb777d5e8232334914a0120821817b4a4ed3c8",
+        "time-inline": 0.5470908482869467,
+        "time-inline-list": [
+            0.5472538471221924,
+            0.5447015762329102,
+            0.5493171215057373
+        ],
+        "time-unit": 226.35238313674927,
+        "time-unit-and-inline": 226.89947398503622,
+        "time-unit-list": [
+            227.18703842163086,
+            225.3289577960968,
+            226.54115319252014
+        ],
+        "time-vanilla": 225.92437728246054,
+        "time-vanilla-list": [
+            223.76727557182312,
+            226.70353770256042,
+            227.30231857299805
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 2,
+        "num-inline-list": [
+            2,
+            2,
+            2
+        ],
+        "num-unit": 622,
+        "num-unit-and-inline": 624,
+        "num-unit-list": [
+            622,
+            622,
+            622
+        ],
+        "num-vanilla": 622,
+        "num-vanilla-list": [
+            622,
+            622,
+            622
+        ],
+        "overhead-unit": 0.0018238663683561045,
+        "overhead-unit-and-inline": 0.06294841980813341,
+        "project": "Textualize_rich",
+        "revision": "cad92aa56c4de35c65abf33276674db6de5a7fa0",
+        "time-inline": 0.22677787144978842,
+        "time-inline-list": [
+            0.22494983673095703,
+            0.22800993919372559,
+            0.22737383842468262
+        ],
+        "time-unit": 3.7168612480163574,
+        "time-unit-and-inline": 3.943639119466146,
+        "time-unit-list": [
+            3.7119133472442627,
+            3.7089595794677734,
+            3.729710817337036
+        ],
+        "time-vanilla": 3.7100945313771567,
+        "time-vanilla-list": [
+            3.7059011459350586,
+            3.704456329345703,
+            3.719926118850708
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 8,
+        "num-inline-list": [
+            8,
+            8,
+            8
+        ],
+        "num-unit": 8616,
+        "num-unit-and-inline": 8624,
+        "num-unit-list": [
+            8616,
+            8616,
+            8616
+        ],
+        "num-vanilla": 8616,
+        "num-vanilla-list": [
+            8616,
+            8616,
+            8616
+        ],
+        "overhead-unit": 0.010047726123024993,
+        "overhead-unit-and-inline": 0.025801967686244362,
+        "project": "bokeh_bokeh",
+        "revision": "76202f81a4db94a94c0e24ea4e4aa81fc61e0119",
+        "time-inline": 0.7818976243336996,
+        "time-inline-list": [
+            0.7795488834381104,
+            0.7846479415893555,
+            0.7814960479736328
+        ],
+        "time-unit": 50.12960569063822,
+        "time-unit-and-inline": 50.911503314971924,
+        "time-unit-list": [
+            50.12889838218689,
+            50.045814514160156,
+            50.21410417556763
+        ],
+        "time-vanilla": 49.63092772165934,
+        "time-vanilla-list": [
+            49.33730888366699,
+            49.63496375083923,
+            49.9205105304718
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 3,
+        "num-inline-list": [
+            3,
+            3,
+            3
+        ],
+        "num-unit": 1,
+        "num-unit-and-inline": 4,
+        "num-unit-list": [
+            1,
+            1,
+            1
+        ],
+        "num-vanilla": 1,
+        "num-vanilla-list": [
+            1,
+            1,
+            1
+        ],
+        "overhead-unit": -0.009787076616625439,
+        "overhead-unit-and-inline": 1.2038196195659479,
+        "project": "chubin_cheat.sh",
+        "revision": "46d1a5f73c6b88da15d809154245dbf234e9479e",
+        "time-inline": 0.40904927253723145,
+        "time-inline-list": [
+            0.4073216915130615,
+            0.4089090824127197,
+            0.4109170436859131
+        ],
+        "time-unit": 0.3337538242340088,
+        "time-unit-and-inline": 0.7428030967712402,
+        "time-unit-list": [
+            0.33394885063171387,
+            0.33501219749450684,
+            0.33230042457580566
+        ],
+        "time-vanilla": 0.337052583694458,
+        "time-vanilla-list": [
+            0.33572959899902344,
+            0.3395228385925293,
+            0.3359053134918213
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 1,
+        "num-inline-list": [
+            1,
+            1,
+            1
+        ],
+        "num-unit": 3,
+        "num-unit-and-inline": 4,
+        "num-unit-list": [
+            3,
+            3,
+            3
+        ],
+        "num-vanilla": 3,
+        "num-vanilla-list": [
+            3,
+            3,
+            3
+        ],
+        "overhead-unit": 0.006092813778515899,
+        "overhead-unit-and-inline": 0.8882872104687891,
+        "project": "davidsandberg_facenet",
+        "revision": "096ed770f163957c1e56efa7feeb194773920f6e",
+        "time-inline": 0.8552409013112386,
+        "time-inline-list": [
+            0.8566713333129883,
+            0.8527400493621826,
+            0.8563113212585449
+        ],
+        "time-unit": 0.9753538767496744,
+        "time-unit-and-inline": 1.830594778060913,
+        "time-unit-list": [
+            0.9837327003479004,
+            0.9718163013458252,
+            0.9705126285552979
+        ],
+        "time-vanilla": 0.9694472153981527,
+        "time-vanilla-list": [
+            0.9667544364929199,
+            0.971731424331665,
+            0.969855785369873
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 4,
+        "num-inline-list": [
+            4,
+            4,
+            4
+        ],
+        "num-unit": 1,
+        "num-unit-and-inline": 5,
+        "num-unit-list": [
+            1,
+            1,
+            1
+        ],
+        "num-vanilla": 1,
+        "num-vanilla-list": [
+            1,
+            1,
+            1
+        ],
+        "overhead-unit": 0.058040638388870906,
+        "overhead-unit-and-inline": 1.2169339438595963,
+        "project": "geekcomputers_Python",
+        "revision": "f7089aaaed406b8d31acd9e27d98b10ec646817c",
+        "time-inline": 0.19639229774475098,
+        "time-inline-list": [
+            0.19589972496032715,
+            0.19460415840148926,
+            0.19867300987243652
+        ],
+        "time-unit": 0.17930126190185547,
+        "time-unit-and-inline": 0.37569355964660645,
+        "time-unit-list": [
+            0.1777966022491455,
+            0.17972373962402344,
+            0.18038344383239746
+        ],
+        "time-vanilla": 0.16946538289388022,
+        "time-vanilla-list": [
+            0.16975903511047363,
+            0.1693894863128662,
+            0.16924762725830078
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 1,
+        "num-inline-list": [
+            1,
+            1,
+            1
+        ],
+        "num-unit": 15,
+        "num-unit-and-inline": 16,
+        "num-unit-list": [
+            15,
+            15,
+            15
+        ],
+        "num-vanilla": 15,
+        "num-vanilla-list": [
+            15,
+            15,
+            15
+        ],
+        "overhead-unit": 0.010948915445453076,
+        "overhead-unit-and-inline": 0.314157287556268,
+        "project": "google-research_bert",
+        "revision": "eedf5716ce1268e56f0a50264a88cafad334ac61",
+        "time-inline": 0.6211283206939697,
+        "time-inline-list": [
+            0.6225779056549072,
+            0.6221492290496826,
+            0.6186578273773193
+        ],
+        "time-unit": 2.070948759714762,
+        "time-unit-and-inline": 2.692077080408732,
+        "time-unit-list": [
+            2.07955265045166,
+            2.076181173324585,
+            2.057112455368042
+        ],
+        "time-vanilla": 2.0485196908315024,
+        "time-vanilla-list": [
+            2.044422149658203,
+            2.055410146713257,
+            2.045726776123047
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 4,
+        "num-inline-list": [
+            4,
+            4,
+            4
+        ],
+        "num-unit": 1596,
+        "num-unit-and-inline": 1600,
+        "num-unit-list": [
+            1596,
+            1596,
+            1596
+        ],
+        "num-vanilla": 1596,
+        "num-vanilla-list": [
+            1596,
+            1596,
+            1596
+        ],
+        "overhead-unit": -0.005629058978912972,
+        "overhead-unit-and-inline": 0.010614187128893874,
+        "project": "joke2k_faker",
+        "revision": "5b98d2ab877e414b51e76abc8fdde2fb2dad6710",
+        "time-inline": 0.27181116739908856,
+        "time-inline-list": [
+            0.2722618579864502,
+            0.27151966094970703,
+            0.2716519832611084
+        ],
+        "time-unit": 16.6396005153656,
+        "time-unit-and-inline": 16.91141168276469,
+        "time-unit-list": [
+            16.59878706932068,
+            16.67448878288269,
+            16.645525693893433
+        ],
+        "time-vanilla": 16.733796040217083,
+        "time-vanilla-list": [
+            16.72858428955078,
+            16.79078459739685,
+            16.682019233703613
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 1,
+        "num-inline-list": [
+            1,
+            1,
+            1
+        ],
+        "num-unit": 1287,
+        "num-unit-and-inline": 1288,
+        "num-unit-list": [
+            1287,
+            1287,
+            1287
+        ],
+        "num-vanilla": 1287,
+        "num-vanilla-list": [
+            1287,
+            1287,
+            1287
+        ],
+        "overhead-unit": -0.007019913196873166,
+        "overhead-unit-and-inline": 0.04630939392426826,
+        "project": "mitmproxy_mitmproxy",
+        "revision": "33bba38b03496f05f15f945e32a5af5d1d77906f",
+        "time-inline": 0.4001792271931966,
+        "time-inline-list": [
+            0.3990616798400879,
+            0.40005922317504883,
+            0.4014167785644531
+        ],
+        "time-unit": 7.451250076293945,
+        "time-unit-and-inline": 7.851429303487142,
+        "time-unit-list": [
+            7.425822973251343,
+            7.419053792953491,
+            7.508873462677002
+        ],
+        "time-vanilla": 7.503926992416382,
+        "time-vanilla-list": [
+            7.482325553894043,
+            7.564836263656616,
+            7.464619159698486
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 2,
+        "num-inline-list": [
+            2,
+            2,
+            2
+        ],
+        "num-unit": 19644,
+        "num-unit-and-inline": 19646,
+        "num-unit-list": [
+            19644,
+            19644,
+            19644
+        ],
+        "num-vanilla": 19644,
+        "num-vanilla-list": [
+            19644,
+            19644,
+            19644
+        ],
+        "overhead-unit": -0.016622266598858217,
+        "overhead-unit-and-inline": -0.013134668830130234,
+        "project": "numpy_numpy",
+        "revision": "c63f2c2bab48e0446b34f3bba5574729327d68d1",
+        "time-inline": 0.5155382951100668,
+        "time-inline-list": [
+            0.5149803161621094,
+            0.518566370010376,
+            0.5130681991577148
+        ],
+        "time-unit": 145.36334570248923,
+        "time-unit-and-inline": 145.8788839975993,
+        "time-unit-list": [
+            145.31128096580505,
+            144.79800295829773,
+            145.98075318336487
+        ],
+        "time-vanilla": 147.82045674324036,
+        "time-vanilla-list": [
+            148.48137784004211,
+            145.90413808822632,
+            149.07585430145264
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 2,
+        "num-inline-list": [
+            2,
+            2,
+            2
+        ],
+        "num-unit": 147307,
+        "num-unit-and-inline": 147309,
+        "num-unit-list": [
+            147306,
+            147304,
+            147307
+        ],
+        "num-vanilla": 147307,
+        "num-vanilla-list": [
+            147305,
+            147307,
+            147304
+        ],
+        "overhead-unit": 0.001611832717688497,
+        "overhead-unit-and-inline": 0.004963029213783893,
+        "project": "pandas-dev_pandas",
+        "revision": "c68c626e3798380bd0e4b7c738b627ec7e91e52e",
+        "time-inline": 0.9330611228942871,
+        "time-inline-list": [
+            0.9375443458557129,
+            0.9413416385650635,
+            0.920297384262085
+        ],
+        "time-unit": 278.875041325887,
+        "time-unit-and-inline": 279.8081024487813,
+        "time-unit-list": [
+            278.7518801689148,
+            278.7778344154358,
+            279.09540939331055
+        ],
+        "time-vanilla": 278.4262647628784,
+        "time-vanilla-list": [
+            279.42755031585693,
+            276.28304958343506,
+            279.56819438934326
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 1,
+        "num-inline-list": [
+            1,
+            1,
+            1
+        ],
+        "num-unit": 236,
+        "num-unit-and-inline": 237,
+        "num-unit-list": [
+            236,
+            236,
+            236
+        ],
+        "num-vanilla": 236,
+        "num-vanilla-list": [
+            236,
+            236,
+            236
+        ],
+        "overhead-unit": 0.008854336243605697,
+        "overhead-unit-and-inline": 0.0478410238908404,
+        "project": "psf_black",
+        "revision": "062b54931dc3ea35f673e755893fe28ff1f5a889",
+        "time-inline": 0.27118539810180664,
+        "time-inline-list": [
+            0.27014780044555664,
+            0.27269554138183594,
+            0.27071285247802734
+        ],
+        "time-unit": 7.017435471216838,
+        "time-unit-and-inline": 7.2886208693186445,
+        "time-unit-list": [
+            7.012804746627808,
+            7.022785186767578,
+            7.016716480255127
+        ],
+        "time-vanilla": 6.955846071243286,
+        "time-vanilla-list": [
+            6.9692606925964355,
+            6.926095008850098,
+            6.972182512283325
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 1,
+        "num-inline-list": [
+            1,
+            1,
+            1
+        ],
+        "num-unit": 106,
+        "num-unit-and-inline": 107,
+        "num-unit-list": [
+            106,
+            106,
+            106
+        ],
+        "num-vanilla": 106,
+        "num-vanilla-list": [
+            106,
+            106,
+            106
+        ],
+        "overhead-unit": 0.003181503731192402,
+        "overhead-unit-and-inline": 0.1513825041585089,
+        "project": "pypa_pipenv",
+        "revision": "b0f6baa342f0f62062586634e9a8c442126296f5",
+        "time-inline": 0.5372504393259684,
+        "time-inline-list": [
+            0.5358278751373291,
+            0.5361380577087402,
+            0.5397853851318359
+        ],
+        "time-unit": 3.6366806030273438,
+        "time-unit-and-inline": 4.1739310423533125,
+        "time-unit-list": [
+            3.6159017086029053,
+            3.652343988418579,
+            3.641796112060547
+        ],
+        "time-vanilla": 3.6251471837361655,
+        "time-vanilla-list": [
+            3.6359004974365234,
+            3.6135411262512207,
+            3.625999927520752
+        ]
+    },
+    {
+        "duplicating": 1,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 2,
+        "num-inline-list": [
+            2,
+            2,
+            2
+        ],
+        "num-unit": 2246,
+        "num-unit-and-inline": 2248,
+        "num-unit-list": [
+            2246,
+            2246,
+            2246
+        ],
+        "num-vanilla": 2246,
+        "num-vanilla-list": [
+            2246,
+            2246,
+            2246
+        ],
+        "overhead-unit": 0.002680375110655679,
+        "overhead-unit-and-inline": 0.006614685140957669,
+        "project": "scrapy_scrapy",
+        "revision": "8c3e5a2421f639f36e9b907d69d4d48b86447e68",
+        "time-inline": 0.5117441018422445,
+        "time-inline-list": [
+            0.5596692562103271,
+            0.504340648651123,
+            0.4712224006652832
+        ],
+        "time-unit": 130.4207762082418,
+        "time-unit-and-inline": 130.93252031008404,
+        "time-unit-list": [
+            130.87255024909973,
+            130.3742377758026,
+            130.015540599823
+        ],
+        "time-vanilla": 130.0721340974172,
+        "time-vanilla-list": [
+            129.9747233390808,
+            130.37368440628052,
+            129.86799454689026
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 20,
+        "num-inline-list": [
+            20,
+            20,
+            20
+        ],
+        "num-unit": 968,
+        "num-unit-and-inline": 988,
+        "num-unit-list": [
+            968,
+            968,
+            968
+        ],
+        "num-vanilla": 968,
+        "num-vanilla-list": [
+            968,
+            968,
+            968
+        ],
+        "overhead-unit": -0.0021990876088498587,
+        "overhead-unit-and-inline": 0.00030982903995260347,
+        "project": "RaRe-Technologies_gensim",
+        "revision": "4bfb777d5e8232334914a0120821817b4a4ed3c8",
+        "time-inline": 0.568024476369222,
+        "time-inline-list": [
+            0.5639173984527588,
+            0.5694377422332764,
+            0.5707182884216309
+        ],
+        "time-unit": 225.90441219011942,
+        "time-unit-and-inline": 226.47243666648865,
+        "time-unit-list": [
+            224.52884602546692,
+            225.3912537097931,
+            227.79313683509827
+        ],
+        "time-vanilla": 226.40229066212973,
+        "time-vanilla-list": [
+            232.70153427124023,
+            223.88844966888428,
+            222.61688804626465
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 20,
+        "num-inline-list": [
+            20,
+            20,
+            20
+        ],
+        "num-unit": 622,
+        "num-unit-and-inline": 642,
+        "num-unit-list": [
+            622,
+            622,
+            622
+        ],
+        "num-vanilla": 622,
+        "num-vanilla-list": [
+            622,
+            622,
+            622
+        ],
+        "overhead-unit": 0.0017526801539210267,
+        "overhead-unit-and-inline": 0.06692655765038293,
+        "project": "Textualize_rich",
+        "revision": "cad92aa56c4de35c65abf33276674db6de5a7fa0",
+        "time-inline": 0.2414857546488444,
+        "time-inline-list": [
+            0.24274253845214844,
+            0.241912841796875,
+            0.23980188369750977
+        ],
+        "time-unit": 3.711747884750366,
+        "time-unit-and-inline": 3.9532336393992105,
+        "time-unit-list": [
+            3.7118380069732666,
+            3.714115619659424,
+            3.709290027618408
+        ],
+        "time-vanilla": 3.705253760019938,
+        "time-vanilla-list": [
+            3.7062573432922363,
+            3.704941749572754,
+            3.704562187194824
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 80,
+        "num-inline-list": [
+            80,
+            80,
+            80
+        ],
+        "num-unit": 8616,
+        "num-unit-and-inline": 8696,
+        "num-unit-list": [
+            8616,
+            8616,
+            8616
+        ],
+        "num-vanilla": 8616,
+        "num-vanilla-list": [
+            8616,
+            8616,
+            8616
+        ],
+        "overhead-unit": 0.8376234898768007,
+        "overhead-unit-and-inline": 0.8548185833068062,
+        "project": "bokeh_bokeh",
+        "revision": "76202f81a4db94a94c0e24ea4e4aa81fc61e0119",
+        "time-inline": 0.8549471696217855,
+        "time-inline-list": [
+            0.8538496494293213,
+            0.8539748191833496,
+            0.8570170402526855
+        ],
+        "time-unit": 91.3674012819926,
+        "time-unit-and-inline": 92.22234845161438,
+        "time-unit-list": [
+            112.50343704223633,
+            49.053704500198364,
+            112.54506230354309
+        ],
+        "time-vanilla": 49.720414320627846,
+        "time-vanilla-list": [
+            49.66348958015442,
+            49.87761974334717,
+            49.62013363838196
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 30,
+        "num-inline-list": [
+            30,
+            30,
+            30
+        ],
+        "num-unit": 1,
+        "num-unit-and-inline": 31,
+        "num-unit-list": [
+            1,
+            1,
+            1
+        ],
+        "num-vanilla": 1,
+        "num-vanilla-list": [
+            1,
+            1,
+            1
+        ],
+        "overhead-unit": -0.017753603680598775,
+        "overhead-unit-and-inline": 1.2419514527930715,
+        "project": "chubin_cheat.sh",
+        "revision": "46d1a5f73c6b88da15d809154245dbf234e9479e",
+        "time-inline": 0.42580000559488934,
+        "time-inline-list": [
+            0.42454075813293457,
+            0.42570948600769043,
+            0.42714977264404297
+        ],
+        "time-unit": 0.3320146401723226,
+        "time-unit-and-inline": 0.7578146457672119,
+        "time-unit-list": [
+            0.33137035369873047,
+            0.3324148654937744,
+            0.3322587013244629
+        ],
+        "time-vanilla": 0.3380156358083089,
+        "time-vanilla-list": [
+            0.33710289001464844,
+            0.33854126930236816,
+            0.33840274810791016
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 10,
+        "num-inline-list": [
+            10,
+            10,
+            10
+        ],
+        "num-unit": 3,
+        "num-unit-and-inline": 13,
+        "num-unit-list": [
+            3,
+            3,
+            3
+        ],
+        "num-vanilla": 3,
+        "num-vanilla-list": [
+            3,
+            3,
+            3
+        ],
+        "overhead-unit": 0.00486309623882763,
+        "overhead-unit-and-inline": 0.8965436152097769,
+        "project": "davidsandberg_facenet",
+        "revision": "096ed770f163957c1e56efa7feeb194773920f6e",
+        "time-inline": 0.8636600971221924,
+        "time-inline-list": [
+            0.8617672920227051,
+            0.864109992980957,
+            0.865103006362915
+        ],
+        "time-unit": 0.973285992940267,
+        "time-unit-and-inline": 1.8369460900624595,
+        "time-unit-list": [
+            0.9715731143951416,
+            0.9774353504180908,
+            0.9708495140075684
+        ],
+        "time-vanilla": 0.9685757160186768,
+        "time-vanilla-list": [
+            0.9680182933807373,
+            0.9681355953216553,
+            0.9695732593536377
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 40,
+        "num-inline-list": [
+            40,
+            40,
+            40
+        ],
+        "num-unit": 1,
+        "num-unit-and-inline": 41,
+        "num-unit-list": [
+            1,
+            1,
+            1
+        ],
+        "num-vanilla": 1,
+        "num-vanilla-list": [
+            1,
+            1,
+            1
+        ],
+        "overhead-unit": 0.036648657071897205,
+        "overhead-unit-and-inline": 1.3194793615023128,
+        "project": "geekcomputers_Python",
+        "revision": "f7089aaaed406b8d31acd9e27d98b10ec646817c",
+        "time-inline": 0.22113299369812012,
+        "time-inline-list": [
+            0.22156381607055664,
+            0.2212843894958496,
+            0.2205507755279541
+        ],
+        "time-unit": 0.1786963939666748,
+        "time-unit-and-inline": 0.3998293876647949,
+        "time-unit-list": [
+            0.17891335487365723,
+            0.17839407920837402,
+            0.17878174781799316
+        ],
+        "time-vanilla": 0.172378937403361,
+        "time-vanilla-list": [
+            0.17335033416748047,
+            0.17362642288208008,
+            0.17016005516052246
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 10,
+        "num-inline-list": [
+            10,
+            10,
+            10
+        ],
+        "num-unit": 15,
+        "num-unit-and-inline": 25,
+        "num-unit-list": [
+            15,
+            15,
+            15
+        ],
+        "num-vanilla": 15,
+        "num-vanilla-list": [
+            15,
+            15,
+            15
+        ],
+        "overhead-unit": 0.003938451104835135,
+        "overhead-unit-and-inline": 0.3088400983923656,
+        "project": "google-research_bert",
+        "revision": "eedf5716ce1268e56f0a50264a88cafad334ac61",
+        "time-inline": 0.6294152736663818,
+        "time-inline-list": [
+            0.6278150081634521,
+            0.6303517818450928,
+            0.6300790309906006
+        ],
+        "time-unit": 2.0724525451660156,
+        "time-unit-and-inline": 2.7018678188323975,
+        "time-unit-list": [
+            2.0709872245788574,
+            2.0665760040283203,
+            2.079794406890869
+        ],
+        "time-vanilla": 2.064322312672933,
+        "time-vanilla-list": [
+            2.055666923522949,
+            2.058656930923462,
+            2.0786430835723877
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 40,
+        "num-inline-list": [
+            40,
+            40,
+            40
+        ],
+        "num-unit": 1596,
+        "num-unit-and-inline": 1636,
+        "num-unit-list": [
+            1596,
+            1596,
+            1596
+        ],
+        "num-vanilla": 1596,
+        "num-vanilla-list": [
+            1596,
+            1596,
+            1596
+        ],
+        "overhead-unit": -0.004292722053143751,
+        "overhead-unit-and-inline": 0.013638675194849485,
+        "project": "joke2k_faker",
+        "revision": "5b98d2ab877e414b51e76abc8fdde2fb2dad6710",
+        "time-inline": 0.2995062669118245,
+        "time-inline-list": [
+            0.30080389976501465,
+            0.2978553771972656,
+            0.29985952377319336
+        ],
+        "time-unit": 16.631195306777954,
+        "time-unit-and-inline": 16.930701573689777,
+        "time-unit-list": [
+            16.664042949676514,
+            16.6167631149292,
+            16.61277985572815
+        ],
+        "time-vanilla": 16.70289619763692,
+        "time-vanilla-list": [
+            16.708893537521362,
+            16.69246220588684,
+            16.707332849502563
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 10,
+        "num-inline-list": [
+            10,
+            10,
+            10
+        ],
+        "num-unit": 1287,
+        "num-unit-and-inline": 1297,
+        "num-unit-list": [
+            1287,
+            1287,
+            1287
+        ],
+        "num-vanilla": 1287,
+        "num-vanilla-list": [
+            1287,
+            1287,
+            1287
+        ],
+        "overhead-unit": 0.0012360796031091476,
+        "overhead-unit-and-inline": 0.055424128629761156,
+        "project": "mitmproxy_mitmproxy",
+        "revision": "33bba38b03496f05f15f945e32a5af5d1d77906f",
+        "time-inline": 0.40462271372477215,
+        "time-inline-list": [
+            0.40519213676452637,
+            0.4039726257324219,
+            0.40470337867736816
+        ],
+        "time-unit": 7.476239999135335,
+        "time-unit-and-inline": 7.880862712860107,
+        "time-unit-list": [
+            7.421890497207642,
+            7.449481725692749,
+            7.557347774505615
+        ],
+        "time-vanilla": 7.4670101801554365,
+        "time-vanilla-list": [
+            7.453714609146118,
+            7.521036386489868,
+            7.426279544830322
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 20,
+        "num-inline-list": [
+            20,
+            20,
+            20
+        ],
+        "num-unit": 19644,
+        "num-unit-and-inline": 19664,
+        "num-unit-list": [
+            19644,
+            19644,
+            19644
+        ],
+        "num-vanilla": 19644,
+        "num-vanilla-list": [
+            19644,
+            19644,
+            19644
+        ],
+        "overhead-unit": 0.011151324325107233,
+        "overhead-unit-and-inline": 0.014814360926605976,
+        "project": "numpy_numpy",
+        "revision": "c63f2c2bab48e0446b34f3bba5574729327d68d1",
+        "time-inline": 0.5358511606852213,
+        "time-inline-list": [
+            0.5319745540618896,
+            0.5440056324005127,
+            0.5315732955932617
+        ],
+        "time-unit": 147.91733463605246,
+        "time-unit-and-inline": 148.45318579673767,
+        "time-unit-list": [
+            146.19824862480164,
+            148.9435715675354,
+            148.6101837158203
+        ],
+        "time-vanilla": 146.28605143229166,
+        "time-vanilla-list": [
+            144.52067136764526,
+            147.39510655403137,
+            146.94237637519836
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 20,
+        "num-inline-list": [
+            20,
+            20,
+            20
+        ],
+        "num-unit": 147305,
+        "num-unit-and-inline": 147325,
+        "num-unit-list": [
+            147305,
+            147305,
+            147305
+        ],
+        "num-vanilla": 147306,
+        "num-vanilla-list": [
+            147306,
+            147306,
+            147305
+        ],
+        "overhead-unit": -0.00016499739579475722,
+        "overhead-unit-and-inline": 0.003263409060059629,
+        "project": "pandas-dev_pandas",
+        "revision": "c68c626e3798380bd0e4b7c738b627ec7e91e52e",
+        "time-inline": 0.9510558446248373,
+        "time-inline-list": [
+            0.9504373073577881,
+            0.9523017406463623,
+            0.9504284858703613
+        ],
+        "time-unit": 277.35886486371356,
+        "time-unit-and-inline": 278.3099207083384,
+        "time-unit-list": [
+            276.2218568325043,
+            277.9470489025116,
+            277.9076888561249
+        ],
+        "time-vanilla": 277.4046359062195,
+        "time-vanilla-list": [
+            277.0447721481323,
+            277.60680389404297,
+            277.56233167648315
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 10,
+        "num-inline-list": [
+            10,
+            10,
+            10
+        ],
+        "num-unit": 236,
+        "num-unit-and-inline": 246,
+        "num-unit-list": [
+            236,
+            236,
+            236
+        ],
+        "num-vanilla": 236,
+        "num-vanilla-list": [
+            236,
+            236,
+            236
+        ],
+        "overhead-unit": 0.009787503565313051,
+        "overhead-unit-and-inline": 0.049829849728786874,
+        "project": "psf_black",
+        "revision": "062b54931dc3ea35f673e755893fe28ff1f5a889",
+        "time-inline": 0.27823535601298016,
+        "time-inline-list": [
+            0.27734923362731934,
+            0.2788870334625244,
+            0.2784698009490967
+        ],
+        "time-unit": 7.016536553700765,
+        "time-unit-and-inline": 7.294771909713745,
+        "time-unit-list": [
+            6.995879888534546,
+            6.984374761581421,
+            7.069355010986328
+        ],
+        "time-vanilla": 6.948527812957764,
+        "time-vanilla-list": [
+            6.946418046951294,
+            6.937253952026367,
+            6.96191143989563
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 10,
+        "num-inline-list": [
+            10,
+            10,
+            10
+        ],
+        "num-unit": 106,
+        "num-unit-and-inline": 116,
+        "num-unit-list": [
+            106,
+            106,
+            106
+        ],
+        "num-vanilla": 106,
+        "num-vanilla-list": [
+            106,
+            106,
+            106
+        ],
+        "overhead-unit": -0.007208269918112853,
+        "overhead-unit-and-inline": 0.14186130899117833,
+        "project": "pypa_pipenv",
+        "revision": "b0f6baa342f0f62062586634e9a8c442126296f5",
+        "time-inline": 0.5441175301869711,
+        "time-inline-list": [
+            0.5447275638580322,
+            0.5432796478271484,
+            0.5443453788757324
+        ],
+        "time-unit": 3.6237801710764566,
+        "time-unit-and-inline": 4.167897701263428,
+        "time-unit-list": [
+            3.6245839595794678,
+            3.609570264816284,
+            3.637186288833618
+        ],
+        "time-vanilla": 3.650091012318929,
+        "time-vanilla-list": [
+            3.648366928100586,
+            3.67073917388916,
+            3.631166934967041
+        ]
+    },
+    {
+        "duplicating": 10,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 20,
+        "num-inline-list": [
+            20,
+            20,
+            20
+        ],
+        "num-unit": 2246,
+        "num-unit-and-inline": 2266,
+        "num-unit-list": [
+            2246,
+            2246,
+            2246
+        ],
+        "num-vanilla": 2246,
+        "num-vanilla-list": [
+            2246,
+            2246,
+            2246
+        ],
+        "overhead-unit": 0.001608381554779192,
+        "overhead-unit-and-inline": 0.005734937987348311,
+        "project": "scrapy_scrapy",
+        "revision": "8c3e5a2421f639f36e9b907d69d4d48b86447e68",
+        "time-inline": 0.5360567569732666,
+        "time-inline-list": [
+            0.5330867767333984,
+            0.5333752632141113,
+            0.54170823097229
+        ],
+        "time-unit": 130.1130735874176,
+        "time-unit-and-inline": 130.64913034439087,
+        "time-unit-list": [
+            130.13448572158813,
+            129.9904499053955,
+            130.21428513526917
+        ],
+        "time-vanilla": 129.9041381676992,
+        "time-vanilla-list": [
+            130.05116510391235,
+            129.57304644584656,
+            130.08820295333862
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 200,
+        "num-inline-list": [
+            200,
+            200,
+            200
+        ],
+        "num-unit": 968,
+        "num-unit-and-inline": 1168,
+        "num-unit-list": [
+            968,
+            968,
+            968
+        ],
+        "num-vanilla": 968,
+        "num-vanilla-list": [
+            968,
+            968,
+            968
+        ],
+        "overhead-unit": -0.0015086155932521452,
+        "overhead-unit-and-inline": 0.0016770830841500506,
+        "project": "RaRe-Technologies_gensim",
+        "revision": "4bfb777d5e8232334914a0120821817b4a4ed3c8",
+        "time-inline": 0.7236642042795817,
+        "time-inline-list": [
+            0.7205727100372314,
+            0.7296266555786133,
+            0.7207932472229004
+        ],
+        "time-unit": 226.81758268674216,
+        "time-unit-and-inline": 227.54124689102173,
+        "time-unit-list": [
+            228.48637628555298,
+            226.5727140903473,
+            225.39365768432617
+        ],
+        "time-vanilla": 227.16028022766113,
+        "time-vanilla-list": [
+            233.80176258087158,
+            222.38173270225525,
+            225.29734539985657
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 200,
+        "num-inline-list": [
+            200,
+            200,
+            200
+        ],
+        "num-unit": 622,
+        "num-unit-and-inline": 822,
+        "num-unit-list": [
+            622,
+            622,
+            622
+        ],
+        "num-vanilla": 622,
+        "num-vanilla-list": [
+            622,
+            622,
+            622
+        ],
+        "overhead-unit": 0.0026413198167586647,
+        "overhead-unit-and-inline": 0.11184698899496844,
+        "project": "Textualize_rich",
+        "revision": "cad92aa56c4de35c65abf33276674db6de5a7fa0",
+        "time-inline": 0.40535449981689453,
+        "time-inline-list": [
+            0.4043853282928467,
+            0.4036233425140381,
+            0.40805482864379883
+        ],
+        "time-unit": 3.7216490109761557,
+        "time-unit-and-inline": 4.127003510793051,
+        "time-unit-list": [
+            3.7056725025177,
+            3.726445436477661,
+            3.7328290939331055
+        ],
+        "time-vanilla": 3.7118448416392007,
+        "time-vanilla-list": [
+            3.710530996322632,
+            3.718890905380249,
+            3.7061126232147217
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 800,
+        "num-inline-list": [
+            800,
+            800,
+            800
+        ],
+        "num-unit": 8616,
+        "num-unit-and-inline": 9416,
+        "num-unit-list": [
+            8616,
+            8616,
+            8616
+        ],
+        "num-vanilla": 8616,
+        "num-vanilla-list": [
+            8616,
+            8616,
+            8616
+        ],
+        "overhead-unit": -0.04293867870846883,
+        "overhead-unit-and-inline": -0.00978987051400478,
+        "project": "bokeh_bokeh",
+        "revision": "76202f81a4db94a94c0e24ea4e4aa81fc61e0119",
+        "time-inline": 1.7022408644358318,
+        "time-inline-list": [
+            1.7040908336639404,
+            1.7032701969146729,
+            1.6993615627288818
+        ],
+        "time-unit": 49.146529833475746,
+        "time-unit-and-inline": 50.848770697911576,
+        "time-unit-list": [
+            49.24096131324768,
+            49.116312742233276,
+            49.08231544494629
+        ],
+        "time-vanilla": 51.35149518648783,
+        "time-vanilla-list": [
+            49.89875292778015,
+            49.757720947265625,
+            54.398011684417725
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 300,
+        "num-inline-list": [
+            300,
+            300,
+            300
+        ],
+        "num-unit": 1,
+        "num-unit-and-inline": 301,
+        "num-unit-list": [
+            1,
+            1,
+            1
+        ],
+        "num-vanilla": 1,
+        "num-vanilla-list": [
+            1,
+            1,
+            1
+        ],
+        "overhead-unit": -0.006888088581327919,
+        "overhead-unit-and-inline": 1.877855374635798,
+        "project": "chubin_cheat.sh",
+        "revision": "46d1a5f73c6b88da15d809154245dbf234e9479e",
+        "time-inline": 0.6359297434488932,
+        "time-inline-list": [
+            0.6366591453552246,
+            0.6357424259185791,
+            0.635387659072876
+        ],
+        "time-unit": 0.33508507410685223,
+        "time-unit-and-inline": 0.9710148175557454,
+        "time-unit-list": [
+            0.33474063873291016,
+            0.33304548263549805,
+            0.33746910095214844
+        ],
+        "time-vanilla": 0.33740917841593426,
+        "time-vanilla-list": [
+            0.3410000801086426,
+            0.3355445861816406,
+            0.33568286895751953
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 100,
+        "num-inline-list": [
+            100,
+            100,
+            100
+        ],
+        "num-unit": 3,
+        "num-unit-and-inline": 103,
+        "num-unit-list": [
+            3,
+            3,
+            3
+        ],
+        "num-vanilla": 3,
+        "num-vanilla-list": [
+            3,
+            3,
+            3
+        ],
+        "overhead-unit": 0.010690137384263713,
+        "overhead-unit-and-inline": 1.008448408190959,
+        "project": "davidsandberg_facenet",
+        "revision": "096ed770f163957c1e56efa7feeb194773920f6e",
+        "time-inline": 0.9665076732635498,
+        "time-inline-list": [
+            0.965958833694458,
+            0.9643051624298096,
+            0.9692590236663818
+        ],
+        "time-unit": 0.9790345033009847,
+        "time-unit-and-inline": 1.9455421765645347,
+        "time-unit-list": [
+            0.9742903709411621,
+            0.9761569499969482,
+            0.9866561889648438
+        ],
+        "time-vanilla": 0.9686791896820068,
+        "time-vanilla-list": [
+            0.9680402278900146,
+            0.9686970710754395,
+            0.9693002700805664
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 400,
+        "num-inline-list": [
+            400,
+            400,
+            400
+        ],
+        "num-unit": 1,
+        "num-unit-and-inline": 401,
+        "num-unit-list": [
+            1,
+            1,
+            1
+        ],
+        "num-vanilla": 1,
+        "num-vanilla-list": [
+            1,
+            1,
+            1
+        ],
+        "overhead-unit": 0.044423060835596814,
+        "overhead-unit-and-inline": 3.029213121709555,
+        "project": "geekcomputers_Python",
+        "revision": "f7089aaaed406b8d31acd9e27d98b10ec646817c",
+        "time-inline": 0.5132392247517904,
+        "time-inline-list": [
+            0.5112617015838623,
+            0.5162081718444824,
+            0.5122478008270264
+        ],
+        "time-unit": 0.17959014574686685,
+        "time-unit-and-inline": 0.6928293704986572,
+        "time-unit-list": [
+            0.17965173721313477,
+            0.17934322357177734,
+            0.17977547645568848
+        ],
+        "time-vanilla": 0.1719515323638916,
+        "time-vanilla-list": [
+            0.17069029808044434,
+            0.17113113403320312,
+            0.17403316497802734
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 100,
+        "num-inline-list": [
+            100,
+            100,
+            100
+        ],
+        "num-unit": 15,
+        "num-unit-and-inline": 115,
+        "num-unit-list": [
+            15,
+            15,
+            15
+        ],
+        "num-vanilla": 15,
+        "num-vanilla-list": [
+            15,
+            15,
+            15
+        ],
+        "overhead-unit": 0.005557078159186123,
+        "overhead-unit-and-inline": 0.3552369526780976,
+        "project": "google-research_bert",
+        "revision": "eedf5716ce1268e56f0a50264a88cafad334ac61",
+        "time-inline": 0.7191158135732015,
+        "time-inline-list": [
+            0.7168011665344238,
+            0.7213993072509766,
+            0.7191469669342041
+        ],
+        "time-unit": 2.0679256916046143,
+        "time-unit-and-inline": 2.787041505177816,
+        "time-unit-list": [
+            2.0597949028015137,
+            2.0680909156799316,
+            2.0758912563323975
+        ],
+        "time-vanilla": 2.056497573852539,
+        "time-vanilla-list": [
+            2.0587055683135986,
+            2.066570997238159,
+            2.0442161560058594
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 400,
+        "num-inline-list": [
+            400,
+            400,
+            400
+        ],
+        "num-unit": 1596,
+        "num-unit-and-inline": 1996,
+        "num-unit-list": [
+            1596,
+            1596,
+            1596
+        ],
+        "num-vanilla": 1596,
+        "num-vanilla-list": [
+            1596,
+            1596,
+            1596
+        ],
+        "overhead-unit": 0.007251622423891466,
+        "overhead-unit-and-inline": 0.043340674871330816,
+        "project": "joke2k_faker",
+        "revision": "5b98d2ab877e414b51e76abc8fdde2fb2dad6710",
+        "time-inline": 0.6029197374979655,
+        "time-inline-list": [
+            0.6036925315856934,
+            0.6010551452636719,
+            0.6040115356445312
+        ],
+        "time-unit": 16.827592929204304,
+        "time-unit-and-inline": 17.43051266670227,
+        "time-unit-list": [
+            16.86580514907837,
+            16.75313973426819,
+            16.863833904266357
+        ],
+        "time-vanilla": 16.70644410451253,
+        "time-vanilla-list": [
+            16.724312782287598,
+            16.697806119918823,
+            16.697213411331177
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 100,
+        "num-inline-list": [
+            100,
+            100,
+            100
+        ],
+        "num-unit": 1287,
+        "num-unit-and-inline": 1387,
+        "num-unit-list": [
+            1287,
+            1287,
+            1287
+        ],
+        "num-vanilla": 1287,
+        "num-vanilla-list": [
+            1287,
+            1287,
+            1287
+        ],
+        "overhead-unit": 0.0022448412864962738,
+        "overhead-unit-and-inline": 0.06513721878199197,
+        "project": "mitmproxy_mitmproxy",
+        "revision": "33bba38b03496f05f15f945e32a5af5d1d77906f",
+        "time-inline": 0.4688544273376465,
+        "time-inline-list": [
+            0.46836018562316895,
+            0.47021484375,
+            0.4679882526397705
+        ],
+        "time-unit": 7.471603870391846,
+        "time-unit-and-inline": 7.940458297729492,
+        "time-unit-list": [
+            7.434129953384399,
+            7.5351245403289795,
+            7.445557117462158
+        ],
+        "time-vanilla": 7.454868872960408,
+        "time-vanilla-list": [
+            7.432884693145752,
+            7.483441114425659,
+            7.4482808113098145
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 200,
+        "num-inline-list": [
+            200,
+            200,
+            200
+        ],
+        "num-unit": 19644,
+        "num-unit-and-inline": 19844,
+        "num-unit-list": [
+            19644,
+            19644,
+            19644
+        ],
+        "num-vanilla": 19644,
+        "num-vanilla-list": [
+            19644,
+            19644,
+            19644
+        ],
+        "overhead-unit": -0.005337955679878892,
+        "overhead-unit-and-inline": -0.0004703426977399396,
+        "project": "numpy_numpy",
+        "revision": "c63f2c2bab48e0446b34f3bba5574729327d68d1",
+        "time-inline": 0.7138429482777914,
+        "time-inline-list": [
+            0.7120671272277832,
+            0.716681957244873,
+            0.7127797603607178
+        ],
+        "time-unit": 145.86872227986655,
+        "time-unit-and-inline": 146.58256522814435,
+        "time-unit-list": [
+            146.67428159713745,
+            146.1423671245575,
+            144.78951811790466
+        ],
+        "time-vanilla": 146.6515417098999,
+        "time-vanilla-list": [
+            146.46107625961304,
+            145.59712314605713,
+            147.89642572402954
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 200,
+        "num-inline-list": [
+            200,
+            200,
+            200
+        ],
+        "num-unit": 147306,
+        "num-unit-and-inline": 147506,
+        "num-unit-list": [
+            147305,
+            147306,
+            147305
+        ],
+        "num-vanilla": 147307,
+        "num-vanilla-list": [
+            147305,
+            147304,
+            147307
+        ],
+        "overhead-unit": 0.0007618471878850276,
+        "overhead-unit-and-inline": 0.004771866088168547,
+        "project": "pandas-dev_pandas",
+        "revision": "c68c626e3798380bd0e4b7c738b627ec7e91e52e",
+        "time-inline": 1.1174347400665283,
+        "time-inline-list": [
+            1.1143686771392822,
+            1.1183874607086182,
+            1.1195480823516846
+        ],
+        "time-unit": 278.8730134169261,
+        "time-unit-and-inline": 279.9904481569926,
+        "time-unit-list": [
+            279.63625979423523,
+            277.75806522369385,
+            279.2247152328491
+        ],
+        "time-vanilla": 278.6607165336609,
+        "time-vanilla-list": [
+            278.17512035369873,
+            278.78130769729614,
+            279.0257215499878
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 100,
+        "num-inline-list": [
+            100,
+            100,
+            100
+        ],
+        "num-unit": 236,
+        "num-unit-and-inline": 336,
+        "num-unit-list": [
+            236,
+            236,
+            236
+        ],
+        "num-vanilla": 236,
+        "num-vanilla-list": [
+            236,
+            236,
+            236
+        ],
+        "overhead-unit": 0.0073707164199737826,
+        "overhead-unit-and-inline": 0.058132961088576664,
+        "project": "psf_black",
+        "revision": "062b54931dc3ea35f673e755893fe28ff1f5a889",
+        "time-inline": 0.3541017373402913,
+        "time-inline-list": [
+            0.35341715812683105,
+            0.3556513786315918,
+            0.35323667526245117
+        ],
+        "time-unit": 7.027106920878093,
+        "time-unit-and-inline": 7.381208658218384,
+        "time-unit-list": [
+            7.032663583755493,
+            7.0247581005096436,
+            7.023899078369141
+        ],
+        "time-vanilla": 6.975691080093384,
+        "time-vanilla-list": [
+            6.97224235534668,
+            6.990002393722534,
+            6.9648284912109375
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 100,
+        "num-inline-list": [
+            100,
+            100,
+            100
+        ],
+        "num-unit": 106,
+        "num-unit-and-inline": 206,
+        "num-unit-list": [
+            106,
+            106,
+            106
+        ],
+        "num-vanilla": 106,
+        "num-vanilla-list": [
+            106,
+            106,
+            106
+        ],
+        "overhead-unit": 0.010019102309513049,
+        "overhead-unit-and-inline": 0.1813973368650042,
+        "project": "pypa_pipenv",
+        "revision": "b0f6baa342f0f62062586634e9a8c442126296f5",
+        "time-inline": 0.6218131383260092,
+        "time-inline-list": [
+            0.6235694885253906,
+            0.62259840965271,
+            0.6192715167999268
+        ],
+        "time-unit": 3.664661089579264,
+        "time-unit-and-inline": 4.286474227905273,
+        "time-unit-list": [
+            3.717505931854248,
+            3.6379032135009766,
+            3.6385741233825684
+        ],
+        "time-vanilla": 3.6283086935679116,
+        "time-vanilla-list": [
+            3.606797695159912,
+            3.6198201179504395,
+            3.658308267593384
+        ]
+    },
+    {
+        "duplicating": 100,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 200,
+        "num-inline-list": [
+            200,
+            200,
+            200
+        ],
+        "num-unit": 2246,
+        "num-unit-and-inline": 2446,
+        "num-unit-list": [
+            2246,
+            2246,
+            2246
+        ],
+        "num-vanilla": 2246,
+        "num-vanilla-list": [
+            2246,
+            2246,
+            2246
+        ],
+        "overhead-unit": 0.002857217590286143,
+        "overhead-unit-and-inline": 0.010272261783900352,
+        "project": "scrapy_scrapy",
+        "revision": "8c3e5a2421f639f36e9b907d69d4d48b86447e68",
+        "time-inline": 0.9661544958750407,
+        "time-inline-list": [
+            1.1766798496246338,
+            0.8813674449920654,
+            0.8404161930084229
+        ],
+        "time-unit": 130.66881116231283,
+        "time-unit-and-inline": 131.63496565818787,
+        "time-unit-list": [
+            130.59378743171692,
+            130.96260046958923,
+            130.45004558563232
+        ],
+        "time-vanilla": 130.29652563730875,
+        "time-vanilla-list": [
+            130.33887219429016,
+            130.2668960094452,
+            130.28380870819092
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 2000,
+        "num-inline-list": [
+            2000,
+            2000,
+            2000
+        ],
+        "num-unit": 968,
+        "num-unit-and-inline": 2968,
+        "num-unit-list": [
+            968,
+            968,
+            968
+        ],
+        "num-vanilla": 968,
+        "num-vanilla-list": [
+            968,
+            968,
+            968
+        ],
+        "overhead-unit": 0.053409918684654493,
+        "overhead-unit-and-inline": 0.06712963433906834,
+        "project": "RaRe-Technologies_gensim",
+        "revision": "4bfb777d5e8232334914a0120821817b4a4ed3c8",
+        "time-inline": 3.1105591456095376,
+        "time-inline-list": [
+            3.1315500736236572,
+            3.1108016967773438,
+            3.0893256664276123
+        ],
+        "time-unit": 238.831032594045,
+        "time-unit-and-inline": 241.94159173965454,
+        "time-unit-list": [
+            240.4655363559723,
+            233.62579917907715,
+            242.40176224708557
+        ],
+        "time-vanilla": 226.72183767954508,
+        "time-vanilla-list": [
+            224.5753517150879,
+            229.38220405578613,
+            226.20795726776123
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 2000,
+        "num-inline-list": [
+            2000,
+            2000,
+            2000
+        ],
+        "num-unit": 622,
+        "num-unit-and-inline": 2622,
+        "num-unit-list": [
+            622,
+            622,
+            622
+        ],
+        "num-vanilla": 622,
+        "num-vanilla-list": [
+            622,
+            622,
+            622
+        ],
+        "overhead-unit": -0.0008448692319935819,
+        "overhead-unit-and-inline": 0.7981167069471273,
+        "project": "Textualize_rich",
+        "revision": "cad92aa56c4de35c65abf33276674db6de5a7fa0",
+        "time-inline": 2.961840550104777,
+        "time-inline-list": [
+            2.9705848693847656,
+            2.9454572200775146,
+            2.969479560852051
+        ],
+        "time-unit": 3.7039806048075357,
+        "time-unit-and-inline": 6.6658211549123125,
+        "time-unit-list": [
+            3.685032367706299,
+            3.7166080474853516,
+            3.710301399230957
+        ],
+        "time-vanilla": 3.7071126302083335,
+        "time-vanilla-list": [
+            3.7081878185272217,
+            3.704639434814453,
+            3.708510637283325
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 8000,
+        "num-inline-list": [
+            8000,
+            8000,
+            8000
+        ],
+        "num-unit": 8616,
+        "num-unit-and-inline": 16616,
+        "num-unit-list": [
+            8616,
+            8616,
+            8616
+        ],
+        "num-vanilla": 8616,
+        "num-vanilla-list": [
+            8616,
+            8616,
+            8616
+        ],
+        "overhead-unit": -0.00739614298373822,
+        "overhead-unit-and-inline": 0.30626264056149005,
+        "project": "bokeh_bokeh",
+        "revision": "76202f81a4db94a94c0e24ea4e4aa81fc61e0119",
+        "time-inline": 15.529903729756674,
+        "time-inline-list": [
+            15.45177960395813,
+            15.51602554321289,
+            15.621906042098999
+        ],
+        "time-unit": 49.145897229512535,
+        "time-unit-and-inline": 64.67580095926921,
+        "time-unit-list": [
+            49.54585242271423,
+            48.9479546546936,
+            48.94388461112976
+        ],
+        "time-vanilla": 49.51209576924642,
+        "time-vanilla-list": [
+            49.52977252006531,
+            49.501527309417725,
+            49.504987478256226
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 3000,
+        "num-inline-list": [
+            3000,
+            3000,
+            3000
+        ],
+        "num-unit": 1,
+        "num-unit-and-inline": 3001,
+        "num-unit-list": [
+            1,
+            1,
+            1
+        ],
+        "num-vanilla": 1,
+        "num-vanilla-list": [
+            1,
+            1,
+            1
+        ],
+        "overhead-unit": -0.009164007315975987,
+        "overhead-unit-and-inline": 11.210963951755172,
+        "project": "chubin_cheat.sh",
+        "revision": "46d1a5f73c6b88da15d809154245dbf234e9479e",
+        "time-inline": 3.793984889984131,
+        "time-inline-list": [
+            3.7850377559661865,
+            3.8100383281707764,
+            3.7868785858154297
+        ],
+        "time-unit": 0.33504223823547363,
+        "time-unit-and-inline": 4.1290271282196045,
+        "time-unit-list": [
+            0.3341221809387207,
+            0.33631396293640137,
+            0.33469057083129883
+        ],
+        "time-vanilla": 0.33814096450805664,
+        "time-vanilla-list": [
+            0.33721017837524414,
+            0.3381226062774658,
+            0.33909010887145996
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 1000,
+        "num-inline-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "num-unit": 3,
+        "num-unit-and-inline": 1003,
+        "num-unit-list": [
+            3,
+            3,
+            3
+        ],
+        "num-vanilla": 3,
+        "num-vanilla-list": [
+            3,
+            3,
+            3
+        ],
+        "overhead-unit": 0.0020836773494970675,
+        "overhead-unit-and-inline": 2.4972412895107317,
+        "project": "davidsandberg_facenet",
+        "revision": "096ed770f163957c1e56efa7feeb194773920f6e",
+        "time-inline": 2.430565039316813,
+        "time-inline-list": [
+            2.4242846965789795,
+            2.435425281524658,
+            2.4319851398468018
+        ],
+        "time-unit": 0.9761425654093424,
+        "time-unit-and-inline": 3.4067076047261553,
+        "time-unit-list": [
+            0.976874828338623,
+            0.9742598533630371,
+            0.9772930145263672
+        ],
+        "time-vanilla": 0.9741128285725912,
+        "time-vanilla-list": [
+            0.9750242233276367,
+            0.9786286354064941,
+            0.9686856269836426
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 4000,
+        "num-inline-list": [
+            4000,
+            4000,
+            4000
+        ],
+        "num-unit": 1,
+        "num-unit-and-inline": 4001,
+        "num-unit-list": [
+            1,
+            1,
+            1
+        ],
+        "num-vanilla": 1,
+        "num-vanilla-list": [
+            1,
+            1,
+            1
+        ],
+        "overhead-unit": 0.1501874847323245,
+        "overhead-unit-and-inline": 32.876832237156805,
+        "project": "geekcomputers_Python",
+        "revision": "f7089aaaed406b8d31acd9e27d98b10ec646817c",
+        "time-inline": 5.6003241539001465,
+        "time-inline-list": [
+            5.562014818191528,
+            5.601322889328003,
+            5.637634754180908
+        ],
+        "time-unit": 0.1968250274658203,
+        "time-unit-and-inline": 5.797149181365967,
+        "time-unit-list": [
+            0.1974952220916748,
+            0.19625234603881836,
+            0.19672751426696777
+        ],
+        "time-vanilla": 0.1711242993672689,
+        "time-vanilla-list": [
+            0.17044830322265625,
+            0.1701512336730957,
+            0.1727733612060547
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 1000,
+        "num-inline-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "num-unit": 15,
+        "num-unit-and-inline": 1015,
+        "num-unit-list": [
+            15,
+            15,
+            15
+        ],
+        "num-vanilla": 15,
+        "num-vanilla-list": [
+            15,
+            15,
+            15
+        ],
+        "overhead-unit": 0.011978242728517616,
+        "overhead-unit-and-inline": 1.092701681972468,
+        "project": "google-research_bert",
+        "revision": "eedf5716ce1268e56f0a50264a88cafad334ac61",
+        "time-inline": 2.2145981788635254,
+        "time-inline-list": [
+            2.206376075744629,
+            2.2098605632781982,
+            2.227557897567749
+        ],
+        "time-unit": 2.0737268129984536,
+        "time-unit-and-inline": 4.288324991861979,
+        "time-unit-list": [
+            2.08148455619812,
+            2.0680081844329834,
+            2.071687698364258
+        ],
+        "time-vanilla": 2.0491812229156494,
+        "time-vanilla-list": [
+            2.0463500022888184,
+            2.0434176921844482,
+            2.0577759742736816
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 4000,
+        "num-inline-list": [
+            4000,
+            4000,
+            4000
+        ],
+        "num-unit": 1596,
+        "num-unit-and-inline": 5596,
+        "num-unit-list": [
+            1596,
+            1596,
+            1596
+        ],
+        "num-vanilla": 1596,
+        "num-vanilla-list": [
+            1596,
+            1596,
+            1596
+        ],
+        "overhead-unit": 0.051594006019515505,
+        "overhead-unit-and-inline": 0.37669571350050574,
+        "project": "joke2k_faker",
+        "revision": "5b98d2ab877e414b51e76abc8fdde2fb2dad6710",
+        "time-inline": 5.420894543329875,
+        "time-inline-list": [
+            5.400686502456665,
+            5.434453248977661,
+            5.427543878555298
+        ],
+        "time-unit": 17.534759362538654,
+        "time-unit-and-inline": 22.95565390586853,
+        "time-unit-list": [
+            17.501385927200317,
+            17.553746223449707,
+            17.549145936965942
+        ],
+        "time-vanilla": 16.67445731163025,
+        "time-vanilla-list": [
+            16.73772358894348,
+            16.719285488128662,
+            16.566362857818604
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 1000,
+        "num-inline-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "num-unit": 1287,
+        "num-unit-and-inline": 2287,
+        "num-unit-list": [
+            1287,
+            1287,
+            1287
+        ],
+        "num-vanilla": 1287,
+        "num-vanilla-list": [
+            1287,
+            1287,
+            1287
+        ],
+        "overhead-unit": 0.011021978206376157,
+        "overhead-unit-and-inline": 0.22860247314293786,
+        "project": "mitmproxy_mitmproxy",
+        "revision": "33bba38b03496f05f15f945e32a5af5d1d77906f",
+        "time-inline": 1.627132495244344,
+        "time-inline-list": [
+            1.6036722660064697,
+            1.6648869514465332,
+            1.6128382682800293
+        ],
+        "time-unit": 7.560726960500081,
+        "time-unit-and-inline": 9.187859455744425,
+        "time-unit-list": [
+            7.5842039585113525,
+            7.546884536743164,
+            7.5510923862457275
+        ],
+        "time-vanilla": 7.478301286697388,
+        "time-vanilla-list": [
+            7.438732385635376,
+            7.507070779800415,
+            7.489100694656372
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 2000,
+        "num-inline-list": [
+            2000,
+            2000,
+            2000
+        ],
+        "num-unit": 19644,
+        "num-unit-and-inline": 21644,
+        "num-unit-list": [
+            19644,
+            19644,
+            19644
+        ],
+        "num-vanilla": 19644,
+        "num-vanilla-list": [
+            19644,
+            19644,
+            19644
+        ],
+        "overhead-unit": 0.003931575455310854,
+        "overhead-unit-and-inline": 0.026373943898500278,
+        "project": "numpy_numpy",
+        "revision": "c63f2c2bab48e0446b34f3bba5574729327d68d1",
+        "time-inline": 3.282874504725138,
+        "time-inline-list": [
+            3.2840347290039062,
+            3.286919355392456,
+            3.2776694297790527
+        ],
+        "time-unit": 146.85532776514688,
+        "time-unit-and-inline": 150.138202269872,
+        "time-unit-list": [
+            146.46475958824158,
+            147.49584341049194,
+            146.60538029670715
+        ],
+        "time-vanilla": 146.2802160580953,
+        "time-vanilla-list": [
+            144.0347728729248,
+            146.1811490058899,
+            148.6247262954712
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 2000,
+        "num-inline-list": [
+            2000,
+            2000,
+            2000
+        ],
+        "num-unit": 147306,
+        "num-unit-and-inline": 149306,
+        "num-unit-list": [
+            147305,
+            147306,
+            147305
+        ],
+        "num-vanilla": 147306,
+        "num-vanilla-list": [
+            147305,
+            147304,
+            147306
+        ],
+        "overhead-unit": 0.007601667316918734,
+        "overhead-unit-and-inline": 0.02084402192173472,
+        "project": "pandas-dev_pandas",
+        "revision": "c68c626e3798380bd0e4b7c738b627ec7e91e52e",
+        "time-inline": 3.682385524113973,
+        "time-inline-list": [
+            3.6824333667755127,
+            3.6870405673980713,
+            3.677682638168335
+        ],
+        "time-unit": 280.190185546875,
+        "time-unit-and-inline": 283.87257107098895,
+        "time-unit-list": [
+            279.73336124420166,
+            279.58099341392517,
+            281.25620198249817
+        ],
+        "time-vanilla": 278.07634170850116,
+        "time-vanilla-list": [
+            276.3096716403961,
+            278.79158067703247,
+            279.12777280807495
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 1000,
+        "num-inline-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "num-unit": 236,
+        "num-unit-and-inline": 1236,
+        "num-unit-list": [
+            236,
+            236,
+            236
+        ],
+        "num-vanilla": 236,
+        "num-vanilla-list": [
+            236,
+            236,
+            236
+        ],
+        "overhead-unit": 0.06297412756245803,
+        "overhead-unit-and-inline": 0.29241024846506997,
+        "project": "psf_black",
+        "revision": "062b54931dc3ea35f673e755893fe28ff1f5a889",
+        "time-inline": 1.5965912342071533,
+        "time-inline-list": [
+            1.6018662452697754,
+            1.6149351596832275,
+            1.572972297668457
+        ],
+        "time-unit": 7.39698338508606,
+        "time-unit-and-inline": 8.993574619293213,
+        "time-unit-list": [
+            7.397059679031372,
+            7.415344953536987,
+            7.378545522689819
+        ],
+        "time-vanilla": 6.95876145362854,
+        "time-vanilla-list": [
+            6.978640556335449,
+            6.967265605926514,
+            6.930378198623657
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 1000,
+        "num-inline-list": [
+            1000,
+            1000,
+            1000
+        ],
+        "num-unit": 106,
+        "num-unit-and-inline": 1106,
+        "num-unit-list": [
+            106,
+            106,
+            106
+        ],
+        "num-vanilla": 106,
+        "num-vanilla-list": [
+            106,
+            106,
+            106
+        ],
+        "overhead-unit": 0.005447131183985357,
+        "overhead-unit-and-inline": 0.48930539141689716,
+        "project": "pypa_pipenv",
+        "revision": "b0f6baa342f0f62062586634e9a8c442126296f5",
+        "time-inline": 1.7599916458129883,
+        "time-inline-list": [
+            1.7552263736724854,
+            1.7722105979919434,
+            1.7525379657745361
+        ],
+        "time-unit": 3.6572250525156655,
+        "time-unit-and-inline": 5.417216698328653,
+        "time-unit-list": [
+            3.6859989166259766,
+            3.6640238761901855,
+            3.621652364730835
+        ],
+        "time-vanilla": 3.637411594390869,
+        "time-vanilla-list": [
+            3.6308484077453613,
+            3.6739401817321777,
+            3.6074461936950684
+        ]
+    },
+    {
+        "duplicating": 1000,
+        "error": false,
+        "error-reason": "",
+        "num-inline": 2000,
+        "num-inline-list": [
+            2000,
+            2000,
+            2000
+        ],
+        "num-unit": 2246,
+        "num-unit-and-inline": 4246,
+        "num-unit-list": [
+            2246,
+            2246,
+            2246
+        ],
+        "num-vanilla": 2246,
+        "num-vanilla-list": [
+            2246,
+            2246,
+            2246
+        ],
+        "overhead-unit": 0.004106896016404338,
+        "overhead-unit-and-inline": 0.058015056186372975,
+        "project": "scrapy_scrapy",
+        "revision": "8c3e5a2421f639f36e9b907d69d4d48b86447e68",
+        "time-inline": 7.008426507314046,
+        "time-inline-list": [
+            6.984983682632446,
+            6.974270820617676,
+            7.066025018692017
+        ],
+        "time-unit": 130.54070782661438,
+        "time-unit-and-inline": 137.54913433392844,
+        "time-unit-list": [
+            130.54901003837585,
+            130.65377521514893,
+            130.41933822631836
+        ],
+        "time-vanilla": 130.0067834854126,
+        "time-vanilla-list": [
+            129.83100986480713,
+            130.1095473766327,
+            130.07979321479797
+        ]
+    }
+]

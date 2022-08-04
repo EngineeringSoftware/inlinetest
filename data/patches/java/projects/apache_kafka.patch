@@ -1,0 +1,32 @@
+diff --git a/build.gradle b/build.gradle
+index ff4bab922c..16774124bf 100644
+--- a/build.gradle
++++ b/build.gradle
+@@ -110,6 +110,7 @@ ext {
+ allprojects {
+ 
+   repositories {
++    mavenLocal()
+     mavenCentral()
+   }
+ 
+@@ -1751,6 +1752,7 @@ project(':streams') {
+     implementation libs.slf4jApi
+     implementation libs.jacksonAnnotations
+     implementation libs.jacksonDatabind
++    implementation libs.inlinetest
+ 
+     // testCompileOnly prevents streams from exporting a dependency on test-utils, which would cause a dependency cycle
+     testCompileOnly project(':streams:test-utils')
+diff --git a/gradle/dependencies.gradle b/gradle/dependencies.gradle
+index 3c317b53ba..85f0dccc12 100644
+--- a/gradle/dependencies.gradle
++++ b/gradle/dependencies.gradle
+@@ -120,6 +120,7 @@ versions += [
+   zstd: "1.5.2-1"
+ ]
+ libs += [
++  inlinetest: "org.inlinetest:inlinetest:1.0",
+   activation: "javax.activation:activation:$versions.activation",
+   apacheda: "org.apache.directory.api:api-all:$versions.apacheda",
+   apachedsCoreApi: "org.apache.directory.server:apacheds-core-api:$versions.apacheds",

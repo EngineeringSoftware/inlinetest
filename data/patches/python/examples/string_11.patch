@@ -1,0 +1,29 @@
+diff --git a/gensim/corpora/wikicorpus.py b/gensim/corpora/wikicorpus.py
+index 5f4c173b..8970e52c 100644
+--- a/gensim/corpora/wikicorpus.py
++++ b/gensim/corpora/wikicorpus.py
+@@ -31,6 +31,8 @@ from gensim import utils
+ from gensim.corpora.dictionary import Dictionary
+ from gensim.corpora.textcorpus import TextCorpus
+ 
++from inline import Here
++
+ 
+ logger = logging.getLogger(__name__)
+ 
+@@ -225,6 +227,7 @@ def remove_markup(text, promote_remaining=True, simplify_links=True):
+ 
+     """
+     text = re.sub(RE_P2, '', text)  # remove the last list (=languages)
++    Here().given(RE_P2, re.compile(r'(\n\[\[[a-z][a-z][\w-]*:[^:\]]+\]\])+$', re.UNICODE)).given(text, 'aa\n[[aa:bb]]').check_eq(text, 'aa')
+     # the wiki markup is recursive (markup inside markup etc)
+     # instead of writing a recursive grammar, here we deal with that by removing
+     # markup in a loop, starting with inner-most expressions and working outwards,
+@@ -235,6 +238,7 @@ def remove_markup(text, promote_remaining=True, simplify_links=True):
+     while True:
+         old, iters = text, iters + 1
+         text = re.sub(RE_P0, '', text)  # remove comments
++        Here().given(RE_P0, re.compile(r'<!--.*?-->', re.DOTALL | re.UNICODE)).given(text, r'<!--aaa-->').check_eq(text, '')
+         text = re.sub(RE_P1, '', text)  # remove footnotes
+         text = re.sub(RE_P9, '', text)  # remove outside links
+         text = re.sub(RE_P10, '', text)  # remove math content

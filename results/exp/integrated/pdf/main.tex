@@ -1,0 +1,104 @@
+\documentclass{article}
+
+\usepackage{xspace}
+\usepackage{xcolor}
+\usepackage[normalem]{ulem} % normalem do not replace \emph to underline
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{pifont}
+\usepackage[T1]{fontenc}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage[scale=0.75, margin=.2in]{geometry}
+
+\newcommand{\DefMacro}[2]{\expandafter\newcommand\csname rmk-#1\endcsname{#2}}
+\newcommand{\UseMacro}[1]{\csname rmk-#1\endcsname}
+\newcommand{\CodeIn}[1]{{\ifmmode{\mathtt{#1}}\else$\mathtt{#1}$\fi}}
+
+% header for the table
+\newcommand{\HeaderProj}{\textbf{Proj}}
+\newcommand{\HeaderNumVanilla}{\textbf{\#UT}}
+\newcommand{\HeaderNumITOnly}{\textbf{\#IT}}
+\newcommand{\HeaderNumITStandalone}{\textbf{\#IT}}
+\newcommand{\HeaderTimeITOnly}{\textbf{$T_{\text{IT}}$ [s]}}
+\newcommand{\HeaderTimePerTestITOnly}{\textbf{$t_{\text{IT}}$[s]}}
+\newcommand{\HeaderTimeVanilla}{\textbf{$T_{\text{UT}}$ [s]}}
+\newcommand{\HeaderTimePerTestVanilla}{\textbf{$t_{\text{UT}}$[s]}}
+\newcommand{\HeaderTimeITEnabled}{\textbf{$T_{\text{ITE}}$ [s]}}
+\newcommand{\HeaderTimePerTestITEnabled}{\textbf{$t_{\text{ITE}}$[s]}}
+\newcommand{\HeaderOverheadITEnabled}{\textbf{$O_{\text{ITE}}$}}
+\newcommand{\HeaderTimeITDisabled}{\textbf{$T_{\text{ITD}}$[s]}}
+\newcommand{\HeaderTimePerTestITDisabled}{\textbf{$t_{\text{ITD}}$[s]}}
+\newcommand{\HeaderOverheadITDisabled}{\textbf{$O_{\text{ITD}}$}}
+\newcommand{\HeaderTimeITStandalone}{\textbf{$T_{\text{IT}}$[s]}}
+\newcommand{\HeaderTimePerTestITStandalone}{\textbf{$t_{\text{IT}}$[s]}}
+\newcommand{\HeaderAvg}{avg}
+\newcommand{\HeaderMed}{med}
+\newcommand{\HeaderSum}{$\Sigma$}
+\newcommand{\HeaderNA}{N/A}
+\newcommand{\HeaderDup}{\textbf{Dup}\xspace}
+\DefMacro{dup-1}{x1\xspace}
+\DefMacro{dup-10}{x10\xspace}
+\DefMacro{dup-100}{x100\xspace}
+\DefMacro{dup-1000}{x1000\xspace}
+% projects: python
+\DefMacro{proj-RaRe-Technologies_gensim}{\CodeIn{RaRe\text{-}Technologies/gensim}\xspace}
+\DefMacro{proj-Textualize_rich}{\CodeIn{Textualize/rich}\xspace}
+\DefMacro{proj-bokeh_bokeh}{\CodeIn{bokeh/bokeh}\xspace}
+\DefMacro{proj-chubin_cheat.sh}{\CodeIn{chubin/cheat.sh}\xspace}
+\DefMacro{proj-davidsandberg_facenet}{\CodeIn{davidsandberg/facenet}\xspace}
+\DefMacro{proj-geekcomputers_Python}{\CodeIn{geekcomputers/Python}\xspace}
+\DefMacro{proj-google-research_bert}{\CodeIn{google\text{-}research/bert}\xspace}
+\DefMacro{proj-joke2k_faker}{\CodeIn{joke2k/faker}\xspace}
+\DefMacro{proj-mitmproxy_mitmproxy}{\CodeIn{mitmproxy/mitmproxy}\xspace}
+\DefMacro{proj-numpy_numpy}{\CodeIn{numpy/numpy}\xspace}
+\DefMacro{proj-pandas-dev_pandas}{\CodeIn{pandas\text{-}dev/pandas}\xspace}
+\DefMacro{proj-psf_black}{\CodeIn{psf/black}\xspace}
+\DefMacro{proj-pypa_pipenv}{\CodeIn{pypa/pipenv}\xspace}
+\DefMacro{proj-scrapy_scrapy}{\CodeIn{scrapy/scrapy}\xspace}
+
+% projects: java
+\DefMacro{proj-alibaba_fastjson}{\CodeIn{alibaba/fastjson}\xspace}
+\DefMacro{proj-alibaba_nacos}{\CodeIn{alibaba/nacos}\xspace}
+\DefMacro{proj-apache_dubbo}{\CodeIn{apache/dubbo}\xspace}
+\DefMacro{proj-apache_kafka}{\CodeIn{apache/kafka}\xspace}
+\DefMacro{proj-apache_shardingsphere}{\CodeIn{apache/shardingsphere}\xspace}
+\DefMacro{proj-jenkinsci_jenkins}{\CodeIn{jenkinsci/jenkins}\xspace}
+\DefMacro{proj-linlinjava_litemall}{\CodeIn{linlinjava/litemall}\xspace}
+\DefMacro{proj-skylot_jadx}{\CodeIn{skylot/jadx}\xspace}
+
+\input{data-exp-integrated-python}
+\input{data-exp-integrated-java}
+
+\begin{document}
+
+\begin{table}
+    \begin{small}
+        \centering
+        \caption{Table 4 in the paper.}
+        \begin{minipage}[t]{\textwidth}
+            \centering
+            \subcaption{Python}
+            \input{table-exp-integrated-python}
+        \end{minipage}
+        \begin{minipage}[t]{\textwidth}
+            \centering
+            \subcaption{Python, with duplicating inline tests}
+            \input{table-exp-integrated-dups-python}
+        \end{minipage}
+        \begin{minipage}[t]{\textwidth}
+            \centering
+            \subcaption{Java}
+            \input{table-exp-integrated-java}
+        \end{minipage}
+        \begin{minipage}[t]{\textwidth}
+            \centering
+            \subcaption{Java, with duplicating inline tests}
+            \input{table-exp-integrated-dups-java}
+        \end{minipage}
+    \end{small}
+\end{table}
+
+\end{document}

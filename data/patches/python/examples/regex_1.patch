@@ -1,0 +1,23 @@
+diff --git a/bokeh/util/compiler.py b/bokeh/util/compiler.py
+index d77441005..b629029bc 100644
+--- a/bokeh/util/compiler.py
++++ b/bokeh/util/compiler.py
+@@ -50,6 +50,8 @@ from ..model import Model
+ from ..settings import settings
+ from .string import snakify
+ 
++from inline import Here
++
+ #-----------------------------------------------------------------------------
+ # Globals and constants
+ #-----------------------------------------------------------------------------
+@@ -407,6 +409,9 @@ def _detect_nodejs() -> str:
+             continue
+ 
+         match = re.match(r"^v(\d+)\.(\d+)\.(\d+).*$", stdout.decode("utf-8"))
++        Here().given(stdout, "v8.9.4".encode("utf-8")).check_true(match)
++        Here().given(stdout, "v8.9.4".encode("utf-8")).check_eq(match.groups(), ("8", "9", "4"))
++        Here().given(stdout, "8.9.3".encode("utf-8")).check_false(match)
+ 
+         if match is not None:
+             version = tuple(int(v) for v in match.groups())

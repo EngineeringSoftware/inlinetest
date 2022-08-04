@@ -1,0 +1,23 @@
+diff --git a/scrapy/contracts/__init__.py b/scrapy/contracts/__init__.py
+index b47e5509..c3f3e151 100644
+--- a/scrapy/contracts/__init__.py
++++ b/scrapy/contracts/__init__.py
+@@ -9,6 +9,8 @@ from scrapy.http import Request
+ from scrapy.utils.python import get_spec
+ from scrapy.utils.spider import iterate_spider_output
+ 
++from inline import Here
++
+ 
+ class Contract:
+     """ Abstract class for contracts """
+@@ -93,7 +95,9 @@ class ContractsManager:
+ 
+             if line.startswith('@'):
+                 name, args = re.match(r'@(\w+)\s*(.*)', line).groups()
++                Here().given(line, r'@aaa  abc d').check_eq(name, 'aaa').check_eq(args, 'abc d')
+                 args = re.split(r'\s+', args)
++                Here().given(args, 'abc d').check_eq(args, ['abc', 'd'])
+ 
+                 contracts.append(self.contracts[name](method, *args))
+ 
