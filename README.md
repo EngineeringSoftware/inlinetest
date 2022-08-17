@@ -1,5 +1,6 @@
 # I-Test
 
+I-Test is a framework for writing inline tests in Python and Java.
 ## Introduction
 
 This repo contains the code and data for producing the experiments in
