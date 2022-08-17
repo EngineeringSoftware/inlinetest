@@ -1,21 +1,5 @@
 # I-Test
 
-This repo hosts the code and data for the following ASE 2022 paper:
-
-Title: [Inline Tests][paper-url]
-
-Authors: [Yu Liu](https://sweetstreet.github.io/), [Pengyu Nie](https://pengyunie.github.io/), [Owolabi Legunsen](https://mir.cs.illinois.edu/legunsen/), [Milos Gligoric](http://users.ece.utexas.edu/~gligoric/)
-
-```bibtex
-@inproceedings{LiuASE22InlineTests,
-  title =        {Inline Tests},
-  author =       {Yu Liu and Pengyu Nie and Owolabi Legunsen and Milos Gligoric},
-  pages =        {to appear},
-  booktitle =    {International Conference on Automated Software Engineering},
-  year =         {2022},
-}
-```
-
 ## Introduction
 
 This repo contains the code and data for producing the experiments in
@@ -67,3 +51,19 @@ The data includes:
 
 
 [paper-url]: /README.md
+
+## Citation
+
+Title: [Inline Tests][paper-url]
+
+Authors: [Yu Liu](https://sweetstreet.github.io/), [Pengyu Nie](https://pengyunie.github.io/), [Owolabi Legunsen](https://mir.cs.illinois.edu/legunsen/), [Milos Gligoric](http://users.ece.utexas.edu/~gligoric/)
+
+```bibtex
+@inproceedings{LiuASE22InlineTests,
+  title =        {Inline Tests},
+  author =       {Yu Liu and Pengyu Nie and Owolabi Legunsen and Milos Gligoric},
+  pages =        {to appear},
+  booktitle =    {International Conference on Automated Software Engineering},
+  year =         {2022},
+}
+```
