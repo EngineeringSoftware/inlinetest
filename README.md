@@ -1,5 +1,7 @@
 # I-Test
 
+<img src="I-Test-logos.png" alt="Ekstazi" width="238" height="224"> 
+
 I-Test is a framework for writing inline tests in Python and Java.
 ## Introduction
 
@@ -53,11 +55,13 @@ The data includes:
 
 [paper-url]: /README.md
 
-## Citation
+## Research
 
 Title: [Inline Tests][paper-url]
 
 Authors: [Yu Liu](https://sweetstreet.github.io/), [Pengyu Nie](https://pengyunie.github.io/), [Owolabi Legunsen](https://mir.cs.illinois.edu/legunsen/), [Milos Gligoric](http://users.ece.utexas.edu/~gligoric/)
+
+If you have used I-Test in a research project, please cite the research paper in any related publication:
 
 ```bibtex
 @inproceedings{LiuASE22InlineTests,
