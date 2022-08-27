@@ -7,7 +7,7 @@ mode (running inline tests integrated into some open-source projects,
 as well as their unit tests).
 
 First, make sure that you have followed the [installation
-guide](/INSTALL.md) to setup the experiments environment.
+guide](/INSTALL.md) to set up the experiments environment.
 
 The steps below will guide you to run the experiments, process the
 results, and generate Table 3, Figure 12, and Table 4 in our paper.
