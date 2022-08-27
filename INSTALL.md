@@ -1,12 +1,37 @@
 # Installation Guide
 
 I-Test currently supports two programming languages, Python and Java.
+
+We provide two options:
+1. install with [docker][sec-docker]
+2. install to [local environment][sec-local]. 
+
+## Docker
+[sec-docker]: #docker
+Install [docker][docker-webpage]
+```
+docker pull ...
+```
+
+### System Requirements
+
+The minimum requirements for replicating our experiments are:
+- at least 20GB of free disk space
+
+For your reference, we used the machine with the following specs to
+run experiments:
+- Intel Core i7-11700K @ 3.60GHz (8 cores, 16 threads) CPU
+- 64 GB RAM
+- Ubuntu 20.04 operating system
+
+## Local
+[sec-local]: #local
+
 We utilize the package management systems
-([conda][conda-webpage] for Python and
-[sdkman][sdkman-webpage] for Java) to install the necessary
-dependencies for I-Test itself, for our experiment scripts, and for
-running the unit tests of other open-source projects in our integrated
-experiments.
+([conda][conda-webpage] for Python and [sdkman][sdkman-webpage] for
+Java) to install the necessary dependencies for I-Test itself, for our
+experiment scripts, and for running the unit tests of other
+open-source projects in our integrated experiments.
 
 This document will guide you through the following steps (with some
 usage examples to verify if the installation is successful):
@@ -15,7 +40,7 @@ usage examples to verify if the installation is successful):
 - install the environment for running our experiment scripts
 
 
-## System Requirements
+### System Requirements
 
 The minimum requirements for replicating our experiments are:
 - a Linux operating system (MacOS not guaranteed to work)
@@ -33,7 +58,7 @@ run experiments:
 - Ubuntu 20.04 operating system
 
 
-## Installing Package Management Systems
+### Installing Package Management Systems
 
 The two package management systems we use, [conda][conda-webpage] and
 [sdkman][sdkman-webpage], can both be installed in user mode (i.e.,
@@ -43,7 +68,7 @@ then restart the terminal for the changes to take effect.  If you
 happend to have existing installations of (a recent version of) either
 package management system, you do not need to install it again.
 
-### conda for Python
+#### conda for Python
 
 1. Download the Miniconda installation script from
    [here](https://docs.conda.io/en/latest/miniconda.html#latest-miniconda-installer-links);
@@ -70,7 +95,7 @@ bash Miniconda3-latest-Linux-x86_64.sh
 4. Restart your terminal. By executing `conda --version`, you should be able to see the version of conda you just installed.
 
 
-### sdkman for Java
+#### sdkman for Java
 
 1. Execute the following command, and follow the prompts on the
    terminal to install sdkman.
@@ -82,14 +107,14 @@ curl -s "https://get.sdkman.io" | bash
 2. Restart your terminal. By executing `sdk version`, you should be able to see the version of sdkman you just installed.
 
 
-## Installing the I-Test Framework
+### Installing the I-Test Framework
 
-### Python
+#### Python
 
 1. Change directory to "python". Assuming you were at the root of this
    repository: `cd python`
 
-2. Execute `./prepare_conda_env.sh`
+2. Execute `./prepare-conda-env.sh`
 
 3. Execute `conda activate inline-dev`
 
@@ -103,7 +128,7 @@ curl -s "https://get.sdkman.io" | bash
   please run `conda deactivate` to exit the inline-dev environment,
   then try again.
 
-### Java
+#### Java
 
 1. Change directory to "java". Assuming you were at the root of this
    repository: `cd java`
@@ -116,12 +141,12 @@ curl -s "https://get.sdkman.io" | bash
    successful: `sdk use java 8.0.302-open; sdk use maven 3.8.3; mvn test`
 
 
-## Installing the Environment for Experiment Scripts
+### Installing the Environment for Experiment Scripts
 
 1. Change directory to "research". Assuming you were at the root of
    this repository: `cd research`
 
-2. Execute `./prepare_conda_env.sh`
+2. Execute `./prepare-conda-env.sh`
 
 3. Execute `conda activate inline-research`
 
@@ -144,5 +169,6 @@ For both of the previous commands, you should see a progress bar that ends at "r
   then try again.
 
 
+[docker-webpage]: https://docs.docker.com/engine/install/
 [conda-webpage]: https://docs.conda.io/en/latest/
 [sdkman-webpage]: https://sdkman.io/
