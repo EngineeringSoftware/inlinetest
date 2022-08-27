@@ -3,15 +3,9 @@
 _DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 if [[ $OSTYPE == 'darwin'* ]]; then
-        echo "Cannot automatically install conda on mac. Please follow instructions here: https://docs.conda.io/en/latest/miniconda.html"
-        exit 1
-        # MINICONDA_URL='https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh'
+        MINICONDA_URL='https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh'
 else
-        if [[ $(uname -m) == "x86_64" ]]; then
-                MINICONDA_URL='https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh'
-        else
-                MINICONDA_URL='https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh'
-        fi
+        MINICONDA_URL='https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh'
 fi
 
 MINICONDA_INSTALL_DIR="$HOME/opt/miniconda3"
@@ -68,4 +62,4 @@ function prepare_conda_env() {
 
 
 prepare_conda_env
-conda activate inline
+conda activate inline-research

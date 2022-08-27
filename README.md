@@ -38,7 +38,7 @@ The data includes:
 - [research](/research): scripts for our experiments
 - data
   - [examples](/data/examples): 50 Python and 50 Java examples with our written inline tests
-  - [exp](/data/exp): the configurations for running performance evluation experiments
+  - [exp](/data/exp): the configurations for running performance evaluation experiments
   - [patches](/data/patches): the patches used in performance evaluation experiments, to integrated inline tests into open-source projects
   - [projects](/data/projects) and [projects-used](/data/projects-used): the list of top-100 starred open-source GitHub projects that we used to search for statements under test
   - [scripts](/data/scripts): the scripts used in performance evaluation experiments, for preparing environment and executing the unit tests or inline tests in open-source projects
@@ -48,7 +48,7 @@ The data includes:
   - [content](/userstudy/content): the package we send to each participant in our user study
   - [response](/userstudy/response): anonymized responses collected of our user study
 - [appendix.pdf](/appendix.pdf): an appendix that describes:
-  - A: the details procedure of searching for statements under test in open-source projects
+  - A: the detailed procedure of searching for statements under test in open-source projects
   - B: API of I-Test framework
   - C: analysis of user study responses
 
