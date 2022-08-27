@@ -3,7 +3,7 @@
 _DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 function get_conda_path() {
-        local conda_exe=$(which conda | xargs readlink -f)
+        local conda_exe=$(which conda) # | xargs readlink -f
         if [[ -z ${conda_exe} ]]; then
                 echo "Fail to detect conda! Have you installed Anaconda/Miniconda?" 1>&2
                 exit 1

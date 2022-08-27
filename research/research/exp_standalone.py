@@ -66,7 +66,7 @@ class StandaloneExperiments:
         # setup runtime env
         if language == "python":
             suffix = "py"
-            which_conda = su.bash.run("which conda | xargs readlink -f").stdout.strip()
+            which_conda = su.bash.run("which conda").stdout.strip()
             if len(which_conda) == 0:
                 raise RuntimeError(f"Cannot detect conda environment!")
             env_arg = str(
