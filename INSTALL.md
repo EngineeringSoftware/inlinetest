@@ -109,7 +109,7 @@ curl -s "https://get.sdkman.io" | bash
 
 ### Installing the I-Test Framework
 
-#### Python
+#### Python 3.7+
 
 1. Change directory to "python". Assuming you were at the root of this
    repository: `cd python`
@@ -128,7 +128,7 @@ curl -s "https://get.sdkman.io" | bash
   please run `conda deactivate` to exit the inline-dev environment,
   then try again.
 
-#### Java
+#### Java 8
 
 1. Change directory to "java". Assuming you were at the root of this
    repository: `cd java`
