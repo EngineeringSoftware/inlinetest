@@ -9,8 +9,15 @@ We provide two options:
 ## Docker
 [sec-docker]: #docker
 Install [docker][docker-webpage]
+
+Download the image
 ```
-docker pull ...
+docker pull pipiyuyu/inlinetests:latest
+```
+
+Start the container
+```
+docker run -it inlinetests /bin/bash
 ```
 This will start as user `inlinetests` in `/home/inlinetests` To run
 something using sudo, the password is `inlinetests`
