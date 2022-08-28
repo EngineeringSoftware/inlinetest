@@ -2,38 +2,40 @@
 
 I-Test currently supports two programming languages, Python and Java.
 
-We provide two options:
-1. install with [docker][sec-docker]
+We provide two options to install the required software for running
+I-Test and our scripts:
+1. use [docker][sec-docker]
 2. install to [local environment][sec-local]. 
 
-## Docker
+## Use Docker
 [sec-docker]: #docker
-Install [docker][docker-webpage]
 
-Download the image
+We provide a Docker image pre-installed with all required software
+(conda, sdkman, texlive) and is ready to be used to replicate all
+experiments in this artifact.  Please ensure at least 20GB of disk
+space to download the image and run experiments.
+
+If you haven't, please install Docker Engine following the
+instructions here: [Install Docker Engine][docker-webpage].
+
+Then, you can download our image by running
 ```
 docker pull pipiyuyu/inlinetests:latest
 ```
 
-Start the container
+You can start the container by running
 ```
 docker run -it inlinetests /bin/bash
 ```
-This will start as user `inlinetests` in `/home/inlinetests` To run
-something using sudo, the password is `inlinetests`
 
-### System Requirements
+This will drop you into the docker image's terminal at
+`/home/inlinetests`.  All content of this repo (on the latest release
+version) is located there.  
 
-The minimum requirements for replicating our experiments are:
-- at least 20GB of free disk space
+To run something using sudo, the password is `inlinetests`
 
-For your reference, we used the machine with the following specs to
-run experiments:
-- Intel Core i7-11700K @ 3.60GHz (8 cores, 16 threads) CPU
-- 64 GB RAM
-- Ubuntu 20.04 operating system
 
-## Local
+## Install to Local Environment
 [sec-local]: #local
 
 We utilize the package management systems
@@ -74,8 +76,12 @@ The two package management systems we use, [conda][conda-webpage] and
 does not require sudo).  To install each of them, you will need to
 execute some commands AND configure your `.bashrc` appropriately, and
 then restart the terminal for the changes to take effect.  If you
-happend to have existing installations of (a recent version of) either
+happen to have existing installations of (a recent version of) either
 package management system, you do not need to install it again.
+
+*Note*: you don't have to install Python and Java on your own, as our
+scripts will automatically install the correct version of them using
+conda and sdkman.
 
 #### conda for Python
 
@@ -177,8 +183,14 @@ For both of the previous commands, you should see a progress bar that ends at "r
   please run `conda deactivate` to exit the inline-dev environment,
   then try again.
 
-### Installing TeX Live for Presenting Results
-Install the latest version.
+### (Optional) Installing Latex for Presenting Results
+
+We also provide scripts for gathering experiment results into `.tex`
+files. If you want to see results in pdf (optional, alternatively you
+can also view results in `.json` format), you should also install
+Latex by installing the following recommended software (Tex Live /
+MaxTeX) depending on your operating system:
+
 #### Linux
 [TeX Live](https://tug.org/texlive/quickinstall.html)
 #### Mac
