@@ -24,7 +24,7 @@ setup(
     description="A simple plugin to use with pytest",
     long_description="TODO",  # read('README.rst'),
     packages=["inline"],
-    python_requires=">=3.7",
+    python_requires=">=3.6",
     install_requires=["pytest>=7.0.0"],
     classifiers=[
         "Development Status :: 4 - Beta",
