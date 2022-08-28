@@ -89,23 +89,23 @@ figure out these, include the example by:
    prepare up to 6 Bash scripts (please check the scripts for other
    projects under that directory for examples):
 
-  1. prepare-env-vanilla.sh: for configuring the environment for
-     running vanilla unit tests.
+  - prepare-env-vanilla.sh: for configuring the environment for
+    running vanilla unit tests.
 
-  2. prepare-env-inline.sh: for configuring the environment for
-     running unit tests + inline tests.
+  - prepare-env-inline.sh: for configuring the environment for running
+    unit tests + inline tests.
 
-  3. build.sh (optional): for building the subject project, which is a
-     script shared by both vanilla environment and unit+inline
-     environment.
+  - build.sh (optional): for building the subject project, which is a
+    script shared by both vanilla environment and unit+inline
+    environment.
 
-  4. test-vanilla.sh: for running vanilla unit tests.
+  - test-vanilla.sh: for running vanilla unit tests.
 
-  5. test-unit.sh: for running unit tests under the unit+inline
-     environment (when inline tests are added).
+  - test-unit.sh: for running unit tests under the unit+inline
+    environment (when inline tests are added).
 
-  6. test-inline.sh: for running inline tests under the unit+inline
-     environment (when inline tests are added).
+  - test-inline.sh: for running inline tests under the unit+inline
+    environment (when inline tests are added).
 
 3. Add a patch (in unidiff format, usually obtained by `diff -u` or
    `git diff`) for the inline test you want to add to the subject
