@@ -54,27 +54,81 @@ The data includes:
 
 [paper-url]: /README.md
 
-## How to include more examples
+
+## Including more examples to our experiments
+
+If you want to add additional subjects to our standalone/integrated
+experiments, please follow these steps:
+
 ### To include standalone examples
-Add Python/Java files with inline tests in [Python examples](/data/examples/python)/[Java examples](/data/examples/java)
 
-Add the Python/Java file names following the yaml format in [Java standalone configuration](/data/exp/standalone/java.yaml)/[Python standalone configuration](/data/exp/standalone/python.yaml)
+1. Add standalone code with inline tests to the `/data/examples/$lang`
+   directory (with `$lang$` being `python` or `java`).
 
-Create a folder for tested project under the [Python scripts folder](/data/scripts/python)/[Java scripts folder](/data/scripts/java). Add "build.sh" to create Python environment/execute Java maven compilation.
+2. Append the name of the added file to `/data/exp/standalone/$lang.yaml`.
 
-Run [commands for Python examples](REPLICATION.md#python)/[commands for Java examples](REPLICATION.md#java) in "research" folder, with "inline-research" environment activated
+That's it. The next time you run the standalone experiments, these new
+examples should be included.
+
 
 ### To include integrated examples 
-Add Java/python files with inline tests in [Java examples](/data/examples/java)/[Python examples](/data/examples/python)
 
-Add the Python/Java file names following the yaml format in [Java integrated configuration](/data/exp/integrated/java.yaml)/[Python integrated configuration](/data/exp/integrated/python.yaml)
+Adding integrated examples is a bit harder, as you need to first
+properly configure the environment (figuring out the build script,
+installing required dependencies using conda/sdkman) for running the
+unit tests in the subject project.  You also need to figure out how to
+install inlinetest (for Python/Java) into that environment.  Once you
+figure out these, include the example by:
 
-Create a folder for tested project under the [Python scripts folder](/data/scripts/python)/[Java scripts folder](/data/scripts/java). Add "build.sh" to create Python environment/execute Java maven compilation.
+1. Add the metadata of the subject project (must include full_name,
+   url, revision, and default_branch) into
+   `/data/projects-used/$lang.yaml`.
 
-Create patch in [Python patches folder](/data/patches/python)/[Java patches folder](/data/patches/java)
+2. Create a directory with the full_name of the subject project under
+   `/data/scripts/$lang/`. Now under that directory, you need to
+   prepare up to 6 Bash scripts (please check the scripts for other
+   projects under that directory for examples):
 
-Run the script with [commands for Python examples](REPLICATION.md#python-1)/[commands for Java examples](REPLICATION.md#java-1) in "research" folder, with "inline-research" environment activated.
-## Research
+  1. prepare-env-vanilla.sh: for configuring the environment for
+     running vanilla unit tests.
+
+  2. prepare-env-inline.sh: for configuring the environment for
+     running unit tests + inline tests.
+
+  3. build.sh (optional): for building the subject project, which is a
+     script shared by both vanilla environment and unit+inline
+     environment.
+
+  4. test-vanilla.sh: for running vanilla unit tests.
+
+  5. test-unit.sh: for running unit tests under the unit+inline
+     environment (when inline tests are added).
+
+  6. test-inline.sh: for running inline tests under the unit+inline
+     environment (when inline tests are added).
+
+3. Add a patch (in unidiff format, usually obtained by `diff -u` or
+   `git diff`) for the inline test you want to add to the subject
+   project to `/data/patches/$lang/examples/`.
+
+4. If installing inlinetest into the subject project requires
+   modifying some build script (e.g., `pom.xml`), you need to add a
+   patch for doing that to `/data/patches/$lang/projects/`, named
+   `$full_name.patch`.
+
+5. Append the project name and the name(s) of the inline test
+   patch(es) to `/data/exp/integrated/$lang.yaml`.
+
+That's it for adding integrated examples. You may want to run the
+integrated examples script with `--only=[$full_name]` option to only
+run the new project you added.  If any script failed, you can check
+the logs by doing `python -m research.exp_integrated view_result
+--results_file=../results/exp/integrated/$lang/4-1/$full_name.json`
+(modify the results file path accordingly), and fix the
+scripts/patches as needed.
+
+
+## Citation
 
 Title: [Inline Tests][paper-url]
 
