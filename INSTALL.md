@@ -25,7 +25,7 @@ docker pull pipiyuyu/inlinetests:latest
 
 You can start the container by running
 ```
-docker run -it inlinetests /bin/bash
+docker run -it pipiyuyu/inlinetests /bin/bash
 ```
 
 This will drop you into the docker image's terminal at
