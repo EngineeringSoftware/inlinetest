@@ -37,4 +37,4 @@ RUN cd "$HOME/inlinetest/python" && /bin/bash -c "bash prepare-conda-env.sh"
 # Install python inline-research
 RUN cd "$HOME/inlinetest/research" && /bin/bash -c "bash prepare-conda-env.sh"
 # Install Java 8
-RUN cd "$HOME/inlinetests/inlinetest/java" && /bin/bash -c "bash install.sh"
+RUN cd "$HOME/inlinetest/java" && /bin/bash -c "bash install.sh"
