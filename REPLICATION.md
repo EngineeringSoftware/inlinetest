@@ -23,8 +23,7 @@ Unless otherwise mentioned, for all the commands below, please:
 To generate the tables and figures, our experiment scripts read from
 the data files (which are products of processing experiment results)
 and generate `.tex` files, but you will need a LaTeX compiler to turn
-them into pdf documents. Please install it on your own if you wish to
-look at pdf; we have provided the commands using `pdflatex`.
+them into pdf documents (see [INSTALL.md](/INSTALL.md#latex)).
 Otherwise, you can refer to the data files (in `.json` format) for
 summarized experiment results.
 
@@ -121,9 +120,10 @@ Compile the pdf at `../results/exp/standalone/pdf/main.pdf`
 ```
 
 If you use the docker we provide, you can copy the generated main.pdf
-to your PC that has GUI.
+to your PC to view the pdf with graphics applications.
 ```
- docker cp container-ID:/home/inlinetests/results/exp/standalone/pdf/main.pdf target-path
+# in the terminal of your PC
+docker cp container-ID:/home/inlinetests/results/exp/integrated/pdf/main.pdf target-path
 ```
 
 
@@ -221,7 +221,8 @@ Compile the pdf at `../results/exp/integrated/pdf/main.pdf`
 ```
 
 If you use the docker we provide, you can copy the generated main.pdf
-to your PC that has GUI.
+to your PC to view the pdf with graphics applications.
 ```
- docker cp container-ID:/home/inlinetests/results/exp/integrated/pdf/main.pdf target-path
+# in the terminal of your PC
+docker cp container-ID:/home/inlinetests/results/exp/integrated/pdf/main.pdf target-path
 ```

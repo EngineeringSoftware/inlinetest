@@ -184,6 +184,7 @@ For both of the previous commands, you should see a progress bar that ends at "r
   then try again.
 
 ### (Optional) Installing Latex for Presenting Results
+[sec-latex]: #latex
 
 We also provide scripts for gathering experiment results into `.tex`
 files. If you want to see results in pdf (optional, alternatively you
