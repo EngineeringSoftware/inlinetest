@@ -120,6 +120,12 @@ Compile the pdf at `../results/exp/standalone/pdf/main.pdf`
 ( cd ../results/exp/standalone/pdf/; pdflatex main )
 ```
 
+If you use the docker we provide, you can copy the generated main.pdf
+to your PC that has GUI.
+```
+ docker cp container-ID:/home/inlinetests/results/exp/standalone/pdf/main.pdf target-path
+```
+
 
 ## Integrated Experiments
 
@@ -212,4 +218,10 @@ python -m research.table table_exp_integrated_dups --language=java --duplicating
 Compile the pdf at `../results/exp/integrated/pdf/main.pdf`
 ```
 ( cd ../results/exp/integrated/pdf/; pdflatex main )
+```
+
+If you use the docker we provide, you can copy the generated main.pdf
+to your PC that has GUI.
+```
+ docker cp container-ID:/home/inlinetests/results/exp/integrated/pdf/main.pdf target-path
 ```

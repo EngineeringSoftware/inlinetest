@@ -52,9 +52,28 @@ The data includes:
   - B: API of I-Test framework
   - C: analysis of user study responses
 
-
 [paper-url]: /README.md
 
+## How to include more examples
+### To include standalone examples
+Add Python/Java files with inline tests in [Python examples](/data/examples/python)/[Java examples](/data/examples/java)
+
+Add the Python/Java file names following the yaml format in [Java standalone configuration](/data/exp/standalone/java.yaml)/[Python standalone configuration](/data/exp/standalone/python.yaml)
+
+Create a folder for tested project under the [Python scripts folder](/data/scripts/python)/[Java scripts folder](/data/scripts/java). Add "build.sh" to create Python environment/execute Java maven compilation.
+
+Run [commands for Python examples](REPLICATION.md#python)/[commands for Java examples](REPLICATION.md#java) in "research" folder, with "inline-research" environment activated
+
+### To include integrated examples 
+Add Java/python files with inline tests in [Java examples](/data/examples/java)/[Python examples](/data/examples/python)
+
+Add the Python/Java file names following the yaml format in [Java integrated configuration](/data/exp/integrated/java.yaml)/[Python integrated configuration](/data/exp/integrated/python.yaml)
+
+Create a folder for tested project under the [Python scripts folder](/data/scripts/python)/[Java scripts folder](/data/scripts/java). Add "build.sh" to create Python environment/execute Java maven compilation.
+
+Create patch in [Python patches folder](/data/patches/python)/[Java patches folder](/data/patches/java)
+
+Run the script with [commands for Python examples](REPLICATION.md#python-1)/[commands for Java examples](REPLICATION.md#java-1) in "research" folder, with "inline-research" environment activated.
 ## Research
 
 Title: [Inline Tests][paper-url]

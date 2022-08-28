@@ -12,6 +12,8 @@ Install [docker][docker-webpage]
 ```
 docker pull ...
 ```
+This will start as user `inlinetests` in `/home/inlinetests` To run
+something using sudo, the password is `inlinetests`
 
 ### System Requirements
 
@@ -168,7 +170,7 @@ For both of the previous commands, you should see a progress bar that ends at "r
   please run `conda deactivate` to exit the inline-dev environment,
   then try again.
 
-### Installing TeX Live for Result Presentation
+### Installing TeX Live for Presenting Results
 Install the latest version.
 #### Linux
 [TeX Live](https://tug.org/texlive/quickinstall.html)
