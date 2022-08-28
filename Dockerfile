@@ -9,7 +9,7 @@ RUN apt-get update && \
     apt-get install -y software-properties-common
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 RUN apt-get update && \
-    apt-get -qq -y install curl wget unzip zip gcc mono-mcs sudo emacs vim
+    apt-get -qq -y install apt-utils curl wget unzip zip gcc mono-mcs sudo emacs vim git build-essential
 
 # Install miniconda
 ENV CONDA_DIR /opt/conda
