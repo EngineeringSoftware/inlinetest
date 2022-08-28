@@ -124,7 +124,7 @@ curl -s "https://get.sdkman.io" | bash
 
 ### Installing the I-Test Framework
 
-#### Python 3.7+
+#### Python 3.6+
 
 1. Change directory to "python". Assuming you were at the root of this
    repository: `cd python`
