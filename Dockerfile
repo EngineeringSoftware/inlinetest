@@ -19,22 +19,22 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86
 ENV PATH=$CONDA_DIR/bin:$PATH
 
 # Add new user
-RUN useradd -ms /bin/bash -c "Inlinetests User" inlinetests && echo "inlinetests:inlinetests" | chpasswd && adduser inlinetests sudo
-USER inlinetests
-WORKDIR /home/inlinetests/
+RUN useradd -ms /bin/bash -c "Inlinetests User" itdocker && echo "itdocker:itdocker" | chpasswd && adduser itdocker sudo
+USER itdocker
+WORKDIR /home/itdocker/
 
 # Install sdkman
 RUN curl -s "https://get.sdkman.io" | bash && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # Set up working environment
-COPY --chown=inlinetests:inlinetests . /home/inlinetests/
+RUN git clone https://github.com/pengyunie/inlinetest.git inlinetest
 
 # init conda
 RUN conda init bash && source ~/.bashrc
 
 # Install python inline-dev
-RUN cd "/home/inlinetests/python" && /bin/bash -c "bash prepare-conda-env.sh"
+RUN cd "$HOME/inlinetest/python" && /bin/bash -c "bash prepare-conda-env.sh"
 # Install python inline-research
-RUN cd "/home/inlinetests/research" && /bin/bash -c "bash prepare-conda-env.sh"
+RUN cd "$HOME/inlinetest/research" && /bin/bash -c "bash prepare-conda-env.sh"
 # Install Java 8
-RUN cd "/home/inlinetests/java" && /bin/bash -c "bash install.sh"
+RUN cd "$HOME/inlinetests/inlinetest/java" && /bin/bash -c "bash install.sh"
