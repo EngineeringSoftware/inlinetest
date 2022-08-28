@@ -168,7 +168,7 @@ For both of the previous commands, you should see a progress bar that ends at "r
   please run `conda deactivate` to exit the inline-dev environment,
   then try again.
 
-### TeX Live
+### Installing TeX Live for Result Presentation
 Install the latest version.
 #### Linux
 [TeX Live](https://tug.org/texlive/quickinstall.html)
