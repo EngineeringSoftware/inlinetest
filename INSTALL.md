@@ -137,7 +137,7 @@ curl -s "https://get.sdkman.io" | bash
 
 3. During the installation in the previous step, we actually already
    run the tests for the I-Test framework in Java.  You can also run
-   these tests again to double check if the installation is
+   these tests again to double-check if the installation is
    successful: `sdk use java 8.0.302-open; sdk use maven 3.8.3; mvn test`
 
 
@@ -168,6 +168,14 @@ For both of the previous commands, you should see a progress bar that ends at "r
   please run `conda deactivate` to exit the inline-dev environment,
   then try again.
 
+### TeX Live
+Install the latest version.
+#### Linux
+[TeX Live](https://tug.org/texlive/quickinstall.html)
+#### Mac
+[MacTeX](https://tug.org/mactex/)
+#### Windows
+[TeX Live on Windows](https://tug.org/texlive/windows.html#install)
 
 [docker-webpage]: https://docs.docker.com/engine/install/
 [conda-webpage]: https://docs.conda.io/en/latest/
