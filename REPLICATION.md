@@ -23,7 +23,7 @@ Unless otherwise mentioned, for all the commands below, please:
 To generate the tables and figures, our experiment scripts read from
 the data files (which are products of processing experiment results)
 and generate `.tex` files, but you will need a LaTeX compiler to turn
-them into pdf documents (see [INSTALL.md](/INSTALL.md#latex)).
+them into pdf documents (see [INSTALL.md](/INSTALL.md#optional-installing-latex-for-presenting-results)).
 Otherwise, you can refer to the data files (in `.json` format) for
 summarized experiment results.
 

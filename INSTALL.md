@@ -8,7 +8,7 @@ I-Test and our scripts:
 2. install to [local environment][sec-local]. 
 
 ## Use Docker
-[sec-docker]: #docker
+[sec-docker]: #use-docker
 
 We provide a Docker image pre-installed with all required software
 (conda, sdkman, texlive) and is ready to be used to replicate all
@@ -36,7 +36,7 @@ To run something using sudo, the password is `inlinetests`
 
 
 ## Install to Local Environment
-[sec-local]: #local
+[sec-local]: #install-to-local-environment
 
 We utilize the package management systems
 ([conda][conda-webpage] for Python and [sdkman][sdkman-webpage] for
@@ -184,7 +184,6 @@ For both of the previous commands, you should see a progress bar that ends at "r
   then try again.
 
 ### (Optional) Installing Latex for Presenting Results
-[sec-latex]: #latex
 
 We also provide scripts for gathering experiment results into `.tex`
 files. If you want to see results in pdf (optional, alternatively you
