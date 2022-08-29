@@ -11,4 +11,4 @@ source ${conda_path}
 conda activate $env_name
 
 set -e
-pytest tests/ -k "not test_commands and not test_crawler and not test_engine and not test_feedexport and not test_utils_display" --deselect=tests/test_crawl.py::CrawlTestCase::test_start_requests_lazyness --deselect=tests/test_crawl.py::CrawlSpiderTest::test_process_request_instance_method
+pytest tests/ -k "not test_commands and not test_crawler and not test_engine and not test_feedexport and not test_utils_display" --deselect=tests/test_crawl.py::CrawlTestCase::test_start_requests_lazyness --deselect=tests/test_spider.py::CrawlSpiderTest::test_process_request_instance_method
