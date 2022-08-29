@@ -226,3 +226,28 @@ to your PC to view the pdf with graphics applications.
 # in the terminal of your PC
 docker cp CONTAINER:/home/itdocker/inlinetest/results/exp/integrated/pdf/main.pdf dest-path
 ```
+
+
+FAQ
+
+Q: What can I do if I get a timeout error like this?
+```
+cmd: /home/itdocker/inlinetest/data/scripts/java/skylot_jadx/build.sh default
+success: False; time: 999.3513159751892
+TIMEOUT!!!
+```
+
+A: We set 1000 seconds as timeout for running unit tests by default. If you machine is slow (for example, when using docker), it might not be enough. Both research.exp_standalone and research.exp_standalone provide a keyword argument `timeout` which accepts numbers in second.
+For example, this command runs java integrated tests with 10000 seconds as timeout.
+```
+python -m research.exp_integrated run --language=java --requests_file=../data/exp/integrated/java.yaml --rerun=1 --duplicating=1 --out_dir=../results/exp/integrated/java/1-1 --timeout=10000
+```
+
+Q: How can I run a subset of projects?
+
+Both research.exp_standalone and research.exp_standalone provide a keyword argument `out` which accepts a list of projects.
+For example, this command runs python integrated tests on project "bokeh/bokeh" and "davidsandberg_facenet"
+
+```
+python -m research.exp_integrated run --language=python --requests_file=../data/exp/integrated/python.yaml --rerun=1 --duplicating=1 --out_dir=../results/exp/integrated/python/1-1 --only=["bokeh_bokeh", "davidsandberg_facenet"]
+```
