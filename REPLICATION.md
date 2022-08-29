@@ -246,8 +246,8 @@ python -m research.exp_integrated run --language=java --requests_file=../data/ex
 Q: How can I run a subset of projects?
 
 Both research.exp_standalone and research.exp_standalone provide a keyword argument `out` which accepts a list of projects.
-For example, this command runs python integrated tests on project "bokeh/bokeh" and "davidsandberg_facenet"
+For example, this command runs python integrated tests on project "bokeh/bokeh" and "davidsandberg/facenet"
 
 ```
-python -m research.exp_integrated run --language=python --requests_file=../data/exp/integrated/python.yaml --rerun=1 --duplicating=1 --out_dir=../results/exp/integrated/python/1-1 --only=["bokeh_bokeh", "davidsandberg_facenet"]
+python -m research.exp_integrated run --language=python --requests_file=../data/exp/integrated/python.yaml --rerun=1 --duplicating=1 --out_dir=../results/exp/integrated/python/1-1 --only="[bokeh_bokeh,davidsandberg_facenet]"
 ```
