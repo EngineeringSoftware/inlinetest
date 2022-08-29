@@ -237,7 +237,7 @@ success: False; time: 999.3513159751892
 TIMEOUT!!!
 ```
 
-A: We set 1000 seconds as timeout for running unit tests by default. If you machine is slow (for example, when using docker), it might not be enough. Both research.exp_standalone and research.exp_standalone provide a keyword argument `timeout` which accepts numbers in second.
+A: We set 1000 seconds as timeout for running unit tests by default. If you machine is slow (for example, when using docker), it might not be enough. Both research.exp_standalone and research.exp_standalone provide a keyword argument `timeout` which accepts a number with unit of second.
 For example, this command runs java integrated tests with 10000 seconds as timeout.
 ```
 python -m research.exp_integrated run --language=java --requests_file=../data/exp/integrated/java.yaml --rerun=1 --duplicating=1 --out_dir=../results/exp/integrated/java/1-1 --timeout=10000
