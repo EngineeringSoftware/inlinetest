@@ -123,7 +123,7 @@ If you use the docker we provide, you can copy the generated main.pdf
 to your PC to view the pdf with graphics applications.
 ```
 # in the terminal of your PC
-docker cp container-ID:/home/itdocker/inlinetest/results/exp/integrated/pdf/main.pdf target-path
+docker cp CONTAINER:/home/itdocker/inlinetest/results/exp/standalone/pdf/main.pdf dest-path
 ```
 
 
@@ -224,5 +224,5 @@ If you use the docker we provide, you can copy the generated main.pdf
 to your PC to view the pdf with graphics applications.
 ```
 # in the terminal of your PC
-docker cp container-ID:/home/itdocker/inlinetest/results/exp/integrated/pdf/main.pdf target-path
+docker cp CONTAINER:/home/itdocker/inlinetest/results/exp/integrated/pdf/main.pdf dest-path
 ```
