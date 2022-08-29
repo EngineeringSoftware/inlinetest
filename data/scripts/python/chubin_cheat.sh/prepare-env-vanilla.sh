@@ -12,4 +12,5 @@ source ${conda_path}
 conda env remove --name $env_name
 conda create --name $env_name python=3.9 pip -y
 conda activate $env_name
+conda install libgcc
 ICU_VERSION=66.1 pip install -r requirements.txt

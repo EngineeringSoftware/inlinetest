@@ -9,7 +9,9 @@ RUN apt-get update && \
     apt-get install -y software-properties-common
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 RUN apt-get update && \
-    apt-get -qq -y install apt-utils curl wget unzip zip gcc mono-mcs sudo emacs vim less git build-essential pkg-config libicu-dev
+    apt-get -qq -y install apt-utils curl wget unzip zip gcc mono-mcs sudo emacs vim less git build-essential pkg-config libicu-dev firefox-esr
+RUN apt-get update && \
+    curl -L https://github.com/mozilla/geckodriver/releases/download/v0.31.0/geckodriver-v0.31.0-linux64.tar.gz | tar xz -C /usr/local/bin
 
 # Install miniconda
 ENV CONDA_DIR /opt/conda
