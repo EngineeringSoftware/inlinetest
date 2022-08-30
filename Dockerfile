@@ -3,6 +3,7 @@
 
 # Pull base image
 FROM ubuntu:22.04
+ARG DEBIAN_FRONTEND=noninteractive
 
 # Install sofware properties common
 RUN apt-get update && \
