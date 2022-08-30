@@ -11,7 +11,6 @@ import numpy as np
 import seutil as su
 from jsonargparse import CLI
 from jsonargparse.typing import Path_dc, Path_drw, Path_fc, Path_fr
-from seutil import latex
 from tqdm import tqdm
 from unidiff import PatchSet
 

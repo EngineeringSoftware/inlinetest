@@ -183,20 +183,6 @@ For both of the previous commands, you should see a progress bar that ends at "r
   please run `conda deactivate` to exit the inline-dev environment,
   then try again.
 
-### (Optional) Installing Latex for Presenting Results
-
-We also provide scripts for gathering experiment results into `.tex`
-files. If you want to see results in pdf (optional, alternatively you
-can also view results in `.json` format), you should also install
-Latex by installing the following recommended software (Tex Live /
-MaxTeX) depending on your operating system:
-
-#### Linux
-[TeX Live](https://tug.org/texlive/quickinstall.html)
-#### Mac
-[MacTeX](https://tug.org/mactex/)
-#### Windows
-[TeX Live on Windows](https://tug.org/texlive/windows.html#install)
 
 [docker-webpage]: https://docs.docker.com/engine/install/
 [conda-webpage]: https://docs.conda.io/en/latest/
