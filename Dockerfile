@@ -2,7 +2,7 @@
 # docker run -it inlinetests /bin/bash
 
 # Pull base image
-FROM texlive/texlive:latest-full
+FROM ubuntu:22.04
 
 # Install sofware properties common
 RUN apt-get update && \
