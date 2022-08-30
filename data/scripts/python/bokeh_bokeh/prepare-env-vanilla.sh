@@ -12,6 +12,7 @@ source ${conda_path}
 conda env remove --name $env_name
 conda env create --name $env_name python=3.8 -f environment.yml
 conda activate $env_name
+conda install -c conda-forge firefox geckodriver
 
 cd bokehjs
 npm install npm@7

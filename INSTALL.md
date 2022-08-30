@@ -25,14 +25,14 @@ docker pull pipiyuyu/inlinetests:latest
 
 You can start the container by running
 ```
-docker run -it inlinetests /bin/bash
+docker run -it -m 4g pipiyuyu/inlinetests /bin/bash
 ```
 
 This will drop you into the docker image's terminal at
-`/home/inlinetests`.  All content of this repo (on the latest release
+`/home/itdocker`.  All content of this repo (on the latest release
 version) is located there.  
 
-To run something using sudo, the password is `inlinetests`
+To run something using sudo, the password is `itdocker`
 
 
 ## Install to Local Environment

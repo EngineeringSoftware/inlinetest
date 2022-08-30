@@ -15,4 +15,4 @@ sdk use java 8.0.302-open
 
 MVN_SKIPS="-Djacoco.skip -Dcheckstyle.skip -Drat.skip -Denforcer.skip -Danimal.sniffer.skip -Dmaven.javadoc.skip -Dfindbugs.skip -Dwarbucks.skip -Dmodernizer.skip -Dimpsort.skip -Dpmd.skip -Dxjc.skip"
 
-mvn test $MVN_SKIPS -Dtest='**/bvt/**/*.java, !FontTest, !FontTest2'
+mvn test $MVN_SKIPS -Dtest='**/bvt/**/*.java, !FontTest, !FontTest2, !MaxBufSizeTest'

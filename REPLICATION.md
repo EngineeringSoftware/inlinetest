@@ -167,3 +167,28 @@ The generated summary data files are
 with our version at
 `../results-ours/exp/integrated/java/results.json` and
 `../results-ours/exp/integrated/java/results-avg.json`.
+
+
+# FAQ
+
+Q: What can I do if I get a timeout error like this?
+```
+cmd: /home/itdocker/inlinetest/data/scripts/java/skylot_jadx/build.sh default
+success: False; time: 999.3513159751892
+TIMEOUT!!!
+```
+
+A: We set 1000 seconds as timeout for running unit tests by default. If your machine is slow (for example, when using docker), default timeout might not be enough. Both research.exp_standalone and research.exp_standalone provide a keyword argument `timeout` which accepts a number in seconds.
+For example, this command runs java integrated tests with 10000 seconds as timeout.
+```
+python -m research.exp_integrated run --language=java --requests_file=../data/exp/integrated/java.yaml --rerun=1 --duplicating=1 --out_dir=../results/exp/integrated/java/1-1 --timeout=10000
+```
+
+Q: How can I run a subset of projects?
+
+Both research.exp_standalone and research.exp_standalone provide a keyword argument `out` which accepts a list of projects.
+For example, this command runs python integrated tests on project "bokeh/bokeh" and "davidsandberg/facenet"
+
+```
+python -m research.exp_integrated run --language=python --requests_file=../data/exp/integrated/python.yaml --rerun=1 --duplicating=1 --out_dir=../results/exp/integrated/python/1-1 --only="[bokeh_bokeh,davidsandberg_facenet]"
+```
