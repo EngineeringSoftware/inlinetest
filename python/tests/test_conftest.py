@@ -40,6 +40,19 @@ class TestInlinetests:
             items, reprec = pytester.inline_genitems(x)
             assert len(items) == 0
             pytest.raises(MalformedException)
+
+    def test_inline_malformed_value(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+    """ 
+        from inline import Here
+        def m(a):
+            a = a + 1
+            Here().given(a).check_eq(2)
+    """)
+        for x in (pytester.path, checkfile):
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 0
+            pytest.raises(MalformedException)
     
     def test_inline_malformed_check_eq(self, pytester: Pytester):
         checkfile = pytester.makepyfile(
