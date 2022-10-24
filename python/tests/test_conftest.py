@@ -40,6 +40,19 @@ class TestInlinetests:
             items, reprec = pytester.inline_genitems(x)
             assert len(items) == 0
             pytest.raises(MalformedException)
+
+    def test_inline_malformed_value(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+    """ 
+        from inline import Here
+        def m(a):
+            a = a + 1
+            Here().given(a).check_eq(2)
+    """)
+        for x in (pytester.path, checkfile):
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 0
+            pytest.raises(MalformedException)
     
     def test_inline_malformed_check_eq(self, pytester: Pytester):
         checkfile = pytester.makepyfile(
@@ -121,6 +134,20 @@ class TestInlinetests:
         for x in (pytester.path, checkfile):
             items, reprec = pytester.inline_genitems(x)
             assert len(items) == 0
+            pytest.raises(MalformedException)
+
+    def test_malformed_given_parameterized_tests(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+    """ 
+        from inline import Here
+        def m(a):
+            a = a + 1
+            Here(parameterized=True).given(a, [2]).check_eq(a, [3, 4])
+    """)
+        for x in (pytester.path, checkfile):
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 0
+            pytest.raises(MalformedException)
 
     def test_check_true_parameterized_tests(self, pytester: Pytester):
         checkfile = pytester.makepyfile(
@@ -201,6 +228,23 @@ class TestInlinetests:
             items = [x.item for x in reprec.getcalls("pytest_itemcollected")]
             assert len(items) == 1
 
+    def test_check_incorrect_group_tests(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+    """ 
+        from inline import Here
+        def m(a):
+            a = a + 1
+            Here(tag = ["add"]).given(a, 1).check_eq(a, 3)
+            a = a - 1
+            Here(tag = ["minus"]).given(a, 1).check_eq(a, 0)
+    """)
+        for x in (pytester.path, checkfile): 
+            reprec = pytester.inline_run("--inlinetest-group=add")
+            items = [x.item for x in reprec.getcalls("pytest_itemcollected")]
+            assert len(items) == 1
+            res = pytester.runpytest()
+            assert res.ret != 0
+
     def test_check_disabled_tests(self, pytester: Pytester):
         checkfile = pytester.makepyfile(
     """ 
@@ -214,6 +258,22 @@ class TestInlinetests:
         for x in (pytester.path, checkfile): 
             items, reprec = pytester.inline_genitems(x)
             assert len(items) == 1
+
+    def test_check_disabled_value_tests(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+    """ 
+        from inline import Here
+        def m(a):
+            a = a + 1
+            Here(disabled=True).given(a, 1).check_eq(a, 3)
+            a = a - 1
+            Here().given(a, 1).check_eq(a, 0)
+    """)
+        for x in (pytester.path, checkfile): 
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 1
+            res = pytester.runpytest()
+            assert res.ret == 0
     
     def test_multiple_given(self, pytester: Pytester):
         checkfile = pytester.makepyfile(
@@ -228,6 +288,20 @@ class TestInlinetests:
             assert len(items) == 1 
             res = pytester.runpytest()
             assert res.ret == 0
+
+    
+    def test_multiple_malformed_given(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+    """ 
+        from inline import Here
+        def m(a, c):
+            b = a + c
+            Here().given(a, 2).given(c).check_true(b == 5)
+    """)
+        for x in (pytester.path, checkfile):
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 0
+            pytest.raises(MalformedException)
 
     def test_if_elif_else_logic(self, pytester: Pytester):
         checkfile = pytester.makepyfile(
@@ -309,5 +383,3 @@ class TestInlinetests:
             assert len(items) == 1
             res = pytester.runpytest()
             assert res.ret == 0
-
-    
