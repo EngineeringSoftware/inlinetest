@@ -288,6 +288,7 @@ class TestInlinetests:
             assert len(items) == 1 
             res = pytester.runpytest()
             assert res.ret == 0
+
     
     def test_multiple_malformed_given(self, pytester: Pytester):
         checkfile = pytester.makepyfile(
@@ -301,3 +302,84 @@ class TestInlinetests:
             items, reprec = pytester.inline_genitems(x)
             assert len(items) == 0
             pytest.raises(MalformedException)
+
+    def test_if_elif_else_logic(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+    """
+        from inline import Here
+        def m(a):
+            if a < 21:
+                b = "Not yet human"
+                Here().given(a, 0).check_true(b == "Not yet human")
+            elif a > 22:
+                b = 42
+                Here().given(a, 25).check_true(b == 42)
+            else:
+                b = False
+                Here().given(a, 21).check_true(b == False)
+
+    """)
+        for x in (pytester.path, checkfile):
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 3 
+            res = pytester.runpytest()
+            assert res.ret == 0
+
+    def test_list_append(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+    """
+        from inline import Here
+        def m(i):
+            j = h + i
+            Here().given(i, ["pineapple", "pear"]).given(h, ["apple", "banana", "orange"]).check_eq(j, ["apple", "banana", "orange", "pineapple", "pear"])
+    """)
+        for x in (pytester.path, checkfile):
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 1
+            res = pytester.runpytest()
+            assert res.ret == 0
+
+    def test_list_addition(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+    """
+        from inline import Here
+        def m(a):
+            a = []
+            b = [x + 2 for x in a]
+            Here().given(a, [1,2,3,2,1]).check_true(b == [3,4,5,4,3])
+    """)
+        for x in (pytester.path, checkfile):
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 1
+            res = pytester.runpytest()
+            assert res.ret == 0
+
+    def test_regex(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+    """
+        import re
+        from inline import Here
+        def m(x):
+            match = re.search("[0123]", x)
+            Here().given(x, "hel1o").check_eq(match.start(), 3)
+            
+    """)
+        for x in (pytester.path, checkfile):
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 1
+            res = pytester.runpytest()
+            assert res.ret == 0
+
+    def test_multivariate(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+    """
+        from inline import Here
+        def m(a, b, c, d):
+            e = a + b * c - d
+            Here().given(a, 3).given(b, 4).given(c,5).given(d,6).check_true(e == 17)
+    """)
+        for x in (pytester.path, checkfile):
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 1
+            res = pytester.runpytest()
+            assert res.ret == 0
