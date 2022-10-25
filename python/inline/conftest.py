@@ -201,6 +201,7 @@ class MalformedException(Exception):
 
     pass
 
+# TODO: define a timeout excpetion
 
 ######################################################################
 ## InlineTest Parser
@@ -244,6 +245,7 @@ class ExtractInlineTest(ast.NodeTransformer):
     arg_repeated_str = "repeated"
     arg_tag_str = "tag"
     arg_disabled_str = "disabled"
+    # TODO: arg_timeout_str = "timeout"
     inline_module_imported = False
 
     def __init__(self):
@@ -365,6 +367,8 @@ class ExtractInlineTest(ast.NodeTransformer):
                         and isinstance(arg.value, bool)
                     ):
                         self.cur_inline_test.disabled = arg.value
+                    # TODO: handle timeout
+
                     else:
                         raise MalformedException(
                             f"inline test: Here() accepts {NUM_OF_ARGUMENTS} arguments. 'test_name' must be a string constant, 'parameterized' must be a boolean constant, 'repeated' must be a positive intege, 'tag' must be a list of string"
@@ -918,6 +922,7 @@ class InlineTestRunner:
         tree = ast.parse(test.to_test())
         codeobj = compile(tree, filename="<ast>", mode="exec")
         start_time = time.time()
+        # TODO: run the test within timeout limit, otherwise raise TimeoutException
         exec(codeobj, test.globs)
         end_time = time.time()
         out.append(f"Test Execution time: {round(end_time - start_time, 4)} seconds")

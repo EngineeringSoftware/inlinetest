@@ -6,6 +6,7 @@ class Here:
         repeated: int = 1,
         tag=[],
         disabled = False
+        # TODO: add a parameter "timeout"
     ):
         """
         Initialize Inline object with test name / parameetrized flag
