@@ -137,6 +137,7 @@ class InlineTest:
         self.repeated = 1
         self.tag = []
         self.disabled = False
+        # TODO: initialize timeout
         self.globs = {}
 
     def to_test(self):
