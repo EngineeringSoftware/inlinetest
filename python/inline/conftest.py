@@ -919,11 +919,24 @@ class InlineTestFinder:
 ## InlineTest Runner
 ######################################################################
 class InlineTestRunner:
-    def run(self, test: InlineTest, out: List) -> None:
+    ######
+    import asyncio
+    from async_timeout import timeout
+    self.queue = asyncio.queue()
+    pass
+    ######
+    async def run(self, test: InlineTest, out: List) -> None:
         tree = ast.parse(test.to_test())
         codeobj = compile(tree, filename="<ast>", mode="exec")
         start_time = time.time()
         # TODO: run the test within timeout limit, otherwise raise TimeoutException
+        try: 
+            async with timeout(*timeout arg*)
+            exec(codeobj, test.globs)
+            pass
+        except asyncio.TimeoutError as e:
+            print(e)
+        ######
         exec(codeobj, test.globs)
         end_time = time.time()
         out.append(f"Test Execution time: {round(end_time - start_time, 4)} seconds")
