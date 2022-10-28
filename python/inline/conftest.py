@@ -138,6 +138,7 @@ class InlineTest:
         self.tag = []
         self.disabled = False
         # TODO: initialize timeout
+        self.timeout = -1
         self.globs = {}
 
     def to_test(self):
@@ -203,6 +204,8 @@ class MalformedException(Exception):
     pass
 
 # TODO: define a timeout excpetion
+class TimeoutException(Exception):
+    pass
 
 ######################################################################
 ## InlineTest Parser
@@ -247,6 +250,7 @@ class ExtractInlineTest(ast.NodeTransformer):
     arg_tag_str = "tag"
     arg_disabled_str = "disabled"
     # TODO: arg_timeout_str = "timeout"
+    arg_timeout_str = "timeout"
     inline_module_imported = False
 
     def __init__(self):
@@ -319,7 +323,7 @@ class ExtractInlineTest(ast.NodeTransformer):
         """
         Parse a constructor call.
         """
-        NUM_OF_ARGUMENTS = 5
+        NUM_OF_ARGUMENTS = 6
         if len(node.args) + len(node.keywords) <= NUM_OF_ARGUMENTS:
             # positional arguments
             if sys.version_info >= (3, 8, 0):
@@ -369,7 +373,12 @@ class ExtractInlineTest(ast.NodeTransformer):
                     ):
                         self.cur_inline_test.disabled = arg.value
                     # TODO: handle timeout
-
+                    elif (
+                        index == 5
+                        and isinstance(arg, ast.Constant)
+                        and isinstance(arg.value, bool)
+                    ): 
+                        self.cur_inline_test.timeout = arg.value
                     else:
                         raise MalformedException(
                             f"inline test: Here() accepts {NUM_OF_ARGUMENTS} arguments. 'test_name' must be a string constant, 'parameterized' must be a boolean constant, 'repeated' must be a positive intege, 'tag' must be a list of string"
@@ -423,6 +432,17 @@ class ExtractInlineTest(ast.NodeTransformer):
                         and isinstance(keyword.value.value, bool)
                     ):
                         self.cur_inline_test.disabled = keyword.value.value
+                    # check if "timeout" is a positive integer
+                    elif (
+                        keyword.arg == self.arg_timeout_str
+                        and isinstance(keyword.value, ast.Constant)
+                        and isinstance(keyword.value.value, int)
+                    ):
+                        if keyword.value.value <= 0:
+                            raise MalformedException(
+                                f"inline test: {self.arg_timeout_str} must be greater than 0"
+                            )
+                        self.cur_inline_test.timeout = keyword.value.value
                     else:
                         raise MalformedException(
                             f"inline test: Here() accepts {NUM_OF_ARGUMENTS} arguments. 'test_name' must be a string constant, 'parameterized' must be a boolean constant, 'repeated' must be a positive integer, 'tag' must be a list of string"
@@ -470,10 +490,21 @@ class ExtractInlineTest(ast.NodeTransformer):
                     # check if "disabled" is a boolean
                     elif (
                         index == 4
-                        and isinstance(arg, ast.NameConstant)
-                        and isinstance(arg.value, bool)
+                        and isinstance(arg, ast.Num)
+                        and isinstance(arg.value, int)
                     ):
-                        self.cur_inline_test.disabled = arg.value
+                        self.cur_inline_test.timeout = arg.value
+                    # check if "timeout" is a positive integer
+                    elif (
+                        index == 5
+                        and isinstance(arg, ast.Num)
+                        and isinstance(arg.n, int)
+                    ):
+                        if arg.n <= 0:
+                            raise MalformedException(
+                                f"inline test: {self.arg_timeout_str} must be greater than 0"
+                            )
+                        self.cur_inline_test.timeout = arg.n
                     else:
                         raise MalformedException(
                             f"inline test: Here() accepts {NUM_OF_ARGUMENTS} arguments. 'test_name' must be a string constant, 'parameterized' must be a boolean constant, 'repeated' must be a positive intege, 'tag' must be a list of string"
@@ -526,6 +557,17 @@ class ExtractInlineTest(ast.NodeTransformer):
                         and isinstance(keyword.value.value, bool)
                     ):
                         self.cur_inline_test.disabled = keyword.value.value
+                    # check if "timeout" is a positive integer
+                    elif (
+                        keyword.arg == self.arg_timeout_str
+                        and isinstance(keyword.value, ast.Num)
+                        and isinstance(keyword.value.n, int)
+                    ):
+                        if keyword.value.n <= 0:
+                            raise MalformedException(
+                                f"inline test: {self.arg_timeout_str} must be greater than 0"
+                            )
+                        self.cur_inline_test.timeout = keyword.value.n
                     else:
                         raise MalformedException(
                             f"inline test: Here() accepts {NUM_OF_ARGUMENTS} arguments. 'test_name' must be a string constant, 'parameterized' must be a boolean constant, 'repeated' must be a positive integer, 'tag' must be a list of string"
@@ -931,7 +973,7 @@ class InlineTestRunner:
         start_time = time.time()
         # TODO: run the test within timeout limit, otherwise raise TimeoutException
         try: 
-            async with timeout(*timeout arg*)
+            async with timeout(arg_timeout_str)
             exec(codeobj, test.globs)
             pass
         except asyncio.TimeoutError as e:
