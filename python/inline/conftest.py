@@ -973,7 +973,7 @@ class InlineTestRunner:
         start_time = time.time()
         # TODO: run the test within timeout limit, otherwise raise TimeoutException
         try: 
-            async with timeout(arg_timeout_str)
+            async with timeout(cur_inline_test.timeout)
             exec(codeobj, test.globs)
             pass
         except asyncio.TimeoutError as e:
