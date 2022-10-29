@@ -5,7 +5,8 @@ class Here:
         parameterized: bool = False,
         repeated: int = 1,
         tag=[],
-        disabled = False
+        disabled = False,
+        timeout: int = -1
         # TODO: add a parameter "timeout"
     ):
         """
