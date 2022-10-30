@@ -1,20 +1,16 @@
 import ast
-from audioop import mul
 import copy
 import inspect
 import sys
 import time
-import multiprocessing
 from pathlib import Path
 from types import ModuleType
 from typing import Any, Dict, Iterable, List, Optional, Tuple, Union
 import enum
-from py import code
+import multiprocessing
 import pytest
 from _pytest.pathlib import fnmatch_ex, import_path
 from pytest import Collector, Config, FixtureRequest, Parser
-
-from asyncio.timeouts import timeout
 
 if sys.version_info >= (3, 9, 0):
     from ast import unparse as ast_unparse
