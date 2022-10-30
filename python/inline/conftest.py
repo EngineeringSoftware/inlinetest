@@ -13,7 +13,7 @@ import multiprocessing
 import pytest
 from _pytest.pathlib import fnmatch_ex, import_path
 from pytest import Collector, Config, FixtureRequest, Parser
-from asyncio import timeout
+import asyncio
 
 if sys.version_info >= (3, 9, 0):
     from ast import unparse as ast_unparse
@@ -988,12 +988,11 @@ class InlineTestRunner:
         #     )
         if test.timeout >= 0: 
             try:
-                async with timeout(test.timeout):
-                    exec(codeobj, test.globs)
-                    end_time = time.time()
-                    out.append(f"Test Execution time: {round(end_time - start_time, 4)} seconds")
-                    if test.globs:
-                        test.globs.clear()
+                res = await asyncio.wait_for(exec(codeobj, test.globs), timeout=test.timeout*1.0)
+                end_time = time.time()
+                out.append(f"Test Execution time: {round(end_time - start_time, 4)} seconds")
+                if test.globs:
+                    test.globs.clear()
                 
             except asyncio.TimeoutError as e:
                 raise TimeoutException(
