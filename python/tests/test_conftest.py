@@ -385,13 +385,13 @@ class TestInlinetests:
             assert res.ret == 0
 
 
-    def test_multivariate(self, pytester: Pytester):
+    def test_time(self, pytester: Pytester):
         checkfile = pytester.makepyfile(
     """
         from inline import Here
         def m(a):
             c = [i + 3 for i in a]
-            Here(timeout=1).given(a = [i + 1 for i in range(1000000000)])).check_eq(len(c), len(a))
+            Here(timeout=1).given(a, [i + 1 for i in range(1000000)]).check_eq(len(c), len(a))
     """)
         for x in (pytester.path, checkfile):
             items, reprec = pytester.inline_genitems(x)

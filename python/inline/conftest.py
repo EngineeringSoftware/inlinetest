@@ -1,6 +1,8 @@
 import ast
+import asyncio
 import copy
 import inspect
+from sqlite3 import Time
 import sys
 import time
 from pathlib import Path
@@ -11,6 +13,7 @@ import multiprocessing
 import pytest
 from _pytest.pathlib import fnmatch_ex, import_path
 from pytest import Collector, Config, FixtureRequest, Parser
+from asyncio import timeout
 
 if sys.version_info >= (3, 9, 0):
     from ast import unparse as ast_unparse
@@ -206,6 +209,9 @@ class MalformedException(Exception):
 
 # TODO: define a timeout excpetion
 class TimeoutException(Exception):
+    """
+    Time limit exceeded
+    """
     pass
 
 ######################################################################
@@ -377,7 +383,7 @@ class ExtractInlineTest(ast.NodeTransformer):
                     elif (
                         index == 5
                         and isinstance(arg, ast.Constant)
-                        and isinstance(arg.value, bool)
+                        and isinstance(arg.value, int)
                     ): 
                         self.cur_inline_test.timeout = arg.value
                     else:
@@ -962,24 +968,43 @@ class InlineTestFinder:
 ## InlineTest Runner
 ######################################################################
 class InlineTestRunner:
-    def run(self, test: InlineTest, out: List) -> None:
+    def __init__(self) -> None:
+        self.queue = asyncio.Queue()
+        pass
+
+    async def run(self, test: InlineTest, out: List) -> None:
         tree = ast.parse(test.to_test())
         codeobj = compile(tree, filename="<ast>", mode="exec")
         start_time = time.time()
         # TODO: run the test within timeout limit, otherwise raise TimeoutException
-        p = multiprocessing.Process(target=exec(codeobj, test.globs))
-        p.start()
-        if(test.disabled > 0):
-            p.join(test.disabled)
-            if p.is_alive():
-                p.terminate()
-                raise TimeoutException
-                p.join()
-        # exec(codeobj, test.globs)
-        end_time = time.time()
-        out.append(f"Test Execution time: {round(end_time - start_time, 4)} seconds")
-        if test.globs:
-            test.globs.clear()
+        # Attempt 1
+        # p = multiprocessing.Process(target=exec(codeobj, test.globs))
+        # p.start()
+        # p.join(test.timeout)
+        # if p.is_alive() or test.timeout > 0:
+        #     p.terminate()
+        #     raise TimeoutException(
+        #         f"Execution timed out while running inline test"
+        #     )
+        if test.timeout >= 0: 
+            try:
+                async with timeout(test.timeout):
+                    exec(codeobj, test.globs)
+                    end_time = time.time()
+                    out.append(f"Test Execution time: {round(end_time - start_time, 4)} seconds")
+                    if test.globs:
+                        test.globs.clear()
+                
+            except asyncio.TimeoutError as e:
+                raise TimeoutException(
+                    f"Execution time out while running inline test)"
+                )
+        else: 
+            exec(codeobj, test.globs)
+            end_time = time.time()
+            out.append(f"Test Execution time: {round(end_time - start_time, 4)} seconds")
+            if test.globs:
+                test.globs.clear()
 
 
 class InlinetestItem(pytest.Item):
