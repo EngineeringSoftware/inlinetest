@@ -13,7 +13,6 @@ import multiprocessing
 import pytest
 from _pytest.pathlib import fnmatch_ex, import_path
 from pytest import Collector, Config, FixtureRequest, Parser
-import asyncio
 
 if sys.version_info >= (3, 9, 0):
     from ast import unparse as ast_unparse
@@ -383,7 +382,7 @@ class ExtractInlineTest(ast.NodeTransformer):
                     elif (
                         index == 5
                         and isinstance(arg, ast.Constant)
-                        and isinstance(arg.value, int)
+                        and isinstance(arg.value, float)
                     ): 
                         self.cur_inline_test.timeout = arg.value
                     else:
@@ -439,11 +438,11 @@ class ExtractInlineTest(ast.NodeTransformer):
                         and isinstance(keyword.value.value, bool)
                     ):
                         self.cur_inline_test.disabled = keyword.value.value
-                    # check if "timeout" is a positive integer
+                    # check if "timeout" is a positive float
                     elif (
                         keyword.arg == self.arg_timeout_str
                         and isinstance(keyword.value, ast.Constant)
-                        and isinstance(keyword.value.value, int)
+                        and isinstance(keyword.value.value, float)
                     ):
                         if keyword.value.value <= 0:
                             raise MalformedException(
@@ -500,12 +499,12 @@ class ExtractInlineTest(ast.NodeTransformer):
                         and isinstance(arg, ast.Num)
                         and isinstance(arg.value, int)
                     ):
-                        self.cur_inline_test.timeout = arg.value
-                    # check if "timeout" is a positive integer
+                        self.cur_inline_test.disabled = arg.value
+                    # check if "timeout" is a positive float
                     elif (
                         index == 5
                         and isinstance(arg, ast.Num)
-                        and isinstance(arg.n, int)
+                        and isinstance(arg.n, float)
                     ):
                         if arg.n <= 0:
                             raise MalformedException(
@@ -564,11 +563,11 @@ class ExtractInlineTest(ast.NodeTransformer):
                         and isinstance(keyword.value.value, bool)
                     ):
                         self.cur_inline_test.disabled = keyword.value.value
-                    # check if "timeout" is a positive integer
+                    # check if "timeout" is a positive float
                     elif (
                         keyword.arg == self.arg_timeout_str
                         and isinstance(keyword.value, ast.Num)
-                        and isinstance(keyword.value.n, int)
+                        and isinstance(keyword.value.n, float)
                     ):
                         if keyword.value.n <= 0:
                             raise MalformedException(
@@ -991,8 +990,6 @@ class InlineTestRunner:
                 res = await asyncio.wait_for(exec(codeobj, test.globs), timeout=test.timeout*1.0)
                 end_time = time.time()
                 out.append(f"Test Execution time: {round(end_time - start_time, 4)} seconds")
-                if test.globs:
-                    test.globs.clear()
                 
             except asyncio.TimeoutError as e:
                 raise TimeoutException(
@@ -1002,8 +999,9 @@ class InlineTestRunner:
             exec(codeobj, test.globs)
             end_time = time.time()
             out.append(f"Test Execution time: {round(end_time - start_time, 4)} seconds")
-            if test.globs:
-                test.globs.clear()
+
+        if test.globs:
+            test.globs.clear()
 
 
 class InlinetestItem(pytest.Item):
