@@ -1,15 +1,20 @@
 import ast
+from audioop import mul
 import copy
 import inspect
 import sys
 import time
+import multiprocessing
 from pathlib import Path
 from types import ModuleType
 from typing import Any, Dict, Iterable, List, Optional, Tuple, Union
 import enum
+from py import code
 import pytest
 from _pytest.pathlib import fnmatch_ex, import_path
 from pytest import Collector, Config, FixtureRequest, Parser
+
+from asyncio.timeouts import timeout
 
 if sys.version_info >= (3, 9, 0):
     from ast import unparse as ast_unparse
@@ -961,25 +966,20 @@ class InlineTestFinder:
 ## InlineTest Runner
 ######################################################################
 class InlineTestRunner:
-    ######
-    import asyncio
-    from async_timeout import timeout
-    self.queue = asyncio.queue()
-    pass
-    ######
-    async def run(self, test: InlineTest, out: List) -> None:
+    def run(self, test: InlineTest, out: List) -> None:
         tree = ast.parse(test.to_test())
         codeobj = compile(tree, filename="<ast>", mode="exec")
         start_time = time.time()
         # TODO: run the test within timeout limit, otherwise raise TimeoutException
-        try: 
-            async with timeout(cur_inline_test.timeout)
-            exec(codeobj, test.globs)
-            pass
-        except asyncio.TimeoutError as e:
-            print(e)
-        ######
-        exec(codeobj, test.globs)
+        p = multiprocessing.Process(target=exec(codeobj, test.globs))
+        p.start()
+        if(test.disabled > 0):
+            p.join(test.disabled)
+            if p.is_alive():
+                p.terminate()
+                raise TimeoutException
+                p.join()
+        # exec(codeobj, test.globs)
         end_time = time.time()
         out.append(f"Test Execution time: {round(end_time - start_time, 4)} seconds")
         if test.globs:
