@@ -387,7 +387,7 @@ class ExtractInlineTest(ast.NodeTransformer):
                         self.cur_inline_test.timeout = arg.value
                     else:
                         raise MalformedException(
-                            f"inline test: Here() accepts {NUM_OF_ARGUMENTS} arguments. 'test_name' must be a string constant, 'parameterized' must be a boolean constant, 'repeated' must be a positive intege, 'tag' must be a list of string"
+                            f"inline test: Here() accepts {NUM_OF_ARGUMENTS} arguments. 'test_name' must be a string constant, 'parameterized' must be a boolean constant, 'repeated' must be a positive integer, 'tag' must be a list of string, 'timeout' must be a positive float"
                         )
                 # keyword arguments
                 for keyword in node.keywords:
@@ -444,7 +444,7 @@ class ExtractInlineTest(ast.NodeTransformer):
                         and isinstance(keyword.value, ast.Constant)
                         and isinstance(keyword.value.value, float)
                     ):
-                        if keyword.value.value <= 0:
+                        if keyword.value.value <= 0.0:
                             raise MalformedException(
                                 f"inline test: {self.arg_timeout_str} must be greater than 0"
                             )
@@ -506,7 +506,7 @@ class ExtractInlineTest(ast.NodeTransformer):
                         and isinstance(arg, ast.Num)
                         and isinstance(arg.n, float)
                     ):
-                        if arg.n <= 0:
+                        if arg.n <= 0.0:
                             raise MalformedException(
                                 f"inline test: {self.arg_timeout_str} must be greater than 0"
                             )
@@ -569,7 +569,7 @@ class ExtractInlineTest(ast.NodeTransformer):
                         and isinstance(keyword.value, ast.Num)
                         and isinstance(keyword.value.n, float)
                     ):
-                        if keyword.value.n <= 0:
+                        if keyword.value.n <= 0.0:
                             raise MalformedException(
                                 f"inline test: {self.arg_timeout_str} must be greater than 0"
                             )
@@ -975,18 +975,8 @@ class InlineTestRunner:
         tree = ast.parse(test.to_test())
         codeobj = compile(tree, filename="<ast>", mode="exec")
         start_time = time.time()
-        # TODO: run the test within timeout limit, otherwise raise TimeoutException
-        # Attempt 1
-        # p = multiprocessing.Process(target=exec(codeobj, test.globs))
-        # p.start()
-        # p.join(test.timeout)
-        # if p.is_alive() or test.timeout > 0:
-        #     p.terminate()
-        #     raise TimeoutException(
-        #         f"Execution timed out while running inline test"
-        #     )
         if test.timeout >= 0: 
-            raise TimeoutException()
+            #raise TimeoutException()
             try:
                 res = await asyncio.wait_for(exec(codeobj, test.globs), timeout=test.timeout)
                 end_time = time.time()
