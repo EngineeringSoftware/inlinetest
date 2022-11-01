@@ -140,7 +140,7 @@ class InlineTest:
         self.tag = []
         self.disabled = False
         # TODO: initialize timeout
-        self.timeout = -1.0
+        self.timeout = -1
         self.globs = {}
 
     def to_test(self):
