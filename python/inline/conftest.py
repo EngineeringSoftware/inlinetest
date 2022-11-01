@@ -976,7 +976,6 @@ class InlineTestRunner:
         codeobj = compile(tree, filename="<ast>", mode="exec")
         start_time = time.time()
         if test.timeout >= 0: 
-            #raise TimeoutException()
             try:
                 res = await asyncio.wait_for(exec(codeobj, test.globs), timeout=test.timeout)
                 end_time = time.time()
