@@ -381,12 +381,12 @@ class ExtractInlineTest(ast.NodeTransformer):
                     elif (
                         index == 5
                         and isinstance(arg, ast.Constant)
-                        and isinstance(arg.value, float)
+                        and isinstance(arg.value, int)
                     ): 
                         self.cur_inline_test.timeout = arg.value
                     else:
                         raise MalformedException(
-                            f"inline test: Here() accepts {NUM_OF_ARGUMENTS} arguments. 'test_name' must be a string constant, 'parameterized' must be a boolean constant, 'repeated' must be a positive integer, 'tag' must be a list of string, 'timeout' must be a positive float"
+                            f"inline test: Here() accepts {NUM_OF_ARGUMENTS} arguments. 'test_name' must be a string constant, 'parameterized' must be a boolean constant, 'repeated' must be a positive integer, 'tag' must be a list of string"
                         )
                 # keyword arguments
                 for keyword in node.keywords:
@@ -437,11 +437,11 @@ class ExtractInlineTest(ast.NodeTransformer):
                         and isinstance(keyword.value.value, bool)
                     ):
                         self.cur_inline_test.disabled = keyword.value.value
-                    # check if "timeout" is a positive float
+                    # check if "timeout" is a positive int
                     elif (
                         keyword.arg == self.arg_timeout_str
                         and isinstance(keyword.value, ast.Constant)
-                        and isinstance(keyword.value.value, float)
+                        and isinstance(keyword.value.value, int)
                     ):
                         if keyword.value.value <= 0.0:
                             raise MalformedException(
@@ -499,11 +499,11 @@ class ExtractInlineTest(ast.NodeTransformer):
                         and isinstance(arg.value, int)
                     ):
                         self.cur_inline_test.disabled = arg.value
-                    # check if "timeout" is a positive float
+                    # check if "timeout" is a positive int
                     elif (
                         index == 5
                         and isinstance(arg, ast.Num)
-                        and isinstance(arg.n, float)
+                        and isinstance(arg.n, int)
                     ):
                         if arg.n <= 0.0:
                             raise MalformedException(
@@ -562,11 +562,11 @@ class ExtractInlineTest(ast.NodeTransformer):
                         and isinstance(keyword.value.value, bool)
                     ):
                         self.cur_inline_test.disabled = keyword.value.value
-                    # check if "timeout" is a positive float
+                    # check if "timeout" is a positive int
                     elif (
                         keyword.arg == self.arg_timeout_str
                         and isinstance(keyword.value, ast.Num)
-                        and isinstance(keyword.value.n, float)
+                        and isinstance(keyword.value.n, int)
                     ):
                         if keyword.value.n <= 0.0:
                             raise MalformedException(
