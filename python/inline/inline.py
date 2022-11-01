@@ -6,7 +6,7 @@ class Here:
         repeated: int = 1,
         tag=[],
         disabled = False,
-        timeout: float = -1
+        timeout: float = -1.0
         # TODO: add a parameter "timeout"
     ):
         """
