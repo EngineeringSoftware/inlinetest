@@ -392,7 +392,7 @@ class TestInlinetests:
         import time
         def m(a):
             a = a + 1
-            Here(timeout=0.5).given(a, loop(3)).check_eq(a,4.0)
+            Here(timeout=5).given(a, loop(3)).check_eq(a,4.0)
 
         def loop(b):
             while True:
@@ -402,3 +402,4 @@ class TestInlinetests:
             items, reprec = pytester.inline_genitems(x)
             res = pytester.runpytest()
             res.ret == 0
+            pytest.raises(TimeoutException)
