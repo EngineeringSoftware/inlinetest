@@ -1,5 +1,4 @@
 import ast
-import asyncio
 import copy
 import inspect
 from sqlite3 import Time
@@ -9,10 +8,10 @@ from pathlib import Path
 from types import ModuleType
 from typing import Any, Dict, Iterable, List, Optional, Tuple, Union
 import enum
-import multiprocessing
 import pytest
 from _pytest.pathlib import fnmatch_ex, import_path
 from pytest import Collector, Config, FixtureRequest, Parser
+import signal
 
 if sys.version_info >= (3, 9, 0):
     from ast import unparse as ast_unparse
@@ -967,23 +966,15 @@ class InlineTestFinder:
 ## InlineTest Runner
 ######################################################################
 class InlineTestRunner:
-    def __init__(self) -> None:
-        self.queue = asyncio.Queue()
-        pass
-
-    async def run(self, test: InlineTest, out: List) -> None:
+    def run(self, test: InlineTest, out: List) -> None:
         tree = ast.parse(test.to_test())
         codeobj = compile(tree, filename="<ast>", mode="exec")
         start_time = time.time()
         if test.timeout >= 0: 
-            try:
-                res = await asyncio.wait_for(exec(codeobj, test.globs), timeout=test.timeout)
+            with timeout(seconds = test.timeout):
+                exec(codeobj, test.globs)
                 end_time = time.time()
                 out.append(f"Test Execution time: {round(end_time - start_time, 4)} seconds")
-            except asyncio.TimeoutError as e:
-                raise TimeoutException(
-                    f"Execution time out while running inline test)"
-                )
             if test.globs:
                     test.globs.clear()
         else: 
@@ -1095,3 +1086,21 @@ def _setup_fixtures(inlinetest_item: InlinetestItem) -> FixtureRequest:
     fixture_request = FixtureRequest(inlinetest_item, _ispytest=True)
     fixture_request._fillfixtures()
     return fixture_request
+
+
+######################################################################################
+#                                     Timeout                                        #
+#                                     Logic                                          #
+######################################################################################
+
+class timeout:
+    def __init__(self, seconds=1, error_message='Timeout'):
+        self.seconds = seconds
+        self.error_message = error_message
+    def handle_timeout(self, signum, frame):
+        raise(TimeoutException)
+    def __enter__(self):
+        signal.signal(signal.SIGALRM, self.handle_timeout)
+        signal.alarm(self.seconds)
+    def __exit__(self, type, value, traceback):
+        signal.alarm(0)
