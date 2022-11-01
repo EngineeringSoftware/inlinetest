@@ -386,7 +386,7 @@ class ExtractInlineTest(ast.NodeTransformer):
                         self.cur_inline_test.timeout = arg.value
                     else:
                         raise MalformedException(
-                            f"inline test: Here() accepts {NUM_OF_ARGUMENTS} arguments. 'test_name' must be a string constant, 'parameterized' must be a boolean constant, 'repeated' must be a positive integer, 'tag' must be a list of string"
+                            f"inline test: Here() accepts {NUM_OF_ARGUMENTS} arguments. 'test_name' must be a string constant, 'parameterized' must be a boolean constant, 'repeated' must be a positive integer, 'tag' must be a list of string, 'timeout' must be a positive integer"
                         )
                 # keyword arguments
                 for keyword in node.keywords:
@@ -450,7 +450,7 @@ class ExtractInlineTest(ast.NodeTransformer):
                         self.cur_inline_test.timeout = keyword.value.value
                     else:
                         raise MalformedException(
-                            f"inline test: Here() accepts {NUM_OF_ARGUMENTS} arguments. 'test_name' must be a string constant, 'parameterized' must be a boolean constant, 'repeated' must be a positive integer, 'tag' must be a list of string"
+                            f"inline test: Here() accepts {NUM_OF_ARGUMENTS} arguments. 'test_name' must be a string constant, 'parameterized' must be a boolean constant, 'repeated' must be a positive integer, 'tag' must be a list of string, 'timeout' must be a positive integer"
                         )
             else:
                 for index, arg in enumerate(node.args):
@@ -512,7 +512,7 @@ class ExtractInlineTest(ast.NodeTransformer):
                         self.cur_inline_test.timeout = arg.n
                     else:
                         raise MalformedException(
-                            f"inline test: Here() accepts {NUM_OF_ARGUMENTS} arguments. 'test_name' must be a string constant, 'parameterized' must be a boolean constant, 'repeated' must be a positive intege, 'tag' must be a list of string"
+                            f"inline test: Here() accepts {NUM_OF_ARGUMENTS} arguments. 'test_name' must be a string constant, 'parameterized' must be a boolean constant, 'repeated' must be a positive intege, 'tag' must be a list of string, 'timeout' must be a positive integer"
                         )
                 # keyword arguments
                 for keyword in node.keywords:
@@ -575,7 +575,7 @@ class ExtractInlineTest(ast.NodeTransformer):
                         self.cur_inline_test.timeout = keyword.value.n
                     else:
                         raise MalformedException(
-                            f"inline test: Here() accepts {NUM_OF_ARGUMENTS} arguments. 'test_name' must be a string constant, 'parameterized' must be a boolean constant, 'repeated' must be a positive integer, 'tag' must be a list of string"
+                            f"inline test: Here() accepts {NUM_OF_ARGUMENTS} arguments. 'test_name' must be a string constant, 'parameterized' must be a boolean constant, 'repeated' must be a positive integer, 'tag' must be a list of string, 'timeout' must be a positive integer"
                         )
         else:
             raise MalformedException(
