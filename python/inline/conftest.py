@@ -141,7 +141,7 @@ class InlineTest:
         self.tag = []
         self.disabled = False
         # TODO: initialize timeout
-        self.timeout = -1
+        self.timeout = -1.0
         self.globs = {}
 
     def to_test(self):
@@ -990,7 +990,8 @@ class InlineTestRunner:
                 res = await asyncio.wait_for(exec(codeobj, test.globs), timeout=test.timeout*1.0)
                 end_time = time.time()
                 out.append(f"Test Execution time: {round(end_time - start_time, 4)} seconds")
-                
+                if test.globs:
+                    test.globs.clear()
             except asyncio.TimeoutError as e:
                 raise TimeoutException(
                     f"Execution time out while running inline test)"
@@ -999,9 +1000,8 @@ class InlineTestRunner:
             exec(codeobj, test.globs)
             end_time = time.time()
             out.append(f"Test Execution time: {round(end_time - start_time, 4)} seconds")
-
-        if test.globs:
-            test.globs.clear()
+            if test.globs:
+                test.globs.clear()
 
 
 class InlinetestItem(pytest.Item):
