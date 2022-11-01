@@ -389,12 +389,13 @@ class TestInlinetests:
         checkfile = pytester.makepyfile(
     """
         from inline import Here
+        import time
         def m(a):
-            c = [i + 3 for i in a]
-            Here(timeout=1).given(a, [i + 1 for i in range(1000000)]).check_eq(len(c), len(a))
+            time.sleep(a)
+            Here(timeout=3.0).given(a, time.sleep(4)).check_eq(a,4.0)
     """)
         for x in (pytester.path, checkfile):
             items, reprec = pytester.inline_genitems(x)
-            assert len(items) == 1
+            assert len(items) == 0
             res = pytester.runpytest()
             assert res.ret == 0

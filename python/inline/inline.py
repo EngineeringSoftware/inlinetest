@@ -10,13 +10,14 @@ class Here:
         # TODO: add a parameter "timeout"
     ):
         """
-        Initialize Inline object with test name / parameetrized flag
+        Initialize Inline object with test name / parametrized flag
 
         :param test_name: test
         :param parameterized: whether the test is parameterized
         :param repeated: number of times to repeat the tests
         :param tag: tags to group tests
         :param disabled: whether the test is disabled
+        :param timeout: seconds to timeout the test
         """
 
     def given(self, variable, value):

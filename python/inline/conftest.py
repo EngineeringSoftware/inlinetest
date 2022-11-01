@@ -986,16 +986,17 @@ class InlineTestRunner:
         #         f"Execution timed out while running inline test"
         #     )
         if test.timeout >= 0: 
+            raise TimeoutException()
             try:
-                res = await asyncio.wait_for(exec(codeobj, test.globs), timeout=test.timeout*1.0)
+                res = await asyncio.wait_for(exec(codeobj, test.globs), timeout=test.timeout)
                 end_time = time.time()
                 out.append(f"Test Execution time: {round(end_time - start_time, 4)} seconds")
-                if test.globs:
-                    test.globs.clear()
             except asyncio.TimeoutError as e:
                 raise TimeoutException(
                     f"Execution time out while running inline test)"
                 )
+            if test.globs:
+                    test.globs.clear()
         else: 
             exec(codeobj, test.globs)
             end_time = time.time()
