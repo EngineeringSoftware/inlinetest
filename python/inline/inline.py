@@ -16,7 +16,7 @@ class Here:
         :param repeated: number of times to repeat the tests
         :param tag: tags to group tests
         :param disabled: whether the test is disabled
-        :param timeout: seconds to timeout the test, must be an integer
+        :param timeout: seconds to timeout the test, must be a float
         """
 
     def given(self, variable, value):
