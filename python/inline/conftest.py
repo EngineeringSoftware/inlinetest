@@ -89,7 +89,8 @@ def pytest_configure(config):
 
 
 def pytest_collect_file(
-    file_path: Path, parent: Collector,
+    file_path: Path,
+    parent: Collector,
 ) -> Optional["InlinetestModule"]:
     config = parent.config
     if _is_inlinetest(config, file_path):
@@ -145,30 +146,18 @@ class InlineTest:
         if self.prev_stmt_type == PrevStmtType.CondExpr:
             return "\n".join(
                 self.import_libraries
-                + [
-                    ExtractInlineTest.node_to_source_code(n)
-                    for n in self.given_stmts
-                ]
-                + [
-                    ExtractInlineTest.node_to_source_code(n)
-                    for n in self.check_stmts
-                ]
+                + [ExtractInlineTest.node_to_source_code(n) for n in self.given_stmts]
+                + [ExtractInlineTest.node_to_source_code(n) for n in self.check_stmts]
             )
         else:
             return "\n".join(
                 self.import_libraries
-                + [
-                    ExtractInlineTest.node_to_source_code(n)
-                    for n in self.given_stmts
-                ]
+                + [ExtractInlineTest.node_to_source_code(n) for n in self.given_stmts]
                 + [
                     ExtractInlineTest.node_to_source_code(n)
                     for n in self.previous_stmts
                 ]
-                + [
-                    ExtractInlineTest.node_to_source_code(n)
-                    for n in self.check_stmts
-                ]
+                + [ExtractInlineTest.node_to_source_code(n) for n in self.check_stmts]
             )
 
     def __repr__(self):
@@ -203,11 +192,14 @@ class MalformedException(Exception):
 
     pass
 
+
 class TimeoutException(Exception):
     """
     Time limit exceeded
     """
+
     pass
+
 
 ######################################################################
 ## InlineTest Parser
@@ -385,7 +377,7 @@ class ExtractInlineTest(ast.NodeTransformer):
                         index == 5
                         and isinstance(arg, ast.Constant)
                         and isinstance(arg.value, float)
-                    ): 
+                    ):
                         self.cur_inline_test.timeout = arg.value
                     else:
                         raise MalformedException(
@@ -618,7 +610,9 @@ class ExtractInlineTest(ast.NodeTransformer):
 
     def build_assert_eq(self, left_node, comparator_node):
         equal_node = ast.Compare(
-            left=left_node, ops=[ast.Eq()], comparators=[comparator_node],
+            left=left_node,
+            ops=[ast.Eq()],
+            comparators=[comparator_node],
         )
         assert_node = ast.Assert(
             test=equal_node,
@@ -669,7 +663,10 @@ class ExtractInlineTest(ast.NodeTransformer):
                     "format",
                     ast.Load(),
                 ),
-                args=[ast.Constant(self.node_to_source_code(test_node)), test_node,],
+                args=[
+                    ast.Constant(self.node_to_source_code(test_node)),
+                    test_node,
+                ],
                 keywords=[],
             ),
         )
@@ -973,10 +970,10 @@ class InlineTestRunner:
         tree = ast.parse(test.to_test())
         codeobj = compile(tree, filename="<ast>", mode="exec")
         start_time = time.time()
-        if test.timeout > 0: 
-            with timeout(seconds = test.timeout):
+        if test.timeout > 0:
+            with timeout(seconds=test.timeout):
                 exec(codeobj, test.globs)
-        else: 
+        else:
             exec(codeobj, test.globs)
         end_time = time.time()
         out.append(f"Test Execution time: {round(end_time - start_time, 4)} seconds")
@@ -1067,7 +1064,10 @@ class InlinetestModule(pytest.Module):
                 ):  # skip empty inline tests and tests with tags not in the tag list and disabled tests
                     continue
                 yield InlinetestItem.from_parent(
-                    self, name=test.test_name, runner=runner, dtest=test,
+                    self,
+                    name=test.test_name,
+                    runner=runner,
+                    dtest=test,
                 )
 
 
@@ -1092,14 +1092,18 @@ def _setup_fixtures(inlinetest_item: InlinetestItem) -> FixtureRequest:
 #                                     Logic                                          #
 ######################################################################################
 
+
 class timeout:
-    def __init__(self, seconds=1, error_message='Timeout'):
+    def __init__(self, seconds=1, error_message="Timeout"):
         self.seconds = seconds
         self.error_message = error_message
+
     def handle_timeout(self, signum, frame):
-        raise(TimeoutException)
+        raise (TimeoutException)
+
     def __enter__(self):
         signal.signal(signal.SIGALRM, self.handle_timeout)
         signal.setitimer(signal.ITIMER_REAL, self.seconds)
+
     def __exit__(self, type, value, traceback):
         signal.alarm(0)

@@ -1,12 +1,15 @@
+from ast import List
+
+
 class Here:
     def __init__(
         self,
         test_name: str = None,
         parameterized: bool = False,
         repeated: int = 1,
-        tag=[],
-        disabled = False,
-        timeout: float = -1.0
+        tag: List = [],
+        disabled: bool = False,
+        timeout: float = -1.0,
     ):
         """
         Initialize Inline object with test name / parametrized flag
@@ -60,8 +63,8 @@ class Here:
         """
         return self
 
-#######################################################################
-    #TODO Zach - Add More API for Asserts as Development Continues
+    #######################################################################
+    # TODO Zach - Add More API for Asserts as Development Continues
     def check_null(self, value):
         """
         Assert whether an object is null
@@ -92,7 +95,7 @@ class Here:
         :raises: AssertionError
         """
         return self
-    
+
     def check_instance_of(self, actual_type, expected_type):
         """
         Assert whether an object is an instance of a given type
@@ -115,7 +118,9 @@ class Here:
         """
         return self
 
+
 #######################################################################
+
 
 class Group:
     def __init__(self, *arg):
