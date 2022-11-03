@@ -1,4 +1,4 @@
-from inline.conftest import InlinetestItem, MalformedException
+from inline.conftest import InlinetestItem, MalformedException, TimeoutException
 from _pytest.pytester import Pytester
 import pytest
 
@@ -383,3 +383,23 @@ class TestInlinetests:
             assert len(items) == 1
             res = pytester.runpytest()
             assert res.ret == 0
+
+
+    def test_time(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+    """
+        from inline import Here
+        import time
+        def m(a):
+            a = a + 1
+            Here(timeout=10.75).given(a, loop(3)).check_eq(a,4.0)
+
+        def loop(b):
+            while True:
+                b = b + 1
+    """)
+        for x in (pytester.path, checkfile):
+            items, reprec = pytester.inline_genitems(x)
+            res = pytester.runpytest()
+            res.ret == 0
+            pytest.raises(TimeoutException)
