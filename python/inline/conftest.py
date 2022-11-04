@@ -68,6 +68,14 @@ def pytest_addoption(parser: Parser) -> None:
         help="group inlinetests",
         dest="inlinetest_group",
     )
+    group.addoption(
+        "--inlinetest-order",
+        action="append",
+        default=[],
+        metavar="tag",
+        help="order inlinetests",
+        dest="inlinetest_order",
+    )
 
 
 @pytest.hookimpl()
@@ -1055,6 +1063,23 @@ class InlinetestModule(pytest.Module):
 
         tags = self.config.getoption("inlinetest_group", default=None)
 
+        for test_list in finder.find(module):
+            for test in test_list:
+                if (
+                    test.is_empty()
+                    or (tags and len(set(test.tag) & set(tags)) == 0)
+                    or test.disabled
+                ):  # skip empty inline tests and tests with tags not in the tag list and disabled tests
+                    continue
+                yield InlinetestItem.from_parent(
+                    self,
+                    name=test.test_name,
+                    runner=runner,
+                    dtest=test,
+                )
+    
+        tags = self.config.getoption("inlinetest_order", default=None)
+        
         for test_list in finder.find(module):
             for test in test_list:
                 if (
