@@ -1082,22 +1082,18 @@ class InlinetestModule(pytest.Module):
         tags = self.config.getoption("inlinetest_order", default=None)
 
         for test_list in finder.find(module):
-            if(len(test_list) > 0):
-                prio_list = [test_list[0]] * len(tags)
-                order_list = []
+            if len(test_list) > 0:
+                prio_list = test_list[0 : len(tags)]
                 for test in test_list:
                     if (
-                        test.is_empty() or test.disabled
+                        test.is_empty()
+                        or (tags and len(set(test.tag) & set(tags)) == 0)
+                        or test.disabled
                     ):  # skip empty inline tests and disabled tests
                         continue
                     # sorting the tests based on their order in tags
-                    if tags and len(set(test.tag) & set(tags)) == 0:
-                        order_list.append(test)
-                    elif test.tag in tags:
-                        prio_list.insert(tags.index(test.tag), test)
-
-                # combining ordered and non ordered lists
-                prio_list.extend(order_list)
+                    if test.tag in tags:
+                        prio_list[tags.index(test.tag)] = test
 
                 for test in prio_list:
                     yield InlinetestItem.from_parent(

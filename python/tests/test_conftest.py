@@ -462,20 +462,20 @@ class TestInlinetests:
             items = [x.item for x in reprec.getcalls("pytest_itemcollected")]
             assert len(items) == 2
 
-    # def test_check_order_and_nonorder_tests(self, pytester: Pytester):
-    #     checkfile = pytester.makepyfile(
-    #         """ 
-    #     from inline import Here
-    #     def m(a):
-    #         a = a + 1
-    #         Here(tag = ["add"]).given(a, 1).check_eq(a, 2)
-    #         a = a + 2
-    #         Here().given(a, 1).check_eq(a, 2)
-    #         a = a - 1
-    #         Here(tag = ["minus"]).given(a, 1).check_eq(a, 0)
-    # """
-    #     )
-    #     for x in (pytester.path, checkfile):
-    #         reprec = pytester.inline_run("--inlinetest-order=minus", "--inlinetest-order=add")
-    #         items = [x.item for x in reprec.getcalls("pytest_itemcollected")]
-    #         assert len(items) == 3
+    def test_check_order_and_nonorder_tests(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+            """ 
+        from inline import Here
+        def m(a):
+            a = a + 1
+            Here(tag = ["add"]).given(a, 1).check_eq(a, 2)
+            a = a + 2
+            Here().given(a, 1).check_eq(a, 2)
+            a = a - 1
+            Here(tag = ["minus"]).given(a, 1).check_eq(a, 0)
+    """
+        )
+        for x in (pytester.path, checkfile):
+            reprec = pytester.inline_run("--inlinetest-order=minus", "--inlinetest-order=add")
+            items = [x.item for x in reprec.getcalls("pytest_itemcollected")]
+            assert len(items) == 3
