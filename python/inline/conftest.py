@@ -1061,47 +1061,32 @@ class InlinetestModule(pytest.Module):
         finder = InlineTestFinder()
         runner = InlineTestRunner()
 
-        tags = self.config.getoption("inlinetest_group", default=None)
+        group_tags = self.config.getoption("inlinetest_group", default=None)
+        order_tags = self.config.getoption("inlinetest_group", default=None)
 
         for test_list in finder.find(module):
             for test in test_list:
+                priority = []
+                unordered = []
                 if (
                     test.is_empty()
-                    or (tags and len(set(test.tag) & set(tags)) == 0)
+                    or (group_tags and len(set(test.tag) & set(group_tags)) == 0)
                     or test.disabled
                 ):  # skip empty inline tests and tests with tags not in the tag list and disabled tests
                     continue
+                # sorting the tests based on their order in tags
+
+                if test.tag in order_tags:
+                    prio_list.insert(order_tags.index(test.tag), test)
+                else:
+                    unordered.append(test)
+
                 yield InlinetestItem.from_parent(
                     self,
                     name=test.test_name,
                     runner=runner,
                     dtest=test,
                 )
-
-        # ordering the tags for execution
-        tags = self.config.getoption("inlinetest_order", default=None)
-
-        for test_list in finder.find(module):
-            if len(test_list) > 0:
-                prio_list = test_list[0 : len(tags)]
-                for test in test_list:
-                    if (
-                        test.is_empty()
-                        or (tags and len(set(test.tag) & set(tags)) == 0)
-                        or test.disabled
-                    ):  # skip empty inline tests and disabled tests
-                        continue
-                    # sorting the tests based on their order in tags
-                    if test.tag in tags:
-                        prio_list[tags.index(test.tag)] = test
-
-                for test in prio_list:
-                    yield InlinetestItem.from_parent(
-                        self,
-                        name=test.test_name,
-                        runner=runner,
-                        dtest=test,
-                    )
 
 
 def _setup_fixtures(inlinetest_item: InlinetestItem) -> FixtureRequest:
