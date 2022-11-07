@@ -1042,6 +1042,24 @@ class InlinetestItem(pytest.Item):
 
 
 class InlinetestModule(pytest.Module):
+    def order_tests(test_list, tags):
+        prio_unsorted = []
+        unordered = []
+
+        # sorting the tests based if they are ordered or not
+        for test in test_list:
+            if test.tag in tags:
+                prio_unsorted.insert(tags.index(test.tag), test)
+            else:
+                unordered.append(test)
+        
+        # sorting tests in the priority list
+        prio_sorted = prio_unsorted
+        for test in prio_unsorted:
+            prio_sorted[tags.index(test.tag)] = test
+                
+        return prio_sorted.extend(unordered)
+
     def collect(self) -> Iterable[InlinetestItem]:
         if self.path.name == "conftest.py":
             module = self.config.pluginmanager._importconftest(
@@ -1064,22 +1082,15 @@ class InlinetestModule(pytest.Module):
         group_tags = self.config.getoption("inlinetest_group", default=None)
         order_tags = self.config.getoption("inlinetest_group", default=None)
 
-        for test_list in finder.find(module):
+        ordered_list = order_tests(test_list, order_tags)
+        for ordered_list in finder.find(module):
             for test in test_list:
-                priority = []
-                unordered = []
                 if (
                     test.is_empty()
                     or (group_tags and len(set(test.tag) & set(group_tags)) == 0)
                     or test.disabled
                 ):  # skip empty inline tests and tests with tags not in the tag list and disabled tests
                     continue
-                # sorting the tests based on their order in tags
-
-                if test.tag in order_tags:
-                    prio_list.insert(order_tags.index(test.tag), test)
-                else:
-                    unordered.append(test)
 
                 yield InlinetestItem.from_parent(
                     self,
