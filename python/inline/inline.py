@@ -65,7 +65,7 @@ class Here:
 
     #######################################################################
     # TODO Zach - Add More API for Asserts as Development Continues
-    def check_null(self, value):
+    def check_none(self, value):
         """
         Assert whether an object is null
 
@@ -75,7 +75,7 @@ class Here:
         """
         return self
 
-    def check_not_null(self, value):
+    def check_not_none(self, value):
         """
         Assert whether a value is not null
 

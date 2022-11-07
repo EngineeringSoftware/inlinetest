@@ -238,8 +238,8 @@ class ExtractInlineTest(ast.NodeTransformer):
     check_false_str = "check_false"
     ##########################################################################################################
     # TODO: Zach - Finish Implementation of assertNull, assertNotEquals, assertInstanceOf, assertThrows
-    check_null_str = "check_null"
-    check_not_null_str = "check_not_null"
+    check_none_str = "check_none"
+    check_not_none_str = "check_not_none"
     check_not_equals_str = "check_neq"
     check_instance_of = "check_instance_of"
     check_throw = "check_throw"
@@ -776,6 +776,89 @@ class ExtractInlineTest(ast.NodeTransformer):
         else:
             raise MalformedException("inline test: invalid check_neq(), expected 2 args")
 
+    #TODO CHANGE FOR ASSERT NONE
+    #Reference _ast.pyi Abstract Syntax Tree
+    def build_assert_none(self, left_node):
+        equal_node = ast.Compare(
+            left=left_node,
+            ops=[ast.Is()],
+            comparators=[ast.Constant(None)],
+        )
+        assert_node = ast.Assert(
+            test=equal_node,
+            msg=ast.Call(
+                func=ast.Attribute(
+                    ast.Constant("Assertion that value was None failed\n"),
+                    "format",
+                    ast.Load(),
+                ),
+                args=[],
+                keywords=[],
+            ),
+        )
+        return assert_node
+
+    def parse_check_none(self, node):
+        if len(node.args) == 1:
+            if self.cur_inline_test.parameterized:
+                self.parameterized_inline_tests_init(node.args[0])
+                for index, value in enumerate(node.args[0].elts):
+                    operand_node = self.parse_group(value)
+                    assert_node = self.build_assert_none(operand_node)
+                    self.cur_inline_test.parameterized_inline_tests[
+                        index
+                    ].check_stmts.append(assert_node)
+            else:
+                operand_node = self.parse_group(node.args[0])
+                assert_node = self.build_assert_none(operand_node)
+                self.cur_inline_test.check_stmts.append(assert_node)
+        else:
+            raise MalformedException(
+                "inline test: invalid check_none(), expected 1 arg"
+            )
+
+        #TODO CHANGE FOR ASSERT NONE
+    #Reference _ast.pyi Abstract Syntax Tree
+    def build_assert_not_none(self, left_node):
+        equal_node = ast.Compare(
+            left=left_node,
+            ops=[ast.IsNot()],
+            comparators=[ast.Constant(None)],
+        )
+        assert_node = ast.Assert(
+            test=equal_node,
+            msg=ast.Call(
+                func=ast.Attribute(
+                    ast.Constant("Assertion that value was not None failed\n"),
+                    "format",
+                    ast.Load(),
+                ),
+                args=[],
+                keywords=[],
+            ),
+        )
+        return assert_node
+
+    def parse_check_not_none(self, node):
+        if len(node.args) == 1:
+            if self.cur_inline_test.parameterized:
+                self.parameterized_inline_tests_init(node.args[0])
+                for index, value in enumerate(node.args[0].elts):
+                    operand_node = self.parse_group(value)
+                    assert_node = self.build_assert_not_none(operand_node)
+                    self.cur_inline_test.parameterized_inline_tests[
+                        index
+                    ].check_stmts.append(assert_node)
+            else:
+                operand_node = self.parse_group(node.args[0])
+                assert_node = self.build_assert_not_none(operand_node)
+                self.cur_inline_test.check_stmts.append(assert_node)
+        else:
+            raise MalformedException(
+                "inline test: invalid check_none(), expected 1 arg"
+            )
+
+
     def parse_group(self, node):
         if (
             isinstance(node, ast.Call)
@@ -865,6 +948,10 @@ class ExtractInlineTest(ast.NodeTransformer):
             # "check_neq(a, 1)"
             elif call.func.attr == self.check_not_equals_str:
                 self.parse_check_neq(call)
+            elif call.func.attr == self.check_none_str:
+                self.parse_check_none(call)
+            elif call.func.attr == self.check_not_none_str:
+                self.parse_check_not_none(call)
             elif call.func.attr == self.given_str:
                 raise MalformedException(
                     f"inline test: given() must be called before check_eq()/check_true()/check_false()"

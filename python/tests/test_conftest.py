@@ -429,3 +429,49 @@ class TestInlinetests:
             res = pytester.runpytest()
             res.ret == 0
             pytest.raises(TimeoutException)
+
+
+    def test_assert_neq(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+            """ 
+        from inline import Here
+        def m(a):
+            a = a - 1
+            Here().given(a, 1).check_neq(a, 1)
+    """
+        )
+        for x in (pytester.path, checkfile):
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 1
+            res = pytester.runpytest()
+            assert res.ret == 0
+
+    def test_assert_none(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+            """ 
+        from inline import Here
+        def m(a):
+            a = None
+            Here().given(a, 1).check_none(a)
+    """
+        )
+        for x in (pytester.path, checkfile):
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 1
+            res = pytester.runpytest()
+            assert res.ret == 0
+
+    def test_assert_not_none(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+            """ 
+        from inline import Here
+        def m(a):
+            a = 3
+            Here().given(a, 1).check_not_none(a)
+    """
+        )
+        for x in (pytester.path, checkfile):
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 1
+            res = pytester.runpytest()
+            assert res.ret == 0
