@@ -1052,13 +1052,14 @@ class InlinetestModule(pytest.Module):
                 prio_unsorted.insert(tags.index(test.tag), test)
             else:
                 unordered.append(test)
-        
+
         # sorting tests in the priority list
         prio_sorted = prio_unsorted
         for test in prio_unsorted:
             prio_sorted[tags.index(test.tag)] = test
-                
-        return prio_sorted.extend(unordered)
+
+        prio_sorted.extend(unordered)
+        return prio_sorted
 
     def collect(self) -> Iterable[InlinetestItem]:
         if self.path.name == "conftest.py":
@@ -1082,22 +1083,23 @@ class InlinetestModule(pytest.Module):
         group_tags = self.config.getoption("inlinetest_group", default=None)
         order_tags = self.config.getoption("inlinetest_group", default=None)
 
-        ordered_list = order_tests(test_list, order_tags)
-        for ordered_list in finder.find(module):
-            for test in test_list:
-                if (
-                    test.is_empty()
-                    or (group_tags and len(set(test.tag) & set(group_tags)) == 0)
-                    or test.disabled
-                ):  # skip empty inline tests and tests with tags not in the tag list and disabled tests
-                    continue
+        for test_list in finder.find(module):
+            ordered_list = InlinetestModule.order_tests(test_list, order_tags)
+            if ordered_list is not None:
+                for test in ordered_list:
+                    if (
+                        test.is_empty()
+                        or (group_tags and len(set(test.tag) & set(group_tags)) == 0)
+                        or test.disabled
+                    ):  # skip empty inline tests and tests with tags not in the tag list and disabled tests
+                        continue
 
-                yield InlinetestItem.from_parent(
-                    self,
-                    name=test.test_name,
-                    runner=runner,
-                    dtest=test,
-                )
+                    yield InlinetestItem.from_parent(
+                        self,
+                        name=test.test_name,
+                        runner=runner,
+                        dtest=test,
+                    )
 
 
 def _setup_fixtures(inlinetest_item: InlinetestItem) -> FixtureRequest:
