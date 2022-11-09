@@ -480,7 +480,7 @@ class TestInlinetests:
             items = [x.item for x in reprec.getcalls("pytest_itemcollected")]
             assert len(items) == 3
 
-    def test_check_same_order_tests(self, pytester: Pytester):
+    def test_check_same_tag_order_tests(self, pytester: Pytester):
         checkfile = pytester.makepyfile(
             """ 
         from inline import Here

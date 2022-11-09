@@ -1053,13 +1053,14 @@ class InlinetestModule(pytest.Module):
             else:
                 unordered.append(test)
 
-        # sorting tests in the priority list
+        # giving each test a value for its order in tags
         sorted_ordering = [None] * len(prio_unsorted)
         for i in range(0,len(prio_unsorted)):
             for tag in tags:
                 if(tag in prio_unsorted[i].tag):
                     sorted_ordering[i] = tags.index(tag)
         
+        # sorting the list based on their tag positions
         prio_sorted = [val for (_, val) in sorted(zip(sorted_ordering, prio_unsorted), key=lambda x: x[0])]
         prio_sorted.extend(unordered)
 
@@ -1088,6 +1089,7 @@ class InlinetestModule(pytest.Module):
         order_tags = self.config.getoption("inlinetest_order", default=None)
 
         for test_list in finder.find(module):
+            # reorder the list if there are tests to be ordered
             ordered_list = InlinetestModule.order_tests(test_list, order_tags)
             if ordered_list is not None:
                 for test in ordered_list:
