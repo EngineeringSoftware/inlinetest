@@ -1045,7 +1045,8 @@ class InlinetestModule(pytest.Module):
     def order_tests(test_list, tags):
         prio_unsorted = []
         unordered = []
-        # sorting the tests based if they are ordered or not
+        
+        # sorting the tests based on if they are ordered or not
         for test in test_list:
             if (len(set(test.tag) & set(tags)) > 0):
                 prio_unsorted.append(test)
@@ -1059,10 +1060,9 @@ class InlinetestModule(pytest.Module):
                 if(tag in prio_unsorted[i].tag):
                     sorted_ordering[i] = tags.index(tag)
         
-        print(sorted_ordering)
         prio_sorted = [val for (_, val) in sorted(zip(sorted_ordering, prio_unsorted), key=lambda x: x[0])]
-
         prio_sorted.extend(unordered)
+
         return prio_sorted
 
     def collect(self) -> Iterable[InlinetestItem]:
