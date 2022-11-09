@@ -1045,26 +1045,25 @@ class InlinetestModule(pytest.Module):
     def order_tests(test_list, tags):
         prio_unsorted = []
         unordered = []
-
-        for tag in tags:
-            print(tag)
         # sorting the tests based if they are ordered or not
-        print("------------------------------")
         for test in test_list:
-            print(test.tag)
             if (len(set(test.tag) & set(tags)) > 0):
                 prio_unsorted.append(test)
             else:
                 unordered.append(test)
 
-        # # sorting tests in the priority list
-        # prio_sorted = prio_unsorted
-        # for test in prio_unsorted:
-        #     prio_sorted[tags.index(test.tag)] = test
+        # sorting tests in the priority list
+        sorted_ordering = [None] * len(prio_unsorted)
+        for i in range(0,len(prio_unsorted)):
+            for tag in tags:
+                if(tag in prio_unsorted[i].tag):
+                    sorted_ordering[i] = tags.index(tag)
+        
+        print(sorted_ordering)
+        prio_sorted = [val for (_, val) in sorted(zip(sorted_ordering, prio_unsorted), key=lambda x: x[0])]
 
-        # prio_sorted.extend(unordered)
-        # prio_unsorted.extend(unordered)
-        return prio_unsorted
+        prio_sorted.extend(unordered)
+        return prio_sorted
 
     def collect(self) -> Iterable[InlinetestItem]:
         if self.path.name == "conftest.py":

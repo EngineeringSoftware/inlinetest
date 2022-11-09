@@ -478,9 +478,9 @@ class TestInlinetests:
         for x in (pytester.path, checkfile):
             reprec = pytester.inline_run("--inlinetest-order=minus", "--inlinetest-order=add")
             items = [x.item for x in reprec.getcalls("pytest_itemcollected")]
-            assert len(items) == 2
+            assert len(items) == 3
 
-    def test_check_nonorder_tests(self, pytester: Pytester):
+    def test_check_same_order_tests(self, pytester: Pytester):
         checkfile = pytester.makepyfile(
             """ 
         from inline import Here
@@ -499,3 +499,19 @@ class TestInlinetests:
             reprec = pytester.inline_run("--inlinetest-order=minus", "--inlinetest-order=add")
             items = [x.item for x in reprec.getcalls("pytest_itemcollected")]
             assert len(items) == 4
+
+    def test_check_group_and_order_tests(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+            """ 
+        from inline import Here
+        def m(a):
+            a = a + 1
+            Here(tag = ["add"]).given(a, 1).check_eq(a, 2)
+            a = a - 1
+            Here(tag = ["minus"]).given(a, 2).check_eq(a, 1)
+    """
+        )
+        for x in (pytester.path, checkfile):
+            reprec = pytester.inline_run("--inlinetest-order=minus", "--inlinetest-order=add", "--inlinetest-group=add")
+            items = [x.item for x in reprec.getcalls("pytest_itemcollected")]
+            assert len(items) == 1
