@@ -243,6 +243,9 @@ class ExtractInlineTest(ast.NodeTransformer):
     check_not_equals_str = "check_neq"
     check_instance_of = "check_instance_of"
     check_throw = "check_throw"
+    check_same = "check_same"
+    check_not_same = "check_not_same"
+    fail_str = "fail"
     ##########################################################################################################
     given_str = "given"
     group_str = "Group"
@@ -730,8 +733,6 @@ class ExtractInlineTest(ast.NodeTransformer):
                 "inline test: invalid check_false(), expected 1 arg"
             )
 
-    #TODO CHANGE FOR ASSERT NOT EQUALS
-    #Reference _ast.pyi Abstract Syntax Tree
     def build_assert_neq(self, left_node, comparator_node):
         equal_node = ast.Compare(
             left=left_node,
@@ -776,8 +777,6 @@ class ExtractInlineTest(ast.NodeTransformer):
         else:
             raise MalformedException("inline test: invalid check_neq(), expected 2 args")
 
-    #TODO CHANGE FOR ASSERT NONE
-    #Reference _ast.pyi Abstract Syntax Tree
     def build_assert_none(self, left_node):
         equal_node = ast.Compare(
             left=left_node,
@@ -817,8 +816,6 @@ class ExtractInlineTest(ast.NodeTransformer):
                 "inline test: invalid check_none(), expected 1 arg"
             )
 
-        #TODO CHANGE FOR ASSERT NONE
-    #Reference _ast.pyi Abstract Syntax Tree
     def build_assert_not_none(self, left_node):
         equal_node = ast.Compare(
             left=left_node,
@@ -855,9 +852,154 @@ class ExtractInlineTest(ast.NodeTransformer):
                 self.cur_inline_test.check_stmts.append(assert_node)
         else:
             raise MalformedException(
-                "inline test: invalid check_none(), expected 1 arg"
+                "inline test: invalid check_not_none(), expected 1 arg"
             )
 
+    def build_assert_same(self, left_node, comparator_node):
+        equal_node = ast.Compare(
+            left=left_node,
+            ops=[ast.Is()],
+            comparators=[comparator_node],
+        )
+        assert_node = ast.Assert(
+            test=equal_node,
+            msg=ast.Call(
+                func=ast.Attribute(
+                    ast.Constant("{0} == {1}\nActual: {2}\nExpected: {3}\n"),
+                    "format",
+                    ast.Load(),
+                ),
+                args=[
+                    ast.Constant(self.node_to_source_code(left_node)),
+                    ast.Constant(self.node_to_source_code(comparator_node)),
+                    left_node,
+                    comparator_node,
+                ],
+                keywords=[],
+            ),
+        )
+        return assert_node
+
+    def parse_check_same(self, node):
+        # check if the function being called is an inline test function
+        if len(node.args) == 2:
+            left_node = self.parse_group(node.args[0])
+            if self.cur_inline_test.parameterized:
+                self.parameterized_inline_tests_init(node.args[1])
+                for index, value in enumerate(node.args[1].elts):
+                    comparator_node = self.parse_group(value)
+                    assert_node = self.build_assert_same(left_node, comparator_node)
+                    self.cur_inline_test.parameterized_inline_tests[
+                        index
+                    ].check_stmts.append(assert_node)
+            else:
+                comparator_node = self.parse_group(node.args[1])
+                assert_node = self.build_assert_same(left_node, comparator_node)
+                self.cur_inline_test.check_stmts.append(assert_node)
+        else:
+            raise MalformedException("inline test: invalid check_same(), expected 2 args")
+
+    def build_assert_not_same(self, left_node, comparator_node):
+        equal_node = ast.Compare(
+            left=left_node,
+            ops=[ast.IsNot()],
+            comparators=[comparator_node],
+        )
+        assert_node = ast.Assert(
+            test=equal_node,
+            msg=ast.Call(
+                func=ast.Attribute(
+                    ast.Constant("{0} == {1}\nActual: {2}\nExpected: {3}\n"),
+                    "format",
+                    ast.Load(),
+                ),
+                args=[
+                    ast.Constant(self.node_to_source_code(left_node)),
+                    ast.Constant(self.node_to_source_code(comparator_node)),
+                    left_node,
+                    comparator_node,
+                ],
+                keywords=[],
+            ),
+        )
+        return assert_node
+
+    def parse_check_not_same(self, node):
+        # check if the function being called is an inline test function
+        if len(node.args) == 2:
+            left_node = self.parse_group(node.args[0])
+            if self.cur_inline_test.parameterized:
+                self.parameterized_inline_tests_init(node.args[1])
+                for index, value in enumerate(node.args[1].elts):
+                    comparator_node = self.parse_group(value)
+                    assert_node = self.build_assert_not_same(left_node, comparator_node)
+                    self.cur_inline_test.parameterized_inline_tests[
+                        index
+                    ].check_stmts.append(assert_node)
+            else:
+                comparator_node = self.parse_group(node.args[1])
+                assert_node = self.build_assert_not_same(left_node, comparator_node)
+                self.cur_inline_test.check_stmts.append(assert_node)
+        else:
+            raise MalformedException("inline test: invalid check_not_same(), expected 2 args")
+
+    # TODO Assert Instance of
+    def build_assert_instance_of(self, left_node, type):
+        print("LeftNode")
+        print(left_node)
+        print(ast.unparse(left_node))
+        print("TYPE IS ")
+        print(ast.unparse(type))
+        assert_node = ast.Assert(
+            test=ast.Call(
+                func = isinstance(ast.unparse(left_node), ast.unparse(type)),
+                args= [
+                    left_node,
+                ],
+                keywords = []
+            )
+        )
+        return assert_node
+
+    def parse_check_instance_of(self, node):
+        # check if the function being called is an inline test function
+        print("Node is")
+        print(node)
+        if len(node.args) == 2:
+            left_node = self.parse_group(node.args[0])
+            if self.cur_inline_test.parameterized:
+                self.parameterized_inline_tests_init(node.args[1])
+                for index, value in enumerate(node.args[1].elts):
+                    comparator_node = self.parse_group(value)
+                    assert_node = self.build_assert_instance_of(left_node, comparator_node)
+                    self.cur_inline_test.parameterized_inline_tests[
+                        index
+                    ].check_stmts.append(assert_node)
+            else:
+                comparator_node = self.parse_group(node.args[1])
+                assert_node = self.build_assert_instance_of(left_node, comparator_node)
+                self.cur_inline_test.check_stmts.append(assert_node)
+        else:
+            raise MalformedException("inline test: invalid check_instance_of(), expected 2 args")
+
+    def build_fail(self):
+        equal_node = ast.Compare(
+            left=ast.Constant(0),
+            ops=[ast.Eq()],
+            comparators=[ast.Constant(1)],
+        )
+        assert_node = ast.Assert(
+            test=equal_node
+
+        )
+        return assert_node
+
+    def parse_fail(self, node):
+        # check if the function being called is an inline test function
+        if len(node.args) == 0:
+            self.build_fail()
+        else:
+            raise MalformedException("inline test: invalid check_instance_of(), expected 2 args")
 
     def parse_group(self, node):
         if (
@@ -952,6 +1094,12 @@ class ExtractInlineTest(ast.NodeTransformer):
                 self.parse_check_none(call)
             elif call.func.attr == self.check_not_none_str:
                 self.parse_check_not_none(call)
+            elif call.func.attr == self.check_same:
+                self.parse_check_same(call)
+            elif call.func.attr == self.check_not_same:
+                self.parse_check_not_same(call)
+            elif call.func.attr == self.check_instance_of:
+                self.parse_check_instance_of(call)
             elif call.func.attr == self.given_str:
                 raise MalformedException(
                     f"inline test: given() must be called before check_eq()/check_true()/check_false()"

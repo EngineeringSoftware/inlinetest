@@ -89,7 +89,7 @@ class Here:
         """
         Assert whether two values are not equal
 
-        :param actual_value: an value to check against expected
+        :param actual_value: a value to check against expected
         :param expected_value: expected value
         :returns: Inline object
         :raises: AssertionError
@@ -101,7 +101,7 @@ class Here:
         Assert whether an object is an instance of a given type
 
         :param actual_type: the value to check against expected
-        :param expected_type: expected type
+        :param expected_type: expected type, can be a tuple
         :returns: Inline object
         :raises: AssertionError
         """
@@ -118,7 +118,35 @@ class Here:
         """
         return self
 
+    def check_same(self, actual_value, expected_value):
+        """
+        Assert whether an object is the same as a given expected object
 
+        :param actual_value: a value to check against expected
+        :param expected_value: expected value
+        :returns: Inline object
+        :raises: AssertionError
+        """
+        return self
+
+    def check_not_same(self, actual_value, expected_value):
+        """
+        Assert whether an object is not the same as a given expected object
+
+        :param actual_value: a value to check against expected
+        :param expected_value: expected value
+        :returns: Inline object
+        :raises: AssertionError
+        """
+        return self
+
+    def fail(self):
+        """
+        Fails the test
+        
+        :returns: Inline object
+        :raises: AssertionError
+        """
 #######################################################################
 
 

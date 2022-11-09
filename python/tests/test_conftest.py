@@ -475,3 +475,48 @@ class TestInlinetests:
             assert len(items) == 1
             res = pytester.runpytest()
             assert res.ret == 0
+
+    def test_assert_same(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+            """ 
+        from inline import Here
+        def m(a):
+            b = a
+            Here().given(a, "Hi").check_same(a,b)
+    """
+        )
+        for x in (pytester.path, checkfile):
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 1
+            res = pytester.runpytest()
+            assert res.ret == 0
+
+    def test_assert_not_same(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+            """ 
+        from inline import Here
+        def m(a):
+            b = a + "a"
+            Here().given(a, "Hi").check_not_same(a,b)
+    """
+        )
+        for x in (pytester.path, checkfile):
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 1
+            res = pytester.runpytest()
+            assert res.ret == 0
+
+    def test_assert_instance_of(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+            """ 
+        from inline import Here
+        def m(a):
+            b = a + "a"
+            Here().given(a, "Hi").check_instance_of(a, int)
+    """
+        )
+        for x in (pytester.path, checkfile):
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 1
+            res = pytester.runpytest()
+            assert res.ret == 0
