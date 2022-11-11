@@ -68,6 +68,14 @@ def pytest_addoption(parser: Parser) -> None:
         help="group inlinetests",
         dest="inlinetest_group",
     )
+    group.addoption(
+        "--inlinetest-order",
+        action="append",
+        default=[],
+        metavar="tag",
+        help="order inlinetests",
+        dest="inlinetest_order",
+    )
 
 
 @pytest.hookimpl()
@@ -1034,6 +1042,30 @@ class InlinetestItem(pytest.Item):
 
 
 class InlinetestModule(pytest.Module):
+    def order_tests(test_list, tags):
+        prio_unsorted = []
+        unordered = []
+        
+        # sorting the tests based on if they are ordered or not
+        for test in test_list:
+            if (len(set(test.tag) & set(tags)) > 0):
+                prio_unsorted.append(test)
+            else:
+                unordered.append(test)
+
+        # giving each test a value for its order in tags
+        sorted_ordering = [None] * len(prio_unsorted)
+        for i in range(0,len(prio_unsorted)):
+            for tag in tags:
+                if(tag in prio_unsorted[i].tag):
+                    sorted_ordering[i] = tags.index(tag)
+        
+        # sorting the list based on their tag positions
+        prio_sorted = [val for (_, val) in sorted(zip(sorted_ordering, prio_unsorted), key=lambda x: x[0])]
+        prio_sorted.extend(unordered)
+
+        return prio_sorted
+
     def collect(self) -> Iterable[InlinetestItem]:
         if self.path.name == "conftest.py":
             module = self.config.pluginmanager._importconftest(
@@ -1053,22 +1085,27 @@ class InlinetestModule(pytest.Module):
         finder = InlineTestFinder()
         runner = InlineTestRunner()
 
-        tags = self.config.getoption("inlinetest_group", default=None)
+        group_tags = self.config.getoption("inlinetest_group", default=None)
+        order_tags = self.config.getoption("inlinetest_order", default=None)
 
         for test_list in finder.find(module):
-            for test in test_list:
-                if (
-                    test.is_empty()
-                    or (tags and len(set(test.tag) & set(tags)) == 0)
-                    or test.disabled
-                ):  # skip empty inline tests and tests with tags not in the tag list and disabled tests
-                    continue
-                yield InlinetestItem.from_parent(
-                    self,
-                    name=test.test_name,
-                    runner=runner,
-                    dtest=test,
-                )
+            # reorder the list if there are tests to be ordered
+            ordered_list = InlinetestModule.order_tests(test_list, order_tags)
+            if ordered_list is not None:
+                for test in ordered_list:
+                    if (
+                        test.is_empty()
+                        or (group_tags and len(set(test.tag) & set(group_tags)) == 0)
+                        or test.disabled
+                    ):  # skip empty inline tests and tests with tags not in the tag list and disabled tests
+                        continue
+
+                    yield InlinetestItem.from_parent(
+                        self,
+                        name=test.test_name,
+                        runner=runner,
+                        dtest=test,
+                    )
 
 
 def _setup_fixtures(inlinetest_item: InlinetestItem) -> FixtureRequest:
