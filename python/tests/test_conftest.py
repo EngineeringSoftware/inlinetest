@@ -506,17 +506,31 @@ class TestInlinetests:
             res = pytester.runpytest()
             assert res.ret == 0
 
-    def test_assert_instance_of(self, pytester: Pytester):
+    # def test_assert_instance_of(self, pytester: Pytester):
+    #     checkfile = pytester.makepyfile(
+    #         """ 
+    #     from inline import Here
+    #     def m(a):
+    #         b = a + "a"
+    #         Here().given(a, "Hi").check_instance_of(a, int)
+    # """
+    #     )
+    #     for x in (pytester.path, checkfile):
+    #         items, reprec = pytester.inline_genitems(x)
+    #         assert len(items) == 1
+    #         res = pytester.runpytest()
+    #         assert res.ret == 0
+
+    def test_fail_statement(self, pytester: Pytester):
         checkfile = pytester.makepyfile(
             """ 
         from inline import Here
         def m(a):
             b = a + "a"
-            Here().given(a, "Hi").check_instance_of(a, int)
+            Here().given(a, "Hi").fail()
     """
         )
         for x in (pytester.path, checkfile):
             items, reprec = pytester.inline_genitems(x)
-            assert len(items) == 1
+            assert len(items) == 0
             res = pytester.runpytest()
-            assert res.ret == 0
