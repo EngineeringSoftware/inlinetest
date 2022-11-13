@@ -13,7 +13,7 @@ def read(fname):
 
 
 setup(
-    name="inline",
+    name="pytest-inline",
     version="0.1.0",
     author="Yu Liu",
     author_email="yuki.liu@utexas.edu",
