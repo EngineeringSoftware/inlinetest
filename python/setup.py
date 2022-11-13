@@ -20,7 +20,7 @@ setup(
     maintainer="Yu Liu",
     maintainer_email="yuki.liu@utexas.edu",
     license="MIT",
-    url="https://github.com/sweetStreet/pytest-inline",
+    url="https://github.com/EngineeringSoftware/inlinetest",
     description="A simple plugin to use with pytest",
     long_description=read('README.rst'),
     packages=["inline"],
