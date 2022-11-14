@@ -128,7 +128,7 @@ the logs by doing `python -m research.exp_integrated view_result
 (modify the results file path accordingly), and fix the
 scripts/patches as needed.
 
-### Installation and usage
+## Installation and usage
 
 Use `pip install pytest-inline` to install our Python pytest-plugin
 
