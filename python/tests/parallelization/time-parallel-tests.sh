@@ -20,7 +20,7 @@ else
 
     echo "Running parallel..."
     ( time pytest -n auto $test_file ) &> "$logs_dir/parallel"
-    echo "Finished non-parallel"
+    echo "Finished parallel"
 
     echo "Logs in: $logs_dir"
 fi
