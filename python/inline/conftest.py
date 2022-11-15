@@ -1044,7 +1044,7 @@ class ExtractInlineTest(ast.NodeTransformer):
             elif call.func.attr == self.check_false_str:
                 self.parse_check_false(call)
             # "check_neq(a, 1)"
-            elif call.func.attr == self.check_not_equals_str:
+            elif call.func.attr == self.check_neq_str:
                 self.parse_check_neq(call)
             elif call.func.attr == self.check_none_str:
                 self.parse_check_none(call)
