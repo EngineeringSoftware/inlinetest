@@ -63,8 +63,6 @@ class Here:
         """
         return self
 
-    #######################################################################
-    # TODO Zach - Add More API for Asserts as Development Continues
     def check_none(self, value):
         """
         Assert whether an object is null
@@ -125,7 +123,6 @@ class Here:
         :returns: Inline object
         :raises: AssertionError
         """
-#######################################################################
 
 
 class Group:
