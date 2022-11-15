@@ -447,10 +447,6 @@ class TestInlinetests:
             pytest.raises(TimeoutException)
 
     def test_check_order_tests(self, pytester: Pytester):
-        checkfile = pytester.makepyfile(
-            """ 
-        from inline import Here
-        def m(a):
             a = a + 1
             Here("1", tag = ["add"]).given(a, 1).check_eq(a, 2)
             a = a - 1
@@ -464,12 +460,8 @@ class TestInlinetests:
 
             assert items[0].dtest.test_name == "2"
             assert items[1].dtest.test_name == "1"
-
+            
     def test_check_order_and_nonorder_tests(self, pytester: Pytester):
-        checkfile = pytester.makepyfile(
-            """ 
-        from inline import Here
-        def m(a):
             a = a + 1
             Here("1", tag = ["add"]).given(a, 1).check_eq(a, 2)
             a = a + 2
@@ -485,13 +477,9 @@ class TestInlinetests:
 
             assert items[0].dtest.test_name == "3"
             assert items[1].dtest.test_name == "1"
-            assert items[2].dtest.test_name == "2"
-
-    def test_check_same_tag_order_tests(self, pytester: Pytester):
-        checkfile = pytester.makepyfile(
-            """ 
-        from inline import Here
-        def m(a):
+            assert items[2].dtest.test_name == "2"            
+            
+    def test_check_same_tag_order_tests(self, pytester: Pytester):   
             a = a + 1
             Here("1", tag = ["add"]).given(a, 1).check_eq(a, 2)
             a = a + 2
@@ -513,10 +501,6 @@ class TestInlinetests:
             assert items[3].dtest.test_name == "4"
 
     def test_check_group_and_order_tests(self, pytester: Pytester):
-        checkfile = pytester.makepyfile(
-            """ 
-        from inline import Here
-        def m(a):
             a = a + 1
             Here(tag = ["add"]).given(a, 1).check_eq(a, 2)
             a = a - 1
@@ -527,3 +511,92 @@ class TestInlinetests:
             reprec = pytester.inline_run("--inlinetest-order=minus", "--inlinetest-order=add", "--inlinetest-group=add")
             items = [x.item for x in reprec.getcalls("pytest_itemcollected")]
             assert len(items) == 1
+            
+    def test_assert_neq(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+            """ 
+        from inline import Here
+        def m(a):
+            a = a - 1
+            Here().given(a, 1).check_neq(a, 1)
+    """
+        )
+        for x in (pytester.path, checkfile):
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 1
+            res = pytester.runpytest()
+            assert res.ret == 0
+
+    def test_assert_none(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+            """ 
+        from inline import Here
+        def m(a):
+            a = None
+            Here().given(a, 1).check_none(a)
+    """
+        )
+        for x in (pytester.path, checkfile):
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 1
+            res = pytester.runpytest()
+            assert res.ret == 0
+
+    def test_assert_not_none(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+            """ 
+        from inline import Here
+        def m(a):
+            a = 3
+            Here().given(a, 1).check_not_none(a)
+    """
+        )
+        for x in (pytester.path, checkfile):
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 1
+            res = pytester.runpytest()
+            assert res.ret == 0
+
+    def test_assert_same(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+            """ 
+        from inline import Here
+        def m(a):
+            b = a
+            Here().given(a, "Hi").check_same(a,b)
+    """
+        )
+        for x in (pytester.path, checkfile):
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 1
+            res = pytester.runpytest()
+            assert res.ret == 0
+
+    def test_assert_not_same(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+            """ 
+        from inline import Here
+        def m(a):
+            b = a + "a"
+            Here().given(a, "Hi").check_not_same(a,b)
+    """
+        )
+        for x in (pytester.path, checkfile):
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 1
+            res = pytester.runpytest()
+            assert res.ret == 0
+
+    def test_fail_statement(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+            """ 
+        from inline import Here
+        def m(a):
+            b = a + "a"
+            Here().given(a, "Hi").fail()
+    """
+        )
+        for x in (pytester.path, checkfile):
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 0
+            res = pytester.runpytest()
