@@ -96,28 +96,6 @@ class Here:
         """
         return self
 
-    def check_instance_of(self, actual_type, expected_type):
-        """
-        Assert whether an object is an instance of a given type
-
-        :param actual_type: the value to check against expected
-        :param expected_type: expected type, can be a tuple
-        :returns: Inline object
-        :raises: AssertionError
-        """
-        return self
-
-    def check_throw(self, executable, expected_type_exception):
-        """
-        Assert whether an object is an instance of a given type
-
-        :param executable: an executable to run
-        :param expected_type_exception: expected type of exception executable should raise
-        :returns: Exception
-        :raises: AssertionError
-        """
-        return self
-
     def check_same(self, actual_value, expected_value):
         """
         Assert whether an object is the same as a given expected object
