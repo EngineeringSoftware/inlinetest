@@ -83,7 +83,7 @@ class Here:
         """
         return self
 
-    def check_not_equals(self, actual_value, expected_value):
+    def check_neq(self, actual_value, expected_value):
         """
         Assert whether two values are not equal
 
