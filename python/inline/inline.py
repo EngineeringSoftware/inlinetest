@@ -43,6 +43,17 @@ class Here:
         """
         return self
 
+    def check_neq(self, actual_value, expected_value):
+        """
+        Assert whether two values are not equal
+
+        :param actual_value: a value to check against expected
+        :param expected_value: expected value
+        :returns: Inline object
+        :raises: AssertionError
+        """
+        return self
+
     def check_true(self, expr):
         """
         Assert whether a boolean expression is true
@@ -63,32 +74,21 @@ class Here:
         """
         return self
 
-    def check_none(self, value):
+    def check_none(self, var):
         """
-        Assert whether an object is null
+        Assert whether a variable is None
 
-        :param object: a value to check against
+        :param var: a variable to check against
         :returns: Inline object
         :raises: AssertionError
         """
         return self
 
-    def check_not_none(self, value):
+    def check_not_none(self, var):
         """
-        Assert whether a value is not null
+        Assert whether a variable is not None
 
-        :param value: a value to check against
-        :returns: Inline object
-        :raises: AssertionError
-        """
-        return self
-
-    def check_neq(self, actual_value, expected_value):
-        """
-        Assert whether two values are not equal
-
-        :param actual_value: a value to check against expected
-        :param expected_value: expected value
+        :param var: a variable to check against
         :returns: Inline object
         :raises: AssertionError
         """
