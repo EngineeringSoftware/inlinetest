@@ -74,21 +74,21 @@ class Here:
         """
         return self
 
-    def check_none(self, var):
+    def check_none(self, variable):
         """
         Assert whether a variable is None
 
-        :param var: a variable to check against
+        :param variable: a variable to check against
         :returns: Inline object
         :raises: AssertionError
         """
         return self
 
-    def check_not_none(self, var):
+    def check_not_none(self, variable):
         """
         Assert whether a variable is not None
 
-        :param var: a variable to check against
+        :param variable: a variable to check against
         :returns: Inline object
         :raises: AssertionError
         """
