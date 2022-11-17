@@ -25,19 +25,19 @@ Provide test inputs
 
 Specify test oracles
 
-- check\_eq(actual\_value, expected\_value)}: 
+- check\_eq(actual\_value, expected\_value): 
         check if the actual value is equal to the expected value.
-- check\_neq(actual\_value, expected\_value)}: 
+- check\_neq(actual\_value, expected\_value): 
         check if the actual value is not equal to the expected value.
-- check\_true(expr)}: 
+- check\_true(expr): 
         check if the boolean expression is true.
-- check\_false(expr)}: 
+- check\_false(expr): 
         check if the boolean expression is false.
-- check\_none(variable)}: 
+- check\_none(variable): 
         check if the variable is none.
-- check\_not\_none(variable)}: 
+- check\_not\_none(variable): 
         check if the variable is not none.
-- check\_same(actual\_value, expected\_value)}: 
+- check\_same(actual\_value, expected\_value): 
         check if the actual value and the expected value refer to the same object.
-- check\_not\_same(actual\_value, expected\_value)}: 
+- check\_not\_same(actual\_value, expected\_value): 
         check if the actual value and the expected value refer to different objects.
