@@ -10,12 +10,12 @@ Declaration an inline test
 
 - Here(test_name, parameterized, repeated, tag, disabled, timeout): 
         declare an inline test:
-        #. test_name is a string that represents the name of the test. The default value is the file name + line number of the test statement.
-        #. parameterized is a boolean value that indicates whether the test is parameterized. The default value is false.
-        #. repeated is an integer that indicates how many times the test is repeated. The default value is 1.
-        #. tag is a string that represents the tag of the test. The default value is an empty string.
-        #. disabled is a boolean value that indicates whether the test is disabled. The default value is false.
-        #. timeout is an integer that represents the timeout of the test. The default value is -1.
+                1. test_name is a string that represents the name of the test. The default value is the file name + line number of the test statement.
+                2. parameterized is a boolean value that indicates whether the test is parameterized. The default value is false.
+                3. repeated is an integer that indicates how many times the test is repeated. The default value is 1.
+                4. tag is a string that represents the tag of the test. The default value is an empty string.
+                5. disabled is a boolean value that indicates whether the test is disabled. The default value is false.
+                6. timeout is an integer that represents the timeout of the test. The default value is -1.
 
 
 Provide test inputs
