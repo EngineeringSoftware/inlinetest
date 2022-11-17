@@ -1,4 +1,5 @@
 from inline import Here
+import time
 
 sleep = 5
 c = 0
