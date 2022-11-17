@@ -258,6 +258,8 @@ class ExtractInlineTest(ast.NodeTransformer):
     arg_tag_str = "tag"
     arg_disabled_str = "disabled"
     arg_timeout_str = "timeout"
+    assume_true_str = "assume_true"
+    assume_false_str = "assume_false"
     inline_module_imported = False
 
     def __init__(self):
@@ -614,6 +616,84 @@ class ExtractInlineTest(ast.NodeTransformer):
         else:
             raise MalformedException("inline test: invalid given(), expected 2 args")
 
+    def build_assume_true(self, test_node):
+        assert_node = ast.Assert(
+            test=test_node,
+            msg=ast.Call(
+                func=ast.Attribute(
+                    ast.Constant(
+                        "Assumption that bool({0}) is True\nActual: bool({0}) is False\n"
+                    ),
+                    "format",
+                    ast.Load(),
+                ),
+                args=[
+                    ast.Constant(self.node_to_source_code(test_node)),
+                    test_node,
+                ],
+                keywords=[],
+            ),
+        )
+        return assert_node
+
+    def parse_assume_true(self, node):
+        if len(node.args) == 1:
+            if self.cur_inline_test.parameterized:
+                self.parameterized_inline_tests_init(node.args[0])
+                for index, value in enumerate(node.args[0].elts):
+                    test_node = self.parse_group(value)
+                    assert_node = self.build_assume_true(test_node)
+                    self.cur_inline_test.parameterized_inline_tests[
+                        index
+                    ].check_stmts.append(assert_node)
+            else:
+                test_node = self.parse_group(node.args[0])
+                assert_node = self.build_assume_true(test_node)
+                self.cur_inline_test.check_stmts.append(assert_node)
+        else:
+            raise MalformedException(
+                "inline test: invalid assume_true(), expected 1 arg"
+            )
+            
+    def build_assume_false(self, test_node):
+        assert_node = ast.Assert(
+            test=ast.UnaryOp(op=ast.Not(), operand=test_node),
+            msg=ast.Call(
+                func=ast.Attribute(
+                    ast.Constant(
+                        "Assumption that bool({0}) is False\nActual: bool({0}) is True\n"
+                    ),
+                    "format",
+                    ast.Load(),
+                ),
+                args=[
+                    ast.Constant(self.node_to_source_code(test_node)),
+                    test_node,
+                ],
+                keywords=[],
+            ),
+        )
+        return assert_node
+
+    def parse_assume_false(self, node):
+        if len(node.args) == 1:
+            if self.cur_inline_test.parameterized:
+                self.parameterized_inline_tests_init(node.args[0])
+                for index, value in enumerate(node.args[0].elts):
+                    test_node = self.parse_group(value)
+                    assert_node = self.build_assume_false(test_node)
+                    self.cur_inline_test.parameterized_inline_tests[
+                        index
+                    ].check_stmts.append(assert_node)
+            else:
+                test_node = self.parse_group(node.args[0])
+                assert_node = self.build_assume_false(test_node)
+                self.cur_inline_test.check_stmts.append(assert_node)
+        else:
+            raise MalformedException(
+                "inline test: invalid assume_false(), expected 1 arg"
+            )
+
     def build_assert_eq(self, left_node, comparator_node):
         equal_node = ast.Compare(
             left=left_node,
@@ -963,7 +1043,7 @@ class ExtractInlineTest(ast.NodeTransformer):
         if len(node.args) == 0:
             self.build_fail()
         else:
-            raise MalformedException("inline test: invalid check_instance_of(), expected 2 args")
+            raise MalformedException("inline test: fail() does not expect any arguments")
 
     def parse_group(self, node):
         if (
@@ -1028,9 +1108,27 @@ class ExtractInlineTest(ast.NodeTransformer):
         else:
             raise MalformedException("inline test: invalid inline test constructor")
 
-        # "given(a, 1)"
+        # "assume_true(...) or assume_false(...)
         inline_test_call_index = 1
         for call in inline_test_calls[1:]:
+            if (
+                isinstance(call.func, ast.Attribute)
+                and call.func.attr == self.assume_true_str
+            ):
+                self.parse_assume_true(call)
+                inline_test_call_index += 1
+            elif (
+                isinstance(call.func, ast.Attribute)
+                and call.func.attr == self.assume_false_str
+            ):
+                self.parse_assume_false(call)
+                inline_test_call_index += 1
+            else:
+                break
+
+        
+        # "given(a, 1)"
+        for call in inline_test_calls[inline_test_call_index:]:
             if (
                 isinstance(call.func, ast.Attribute)
                 and call.func.attr == self.given_str

@@ -123,6 +123,22 @@ class Here:
         :returns: Inline object
         :raises: AssertionError
         """
+    
+    def assume_true(self, condition:bool):
+        """
+        Executes the test under the assuming the given condition is true
+
+        :param condition: a boolean condition
+        :raises: AssertionError
+        """
+    
+    def assume_false(self, condition:bool):
+        """
+        Executes the test under the assuming the given condition is true
+
+        :param condition: a boolean condition
+        :raises: AssertionError
+        """
 
 
 class Group:
