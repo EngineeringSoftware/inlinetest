@@ -26,5 +26,9 @@ jobs:
       run: |
         cd python
         pytest -p pytester --cov-report=term-missing
+    - name: Test parallel execution
+      run: |
+        cd python/tests/parallelization
+        bash time-parallel-tests.sh .
     - name: Publish Unit Test Results
       uses: EnricoMi/publish-unit-test-result-action@v2.0.0-beta.2

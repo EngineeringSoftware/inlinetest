@@ -2,7 +2,7 @@
 
 if [ "$#" -ne 1 ]; then
     echo "Script needs 1 arguments: python file dir"
-    echo "Example: bash parallel_tests.sh ."
+    echo "Example: bash parallel_tests.sh ./test_files"
 else
     script_dir=$( cd $( dirname $0 ) && pwd )
     logs_dir="$script_dir/logs"
