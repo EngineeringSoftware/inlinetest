@@ -708,4 +708,26 @@ class TestInlinetests:
             items, reprec = pytester.inline_genitems(x)
             assert len(items) == 1
             res = pytester.runpytest()
+            #Should throw an AssertError
+            assert res.ret == 1
+    
+    def test_assume_correct_with_timeout(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+            """ 
+         from inline import Here
+        import time
+        def m(a):
+            a = -3
+            Here(timeout=5.75).assume_true(a < 0).given(a, loop(3)).check_eq(a,1)
+
+        def loop(b):
+            while True:
+                b = b + 1
+    """
+        )
+        for x in (pytester.path, checkfile):
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 1
+            res = pytester.runpytest()
+            #Should timeout instead of throwing AssertError
             assert res.ret == 1

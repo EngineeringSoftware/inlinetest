@@ -133,6 +133,7 @@ class InlineTest:
     ]
 
     def __init__(self):
+        self.assume_stmts = []
         self.check_stmts = []
         self.given_stmts = []
         self.previous_stmts = []
@@ -154,6 +155,7 @@ class InlineTest:
         if self.prev_stmt_type == PrevStmtType.CondExpr:
             return "\n".join(
                 self.import_libraries
+                + [ExtractInlineTest.node_to_source_code(n) for n in self.assume_stmts]
                 + [ExtractInlineTest.node_to_source_code(n) for n in self.given_stmts]
                 + [ExtractInlineTest.node_to_source_code(n) for n in self.check_stmts]
             )
@@ -161,12 +163,16 @@ class InlineTest:
             return "\n".join(
                 self.import_libraries
                 + [ExtractInlineTest.node_to_source_code(n) for n in self.given_stmts]
-                + [
-                    ExtractInlineTest.node_to_source_code(n)
-                    for n in self.previous_stmts
-                ]
+                + [ExtractInlineTest.node_to_source_code(n) for n in self.previous_stmts]
                 + [ExtractInlineTest.node_to_source_code(n) for n in self.check_stmts]
             )
+    
+    def to_test_assumptions(self):
+        return "\n".join(
+            self.import_libraries
+            + [ExtractInlineTest.node_to_source_code(n) for n in self.previous_stmts]
+            + [ExtractInlineTest.node_to_source_code(n) for n in self.assume_stmts]
+        )
 
     def __repr__(self):
         if self.test_name:
@@ -180,6 +186,7 @@ class InlineTest:
     def __eq__(self, other):
         return (
             self.import_libraries == other.import_libraries
+            and self.assume_stmts == other.assume_stmts
             and self.given_stmts == other.given_stmts
             and self.previous_stmts == other.previous_stmts
             and self.check_stmts == other.check_stmts
@@ -645,11 +652,11 @@ class ExtractInlineTest(ast.NodeTransformer):
                     assert_node = self.build_assume_true(test_node)
                     self.cur_inline_test.parameterized_inline_tests[
                         index
-                    ].check_stmts.append(assert_node)
+                    ].assume_stmts.append(assert_node)
             else:
                 test_node = self.parse_group(node.args[0])
                 assert_node = self.build_assume_true(test_node)
-                self.cur_inline_test.check_stmts.append(assert_node)
+                self.cur_inline_test.assume_stmts.append(assert_node)
         else:
             raise MalformedException(
                 "inline test: invalid assume_true(), expected 1 arg"
@@ -684,11 +691,11 @@ class ExtractInlineTest(ast.NodeTransformer):
                     assert_node = self.build_assume_false(test_node)
                     self.cur_inline_test.parameterized_inline_tests[
                         index
-                    ].check_stmts.append(assert_node)
+                    ].assume_stmts.append(assert_node)
             else:
                 test_node = self.parse_group(node.args[0])
                 assert_node = self.build_assume_false(test_node)
-                self.cur_inline_test.check_stmts.append(assert_node)
+                self.cur_inline_test.assume_stmts.append(assert_node)
         else:
             raise MalformedException(
                 "inline test: invalid assume_false(), expected 1 arg"
@@ -1313,6 +1320,10 @@ class InlineTestFinder:
 ######################################################################
 class InlineTestRunner:
     def run(self, test: InlineTest, out: List) -> None:
+        if(test.assume_stmts != []):
+            assumptions = ast.parse(test.to_test_assumptions())
+            assumptionscodeobj = compile(assumptions, filename="<ast>", mode="exec")
+            exec(assumptionscodeobj, test.globs)
         tree = ast.parse(test.to_test())
         codeobj = compile(tree, filename="<ast>", mode="exec")
         start_time = time.time()
