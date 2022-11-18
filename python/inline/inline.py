@@ -43,6 +43,17 @@ class Here:
         """
         return self
 
+    def check_neq(self, actual_value, expected_value):
+        """
+        Assert whether two values are not equal
+
+        :param actual_value: a value to check against expected
+        :param expected_value: expected value
+        :returns: Inline object
+        :raises: AssertionError
+        """
+        return self
+
     def check_true(self, expr):
         """
         Assert whether a boolean expression is true
@@ -63,63 +74,55 @@ class Here:
         """
         return self
 
-    #######################################################################
-    # TODO Zach - Add More API for Asserts as Development Continues
-    def check_null(self, value):
+    def check_none(self, variable):
         """
-        Assert whether an object is null
+        Assert whether a variable is None
 
-        :param object: a value to check against
+        :param variable: a variable to check against
         :returns: Inline object
         :raises: AssertionError
         """
         return self
 
-    def check_not_null(self, value):
+    def check_not_none(self, variable):
         """
-        Assert whether a value is not null
+        Assert whether a variable is not None
 
-        :param value: a value to check against
+        :param variable: a variable to check against
         :returns: Inline object
         :raises: AssertionError
         """
         return self
 
-    def check_not_equals(self, actual_value, expected_value):
+    def check_same(self, actual_value, expected_value):
         """
-        Assert whether two values are not equal
+        Assert whether an object is the same as a given expected object
 
-        :param actual_value: an value to check against expected
+        :param actual_value: a value to check against expected
         :param expected_value: expected value
         :returns: Inline object
         :raises: AssertionError
         """
         return self
 
-    def check_instance_of(self, actual_type, expected_type):
+    def check_not_same(self, actual_value, expected_value):
         """
-        Assert whether an object is an instance of a given type
+        Assert whether an object is not the same as a given expected object
 
-        :param actual_type: the value to check against expected
-        :param expected_type: expected type
+        :param actual_value: a value to check against expected
+        :param expected_value: expected value
         :returns: Inline object
         :raises: AssertionError
         """
         return self
 
-    def check_throw(self, executable, expected_type_exception):
+    def fail(self):
         """
-        Assert whether an object is an instance of a given type
-
-        :param executable: an executable to run
-        :param expected_type_exception: expected type of exception executable should raise
-        :returns: Exception
+        Fails the test
+        
+        :returns: Inline object
         :raises: AssertionError
         """
-        return self
-
-
-#######################################################################
 
 
 class Group:
