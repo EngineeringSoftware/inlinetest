@@ -4,6 +4,14 @@
 
 I-Test is a framework for writing inline tests in Python and Java.
 
+## Installation and usage
+
+Use `pip install pytest-inline` to install our Python pytest-plugin
+
+Use `pytest .` to run all inline tests in working directory 
+
+Use `pytest {filename}` to run all inline tests in a Python file
+
 ## Introduction
 
 This repo contains the code and data for producing the experiments in
@@ -127,14 +135,6 @@ the logs by doing `python -m research.exp_integrated view_result
 --results_file=../results/exp/integrated/$lang/4-1/$full_name.json`
 (modify the results file path accordingly), and fix the
 scripts/patches as needed.
-
-## Installation and usage
-
-Use `pip install pytest-inline` to install our Python pytest-plugin
-
-Use `pytest .` to run all inline tests in working directory 
-
-Use `pytest {filename}` to run all inline tests in a Python file
 
 ## Citation
 
