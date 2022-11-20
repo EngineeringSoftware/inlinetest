@@ -1,7 +1,7 @@
 from inline import Here
 import time
 
-sleep = 2
+sleep = 1
 f = 0
 f = f + 1
 Here("1", tag = ["add"]).given(f, 1).check_eq(f, 2).check_eq(time.sleep(sleep), None)

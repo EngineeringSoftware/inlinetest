@@ -1,7 +1,7 @@
 from inline import Here
 import time
 
-sleep = 3
+sleep = 1
 d = 0
 d = d + 1
 Here("1", tag = ["add"]).given(d, 1).check_eq(d, 2).check_eq(time.sleep(sleep), None)
