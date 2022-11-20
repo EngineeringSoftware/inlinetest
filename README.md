@@ -4,14 +4,6 @@
 
 I-Test is a framework for writing inline tests in Python and Java.
 
-## Installation and usage
-
-Use `pip install pytest-inline` to install our Python pytest-plugin
-
-Use `pytest .` to run all inline tests in working directory 
-
-Use `pytest {filename}` to run all inline tests in a Python file
-
 ## Introduction
 
 This repo contains the code and data for producing the experiments in
