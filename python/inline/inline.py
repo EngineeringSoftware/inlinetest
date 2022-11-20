@@ -1,20 +1,25 @@
+from ast import List
+
+
 class Here:
     def __init__(
         self,
         test_name: str = None,
         parameterized: bool = False,
         repeated: int = 1,
-        tag=[],
-        disabled = False
+        tag: List = [],
+        disabled: bool = False,
+        timeout: float = -1.0,
     ):
         """
-        Initialize Inline object with test name / parameetrized flag
+        Initialize Inline object with test name / parametrized flag
 
         :param test_name: test
         :param parameterized: whether the test is parameterized
         :param repeated: number of times to repeat the tests
         :param tag: tags to group tests
         :param disabled: whether the test is disabled
+        :param timeout: seconds to timeout the test, must be a float
         """
 
     def given(self, variable, value):
@@ -32,6 +37,17 @@ class Here:
         Assert whether two values equal
 
         :param actual_value: the value to check against expected
+        :param expected_value: expected value
+        :returns: Inline object
+        :raises: AssertionError
+        """
+        return self
+
+    def check_neq(self, actual_value, expected_value):
+        """
+        Assert whether two values are not equal
+
+        :param actual_value: a value to check against expected
         :param expected_value: expected value
         :returns: Inline object
         :raises: AssertionError
@@ -57,6 +73,56 @@ class Here:
         :raises: AssertionError
         """
         return self
+
+    def check_none(self, variable):
+        """
+        Assert whether a variable is None
+
+        :param variable: a variable to check against
+        :returns: Inline object
+        :raises: AssertionError
+        """
+        return self
+
+    def check_not_none(self, variable):
+        """
+        Assert whether a variable is not None
+
+        :param variable: a variable to check against
+        :returns: Inline object
+        :raises: AssertionError
+        """
+        return self
+
+    def check_same(self, actual_value, expected_value):
+        """
+        Assert whether an object is the same as a given expected object
+
+        :param actual_value: a value to check against expected
+        :param expected_value: expected value
+        :returns: Inline object
+        :raises: AssertionError
+        """
+        return self
+
+    def check_not_same(self, actual_value, expected_value):
+        """
+        Assert whether an object is not the same as a given expected object
+
+        :param actual_value: a value to check against expected
+        :param expected_value: expected value
+        :returns: Inline object
+        :raises: AssertionError
+        """
+        return self
+
+    def fail(self):
+        """
+        Fails the test
+        
+        :returns: Inline object
+        :raises: AssertionError
+        """
 
 
 class Group:
