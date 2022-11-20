@@ -12,13 +12,13 @@ else
     pip uninstall -y pytest-xdist
 
     echo "Running non-parallel..."
-    ( time pytest $1 ) &> "$logs_dir/non-parallel"
+    ( time pytest $1 ) >> "$logs_dir/non-parallel"
     echo "Finished non-parallel"
 
     pip install pytest-xdist
 
     echo "Running parallel..."
-    ( time pytest -n auto $1 ) &> "$logs_dir/parallel"
+    ( time pytest -n auto $1 ) >> "$logs_dir/parallel"
     echo "Finished parallel"
 
     echo "Logs in: $logs_dir"
