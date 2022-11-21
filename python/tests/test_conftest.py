@@ -640,7 +640,7 @@ class TestInlinetests:
 
         def m(a):
             a = -3
-            Here(timeout=5.75).assume(sys.version > '3.4.0' and sys.version < '3.11.9').given(a, loop(3)).check_eq(a,1)
+            Here(timeout=5.75).assume(sys.version > '2' and sys.version < '4').given(a, loop(3)).check_eq(a,1)
 
         def loop(b):
             while True:
