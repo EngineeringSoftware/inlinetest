@@ -11,6 +11,7 @@ import pytest
 from _pytest.pathlib import fnmatch_ex, import_path
 from pytest import Collector, Config, FixtureRequest, Parser
 import signal
+from _pytest.main import Session
 
 if sys.version_info >= (3, 9, 0):
     from ast import unparse as ast_unparse
@@ -25,11 +26,11 @@ else:
 def pytest_addoption(parser: Parser) -> None:
     group = parser.getgroup("collect")
     group.addoption(
-        "--inlinetest-modules",
+        "--inlinetest-only",
         action="store_true",
         default=False,
         help="run inlinetests in all .py modules",
-        dest="inlinetest_modules",
+        dest="inlinetest_only",
     )
     group.addoption(
         "--inlinetest-glob",
@@ -94,6 +95,19 @@ def pytest_exception_interact(node, call, report):
 def pytest_configure(config):
     # register an additional marker
     config.addinivalue_line("markers", "inline: mark inline tests")
+
+
+@pytest.hookimpl()
+def pytest_collectstart(collector):
+    if not isinstance(collector, Session):
+        if collector.config.getoption("inlinetest_only") and (
+            not isinstance(collector, InlinetestModule)
+        ):
+            collector.collect = lambda: []  # type: ignore[assignment]
+        elif collector.config.getoption("inlinetest_disable") and isinstance(
+            collector, InlinetestModule
+        ):
+            collector.collect = lambda: []  # type: ignore[assignment]
 
 
 def pytest_collect_file(
@@ -821,7 +835,9 @@ class ExtractInlineTest(ast.NodeTransformer):
                 assert_node = self.build_assert_neq(left_node, comparator_node)
                 self.cur_inline_test.check_stmts.append(assert_node)
         else:
-            raise MalformedException("inline test: invalid check_neq(), expected 2 args")
+            raise MalformedException(
+                "inline test: invalid check_neq(), expected 2 args"
+            )
 
     def build_assert_none(self, left_node):
         equal_node = ast.Compare(
@@ -943,7 +959,9 @@ class ExtractInlineTest(ast.NodeTransformer):
                 assert_node = self.build_assert_same(left_node, comparator_node)
                 self.cur_inline_test.check_stmts.append(assert_node)
         else:
-            raise MalformedException("inline test: invalid check_same(), expected 2 args")
+            raise MalformedException(
+                "inline test: invalid check_same(), expected 2 args"
+            )
 
     def build_assert_not_same(self, left_node, comparator_node):
         equal_node = ast.Compare(
@@ -987,7 +1005,9 @@ class ExtractInlineTest(ast.NodeTransformer):
                 assert_node = self.build_assert_not_same(left_node, comparator_node)
                 self.cur_inline_test.check_stmts.append(assert_node)
         else:
-            raise MalformedException("inline test: invalid check_not_same(), expected 2 args")
+            raise MalformedException(
+                "inline test: invalid check_not_same(), expected 2 args"
+            )
 
     def build_fail(self):
         equal_node = ast.Compare(
@@ -995,10 +1015,7 @@ class ExtractInlineTest(ast.NodeTransformer):
             ops=[ast.Eq()],
             comparators=[ast.Constant(1)],
         )
-        assert_node = ast.Assert(
-            test=equal_node
-
-        )
+        assert_node = ast.Assert(test=equal_node)
         return assert_node
 
     def parse_fail(self, node):
@@ -1337,23 +1354,28 @@ class InlinetestModule(pytest.Module):
     def order_tests(test_list, tags):
         prio_unsorted = []
         unordered = []
-        
+
         # sorting the tests based on if they are ordered or not
         for test in test_list:
-            if (len(set(test.tag) & set(tags)) > 0):
+            if len(set(test.tag) & set(tags)) > 0:
                 prio_unsorted.append(test)
             else:
                 unordered.append(test)
 
         # giving each test a value for its order in tags
         sorted_ordering = [None] * len(prio_unsorted)
-        for i in range(0,len(prio_unsorted)):
+        for i in range(0, len(prio_unsorted)):
             for tag in tags:
-                if(tag in prio_unsorted[i].tag):
+                if tag in prio_unsorted[i].tag:
                     sorted_ordering[i] = tags.index(tag)
-        
+
         # sorting the list based on their tag positions
-        prio_sorted = [val for (_, val) in sorted(zip(sorted_ordering, prio_unsorted), key=lambda x: x[0])]
+        prio_sorted = [
+            val
+            for (_, val) in sorted(
+                zip(sorted_ordering, prio_unsorted), key=lambda x: x[0]
+            )
+        ]
         prio_sorted.extend(unordered)
 
         return prio_sorted
