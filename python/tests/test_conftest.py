@@ -626,7 +626,69 @@ class TestInlinetests:
         for x in (pytester.path, checkfile):
             items, reprec = pytester.inline_genitems(x)
             assert len(items) == 0
+
+    def test_assume_correct(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+            """ 
+        from inline import Here
+        def m(a):
+            a = 3
+            Here().assume(True).given(a, 1).check_not_none(a)
+    """
+        )
+        for x in (pytester.path, checkfile):
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 1
             res = pytester.runpytest()
+            assert res.ret == 0
+            
+    def test_assume_correct_with_timeout(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+            """ 
+        from inline import Here
+        import time
+        import sys
+        print(sys.version)
+
+        def m(a):
+            a = -3
+            Here(timeout=5.75).assume(True).given(a, loop(3)).check_eq(a,1)
+
+        def loop(b):
+            while True:
+                b = b + 1
+    """
+        )
+        for x in (pytester.path, checkfile):
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 1
+            res = pytester.runpytest()
+            #Should timeout instead of throwing AssertError
+            assert res.ret == 1
+
+    def test_assume_incorrect_with_timeout(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+            """ 
+        from inline import Here
+        import time
+        import sys
+        print(sys.version)
+
+        def m(a):
+            a = -3
+            Here(timeout=5.75).assume(False).given(a, loop(3)).check_eq(a,1)
+
+        def loop(b):
+            while True:
+                b = b + 1
+    """
+        )
+        for x in (pytester.path, checkfile):
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 1
+            res = pytester.runpytest()
+            #Should not return any assert
+            assert res.ret == 0
 
     def test_unit_test_disable_inline_test_enable(self, pytester: Pytester):
         checkfile = pytester.makepyfile(
@@ -646,7 +708,7 @@ class TestInlinetests:
             assert len(items) == 1
             res = pytester.runpytest()
             assert res.ret == 0
-
+  
     def test_unit_test_enable_inline_test_disable(self, pytester: Pytester):
         checkfile = pytester.makepyfile(
             """ 
