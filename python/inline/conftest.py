@@ -133,6 +133,8 @@ class InlineTest:
     ]
 
     def __init__(self):
+        self.assume_stmts = []
+        self.assume_node : ast.If = None
         self.check_stmts = []
         self.given_stmts = []
         self.previous_stmts = []
@@ -152,21 +154,42 @@ class InlineTest:
 
     def to_test(self):
         if self.prev_stmt_type == PrevStmtType.CondExpr:
-            return "\n".join(
-                self.import_libraries
-                + [ExtractInlineTest.node_to_source_code(n) for n in self.given_stmts]
-                + [ExtractInlineTest.node_to_source_code(n) for n in self.check_stmts]
-            )
+            if self.assume_stmts == []: 
+                return "\n".join(
+                    self.import_libraries
+                    + [ExtractInlineTest.node_to_source_code(n) for n in self.given_stmts]
+                    + [ExtractInlineTest.node_to_source_code(n) for n in self.check_stmts]
+                )
+            else:
+                body_nodes = [n for n in self.given_stmts] + [n for n in self.previous_stmts] + [n for n in self.check_stmts]
+                assume_statement = self.assume_stmts[0]
+                assume_node = self.build_assume_node(assume_statement, body_nodes)
+                return "\n".join(
+                    self.import_libraries
+                    + ExtractInlineTest.node_to_source_code(assume_node)
+                    
+                )
+                
+
         else:
-            return "\n".join(
-                self.import_libraries
-                + [ExtractInlineTest.node_to_source_code(n) for n in self.given_stmts]
-                + [
-                    ExtractInlineTest.node_to_source_code(n)
-                    for n in self.previous_stmts
-                ]
-                + [ExtractInlineTest.node_to_source_code(n) for n in self.check_stmts]
-            )
+            if self.assume_stmts == []:
+                return "\n".join(
+                    self.import_libraries
+                    + [ExtractInlineTest.node_to_source_code(n) for n in self.given_stmts]
+                    + [ExtractInlineTest.node_to_source_code(n) for n in self.previous_stmts]
+                    + [ExtractInlineTest.node_to_source_code(n) for n in self.check_stmts]
+                )
+            else:
+                body_nodes = [n for n in self.given_stmts] + [n for n in self.previous_stmts] + [n for n in self.check_stmts]
+                assume_statement = self.assume_stmts[0]
+                assume_node = self.build_assume_node(assume_statement, body_nodes)
+                return "\n".join(
+                    self.import_libraries
+                    + [ExtractInlineTest.node_to_source_code(assume_node)]
+                )
+    
+    def build_assume_node(self, assumption_node, body_nodes):
+        return ast.If(assumption_node, body_nodes,[])
 
     def __repr__(self):
         if self.test_name:
@@ -180,6 +203,7 @@ class InlineTest:
     def __eq__(self, other):
         return (
             self.import_libraries == other.import_libraries
+            and self.assume_stmts == other.assume_stmts
             and self.given_stmts == other.given_stmts
             and self.previous_stmts == other.previous_stmts
             and self.check_stmts == other.check_stmts
@@ -258,6 +282,7 @@ class ExtractInlineTest(ast.NodeTransformer):
     arg_tag_str = "tag"
     arg_disabled_str = "disabled"
     arg_timeout_str = "timeout"
+    assume = "assume"
     inline_module_imported = False
 
     def __init__(self):
@@ -614,6 +639,24 @@ class ExtractInlineTest(ast.NodeTransformer):
         else:
             raise MalformedException("inline test: invalid given(), expected 2 args")
 
+    def parse_assume(self, node):
+        if len(node.args) == 1:
+            if self.cur_inline_test.parameterized:
+                self.parameterized_inline_tests_init(node.args[0])
+                for index, value in enumerate(node.args[0].elts):
+                    test_node = self.parse_group(value)
+                    assumption_node = self.build_assume(test_node)
+                    self.cur_inline_test.parameterized_inline_tests[
+                        index
+                    ].assume_stmts.append(assumption_node)
+            else:
+                test_node = self.parse_group(node.args[0])
+                self.cur_inline_test.assume_stmts.append(test_node)
+        else:
+            raise MalformedException(
+                "inline test: invalid assume() call, expected 1 arg"
+            )
+
     def build_assert_eq(self, left_node, comparator_node):
         equal_node = ast.Compare(
             left=left_node,
@@ -963,7 +1006,7 @@ class ExtractInlineTest(ast.NodeTransformer):
         if len(node.args) == 0:
             self.build_fail()
         else:
-            raise MalformedException("inline test: invalid check_instance_of(), expected 2 args")
+            raise MalformedException("inline test: fail() does not expect any arguments")
 
     def parse_group(self, node):
         if (
@@ -1028,9 +1071,19 @@ class ExtractInlineTest(ast.NodeTransformer):
         else:
             raise MalformedException("inline test: invalid inline test constructor")
 
-        # "given(a, 1)"
+        # "assume_true(...) or assume_false(...)
         inline_test_call_index = 1
-        for call in inline_test_calls[1:]:
+        if(len(inline_test_calls) >= 2):
+            call = inline_test_calls[1]
+            if (
+                isinstance(call.func, ast.Attribute)
+                and call.func.attr == self.assume
+            ):
+                self.parse_assume(call)
+                inline_test_call_index += 1
+        
+        # "given(a, 1)"
+        for call in inline_test_calls[inline_test_call_index:]:
             if (
                 isinstance(call.func, ast.Attribute)
                 and call.func.attr == self.given_str
@@ -1098,7 +1151,6 @@ class ExtractInlineTest(ast.NodeTransformer):
     def node_to_source_code(node):
         ast.fix_missing_locations(node)
         return ast_unparse(node)
-
 
 ######################################################################
 ## InlineTest Finder
