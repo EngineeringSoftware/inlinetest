@@ -637,7 +637,7 @@ class TestInlinetests:
     """
         )
         for x in (pytester.path, checkfile):
-            res = pytester.runpytest()
+            items, reprec = pytester.inline_genitems(x)
             assert len(items) == 1
             res = pytester.runpytest()
             assert res.ret == 0
