@@ -7,11 +7,11 @@ pytest-inline is a plugin for `pytest <http://pytest.org>`_ that writes inline t
 Installation and usage
 ----------------------
 
-Use `pip install pytest-inline` to install our Python pytest-plugin
+Use ``pip install pytest-inline`` to install our Python pytest-plugin
 
-Use `pytest .` to run all inline tests in working directory 
+Use ``pytest .`` to run all inline tests in working directory 
 
-Use `pytest {filename}` to run all inline tests in a Python file
+Use ``pytest {filename}`` to run all inline tests in a Python file
 
 API
 ---
