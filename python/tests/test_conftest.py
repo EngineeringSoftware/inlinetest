@@ -621,7 +621,7 @@ class TestInlinetests:
         from inline import Here
         def m(a):
             a = 3
-            Here().assume(2 == 3).given(a, 1).check_none(a)
+            Here().assume(True).given(a, 1).check_not_none(a)
     """
         )
         for x in (pytester.path, checkfile):
@@ -640,7 +640,7 @@ class TestInlinetests:
 
         def m(a):
             a = -3
-            Here(timeout=5.75).assume(sys.version > '2' and sys.version < '4').given(a, loop(3)).check_eq(a,1)
+            Here(timeout=5.75).assume(True).given(a, loop(3)).check_eq(a,1)
 
         def loop(b):
             while True:
@@ -664,7 +664,7 @@ class TestInlinetests:
 
         def m(a):
             a = -3
-            Here(timeout=5.75).assume(sys.version < '3.9.0' and sys.version > '4.0').given(a, loop(3)).check_eq(a,1)
+            Here(timeout=5.75).assume(False).given(a, loop(3)).check_eq(a,1)
 
         def loop(b):
             while True:
