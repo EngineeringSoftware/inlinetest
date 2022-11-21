@@ -1073,16 +1073,14 @@ class ExtractInlineTest(ast.NodeTransformer):
 
         # "assume_true(...) or assume_false(...)
         inline_test_call_index = 1
-        for call in inline_test_calls[1:2]:
+        if(len(inline_test_calls) >= 2):
+            call = inline_test_calls[1]
             if (
                 isinstance(call.func, ast.Attribute)
                 and call.func.attr == self.assume
             ):
                 self.parse_assume(call)
                 inline_test_call_index += 1
-            else:
-                break
-
         
         # "given(a, 1)"
         for call in inline_test_calls[inline_test_call_index:]:
