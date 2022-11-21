@@ -124,22 +124,14 @@ class Here:
         :raises: AssertionError
         """
     
-    def assume_true(self, condition:bool):
+    def assume(self, condition:bool):
         """
-        Executes the test under the assuming the given condition is true
+        Executes the test under the assuming the given condition is true. If supplied, must be supplied immediately after Here().
+        Can only supply 1 assume statement.
 
         :param condition: a boolean condition
         :raises: AssertionError
         """
-    
-    def assume_false(self, condition:bool):
-        """
-        Executes the test under the assuming the given condition is true
-
-        :param condition: a boolean condition
-        :raises: AssertionError
-        """
-
 
 class Group:
     def __init__(self, *arg):

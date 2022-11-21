@@ -134,6 +134,7 @@ class InlineTest:
 
     def __init__(self):
         self.assume_stmts = []
+        self.assume_node : ast.If = None
         self.check_stmts = []
         self.given_stmts = []
         self.previous_stmts = []
@@ -153,26 +154,42 @@ class InlineTest:
 
     def to_test(self):
         if self.prev_stmt_type == PrevStmtType.CondExpr:
-            return "\n".join(
-                self.import_libraries
-                + [ExtractInlineTest.node_to_source_code(n) for n in self.assume_stmts]
-                + [ExtractInlineTest.node_to_source_code(n) for n in self.given_stmts]
-                + [ExtractInlineTest.node_to_source_code(n) for n in self.check_stmts]
-            )
+            if self.assume_stmts == []: 
+                return "\n".join(
+                    self.import_libraries
+                    + [ExtractInlineTest.node_to_source_code(n) for n in self.given_stmts]
+                    + [ExtractInlineTest.node_to_source_code(n) for n in self.check_stmts]
+                )
+            else:
+                body_nodes = [n for n in self.given_stmts] + [n for n in self.previous_stmts] + [n for n in self.check_stmts]
+                assume_statement = self.assume_stmts[0]
+                assume_node = self.build_assume_node(assume_statement, body_nodes)
+                return "\n".join(
+                    self.import_libraries
+                    + ExtractInlineTest.node_to_source_code(assume_node)
+                    
+                )
+                
+
         else:
-            return "\n".join(
-                self.import_libraries
-                + [ExtractInlineTest.node_to_source_code(n) for n in self.given_stmts]
-                + [ExtractInlineTest.node_to_source_code(n) for n in self.previous_stmts]
-                + [ExtractInlineTest.node_to_source_code(n) for n in self.check_stmts]
-            )
+            if self.assume_stmts == []:
+                return "\n".join(
+                    self.import_libraries
+                    + [ExtractInlineTest.node_to_source_code(n) for n in self.given_stmts]
+                    + [ExtractInlineTest.node_to_source_code(n) for n in self.previous_stmts]
+                    + [ExtractInlineTest.node_to_source_code(n) for n in self.check_stmts]
+                )
+            else:
+                body_nodes = [n for n in self.given_stmts] + [n for n in self.previous_stmts] + [n for n in self.check_stmts]
+                assume_statement = self.assume_stmts[0]
+                assume_node = self.build_assume_node(assume_statement, body_nodes)
+                return "\n".join(
+                    self.import_libraries
+                    + [ExtractInlineTest.node_to_source_code(assume_node)]
+                )
     
-    def to_test_assumptions(self):
-        return "\n".join(
-            self.import_libraries
-            + [ExtractInlineTest.node_to_source_code(n) for n in self.previous_stmts]
-            + [ExtractInlineTest.node_to_source_code(n) for n in self.assume_stmts]
-        )
+    def build_assume_node(self, assumption_node, body_nodes):
+        return ast.If(assumption_node, body_nodes,[])
 
     def __repr__(self):
         if self.test_name:
@@ -265,8 +282,7 @@ class ExtractInlineTest(ast.NodeTransformer):
     arg_tag_str = "tag"
     arg_disabled_str = "disabled"
     arg_timeout_str = "timeout"
-    assume_true_str = "assume_true"
-    assume_false_str = "assume_false"
+    assume = "assume"
     inline_module_imported = False
 
     def __init__(self):
@@ -623,82 +639,22 @@ class ExtractInlineTest(ast.NodeTransformer):
         else:
             raise MalformedException("inline test: invalid given(), expected 2 args")
 
-    def build_assume_true(self, test_node):
-        assert_node = ast.Assert(
-            test=test_node,
-            msg=ast.Call(
-                func=ast.Attribute(
-                    ast.Constant(
-                        "Assumption that bool({0}) is True\nActual: bool({0}) is False\n"
-                    ),
-                    "format",
-                    ast.Load(),
-                ),
-                args=[
-                    ast.Constant(self.node_to_source_code(test_node)),
-                    test_node,
-                ],
-                keywords=[],
-            ),
-        )
-        return assert_node
-
-    def parse_assume_true(self, node):
+    def parse_assume(self, node):
         if len(node.args) == 1:
             if self.cur_inline_test.parameterized:
                 self.parameterized_inline_tests_init(node.args[0])
                 for index, value in enumerate(node.args[0].elts):
                     test_node = self.parse_group(value)
-                    assert_node = self.build_assume_true(test_node)
+                    assumption_node = self.build_assume(test_node)
                     self.cur_inline_test.parameterized_inline_tests[
                         index
-                    ].assume_stmts.append(assert_node)
+                    ].assume_stmts.append(assumption_node)
             else:
                 test_node = self.parse_group(node.args[0])
-                assert_node = self.build_assume_true(test_node)
-                self.cur_inline_test.assume_stmts.append(assert_node)
+                self.cur_inline_test.assume_stmts.append(test_node)
         else:
             raise MalformedException(
-                "inline test: invalid assume_true(), expected 1 arg"
-            )
-            
-    def build_assume_false(self, test_node):
-        assert_node = ast.Assert(
-            test=ast.UnaryOp(op=ast.Not(), operand=test_node),
-            msg=ast.Call(
-                func=ast.Attribute(
-                    ast.Constant(
-                        "Assumption that bool({0}) is False\nActual: bool({0}) is True\n"
-                    ),
-                    "format",
-                    ast.Load(),
-                ),
-                args=[
-                    ast.Constant(self.node_to_source_code(test_node)),
-                    test_node,
-                ],
-                keywords=[],
-            ),
-        )
-        return assert_node
-
-    def parse_assume_false(self, node):
-        if len(node.args) == 1:
-            if self.cur_inline_test.parameterized:
-                self.parameterized_inline_tests_init(node.args[0])
-                for index, value in enumerate(node.args[0].elts):
-                    test_node = self.parse_group(value)
-                    assert_node = self.build_assume_false(test_node)
-                    self.cur_inline_test.parameterized_inline_tests[
-                        index
-                    ].assume_stmts.append(assert_node)
-            else:
-                test_node = self.parse_group(node.args[0])
-                assert_node = self.build_assume_false(test_node)
-                self.cur_inline_test.assume_stmts.append(assert_node)
-        else:
-            raise MalformedException(
-                "inline test: invalid assume_false(), expected 1 arg"
+                "inline test: invalid assume() call, expected 1 arg"
             )
 
     def build_assert_eq(self, left_node, comparator_node):
@@ -1117,18 +1073,12 @@ class ExtractInlineTest(ast.NodeTransformer):
 
         # "assume_true(...) or assume_false(...)
         inline_test_call_index = 1
-        for call in inline_test_calls[1:]:
+        for call in inline_test_calls[1:2]:
             if (
                 isinstance(call.func, ast.Attribute)
-                and call.func.attr == self.assume_true_str
+                and call.func.attr == self.assume
             ):
-                self.parse_assume_true(call)
-                inline_test_call_index += 1
-            elif (
-                isinstance(call.func, ast.Attribute)
-                and call.func.attr == self.assume_false_str
-            ):
-                self.parse_assume_false(call)
+                self.parse_assume(call)
                 inline_test_call_index += 1
             else:
                 break
@@ -1203,7 +1153,6 @@ class ExtractInlineTest(ast.NodeTransformer):
     def node_to_source_code(node):
         ast.fix_missing_locations(node)
         return ast_unparse(node)
-
 
 ######################################################################
 ## InlineTest Finder
@@ -1320,10 +1269,6 @@ class InlineTestFinder:
 ######################################################################
 class InlineTestRunner:
     def run(self, test: InlineTest, out: List) -> None:
-        if(test.assume_stmts != []):
-            assumptions = ast.parse(test.to_test_assumptions())
-            assumptionscodeobj = compile(assumptions, filename="<ast>", mode="exec")
-            exec(assumptionscodeobj, test.globs)
         tree = ast.parse(test.to_test())
         codeobj = compile(tree, filename="<ast>", mode="exec")
         start_time = time.time()

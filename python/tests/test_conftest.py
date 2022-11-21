@@ -615,28 +615,13 @@ class TestInlinetests:
             items, reprec = pytester.inline_genitems(x)
             assert len(items) == 0
 
-    def test_assume_true_fail(self, pytester: Pytester):
+    def test_assume_correct(self, pytester: Pytester):
         checkfile = pytester.makepyfile(
             """ 
         from inline import Here
         def m(a):
             a = 3
-            Here().assume_true(a == 4).given(a, 1).check_not_none(a)
-    """
-        )
-        for x in (pytester.path, checkfile):
-            items, reprec = pytester.inline_genitems(x)
-            assert len(items) == 1
-            res = pytester.runpytest()
-            assert res.ret == 1 #Failure
-
-    def test_assume_true(self, pytester: Pytester):
-        checkfile = pytester.makepyfile(
-            """ 
-        from inline import Here
-        def m(a):
-            a = 3
-            Here().assume_true(a == 3).given(a, 1).check_not_none(a)
+            Here().assume(2 == 3).given(a, 1).check_none(a)
     """
         )
         for x in (pytester.path, checkfile):
@@ -644,81 +629,18 @@ class TestInlinetests:
             assert len(items) == 1
             res = pytester.runpytest()
             assert res.ret == 0
-        
-    def test_assume_true_false_combo(self, pytester: Pytester):
-        checkfile = pytester.makepyfile(
-            """ 
-        from inline import Here
-        def m(a):
-            b = 4
-            Here().assume_true(b < 5).assume_false(b > 6).given(a, 1).check_not_none(a)
-    """
-        )
-        for x in (pytester.path, checkfile):
-            items, reprec = pytester.inline_genitems(x)
-            assert len(items) == 1
-            res = pytester.runpytest()
-            assert res.ret == 0
-
-    def test_assume_false_fail(self, pytester: Pytester):
-        checkfile = pytester.makepyfile(
-            """ 
-        from inline import Here
-        def m(a):
-            b = 4
-            Here().assume_false(b == 4).given(a, 1).check_not_none(a)
-    """
-        )
-        for x in (pytester.path, checkfile):
-            items, reprec = pytester.inline_genitems(x)
-            assert len(items) == 1
-            res = pytester.runpytest()
-            assert res.ret == 1
-
-    def test_assume_false(self, pytester: Pytester):
-        checkfile = pytester.makepyfile(
-            """ 
-        from inline import Here
-        def m(a):
-            b = 4
-            Here().assume_false(b == 3).given(a, 1).check_not_none(a)
-    """
-        )
-        for x in (pytester.path, checkfile):
-            items, reprec = pytester.inline_genitems(x)
-            assert len(items) == 1
-            res = pytester.runpytest()
-            assert res.ret == 0
-
-    def test_assume_incorrect_with_timeout(self, pytester: Pytester):
-        checkfile = pytester.makepyfile(
-            """ 
-         from inline import Here
-        import time
-        def m(a):
-            a = -3
-            Here(timeout=5.75).assume_true(a > 0).given(a, loop(3)).check_eq(a,1)
-
-        def loop(b):
-            while True:
-                b = b + 1
-    """
-        )
-        for x in (pytester.path, checkfile):
-            items, reprec = pytester.inline_genitems(x)
-            assert len(items) == 1
-            res = pytester.runpytest()
-            #Should throw an AssertError
-            assert res.ret == 1
-    
+         
     def test_assume_correct_with_timeout(self, pytester: Pytester):
         checkfile = pytester.makepyfile(
             """ 
-         from inline import Here
+        from inline import Here
         import time
+        import sys
+        print(sys.version)
+
         def m(a):
             a = -3
-            Here(timeout=5.75).assume_true(a < 0).given(a, loop(3)).check_eq(a,1)
+            Here(timeout=5.75).assume(sys.version > '3.9.0' and sys.version < '4.0').given(a, loop(3)).check_eq(a,1)
 
         def loop(b):
             while True:
@@ -731,3 +653,27 @@ class TestInlinetests:
             res = pytester.runpytest()
             #Should timeout instead of throwing AssertError
             assert res.ret == 1
+
+    def test_assume_incorrect_with_timeout(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+            """ 
+        from inline import Here
+        import time
+        import sys
+        print(sys.version)
+
+        def m(a):
+            a = -3
+            Here(timeout=5.75).assume(sys.version < '3.9.0' and sys.version > '4.0').given(a, loop(3)).check_eq(a,1)
+
+        def loop(b):
+            while True:
+                b = b + 1
+    """
+        )
+        for x in (pytester.path, checkfile):
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 1
+            res = pytester.runpytest()
+            #Should not return any assert
+            assert res.ret == 0
