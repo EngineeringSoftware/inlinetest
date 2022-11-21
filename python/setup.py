@@ -14,7 +14,7 @@ def read(fname):
 
 setup(
     name="pytest-inline",
-    version="0.1.0",
+    version="1.0.0",
     author="Yu Liu",
     author_email="yuki.liu@utexas.edu",
     maintainer="Yu Liu",
