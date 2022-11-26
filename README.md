@@ -1,8 +1,6 @@
-# I-Test
+# Inline tests
 
-<img src="I-Test-logos.png" alt="Ekstazi" width="238" height="224"> 
-
-I-Test is a framework for writing inline tests in Python and Java.
+Inline tests is a new type of tests that check the correctness of code at statement level.
 
 ## Introduction
 
