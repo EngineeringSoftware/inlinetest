@@ -1,6 +1,6 @@
 # Inline tests
 
-Inline tests is a new type of tests that check the correctness of code at statement level.
+A new type of tests that check the correctness of code at statement level.
 
 ## Introduction
 
