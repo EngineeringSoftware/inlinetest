@@ -127,19 +127,32 @@ the logs by doing `python -m research.exp_integrated view_result
 scripts/patches as needed.
 
 ## Citation
+If you have used I-Test in a research project, please cite the research paper in any related publication:
 
 Title: [Inline Tests][paper-url]
 
 Authors: [Yu Liu](https://sweetstreet.github.io/), [Pengyu Nie](https://pengyunie.github.io/), [Owolabi Legunsen](https://mir.cs.illinois.edu/legunsen/), [Milos Gligoric](http://users.ece.utexas.edu/~gligoric/)
 
-If you have used I-Test in a research project, please cite the research paper in any related publication:
-
 ```bibtex
 @inproceedings{LiuASE22InlineTests,
   title =        {Inline Tests},
   author =       {Yu Liu and Pengyu Nie and Owolabi Legunsen and Milos Gligoric},
-  pages =        {to appear},
+  pages =        {1--13},
   booktitle =    {International Conference on Automated Software Engineering},
   year =         {2022},
+}
+```
+
+Title: [pytest-inline][paper-url]
+
+Authors: [Yu Liu](https://sweetstreet.github.io/), [Zachary Thurston](), [Alan Han](), [Pengyu Nie](https://pengyunie.github.io/), [Owolabi Legunsen](https://mir.cs.illinois.edu/legunsen/), [Milos Gligoric](http://users.ece.utexas.edu/~gligoric/)
+
+```bibtex
+@inproceedings{LiuICSE23PytestInline,
+  title =        {pytest-inline: An Inline Testing Tool for Python},
+  author =       {Yu Liu and Zachary Thurston and Alan Han and Pengyu Nie and Owolabi Legunsen and Milos Gligoric},
+  pages =        {To appear},
+  booktitle =    {International Conference on Software Engineering},
+  year =         {2023},
 }
 ```
