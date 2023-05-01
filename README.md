@@ -14,6 +14,7 @@ integrated with popular testing frameworks pytest and Junit.
 
 The code includes:
 * I-Test framework for Python
+The tool for python is available as a plugin [pytest-inline](https://github.com/pytest-dev/pytest-inline)
 * I-Test framework for Java
 * scripts for collecting and filtering examples suitable for writing inline tests
 * scripts for evaluating the performance of I-Test
