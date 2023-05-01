@@ -129,7 +129,7 @@ scripts/patches as needed.
 ## Citation
 If you have used I-Test in a research project, please cite the research paper in any related publication:
 
-Title: [Inline Tests][https://dl.acm.org/doi/abs/10.1145/3551349.3556952]
+Title: [Inline Tests](https://dl.acm.org/doi/abs/10.1145/3551349.3556952)
 
 Authors: [Yu Liu](https://sweetstreet.github.io/), [Pengyu Nie](https://pengyunie.github.io/), [Owolabi Legunsen](https://mir.cs.illinois.edu/legunsen/), [Milos Gligoric](http://users.ece.utexas.edu/~gligoric/)
 
