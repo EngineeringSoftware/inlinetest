@@ -11,6 +11,7 @@ import pytest
 from _pytest.pathlib import fnmatch_ex, import_path
 from pytest import Collector, Config, FixtureRequest, Parser
 import signal
+from _pytest.main import Session
 
 if sys.version_info >= (3, 9, 0):
     from ast import unparse as ast_unparse
@@ -25,11 +26,11 @@ else:
 def pytest_addoption(parser: Parser) -> None:
     group = parser.getgroup("collect")
     group.addoption(
-        "--inlinetest-modules",
+        "--inlinetest-only",
         action="store_true",
         default=False,
         help="run inlinetests in all .py modules",
-        dest="inlinetest_modules",
+        dest="inlinetest_only",
     )
     group.addoption(
         "--inlinetest-glob",
@@ -96,6 +97,19 @@ def pytest_configure(config):
     config.addinivalue_line("markers", "inline: mark inline tests")
 
 
+@pytest.hookimpl()
+def pytest_collectstart(collector):
+    if not isinstance(collector, Session):
+        if collector.config.getoption("inlinetest_only") and (
+            not isinstance(collector, InlinetestModule)
+        ):
+            collector.collect = lambda: []  # type: ignore[assignment]
+        elif collector.config.getoption("inlinetest_disable") and isinstance(
+            collector, InlinetestModule
+        ):
+            collector.collect = lambda: []  # type: ignore[assignment]
+
+
 def pytest_collect_file(
     file_path: Path,
     parent: Collector,
@@ -133,6 +147,8 @@ class InlineTest:
     ]
 
     def __init__(self):
+        self.assume_stmts = []
+        self.assume_node : ast.If = None
         self.check_stmts = []
         self.given_stmts = []
         self.previous_stmts = []
@@ -152,21 +168,42 @@ class InlineTest:
 
     def to_test(self):
         if self.prev_stmt_type == PrevStmtType.CondExpr:
-            return "\n".join(
-                self.import_libraries
-                + [ExtractInlineTest.node_to_source_code(n) for n in self.given_stmts]
-                + [ExtractInlineTest.node_to_source_code(n) for n in self.check_stmts]
-            )
+            if self.assume_stmts == []: 
+                return "\n".join(
+                    self.import_libraries
+                    + [ExtractInlineTest.node_to_source_code(n) for n in self.given_stmts]
+                    + [ExtractInlineTest.node_to_source_code(n) for n in self.check_stmts]
+                )
+            else:
+                body_nodes = [n for n in self.given_stmts] + [n for n in self.previous_stmts] + [n for n in self.check_stmts]
+                assume_statement = self.assume_stmts[0]
+                assume_node = self.build_assume_node(assume_statement, body_nodes)
+                return "\n".join(
+                    self.import_libraries
+                    + ExtractInlineTest.node_to_source_code(assume_node)
+                    
+                )
+                
+
         else:
-            return "\n".join(
-                self.import_libraries
-                + [ExtractInlineTest.node_to_source_code(n) for n in self.given_stmts]
-                + [
-                    ExtractInlineTest.node_to_source_code(n)
-                    for n in self.previous_stmts
-                ]
-                + [ExtractInlineTest.node_to_source_code(n) for n in self.check_stmts]
-            )
+            if self.assume_stmts == []:
+                return "\n".join(
+                    self.import_libraries
+                    + [ExtractInlineTest.node_to_source_code(n) for n in self.given_stmts]
+                    + [ExtractInlineTest.node_to_source_code(n) for n in self.previous_stmts]
+                    + [ExtractInlineTest.node_to_source_code(n) for n in self.check_stmts]
+                )
+            else:
+                body_nodes = [n for n in self.given_stmts] + [n for n in self.previous_stmts] + [n for n in self.check_stmts]
+                assume_statement = self.assume_stmts[0]
+                assume_node = self.build_assume_node(assume_statement, body_nodes)
+                return "\n".join(
+                    self.import_libraries
+                    + [ExtractInlineTest.node_to_source_code(assume_node)]
+                )
+    
+    def build_assume_node(self, assumption_node, body_nodes):
+        return ast.If(assumption_node, body_nodes,[])
 
     def __repr__(self):
         if self.test_name:
@@ -180,6 +217,7 @@ class InlineTest:
     def __eq__(self, other):
         return (
             self.import_libraries == other.import_libraries
+            and self.assume_stmts == other.assume_stmts
             and self.given_stmts == other.given_stmts
             and self.previous_stmts == other.previous_stmts
             and self.check_stmts == other.check_stmts
@@ -244,14 +282,12 @@ class ExtractInlineTest(ast.NodeTransformer):
     check_eq_str = "check_eq"
     check_true_str = "check_true"
     check_false_str = "check_false"
-    ##########################################################################################################
-    # TODO: Zach - Finish Implementation of assertNull, assertNotEquals, assertInstanceOf, assertThrows
-    check_null_str = "check_null"
-    check_not_null_str = "check_not_null"
-    check_not_equals_str = "check_not_equals"
-    check_instance_of = "check_instance_of"
-    check_throw = "check_throw"
-    ##########################################################################################################
+    check_none_str = "check_none"
+    check_not_none_str = "check_not_none"
+    check_neq_str = "check_neq"
+    check_same = "check_same"
+    check_not_same = "check_not_same"
+    fail_str = "fail"
     given_str = "given"
     group_str = "Group"
     arg_test_name_str = "test_name"
@@ -260,6 +296,7 @@ class ExtractInlineTest(ast.NodeTransformer):
     arg_tag_str = "tag"
     arg_disabled_str = "disabled"
     arg_timeout_str = "timeout"
+    assume = "assume"
     inline_module_imported = False
 
     def __init__(self):
@@ -616,6 +653,24 @@ class ExtractInlineTest(ast.NodeTransformer):
         else:
             raise MalformedException("inline test: invalid given(), expected 2 args")
 
+    def parse_assume(self, node):
+        if len(node.args) == 1:
+            if self.cur_inline_test.parameterized:
+                self.parameterized_inline_tests_init(node.args[0])
+                for index, value in enumerate(node.args[0].elts):
+                    test_node = self.parse_group(value)
+                    assumption_node = self.build_assume(test_node)
+                    self.cur_inline_test.parameterized_inline_tests[
+                        index
+                    ].assume_stmts.append(assumption_node)
+            else:
+                test_node = self.parse_group(node.args[0])
+                self.cur_inline_test.assume_stmts.append(test_node)
+        else:
+            raise MalformedException(
+                "inline test: invalid assume() call, expected 1 arg"
+            )
+
     def build_assert_eq(self, left_node, comparator_node):
         equal_node = ast.Compare(
             left=left_node,
@@ -738,6 +793,238 @@ class ExtractInlineTest(ast.NodeTransformer):
                 "inline test: invalid check_false(), expected 1 arg"
             )
 
+    def build_assert_neq(self, left_node, comparator_node):
+        equal_node = ast.Compare(
+            left=left_node,
+            ops=[ast.NotEq()],
+            comparators=[comparator_node],
+        )
+        assert_node = ast.Assert(
+            test=equal_node,
+            msg=ast.Call(
+                func=ast.Attribute(
+                    ast.Constant("{0} == {1}\nActual: {2}\nExpected: {3}\n"),
+                    "format",
+                    ast.Load(),
+                ),
+                args=[
+                    ast.Constant(self.node_to_source_code(left_node)),
+                    ast.Constant(self.node_to_source_code(comparator_node)),
+                    left_node,
+                    comparator_node,
+                ],
+                keywords=[],
+            ),
+        )
+        return assert_node
+
+    def parse_check_neq(self, node):
+        # check if the function being called is an inline test function
+        if len(node.args) == 2:
+            left_node = self.parse_group(node.args[0])
+            if self.cur_inline_test.parameterized:
+                self.parameterized_inline_tests_init(node.args[1])
+                for index, value in enumerate(node.args[1].elts):
+                    comparator_node = self.parse_group(value)
+                    assert_node = self.build_assert_neq(left_node, comparator_node)
+                    self.cur_inline_test.parameterized_inline_tests[
+                        index
+                    ].check_stmts.append(assert_node)
+            else:
+                comparator_node = self.parse_group(node.args[1])
+                assert_node = self.build_assert_neq(left_node, comparator_node)
+                self.cur_inline_test.check_stmts.append(assert_node)
+        else:
+            raise MalformedException(
+                "inline test: invalid check_neq(), expected 2 args"
+            )
+
+    def build_assert_none(self, left_node):
+        equal_node = ast.Compare(
+            left=left_node,
+            ops=[ast.Is()],
+            comparators=[ast.Constant(None)],
+        )
+        assert_node = ast.Assert(
+            test=equal_node,
+            msg=ast.Call(
+                func=ast.Attribute(
+                    ast.Constant("Assertion that value was None failed\n"),
+                    "format",
+                    ast.Load(),
+                ),
+                args=[],
+                keywords=[],
+            ),
+        )
+        return assert_node
+
+    def parse_check_none(self, node):
+        if len(node.args) == 1:
+            if self.cur_inline_test.parameterized:
+                self.parameterized_inline_tests_init(node.args[0])
+                for index, value in enumerate(node.args[0].elts):
+                    operand_node = self.parse_group(value)
+                    assert_node = self.build_assert_none(operand_node)
+                    self.cur_inline_test.parameterized_inline_tests[
+                        index
+                    ].check_stmts.append(assert_node)
+            else:
+                operand_node = self.parse_group(node.args[0])
+                assert_node = self.build_assert_none(operand_node)
+                self.cur_inline_test.check_stmts.append(assert_node)
+        else:
+            raise MalformedException(
+                "inline test: invalid check_none(), expected 1 arg"
+            )
+
+    def build_assert_not_none(self, left_node):
+        equal_node = ast.Compare(
+            left=left_node,
+            ops=[ast.IsNot()],
+            comparators=[ast.Constant(None)],
+        )
+        assert_node = ast.Assert(
+            test=equal_node,
+            msg=ast.Call(
+                func=ast.Attribute(
+                    ast.Constant("Assertion that value was not None failed\n"),
+                    "format",
+                    ast.Load(),
+                ),
+                args=[],
+                keywords=[],
+            ),
+        )
+        return assert_node
+
+    def parse_check_not_none(self, node):
+        if len(node.args) == 1:
+            if self.cur_inline_test.parameterized:
+                self.parameterized_inline_tests_init(node.args[0])
+                for index, value in enumerate(node.args[0].elts):
+                    operand_node = self.parse_group(value)
+                    assert_node = self.build_assert_not_none(operand_node)
+                    self.cur_inline_test.parameterized_inline_tests[
+                        index
+                    ].check_stmts.append(assert_node)
+            else:
+                operand_node = self.parse_group(node.args[0])
+                assert_node = self.build_assert_not_none(operand_node)
+                self.cur_inline_test.check_stmts.append(assert_node)
+        else:
+            raise MalformedException(
+                "inline test: invalid check_not_none(), expected 1 arg"
+            )
+
+    def build_assert_same(self, left_node, comparator_node):
+        equal_node = ast.Compare(
+            left=left_node,
+            ops=[ast.Is()],
+            comparators=[comparator_node],
+        )
+        assert_node = ast.Assert(
+            test=equal_node,
+            msg=ast.Call(
+                func=ast.Attribute(
+                    ast.Constant("{0} == {1}\nActual: {2}\nExpected: {3}\n"),
+                    "format",
+                    ast.Load(),
+                ),
+                args=[
+                    ast.Constant(self.node_to_source_code(left_node)),
+                    ast.Constant(self.node_to_source_code(comparator_node)),
+                    left_node,
+                    comparator_node,
+                ],
+                keywords=[],
+            ),
+        )
+        return assert_node
+
+    def parse_check_same(self, node):
+        # check if the function being called is an inline test function
+        if len(node.args) == 2:
+            left_node = self.parse_group(node.args[0])
+            if self.cur_inline_test.parameterized:
+                self.parameterized_inline_tests_init(node.args[1])
+                for index, value in enumerate(node.args[1].elts):
+                    comparator_node = self.parse_group(value)
+                    assert_node = self.build_assert_same(left_node, comparator_node)
+                    self.cur_inline_test.parameterized_inline_tests[
+                        index
+                    ].check_stmts.append(assert_node)
+            else:
+                comparator_node = self.parse_group(node.args[1])
+                assert_node = self.build_assert_same(left_node, comparator_node)
+                self.cur_inline_test.check_stmts.append(assert_node)
+        else:
+            raise MalformedException(
+                "inline test: invalid check_same(), expected 2 args"
+            )
+
+    def build_assert_not_same(self, left_node, comparator_node):
+        equal_node = ast.Compare(
+            left=left_node,
+            ops=[ast.IsNot()],
+            comparators=[comparator_node],
+        )
+        assert_node = ast.Assert(
+            test=equal_node,
+            msg=ast.Call(
+                func=ast.Attribute(
+                    ast.Constant("{0} == {1}\nActual: {2}\nExpected: {3}\n"),
+                    "format",
+                    ast.Load(),
+                ),
+                args=[
+                    ast.Constant(self.node_to_source_code(left_node)),
+                    ast.Constant(self.node_to_source_code(comparator_node)),
+                    left_node,
+                    comparator_node,
+                ],
+                keywords=[],
+            ),
+        )
+        return assert_node
+
+    def parse_check_not_same(self, node):
+        # check if the function being called is an inline test function
+        if len(node.args) == 2:
+            left_node = self.parse_group(node.args[0])
+            if self.cur_inline_test.parameterized:
+                self.parameterized_inline_tests_init(node.args[1])
+                for index, value in enumerate(node.args[1].elts):
+                    comparator_node = self.parse_group(value)
+                    assert_node = self.build_assert_not_same(left_node, comparator_node)
+                    self.cur_inline_test.parameterized_inline_tests[
+                        index
+                    ].check_stmts.append(assert_node)
+            else:
+                comparator_node = self.parse_group(node.args[1])
+                assert_node = self.build_assert_not_same(left_node, comparator_node)
+                self.cur_inline_test.check_stmts.append(assert_node)
+        else:
+            raise MalformedException(
+                "inline test: invalid check_not_same(), expected 2 args"
+            )
+
+    def build_fail(self):
+        equal_node = ast.Compare(
+            left=ast.Constant(0),
+            ops=[ast.Eq()],
+            comparators=[ast.Constant(1)],
+        )
+        assert_node = ast.Assert(test=equal_node)
+        return assert_node
+
+    def parse_fail(self, node):
+        # check if the function being called is an inline test function
+        if len(node.args) == 0:
+            self.build_fail()
+        else:
+            raise MalformedException("inline test: fail() does not expect any arguments")
+
     def parse_group(self, node):
         if (
             isinstance(node, ast.Call)
@@ -801,9 +1088,19 @@ class ExtractInlineTest(ast.NodeTransformer):
         else:
             raise MalformedException("inline test: invalid inline test constructor")
 
-        # "given(a, 1)"
+        # "assume_true(...) or assume_false(...)
         inline_test_call_index = 1
-        for call in inline_test_calls[1:]:
+        if(len(inline_test_calls) >= 2):
+            call = inline_test_calls[1]
+            if (
+                isinstance(call.func, ast.Attribute)
+                and call.func.attr == self.assume
+            ):
+                self.parse_assume(call)
+                inline_test_call_index += 1
+        
+        # "given(a, 1)"
+        for call in inline_test_calls[inline_test_call_index:]:
             if (
                 isinstance(call.func, ast.Attribute)
                 and call.func.attr == self.given_str
@@ -813,7 +1110,7 @@ class ExtractInlineTest(ast.NodeTransformer):
             else:
                 break
 
-        # "check_eq" or "check_true" or "check_false"
+        # "check_eq" or "check_true" or "check_false" or "check_neq"
         for call in inline_test_calls[inline_test_call_index:]:
             # "check_eq(a, 1)"
             if call.func.attr == self.check_eq_str:
@@ -824,6 +1121,19 @@ class ExtractInlineTest(ast.NodeTransformer):
             # "check_false(a)"
             elif call.func.attr == self.check_false_str:
                 self.parse_check_false(call)
+            # "check_neq(a, 1)"
+            elif call.func.attr == self.check_neq_str:
+                self.parse_check_neq(call)
+            elif call.func.attr == self.check_none_str:
+                self.parse_check_none(call)
+            elif call.func.attr == self.check_not_none_str:
+                self.parse_check_not_none(call)
+            elif call.func.attr == self.check_same:
+                self.parse_check_same(call)
+            elif call.func.attr == self.check_not_same:
+                self.parse_check_not_same(call)
+            elif call.func.attr == self.fail_str:
+                self.parse_fail(call)
             elif call.func.attr == self.given_str:
                 raise MalformedException(
                     f"inline test: given() must be called before check_eq()/check_true()/check_false()"
@@ -858,7 +1168,6 @@ class ExtractInlineTest(ast.NodeTransformer):
     def node_to_source_code(node):
         ast.fix_missing_locations(node)
         return ast_unparse(node)
-
 
 ######################################################################
 ## InlineTest Finder
@@ -1045,23 +1354,28 @@ class InlinetestModule(pytest.Module):
     def order_tests(test_list, tags):
         prio_unsorted = []
         unordered = []
-        
+
         # sorting the tests based on if they are ordered or not
         for test in test_list:
-            if (len(set(test.tag) & set(tags)) > 0):
+            if len(set(test.tag) & set(tags)) > 0:
                 prio_unsorted.append(test)
             else:
                 unordered.append(test)
 
         # giving each test a value for its order in tags
         sorted_ordering = [None] * len(prio_unsorted)
-        for i in range(0,len(prio_unsorted)):
+        for i in range(0, len(prio_unsorted)):
             for tag in tags:
-                if(tag in prio_unsorted[i].tag):
+                if tag in prio_unsorted[i].tag:
                     sorted_ordering[i] = tags.index(tag)
-        
+
         # sorting the list based on their tag positions
-        prio_sorted = [val for (_, val) in sorted(zip(sorted_ordering, prio_unsorted), key=lambda x: x[0])]
+        prio_sorted = [
+            val
+            for (_, val) in sorted(
+                zip(sorted_ordering, prio_unsorted), key=lambda x: x[0]
+            )
+        ]
         prio_sorted.extend(unordered)
 
         return prio_sorted

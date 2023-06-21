@@ -244,7 +244,7 @@ class TestInlinetests:
             reprec = pytester.inline_run("--inlinetest-group=add")
             items = [x.item for x in reprec.getcalls("pytest_itemcollected")]
             assert len(items) == 1
-    
+
     def test_check_multiple_group_tests(self, pytester: Pytester):
         checkfile = pytester.makepyfile(
             """ 
@@ -257,7 +257,9 @@ class TestInlinetests:
     """
         )
         for x in (pytester.path, checkfile):
-            reprec = pytester.inline_run("--inlinetest-group=add", "--inlinetest-group=minus")
+            reprec = pytester.inline_run(
+                "--inlinetest-group=add", "--inlinetest-group=minus"
+            )
             items = [x.item for x in reprec.getcalls("pytest_itemcollected")]
             assert len(items) == 2
 
@@ -458,10 +460,11 @@ class TestInlinetests:
     """
         )
         for x in (pytester.path, checkfile):
-            reprec = pytester.inline_run("--inlinetest-order=minus", "--inlinetest-order=add")
+            reprec = pytester.inline_run(
+                "--inlinetest-order=minus", "--inlinetest-order=add"
+            )
             items = [x.item for x in reprec.getcalls("pytest_itemcollected")]
             assert len(items) == 2
-
             assert items[0].dtest.test_name == "2"
             assert items[1].dtest.test_name == "1"
 
@@ -479,7 +482,9 @@ class TestInlinetests:
     """
         )
         for x in (pytester.path, checkfile):
-            reprec = pytester.inline_run("--inlinetest-order=minus", "--inlinetest-order=add")
+            reprec = pytester.inline_run(
+                "--inlinetest-order=minus", "--inlinetest-order=add"
+            )
             items = [x.item for x in reprec.getcalls("pytest_itemcollected")]
             assert len(items) == 3
 
@@ -503,7 +508,9 @@ class TestInlinetests:
     """
         )
         for x in (pytester.path, checkfile):
-            reprec = pytester.inline_run("--inlinetest-order=minus", "--inlinetest-order=add")
+            reprec = pytester.inline_run(
+                "--inlinetest-order=minus", "--inlinetest-order=add"
+            )
             items = [x.item for x in reprec.getcalls("pytest_itemcollected")]
             assert len(items) == 4
 
@@ -524,6 +531,201 @@ class TestInlinetests:
     """
         )
         for x in (pytester.path, checkfile):
-            reprec = pytester.inline_run("--inlinetest-order=minus", "--inlinetest-order=add", "--inlinetest-group=add")
+            reprec = pytester.inline_run(
+                "--inlinetest-order=minus",
+                "--inlinetest-order=add",
+                "--inlinetest-group=add",
+            )
             items = [x.item for x in reprec.getcalls("pytest_itemcollected")]
             assert len(items) == 1
+
+    def test_assert_neq(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+            """ 
+        from inline import Here
+        def m(a):
+            a = a - 1
+            Here().given(a, 1).check_neq(a, 1)
+    """
+        )
+        for x in (pytester.path, checkfile):
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 1
+            res = pytester.runpytest()
+            assert res.ret == 0
+
+    def test_assert_none(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+            """ 
+        from inline import Here
+        def m(a):
+            a = None
+            Here().given(a, 1).check_none(a)
+    """
+        )
+        for x in (pytester.path, checkfile):
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 1
+            res = pytester.runpytest()
+            assert res.ret == 0
+
+    def test_assert_not_none(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+            """ 
+        from inline import Here
+        def m(a):
+            a = 3
+            Here().given(a, 1).check_not_none(a)
+    """
+        )
+        for x in (pytester.path, checkfile):
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 1
+            res = pytester.runpytest()
+            assert res.ret == 0
+
+    def test_assert_same(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+            """ 
+        from inline import Here
+        def m(a):
+            b = a
+            Here().given(a, "Hi").check_same(a,b)
+    """
+        )
+        for x in (pytester.path, checkfile):
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 1
+            res = pytester.runpytest()
+            assert res.ret == 0
+
+    def test_assert_not_same(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+            """ 
+        from inline import Here
+        def m(a):
+            b = a + "a"
+            Here().given(a, "Hi").check_not_same(a,b)
+    """
+        )
+        for x in (pytester.path, checkfile):
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 1
+            res = pytester.runpytest()
+            assert res.ret == 0
+
+    def test_fail_statement(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+            """ 
+        from inline import Here
+        def m(a):
+            b = a + "a"
+            Here().given(a, "Hi").fail()
+    """
+        )
+        for x in (pytester.path, checkfile):
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 0
+
+    def test_assume_correct(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+            """ 
+        from inline import Here
+        def m(a):
+            a = 3
+            Here().assume(True).given(a, 1).check_not_none(a)
+    """
+        )
+        for x in (pytester.path, checkfile):
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 1
+            res = pytester.runpytest()
+            assert res.ret == 0
+            
+    def test_assume_correct_with_timeout(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+            """ 
+        from inline import Here
+        import time
+        import sys
+        print(sys.version)
+
+        def m(a):
+            a = -3
+            Here(timeout=5.75).assume(True).given(a, loop(3)).check_eq(a,1)
+
+        def loop(b):
+            while True:
+                b = b + 1
+    """
+        )
+        for x in (pytester.path, checkfile):
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 1
+            res = pytester.runpytest()
+            #Should timeout instead of throwing AssertError
+            assert res.ret == 1
+
+    def test_assume_incorrect_with_timeout(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+            """ 
+        from inline import Here
+        import time
+        import sys
+        print(sys.version)
+
+        def m(a):
+            a = -3
+            Here(timeout=5.75).assume(False).given(a, loop(3)).check_eq(a,1)
+
+        def loop(b):
+            while True:
+                b = b + 1
+    """
+        )
+        for x in (pytester.path, checkfile):
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 1
+            res = pytester.runpytest()
+            #Should not return any assert
+            assert res.ret == 0
+
+    def test_unit_test_disable_inline_test_enable(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+            """ 
+        from inline import Here
+        def test_mtd(a, c):
+            b = a + c
+            Here().given(a, 2).given(c, a + 1).check_true(b == 5)
+            assert False
+    """
+        )
+        for x in (pytester.path, checkfile):
+            pytester.makefile(
+                ".ini", pytest="[pytest]\naddopts = -p pytester --inlinetest-only"
+            )
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 1
+            res = pytester.runpytest()
+            assert res.ret == 0
+  
+    def test_unit_test_enable_inline_test_disable(self, pytester: Pytester):
+        checkfile = pytester.makepyfile(
+            """ 
+        from inline import Here
+        def test_mtd():
+            a = 1
+            c = 1
+            b = a + c
+            Here().given(a, 2).given(c, a + 1).check_true(b == 5)
+            assert False
+    """
+        )
+        for x in (pytester.path, checkfile):
+            pytester.makefile(
+                ".ini", pytest="[pytest]\naddopts = -p pytester --inlinetest-disable"
+            )
+            items, reprec = pytester.inline_genitems(x)
+            assert len(items) == 1
+            res = pytester.runpytest()
+            assert res.ret == 1

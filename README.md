@@ -3,6 +3,7 @@
 <img src="I-Test-logos.png" alt="Ekstazi" width="238" height="224"> 
 
 I-Test is a framework for writing inline tests in Python and Java.
+
 ## Introduction
 
 This repo contains the code and data for producing the experiments in
@@ -31,7 +32,7 @@ The data includes:
 * **replicate our performance evaluation of I-Test**: see detailed steps in [REPLICATION.md](/REPLICATION.md)
 * **replicate other parts of our paper, e.g., collecting examples and user study**: we already described the steps in the paper, and you may find the documents and intermediate files for those in this repository; see the remainder of this README for more details
 
-## Content of this Repository
+## Repo structure
 
 - [java](/java): code of I-Test framework for Java
 - [python](/python): code of I-Test framework for Python
@@ -126,7 +127,6 @@ the logs by doing `python -m research.exp_integrated view_result
 --results_file=../results/exp/integrated/$lang/4-1/$full_name.json`
 (modify the results file path accordingly), and fix the
 scripts/patches as needed.
-
 
 ## Citation
 
