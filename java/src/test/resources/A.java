@@ -1,3 +1,5 @@
+import org.inlinetest.Here;
+
 public class A {
     public void process(int a, int b) {
         a = a + b;
