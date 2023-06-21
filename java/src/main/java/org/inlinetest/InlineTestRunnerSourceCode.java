@@ -7,10 +7,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
-import com.github.javaparser.JavaParser;
 import com.github.javaparser.StaticJavaParser;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.ImportDeclaration;
@@ -19,11 +21,17 @@ import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.NodeList;
 import com.github.javaparser.ast.PackageDeclaration;
 import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
+import com.github.javaparser.ast.body.ConstructorDeclaration;
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.body.Parameter;
 import com.github.javaparser.ast.body.VariableDeclarator;
+import com.github.javaparser.ast.expr.ArrayCreationExpr;
 import com.github.javaparser.ast.expr.AssignExpr;
+import com.github.javaparser.ast.expr.BinaryExpr;
+import com.github.javaparser.ast.expr.CastExpr;
 import com.github.javaparser.ast.expr.Expression;
+import com.github.javaparser.ast.expr.IntegerLiteralExpr;
+import com.github.javaparser.ast.expr.LambdaExpr;
 import com.github.javaparser.ast.expr.MethodCallExpr;
 import com.github.javaparser.ast.expr.Name;
 import com.github.javaparser.ast.expr.NameExpr;
@@ -45,11 +53,15 @@ import com.github.javaparser.ast.visitor.ModifierVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 
 public class InlineTestRunnerSourceCode {
-    static final String ClassNameStr = "Here";
-    static final String CheckEqStr = "checkEq";
-    static final String CheckTrueStr = "checkTrue";
-    static final String CheckFalseStr = "checkFalse";
-    static final String GivenStr = "given";
+    final static String ClassNameStr = "Here";
+    final static String CheckEqStr = "checkEq";
+    final static String CheckTrueStr = "checkTrue";
+    final static String CheckFalseStr = "checkFalse";
+    final static String GivenStr = "given";
+    final static List<String> PRIMITIVE_TYPES = Arrays.asList("int", "long", "double", "float", "boolean", "char",
+            "byte", "short",
+            "String", "int[]", "long[]", "double[]", "float[]", "boolean[]", "char[]", "byte[]", "short[]",
+            "String[]");
 
     /**
      * mvn package
@@ -67,11 +79,44 @@ public class InlineTestRunnerSourceCode {
             new RuntimeException("input file does not exist");
             return;
         }
+
         String modifiedMode = params.get("modified_mode");
         String assertionStyle = params.get("assertion_style");
 
         String publicClassName = inputFilePath.getFileName().toString().split(".java")[0];
         String inputFolder = inputFilePath.getParent().toFile().toString();
+
+        String multipleTestClassesStr;
+        if (params.containsKey("multiple_test_classes")) {
+            multipleTestClassesStr = params.get("multiple_test_classes");
+        } else {
+            multipleTestClassesStr = "false";
+        }
+        boolean multipleTestClasses = Boolean.parseBoolean(multipleTestClassesStr);
+
+        if (params.containsKey("dep_file_path")) {
+            String depFilePath = params.get("dep_file_path");
+            if (!Files.exists(Paths.get(depFilePath))) {
+                new RuntimeException("dep file does not exist: " + depFilePath);
+                return;
+            }
+            try {
+                Util.depClassPaths = new String(Files.readAllBytes(Paths.get(depFilePath)));
+            } catch (IOException e) {
+                throw new RuntimeException();
+            }
+        }
+        if (params.containsKey("app_src_path")) {
+            Util.appSrcPath = params.get("app_src_path");
+        }
+
+        if (params.containsKey("load_xml")) {
+            if (params.get("load_xml").equals("false")) {
+                Util.loadXml = false;
+            }
+        }
+
+        TypeResolver.setup();
 
         if (modifiedMode == null || modifiedMode.equals("default")) {
             // do not change source file
@@ -83,16 +128,25 @@ public class InlineTestRunnerSourceCode {
             new RuntimeException("modified_mode: " + modifiedMode + " is not supported");
         }
 
-        if (assertionStyle == null){
+        if (assertionStyle == null) {
             assertionStyle = "assert";
-        } else if (!assertionStyle.equals("junit") && !assertionStyle.equals("assert")){
+        } else if (!assertionStyle.equals("junit") && !assertionStyle.equals("assert")) {
             new RuntimeException("assertion_style: " + assertionStyle + " is not supported");
         }
 
         String testClassName = publicClassName + "Test";
-        String testOutputFile = inputFolder + "/" + testClassName + ".java";
+        String testOutputFile;
+        if (params.containsKey("output_file")) {
+            testOutputFile = params.get("output_file");
+        } else {
+            if (params.containsKey("output_dir")) {
+                testOutputFile = params.get("output_dir") + "/" + testClassName + ".java";
+            } else {
+                testOutputFile = inputFolder + "/" + testClassName + ".java";
+            }
+        }
         extractTest(inputFilePath.toAbsolutePath().toString(), testOutputFile, publicClassName, testClassName,
-                assertionStyle);
+                assertionStyle, multipleTestClasses);
     }
 
     private static HashMap<String, String> convertToKeyValuePair(String[] args) {
@@ -100,6 +154,7 @@ public class InlineTestRunnerSourceCode {
 
         for (String arg : args) {
             String[] splitFromEqual = arg.split("=");
+            // key is expected to start with --
             String key = splitFromEqual[0].substring(2);
             String value = splitFromEqual[1];
             params.put(key, value);
@@ -115,8 +170,6 @@ public class InlineTestRunnerSourceCode {
      * @param outputFile
      */
     private static void guardTest(String inputFileSource) {
-        JavaParser javaParser = new JavaParser();
-
         FileInputStream in = null;
         try {
             in = new FileInputStream(inputFileSource);
@@ -124,7 +177,7 @@ public class InlineTestRunnerSourceCode {
             e.printStackTrace();
             return;
         }
-        CompilationUnit cu = javaParser.parse(in).getResult().get();
+        CompilationUnit cu = StaticJavaParser.parse(in);
         new WrapConditionMethodVisitor().visit(cu, null);
         try {
             Files.write(Paths.get(inputFileSource), cu.toString().getBytes());
@@ -144,7 +197,7 @@ public class InlineTestRunnerSourceCode {
                 }
                 if (currentNode.getParentNode().isPresent()) {
                     IfStmt branchStatement = (IfStmt) StaticJavaParser.parseStatement("if(enableInlineTest){"
-                        + currentNode.toString() + "}");
+                            + currentNode.toString() + "}");
                     currentNode.getParentNode().get().replace(currentNode, branchStatement);
                 }
                 return null;
@@ -182,9 +235,7 @@ public class InlineTestRunnerSourceCode {
      * @param outputFile
      */
     static void extractTest(String inputFileSource, String testOutputFile,
-            String publicClassName, String testClassName, String assertionStyle) {
-        JavaParser javaParser = new JavaParser();
-
+            String publicClassName, String testClassName, String assertionStyle, boolean multipleTestClasses) {
         FileInputStream in = null;
         try {
             in = new FileInputStream(inputFileSource);
@@ -194,7 +245,7 @@ public class InlineTestRunnerSourceCode {
         }
 
         List<InlineTest> inlineTests = new ArrayList<>();
-        CompilationUnit cu = javaParser.parse(in).getResult().get();
+        CompilationUnit cu = StaticJavaParser.parse(in);
         new MethodVisitor(inlineTests).visit(cu, new MethodVisitor.Context());
         String packageName = null;
         if (cu.getPackageDeclaration().isPresent()) {
@@ -202,18 +253,51 @@ public class InlineTestRunnerSourceCode {
         }
         NodeList<ImportDeclaration> imports = cu.getImports();
 
-        CompilationUnit testCU;
-        if (assertionStyle.equals("junit")) {
-            testCU = buildJunitClass(testClassName, packageName, inlineTests, imports);
-        } else if (assertionStyle.equals("assert")) {
-            testCU = buildAssertClass(testClassName, packageName, inlineTests, imports);
+        if (!multipleTestClasses) {
+            // build a test class with inline tests for all target statements
+            CompilationUnit testCU;
+            if (assertionStyle.equals("junit")) {
+                testCU = buildJunitClass(publicClassName, testClassName, packageName, inlineTests, imports);
+            } else if (assertionStyle.equals("assert")) {
+                testCU = buildAssertClass(testClassName, packageName, inlineTests, imports);
+            } else {
+                return;
+            }
+            try {
+                Files.write(Paths.get(testOutputFile), testCU.toString().getBytes());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else {
-            return;
-        }
-        try {
-            Files.write(Paths.get(testOutputFile), testCU.toString().getBytes());
-        } catch (IOException e) {
-            e.printStackTrace();
+            // build test classes with inline tests for each target statement
+            Map<Integer, List<InlineTest>> inlineTestsByStatement = new HashMap<>();
+            for (InlineTest inlineTest : inlineTests) {
+                if (!inlineTestsByStatement.containsKey(inlineTest.targetStmtLineNo)) {
+                    inlineTestsByStatement.put(inlineTest.targetStmtLineNo, new ArrayList<>());
+                }
+                inlineTestsByStatement.get(inlineTest.targetStmtLineNo).add(inlineTest);
+            }
+            for (Entry<Integer, List<InlineTest>> entry : inlineTestsByStatement.entrySet()) {
+                // replace the `last` Test with _<lineNo>Test
+                String testClassNameForStatement = publicClassName + "_" + entry.getKey() + "Test";
+                String testOutputFileForStatement = testOutputFile.replace("Test.java",
+                        "_" + entry.getKey() + "Test.java");
+                CompilationUnit testCUForStatement;
+                if (assertionStyle.equals("junit")) {
+                    testCUForStatement = buildJunitClass(publicClassName, testClassNameForStatement, packageName,
+                            entry.getValue(), imports);
+                } else if (assertionStyle.equals("assert")) {
+                    testCUForStatement = buildAssertClass(testClassNameForStatement, packageName,
+                            entry.getValue(), imports);
+                } else {
+                    return;
+                }
+                try {
+                    Files.write(Paths.get(testOutputFileForStatement), testCUForStatement.toString().getBytes());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
@@ -260,10 +344,36 @@ public class InlineTestRunnerSourceCode {
                             Node prevNode = blockStmt.getStatements().get(index);
                             // previous statement is not expected to be an inline test
                             if (!isInlineClass(prevNode)) {
-                                inlineTest.statement.add(prevNode);
+                                // find the target statement
+                                if (prevNode instanceof ExpressionStmt) {
+                                    Expression expressionInside = ((ExpressionStmt) prevNode).getExpression();
+                                    if (expressionInside instanceof AssignExpr) {
+                                        Expression target = ((AssignExpr) expressionInside).getTarget();
+                                        Type targetType = ctx.symbolTable.getOrDefault(target.toString(), null);
+                                        if (targetType == null) {
+                                            String targetTypeStr = TypeResolver.sSymbolResolver.calculateType(target)
+                                                    .describe();
+                                            inlineTest.targetType = Util.getTypeFromStr(targetTypeStr);
+                                        } else {
+                                            inlineTest.targetType = targetType;
+                                        }
+                                    }
+                                }
+                                inlineTest.statement.add(prevNode.removeComment());
                                 break;
                             }
                             index -= 1;
+                        }
+                        if (index == -1 && inlineTest.statement.size() == 0) {
+                            if (blockStmt.getParentNode().isPresent()) {
+                                Node parent = blockStmt.getParentNode().get();
+                                if (parent instanceof IfStmt) {
+                                    IfStmt ifStmt = (IfStmt) parent;
+                                    if (ifStmt.getThenStmt().equals(blockStmt)) {
+                                        inlineTest.statement.add(ifStmt.getCondition());
+                                    }
+                                }
+                            }
                         }
                     } else if (parentNode instanceof SwitchEntry) {
                         SwitchEntry switchEntry = (SwitchEntry) parentNode;
@@ -309,11 +419,24 @@ public class InlineTestRunnerSourceCode {
         }
 
         @Override
-        public void visit(VariableDeclarator VariableDeclarator, Context ctx) {
-            super.visit(VariableDeclarator, ctx);
-            String varName = VariableDeclarator.getNameAsString();
-            Type varType = VariableDeclarator.getType();
+        public void visit(VariableDeclarator variableDeclarator, Context ctx) {
+            super.visit(variableDeclarator, ctx);
+            String varName = variableDeclarator.getNameAsString();
+            Type varType = variableDeclarator.getType();
             ctx.symbolTable.put(varName, varType);
+        }
+
+        @Override
+        public void visit(final ConstructorDeclaration n, final Context arg) {
+            n.getModifiers().forEach(p -> p.accept(this, arg));
+            n.getName().accept(this, arg);
+            n.getParameters().forEach(p -> p.accept(this, arg));
+            n.getReceiverParameter().ifPresent(l -> l.accept(this, arg));
+            n.getThrownExceptions().forEach(p -> p.accept(this, arg));
+            n.getTypeParameters().forEach(p -> p.accept(this, arg));
+            n.getAnnotations().forEach(p -> p.accept(this, arg));
+            n.getComment().ifPresent(l -> l.accept(this, arg));
+            n.getBody().accept(this, arg);
         }
 
         @Override
@@ -331,6 +454,13 @@ public class InlineTestRunnerSourceCode {
         }
 
         @Override
+        public void visit(final LambdaExpr n, final Context arg) {
+            n.getParameters().forEach(p -> p.accept(this, arg));
+            n.getComment().ifPresent(l -> l.accept(this, arg));
+            n.getBody().accept(this, arg);
+        }
+
+        @Override
         public void visit(Parameter n, Context ctx) {
             ctx.symbolTable.put(n.getNameAsString(), n.getType());
             n.getAnnotations().forEach(p -> p.accept(this, ctx));
@@ -340,6 +470,27 @@ public class InlineTestRunnerSourceCode {
             n.getVarArgsAnnotations().forEach(p -> p.accept(this, ctx));
             n.getComment().ifPresent(l -> l.accept(this, ctx));
         }
+    }
+
+    private static Expression parseNonPrimitiveExpression(Type type, Expression expression) {
+        // if the expression is not primitive type, expression represent the path to
+        // serialized objects
+        // (Route) Here.xstream.fromXML(Paths.get(System.getProperty("user.dir") +
+        // "/.inlinegen/serialized-data/" + "a.xml").toFile())
+        return new CastExpr(type, new MethodCallExpr(new NameExpr("Here.xstream"), "fromXML")
+                .addArgument(new MethodCallExpr(new MethodCallExpr(new NameExpr("Paths"), "get")
+                        .addArgument(
+                                new BinaryExpr().setLeft(
+                                        new MethodCallExpr(new NameExpr("System"), "getProperty")
+                                                .addArgument(new StringLiteralExpr("user.dir")))
+                                        .setOperator(BinaryExpr.Operator.PLUS)
+                                        .setRight(
+                                                new BinaryExpr()
+                                                        .setLeft(new StringLiteralExpr("/.inlinegen/serialized-data/"))
+                                                        .setOperator(BinaryExpr.Operator.PLUS)
+                                                        .setRight(expression))),
+                        "toFile")));
+
     }
 
     private static void parseInlineTest(Node node, InlineTest inlineTest, HashMap<String, Type> symbolTable) {
@@ -353,17 +504,34 @@ public class InlineTestRunnerSourceCode {
                 }
                 Expression left = args.get(0);
                 Expression right = args.get(1);
+                Expression parsedRight;
                 // Objects.equals(left, right);
 
                 MethodCallExpr equalsCallExpr = new MethodCallExpr(new NameExpr("Objects"), "equals");
                 equalsCallExpr.addArgument(left);
-                equalsCallExpr.addArgument(right);
 
+                Type leftType = symbolTable.getOrDefault(left.toString(), null);
+                if (Util.loadXml) {
+                    if (leftType == null || PRIMITIVE_TYPES.contains(leftType.toString())) {
+                        parsedRight = right;
+                    } else {
+                        parsedRight = parseNonPrimitiveExpression(leftType, right);
+                    }
+                } else {
+                    parsedRight = right;
+                }
+                equalsCallExpr.addArgument(right);
                 AssertStmt assertStmt = new AssertStmt(equalsCallExpr);
                 inlineTest.assertions.add(assertStmt);
 
-                MethodCallExpr assertEquals = new MethodCallExpr("assertEquals", left, right);
-                inlineTest.junitAssertions.add(assertEquals);
+                // assertArrayEquals
+                if (left instanceof ArrayCreationExpr || right instanceof ArrayCreationExpr) {
+                    MethodCallExpr assertArrayEquals = new MethodCallExpr("assertArrayEquals", left, parsedRight);
+                    inlineTest.junitAssertions.add(assertArrayEquals);
+                } else {
+                    MethodCallExpr assertEquals = new MethodCallExpr("assertEquals", left, parsedRight);
+                    inlineTest.junitAssertions.add(assertEquals);
+                }
             } else if (methodCall.getName().asString().equals(CheckFalseStr)) {
                 // checkFalse(a == 2);
                 List<Expression> args = methodCall.getArguments();
@@ -399,28 +567,70 @@ public class InlineTestRunnerSourceCode {
                 // infer the type of the left expression
                 Type leftType = symbolTable.getOrDefault(left.toString(), null);
                 if (leftType == null) {
-                    throw new RuntimeException("left expression in given should be a variable: " + left.toString());
+                    try {
+                        String leftTypeStr = TypeResolver.sSymbolResolver.calculateType(left).describe();
+                        leftType = Util.getTypeFromStr(leftTypeStr);
+                    } catch (Exception e) {
+                        throw new RuntimeException(
+                                "left expression in given should be a variable: " + left.toString() + " " + e);
+                    }
+                }
+                Expression right = args.get(1);
+                AssignExpr assignExpr;
+                // check if the type is primitive or String
+                if (Util.loadXml) {
+                    if (PRIMITIVE_TYPES.contains(leftType.toString())) {
+                        assignExpr = new AssignExpr(new VariableDeclarationExpr(leftType, left.toString()),
+                                right,
+                                AssignExpr.Operator.ASSIGN);
+                    } else {
+                        // parse the value from xstream to the type
+                        // (leftType)Here.xstream.fromXML(Paths.get(right).toFile())
+                        assignExpr = new AssignExpr(new VariableDeclarationExpr(leftType, left.toString()),
+                                parseNonPrimitiveExpression(leftType, right),
+                                AssignExpr.Operator.ASSIGN);
+                    }
                 } else {
-                    Expression right = args.get(1);
-                    AssignExpr assignExpr = new AssignExpr(new VariableDeclarationExpr(leftType, left.toString()),
+                    assignExpr = new AssignExpr(new VariableDeclarationExpr(leftType, left.toString()),
                             right,
                             AssignExpr.Operator.ASSIGN);
-                    inlineTest.givens.add(assignExpr);
                 }
+                inlineTest.givens.add(assignExpr);
             }
             parseInlineTest(methodCall.getScope().get(), inlineTest, symbolTable);
         } else if (node instanceof ObjectCreationExpr) {
             ObjectCreationExpr objectCreationExpr = (ObjectCreationExpr) node;
             if (objectCreationExpr.getTypeAsString().equals(ClassNameStr)) {
                 // new Here()
-                if (objectCreationExpr.getArguments().size() > 1) {
+                if (objectCreationExpr.getArguments().size() >= 3) {
                     throw new RuntimeException("new " + ClassNameStr + " should have 0 or 1 arguments");
-                } else if (objectCreationExpr.getArguments().size() == 1) {
+                }
+
+                if (objectCreationExpr.getArguments().size() == 1) {
                     // extract test name
                     Expression arg = objectCreationExpr.getArguments().get(0);
                     if (arg instanceof StringLiteralExpr) {
                         StringLiteralExpr stringLiteralExpr = (StringLiteralExpr) arg;
                         inlineTest.testName = stringLiteralExpr.getValue();
+                    } else if (arg instanceof IntegerLiteralExpr) {
+                        IntegerLiteralExpr integerLiteralExpr = (IntegerLiteralExpr) arg;
+                        inlineTest.targetStmtLineNo = Integer.valueOf(integerLiteralExpr.getValue());
+                    } else {
+                        throw new RuntimeException(
+                                "new " + ClassNameStr + " should not have" + arg.getClass().getName() + " as argument");
+                    }
+                } else if (objectCreationExpr.getArguments().size() == 2) {
+                    // extract test name and target line number
+                    Expression arg1 = objectCreationExpr.getArguments().get(0);
+                    Expression arg2 = objectCreationExpr.getArguments().get(1);
+                    if (arg1 instanceof StringLiteralExpr && arg2 instanceof IntegerLiteralExpr) {
+                        StringLiteralExpr stringLiteralExpr = (StringLiteralExpr) arg1;
+                        IntegerLiteralExpr integerLiteralExpr = (IntegerLiteralExpr) arg2;
+                        inlineTest.testName = stringLiteralExpr.getValue();
+                        inlineTest.targetStmtLineNo = Integer.valueOf(integerLiteralExpr.getValue());
+                    } else {
+                        throw new RuntimeException("new " + ClassNameStr + " should not have"
+                                + arg1.getClass().getName() + " and " + arg2.getClass().getName() + " as arguments");
                     }
                 }
                 // extract line number
@@ -431,7 +641,8 @@ public class InlineTestRunnerSourceCode {
         }
     }
 
-    private static CompilationUnit buildJunitClass(String className, String packageName, List<InlineTest> inlineTests,
+    private static CompilationUnit buildJunitClass(String testedClass, String className, String packageName,
+            List<InlineTest> inlineTests,
             NodeList<ImportDeclaration> imports) {
         CompilationUnit cu = new CompilationUnit();
         // set the package
@@ -439,14 +650,32 @@ public class InlineTestRunnerSourceCode {
             cu.setPackageDeclaration(new PackageDeclaration(new Name(packageName)));
         }
         // set the imports
-        imports.add(new ImportDeclaration("org.junit.jupiter.api.Test", false, false));
-        imports.add(new ImportDeclaration("org.junit.jupiter.api.Assertions", true, true));
-        cu.setImports(imports);
+        NodeList<ImportDeclaration> testImports = new NodeList<>(imports);
+        testImports.add(new ImportDeclaration("org.junit.jupiter.api.Test", false, false));
+        testImports.add(new ImportDeclaration("org.junit.jupiter.api.Assertions", true, true));
+        testImports.add(new ImportDeclaration("java.nio.file.Files", false, false));
+        testImports.add(new ImportDeclaration("java.nio.file.Paths", false, false));
+        testImports.add(new ImportDeclaration("java.util.Objects", false, false));
+        if (packageName != null) {
+            testImports.add(new ImportDeclaration(packageName + "." + testedClass, true, true));
+        } else {
+            testImports.add(new ImportDeclaration(testedClass, true, true));
+        }
+        cu.setImports(testImports);
 
         ClassOrInterfaceDeclaration testClass = cu.addClass(className)
                 .setPublic(true);
+
         for (InlineTest inlineTest : inlineTests) {
-            testClass.addMember(inlineTest.toJunitMethod());
+            try {
+                MethodDeclaration testMethod = inlineTest.toJunitMethod();
+                if (testMethod != null) {
+                    testClass.addMember(inlineTest.toJunitMethod());
+                }
+            } catch (Exception e) {
+                System.err.println("Error when generating test method for " + inlineTest.testName);
+                e.printStackTrace();
+            }
         }
         return cu;
     }
@@ -458,8 +687,11 @@ public class InlineTestRunnerSourceCode {
         if (packageName != null) {
             cu.setPackageDeclaration(new PackageDeclaration(new Name(packageName)));
         }
-        imports.add(new ImportDeclaration("java.util.Objects", false, false));
-        cu.setImports(imports);
+        NodeList<ImportDeclaration> testImports = new NodeList<>(imports);
+        testImports.add(new ImportDeclaration("java.util.Objects", false, false));
+        testImports.add(new ImportDeclaration("java.nio.file.Files", false, false));
+        testImports.add(new ImportDeclaration("java.nio.file.Paths", false, false));
+        cu.setImports(testImports);
 
         ClassOrInterfaceDeclaration testClass = cu.addClass(className)
                 .setPublic(true);

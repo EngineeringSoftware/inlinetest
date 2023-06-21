@@ -1,11 +1,24 @@
 package org.inlinetest;
 
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.security.AnyTypePermission;
+
 public class Here {
+    public static XStream xstream = new XStream();
+
     public Here() {
         return;
     }
 
     public Here(String name) {
+        return;
+    }
+
+    public Here(int lineNo) {
+        return;
+    }
+
+    public Here(String name, int lineNo) {
         return;
     }
 
@@ -23,5 +36,13 @@ public class Here {
 
     public Here checkFalse(Object value) {
         return this;
+    }
+
+    public static boolean group() {
+        return true;
+    }
+
+    static {
+        xstream.addPermission(AnyTypePermission.ANY);
     }
 }
