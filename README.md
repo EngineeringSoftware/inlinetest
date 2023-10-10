@@ -152,7 +152,7 @@ Authors: [Yu Liu](https://sweetstreet.github.io/), [Zachary Thurston](), [Alan H
 @inproceedings{LiuICSE23PytestInline,
   title =        {pytest-inline: An Inline Testing Tool for Python},
   author =       {Yu Liu and Zachary Thurston and Alan Han and Pengyu Nie and Milos Gligoric and Owolabi Legunsen},
-  pages =        {To appear},
+  pages =        {1--4},
   booktitle =    {International Conference on Software Engineering, DEMO},
   year =         {2023},
 }
