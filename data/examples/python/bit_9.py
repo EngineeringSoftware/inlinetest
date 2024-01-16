@@ -1,4 +1,4 @@
-from inline import Here
+from inline import itest
 
 def _decrypt_subtitles(self, data, iv, id):
     data = bytes_to_intlist(compat_b64decode(data))
@@ -17,7 +17,7 @@ def _decrypt_subtitles(self, data, iv, id):
     def obfuscate_key(key):
         num1 = int(floor(pow(2, 25) * sqrt(6.9)))
         num2 = (num1 ^ key) << 5
-        Here().given(num1, 88140282).given(key, 1).check_eq(num2, 2820489056)
+        itest().given(num1, 88140282).given(key, 1).check_eq(num2, 2820489056)
         num3 = key ^ num1
         num4 = num3 ^ (num3 >> 3) ^ num2
         prefix = intlist_to_bytes(obfuscate_key_aux(20, 97, (1, 2)))

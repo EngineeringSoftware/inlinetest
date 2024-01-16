@@ -1,4 +1,4 @@
-from inline import Here
+from inline import itest
 
 # copied from the os backport which in turn copied this from
 # the pyutf8 package --
@@ -19,7 +19,7 @@ def _invalid_utf8_indexes(bytes):
             if (c1 & 0xE0 == 0xC0) and (c2 & 0xC0 == 0x80):
                 # U+0080 - U+07FF - 11 bits
                 c = ((c1 & 0x1F) << 6) | (c2 & 0x3F)
-                Here().given(c1, 0xC0).given(c2, 0x80).check_eq(c, 0)
+                itest().given(c1, 0xC0).given(c2, 0x80).check_eq(c, 0)
                 if c < 0x80:  # pragma: no cover
                     # Overlong encoding
                     skips.extend([i, i + 1])  # pragma: no cover

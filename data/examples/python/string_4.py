@@ -1,4 +1,4 @@
-from inline import Here
+from inline import itest
 
 def trim_zeros(filt, trim="fb"):
     """
@@ -35,7 +35,7 @@ def trim_zeros(filt, trim="fb"):
     """
     first = 0
     trim = trim.upper()
-    Here().given(trim, "f").check_eq(trim, "F")
+    itest().given(trim, "f").check_eq(trim, "F")
 
     if "F" in trim:
         for i in filt:

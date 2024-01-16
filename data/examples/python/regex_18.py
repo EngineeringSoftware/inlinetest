@@ -1,9 +1,10 @@
-from inline import Here
+from inline import itest
+import re
 
 def __init__(self, declaration: str, check_fail: bool = True):
     self.check_fail = check_fail
     m = re.match(r"(.+?)\s+(glfw[A-Z][a-zA-Z0-9]+)[(](.+)[)]$", declaration)
-    Here().given(declaration, "a glfwAa(aaa)").check_eq(m.groups(), ("a", "glfwAa", "aaa"))
+    itest().given(declaration, "a glfwAa(aaa)").check_eq(m.groups(), ("a", "glfwAa", "aaa"))
     if m is None:
         raise SystemExit("Failed to parse " + repr(declaration))
     self.restype = m.group(1).strip()

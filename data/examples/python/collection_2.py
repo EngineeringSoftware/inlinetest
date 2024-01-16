@@ -1,4 +1,4 @@
-from inline import Here
+from inline import itest
 
 import pandas as pd
 
@@ -37,7 +37,7 @@ def __main__():
 
     data = pd.Series(x).reset_index(name="value").rename(columns={"index": "country"})
     data["angle"] = data["value"] / data["value"].sum() * 2 * pi
-    Here().given(data, pd.Series({"United States": 157, "United Kingdom": 93}).reset_index(name="value").rename(columns={"index": "country"}),).given(pi, 3.14).check_eq(data["angle"][0], 3.9438400000000002).check_eq(data["angle"][1], 2.33616)
+    itest().given(data, pd.Series({"United States": 157, "United Kingdom": 93}).reset_index(name="value").rename(columns={"index": "country"}),).given(pi, 3.14).check_eq(data["angle"][0], 3.9438400000000002).check_eq(data["angle"][1], 2.33616)
     data["color"] = Category20c[len(x)]
 
     p = figure(

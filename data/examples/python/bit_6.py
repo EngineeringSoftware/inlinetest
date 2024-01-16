@@ -1,5 +1,5 @@
 from typing import Tuple
-from inline import Here
+from inline import itest
 
 def _read_base128le(data: bytes) -> Tuple[int, int]:
     res = 0
@@ -7,7 +7,7 @@ def _read_base128le(data: bytes) -> Tuple[int, int]:
     while offset < len(data):
         o = data[offset]
         res += (o & 0x7F) << (7 * offset)
-        Here().given(o, 0x70).given(offset, 0).given(res, 0).check_eq(res, 112)
+        itest().given(o, 0x70).given(offset, 0).given(res, 0).check_eq(res, 112)
         offset += 1
         if o < 0x80:
             # the Kaitai parser for protobuf support base128 le values up

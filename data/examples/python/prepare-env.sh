@@ -30,9 +30,7 @@ function prepare_conda_env {
         conda activate $env_name
         
         # install inline test plugin
-        ( cd ${_DIR}/../../../python
-                pip install -e .
-        )
+        pip install pytest-inline
 
         # install some other libraries required by import
         pip install pandas requests

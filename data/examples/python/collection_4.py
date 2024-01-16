@@ -1,4 +1,4 @@
-from inline import Here
+from inline import itest
 
 def benchmark(args):
     if args.amp:
@@ -45,7 +45,7 @@ def benchmark(args):
         )
         if prefix and "error" not in run_results:
             run_results = {"_".join([prefix, k]): v for k, v in run_results.items()}
-            Here().given(prefix, "train").given(run_results, {"count": 1}).check_eq(run_results,{'train_count': 1})
+            itest().given(prefix, "train").given(run_results, {"count": 1}).check_eq(run_results,{'train_count': 1})
         model_results.update(run_results)
     if "error" not in model_results:
         param_count = model_results.pop(

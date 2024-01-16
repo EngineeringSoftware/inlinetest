@@ -1,4 +1,5 @@
-from inline import Here
+from inline import itest
+import re
 
 def git_versions_from_keywords(keywords, tag_prefix, verbose):
     """Get version information from git keywords."""
@@ -16,7 +17,7 @@ def git_versions_from_keywords(keywords, tag_prefix, verbose):
         # discover which version we're using, or to work around using an
         # older one.
         date = date.strip().replace(" ", "T", 1).replace(" ", "", 1)
-        Here("21").given(date, "2020-07-10 15:00:00.000").check_eq(date, "2020-07-10T15:00:00.000")
+        itest("21").given(date, "2020-07-10 15:00:00.000").check_eq(date, "2020-07-10T15:00:00.000")
     refnames = keywords["refnames"].strip()
     if refnames.startswith("$Format"):
         if verbose:
@@ -27,8 +28,8 @@ def git_versions_from_keywords(keywords, tag_prefix, verbose):
     # just "foo-1.0". If we see a "tag: " prefix, prefer those.
     TAG = "tag: "
     tags = set([r[len(TAG) :] for r in refs if r.startswith(TAG)])
-    Here("32").given(refs, ["tag: foo-1.0", "tag: bar-3.2"]).given(TAG, "tag: ").check_eq(tags, {"foo-1.0", "bar-3.2"})
-    Here("33").given(refs, ["foo-1.0", "bar-3.2"]).given(TAG, "tag: ").check_eq(tags, set())
+    itest("32").given(refs, ["tag: foo-1.0", "tag: bar-3.2"]).given(TAG, "tag: ").check_eq(tags, {"foo-1.0", "bar-3.2"})
+    itest("33").given(refs, ["foo-1.0", "bar-3.2"]).given(TAG, "tag: ").check_eq(tags, set())
     if not tags:
         # Either we're using git < 1.8.3, or there really are no tags. We use
         # a heuristic: assume all version tags have a digit. The old git %d
@@ -38,7 +39,7 @@ def git_versions_from_keywords(keywords, tag_prefix, verbose):
         # filter out many common branch names like "release" and
         # "stabilization", as well as "HEAD" and "master".
         tags = set([r for r in refs if re.search(r"\d", r)])
-        Here("43").given(refs, ["foo-1.0", "bar-3.2", "release", "stabilization", "master"]).check_eq(tags, {"foo-1.0", "bar-3.2"})
+        itest("43").given(refs, ["foo-1.0", "bar-3.2", "release", "stabilization", "master"]).check_eq(tags, {"foo-1.0", "bar-3.2"})
         if verbose:
             print("discarding '%s', no digits" % ",".join(refs - tags))
     if verbose:

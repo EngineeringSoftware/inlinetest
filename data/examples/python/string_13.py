@@ -1,4 +1,4 @@
-from inline import Here
+from inline import itest
 
 def load_tokens(path):
     tok_names = []
@@ -9,10 +9,10 @@ def load_tokens(path):
             line = line.strip()
             # strip comments
             i = line.find("#")
-            Here().given(line, "aaa#bbb#").check_eq(i, 3)
+            itest().given(line, "aaa#bbb#").check_eq(i, 3)
             if i >= 0:
                 line = line[:i].strip()
-                Here().given(line, "aaa#bbb#").given(i, 3).check_eq(line, "aaa")
+                itest().given(line, "aaa#bbb#").given(i, 3).check_eq(line, "aaa")
             if not line:
                 continue
             fields = line.split()

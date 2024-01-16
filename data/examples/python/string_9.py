@@ -1,5 +1,6 @@
 from typing import Dict, List
-from inline import Here
+from inline import itest
+import re
 
 def extract_sota_table(table_lines: List[str]) -> Dict:
     """
@@ -13,11 +14,11 @@ def extract_sota_table(table_lines: List[str]) -> Dict:
 
     header = table_lines[0]
     header_cols = [h.strip() for h in header.split("|") if h.strip()]
-    Here().given(header, "a | b + | C**").check_eq(header_cols, ["a", "b +", "C**"])
+    itest().given(header, "a | b + | C**").check_eq(header_cols, ["a", "b +", "C**"])
     cols_sanitized = [h.lower() for h in header_cols]
-    Here().given(header_cols, ["a", "b +", "C**"]).check_eq(cols_sanitized, ["a", "b +", "c**"])
+    itest().given(header_cols, ["a", "b +", "C**"]).check_eq(cols_sanitized, ["a", "b +", "c**"])
     cols_sanitized = [re.sub(" +", "", h).replace("**", "") for h in cols_sanitized]
-    Here().given(cols_sanitized, ["a", "b+**", "c"]).check_eq(cols_sanitized, ["a", "b+", "c"])
+    itest().given(cols_sanitized, ["a", "b+**", "c"]).check_eq(cols_sanitized, ["a", "b+", "c"])
 
     # find the model name column (usually the first one)
     if "model" in cols_sanitized:

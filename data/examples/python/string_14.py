@@ -2,7 +2,7 @@ import sys
 import requests
 import json
 from collections import OrderedDict
-from inline import Here
+from inline import itest
 
 def __main__():
     # Define templates
@@ -22,13 +22,13 @@ def __main__():
                 work = line.strip()
                 # Extract the name of the CS
                 cs_name = work[1 : work.index("]")]
-                Here().given(work, "[Cross Site Scripting Prevention Cheat Sheet](cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.md). ![Javascript](assets/Index_Javascript.png) ![Java](assets/Index_Java.png) ![Csharp](assets/Index_Csharp.png) ![Html](assets/Index_Html.png) ![Ruby](assets/Index_Ruby.png)",).check_eq(cs_name, "Cross Site Scripting Prevention Cheat Sheet")
+                itest().given(work, "[Cross Site Scripting Prevention Cheat Sheet](cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.md). ![Javascript](assets/Index_Javascript.png) ![Java](assets/Index_Java.png) ![Csharp](assets/Index_Csharp.png) ![Html](assets/Index_Html.png) ![Ruby](assets/Index_Ruby.png)",).check_eq(cs_name, "Cross Site Scripting Prevention Cheat Sheet")
                 # Extract technologies and map the CS to them
                 technologies = work.split("!")[1:]
-                Here().given(work, "[Cross Site Scripting Prevention Cheat Sheet](cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.md). ![Javascript](assets/Index_Javascript.png) ![Java](assets/Index_Java.png) ![Csharp](assets/Index_Csharp.png) ![Html](assets/Index_Html.png) ![Ruby](assets/Index_Ruby.png)",).check_eq(technologies, ["[Javascript](assets/Index_Javascript.png) ", "[Java](assets/Index_Java.png) ", "[Csharp](assets/Index_Csharp.png) ", "[Html](assets/Index_Html.png) ", "[Ruby](assets/Index_Ruby.png)",],)
+                itest().given(work, "[Cross Site Scripting Prevention Cheat Sheet](cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.md). ![Javascript](assets/Index_Javascript.png) ![Java](assets/Index_Java.png) ![Csharp](assets/Index_Csharp.png) ![Html](assets/Index_Html.png) ![Ruby](assets/Index_Ruby.png)",).check_eq(technologies, ["[Javascript](assets/Index_Javascript.png) ", "[Java](assets/Index_Java.png) ", "[Csharp](assets/Index_Csharp.png) ", "[Html](assets/Index_Html.png) ", "[Ruby](assets/Index_Ruby.png)",],)
                 for technology in technologies:
                     technology_name = technology[1 : technology.index("]")].upper()
-                    Here().given(technology, "[Javascript](assets/Index_Javascript.png) ").check_eq(technology_name, "JAVASCRIPT")
+                    itest().given(technology, "[Javascript](assets/Index_Javascript.png) ").check_eq(technology_name, "JAVASCRIPT")
                     if technology_name not in data:
                         data[technology_name] = []
                     data[technology_name].append(

@@ -1,4 +1,5 @@
-from inline import Here
+from inline import itest
+import re
 
 def get_model_filenames(model_dir):
     files = os.listdir(model_dir)
@@ -17,7 +18,7 @@ def get_model_filenames(model_dir):
     max_step = -1
     for f in files:
         step_str = re.match(r'(^model-[\w\- ]+.ckpt-(\d+))', f)
-        Here().given(f, "model-k- kckpt-123").check_true(step_str).check_eq(step_str.groups(), ('model-k- kckpt-123', '123'))
+        itest().given(f, "model-k- kckpt-123").check_true(step_str).check_eq(step_str.groups(), ('model-k- kckpt-123', '123'))
         if step_str is not None and len(step_str.groups())>=2:
             step = int(step_str.groups()[1])
             if step > max_step:

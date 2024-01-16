@@ -1,4 +1,5 @@
-from inline import Here
+from inline import itest
+import re
 
 def _detect_nodejs() -> str:
     nodejs_path = settings.nodejs_path()
@@ -16,9 +17,9 @@ def _detect_nodejs() -> str:
 
         match = re.match(r"^v(\d+)\.(\d+)\.(\d+).*$", stdout.decode("utf-8"))
 
-        Here().given(stdout, "v8.9.4".encode("utf-8")).check_true(match)
-        Here().given(stdout, "v8.9.4".encode("utf-8")).check_eq(match.groups(), ("8", "9", "4"))
-        Here().given(stdout, "8.9.3".encode("utf-8")).check_false(match)
+        itest().given(stdout, "v8.9.4".encode("utf-8")).check_true(match)
+        itest().given(stdout, "v8.9.4".encode("utf-8")).check_eq(match.groups(), ("8", "9", "4"))
+        itest().given(stdout, "8.9.3".encode("utf-8")).check_false(match)
 
         if match is not None:
             version = tuple(int(v) for v in match.groups())

@@ -1,4 +1,4 @@
-from inline import Here
+from inline import itest
 
 def find_archi(self, target_patch_size, max_layers=9):
     """
@@ -16,7 +16,7 @@ def find_archi(self, target_patch_size, max_layers=9):
             sum_st += 2
             for i in range(layers_count - 1):
                 st = 1 + (1 if val & (1 << i) != 0 else 0)
-                Here().given(val, 3).given(i, 0).check_eq(st, 2)
+                itest().given(val, 3).given(i, 0).check_eq(st, 2)
                 layers.append([3, st])
                 sum_st += st
 

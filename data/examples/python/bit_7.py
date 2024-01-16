@@ -1,5 +1,5 @@
 from typing import Optional
-from inline import Here
+from inline import itest
 
 def dga(
     self,
@@ -29,12 +29,12 @@ def dga(
 
     for _ in range(length):
         year = ((year ^ 8 * year) >> 11) ^ ((year & 0xFFFFFFF0) << 17)
-        Here().given(year, 1000).check_eq(year, 130023427)
+        itest().given(year, 1000).check_eq(year, 130023427)
         month = ((month ^ 4 * month) >> 25) ^ 16 * (month & 0xFFFFFFF8)
-        Here().given(month, 1).check_eq(month, 0)
+        itest().given(month, 1).check_eq(month, 0)
         day = ((day ^ (day << 13)) >> 19) ^ ((day & 0xFFFFFFFE) << 12)
-        Here().given(day, 1).check_eq(day, 0)
+        itest().given(day, 1).check_eq(day, 0)
         domain += chr(((year ^ month ^ day) % 25) + 97)
-        Here().given(year, 130023427).given(month, 0).given(day, 0).given(domain, "").check_eq(domain, "c")
+        itest().given(year, 130023427).given(month, 0).given(day, 0).given(domain, "").check_eq(domain, "c")
 
     return domain + "." + tld

@@ -1,4 +1,4 @@
-from inline import Here
+from inline import itest
 
 def population_count(x):
   assert np.issubdtype(x.dtype, np.integer)
@@ -23,7 +23,7 @@ def population_count(x):
     m = list(map(np.uint32, m[:-1]))
 
   x = (x & m[0]) + ((x >>  1) & m[0])  # put count of each  2 bits into those  2 bits
-  Here().given(m, [None]*1).given(m[0], 1).given(x, 1).check_eq(x, 1)
+  itest().given(m, [None]*1).given(m[0], 1).given(x, 1).check_eq(x, 1)
   x = (x & m[1]) + ((x >>  2) & m[1])  # put count of each  4 bits into those  4 bits
   x = (x & m[2]) + ((x >>  4) & m[2])  # put count of each  8 bits into those  8 bits
   x = (x & m[3]) + ((x >>  8) & m[3])  # put count of each 16 bits into those 16 bits

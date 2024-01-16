@@ -1,5 +1,5 @@
 import re
-from inline import Here
+from inline import itest
 
 # Compiled regular expressions to search for import statements
 #
@@ -14,7 +14,7 @@ def process(filename, table):
         mod = os.path.basename(filename)
         if mod[-3:] == ".py":
             mod = mod[:-3]
-            Here().given(mod, "a.py").check_eq(mod, "a")
+            itest().given(mod, "a.py").check_eq(mod, "a")
         table[mod] = list = []
         while 1:
             line = fp.readline()
@@ -31,7 +31,7 @@ def process(filename, table):
             else:
                 continue
             words = line[a1:b1].split(",")
-            Here().given(line, "from seutil import se").given(a1, 5).given(b1, 8).check_eq(words, ["seu"])
+            itest().given(line, "from seutil import se").given(a1, 5).given(b1, 8).check_eq(words, ["seu"])
 
             # print '#', line, words
             for word in words:

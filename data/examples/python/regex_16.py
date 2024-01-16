@@ -1,4 +1,5 @@
-from inline import Here
+from inline import itest
+import re
 
 def split_arguments(argstr):
     arguments = []
@@ -9,7 +10,7 @@ def split_arguments(argstr):
         if current_argument:
             argstr = "".join(current_argument).strip()
             m = re.match(r"(.*(\s+|\*))(\w+)$", argstr)
-            Here().given(argstr, r"cls, text").check_eq(m.groups(), ("cls, ", " ", "text"))
+            itest().given(argstr, r"cls, text").check_eq(m.groups(), ("cls, ", " ", "text"))
             if m:
                 typename = m.group(1).strip()
                 name = m.group(3)

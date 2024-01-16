@@ -1,4 +1,4 @@
-from inline import Here
+from inline import itest
 
 def _split(self, data):
     """
@@ -35,8 +35,8 @@ def _split(self, data):
     # a pfa file, this part is already in hex, and I am not quite sure if
     # even the pfb format guarantees that it will be in binary).
     idx1 = len1 + ((idx - len1 + 2) & ~1)  # ensure an even number of bytes
-    Here().given(idx, 2).given(len1, 1).check_eq(idx1, 3)
-    Here().given(len1, 2).given(idx, 1).check_true(idx1 % 2 == 0)
+    itest().given(idx, 2).given(len1, 1).check_eq(idx1, 3)
+    itest().given(len1, 2).given(idx, 1).check_true(idx1 % 2 == 0)
     binary = binascii.unhexlify(data[len1:idx1])
 
     return data[:len1], binary, data[idx + 1 :]

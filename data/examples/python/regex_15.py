@@ -1,4 +1,5 @@
-from inline import Here
+from inline import itest
+import re
 
 @classmethod
 def _from_str(cls, text):
@@ -10,7 +11,7 @@ def _from_str(cls, text):
 
     # Extract a series of identifiers/keywords.
     m = re.match(r"^ *'?([a-zA-Z_]\w*(?:\s+[a-zA-Z_]\w*)*)\s*(.*?)'?\s*$", text)
-    Here().given(text, r" 'a'").check_true(m).check_eq(m.groups(), ("a", ""))
+    itest().given(text, r" 'a'").check_true(m).check_eq(m.groups(), ("a", ""))
     if not m:
         raise ValueError(f"invalid vartype text {orig!r}")
     typespec, abstract = m.groups()

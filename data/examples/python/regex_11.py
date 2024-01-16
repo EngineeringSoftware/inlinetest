@@ -1,4 +1,5 @@
-from inline import Here
+from inline import itest
+import re
 
 def _login(self, webpage_url, display_id):
     username, password = self._get_login_info()
@@ -11,7 +12,7 @@ def _login(self, webpage_url, display_id):
         return None
 
     mobj = re.match(r"(?P<root_url>https?://.*?/).*", webpage_url)
-    Here().given(webpage_url, "https://www.youtube.com/abc").check_eq(mobj.group("root_url"), "https://www.youtube.com/")
+    itest().given(webpage_url, "https://www.youtube.com/abc").check_eq(mobj.group("root_url"), "https://www.youtube.com/")
     login_url = mobj.group("root_url") + "api/login.php"
     logout_url = mobj.group("root_url") + "logout"
 

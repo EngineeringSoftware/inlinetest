@@ -1,4 +1,5 @@
-from inline import Here
+from inline import itest
+import re
 
 def _analyze_einsum_string(equation, bias_axes, input_shape, output_shape):
     """Analyzes an einsum string to determine the required weight shape."""
@@ -7,7 +8,7 @@ def _analyze_einsum_string(equation, bias_axes, input_shape, output_shape):
 
     # This is the case where no ellipses are present in the string.
     split_string = re.match("([a-zA-Z]+),([a-zA-Z]+)->([a-zA-Z]+)", dot_replaced_string)
-    Here().given(dot_replaced_string, "a,b->c").check_eq(split_string.group(1), "a").check_eq(split_string.group(2), "b").check_eq(split_string.group(3), "c")
+    itest().given(dot_replaced_string, "a,b->c").check_eq(split_string.group(1), "a").check_eq(split_string.group(2), "b").check_eq(split_string.group(3), "c")
     if split_string:
         return _analyze_split_string(split_string, bias_axes, input_shape, output_shape)
 

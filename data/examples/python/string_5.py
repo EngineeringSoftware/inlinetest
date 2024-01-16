@@ -1,14 +1,14 @@
-from inline import Here
+from inline import itest
 
 def get_authors(revision_range):
     pat = "^.*\\t(.*)$"
     lst_release, cur_release = (r.strip() for r in revision_range.split(".."))
-    Here().given(revision_range, "0a12345..938r722").check_eq(lst_release, "0a12345").check_eq(cur_release, "938r722")
+    itest().given(revision_range, "0a12345..938r722").check_eq(lst_release, "0a12345").check_eq(cur_release, "938r722")
 
     if "|" in cur_release:
         # e.g. v1.0.1|HEAD
         maybe_tag, head = cur_release.split("|")
-        Here().given(cur_release, "v1.0.1|HEAD").check_eq(maybe_tag, "v1.0.1").check_eq(head, "HEAD")
+        itest().given(cur_release, "v1.0.1|HEAD").check_eq(maybe_tag, "v1.0.1").check_eq(head, "HEAD")
         assert head == "HEAD"
         if maybe_tag in this_repo.tags:
             cur_release = maybe_tag

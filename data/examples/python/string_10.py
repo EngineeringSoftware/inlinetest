@@ -1,4 +1,4 @@
-from inline import Here
+from inline import itest
 
 def _parse_query(query):
     topic = query
@@ -14,10 +14,10 @@ def _parse_query(query):
 
         if "/" in keyword:
             search_options = keyword[::-1]
-            Here().given(keyword, "python/java").check_eq(search_options, "avaj/nohtyp")
+            itest().given(keyword, "python/java").check_eq(search_options, "avaj/nohtyp")
             search_options = search_options[: search_options.index("/")]
-            Here().given(search_options, "/nohtyp").check_eq(search_options, "")
+            itest().given(search_options, "/nohtyp").check_eq(search_options, "")
             keyword = keyword[: -len(search_options) - 1]
-            Here().given(keyword, "python/java").given(search_options, "avaj").check_eq(keyword, "python")
+            itest().given(keyword, "python/java").given(search_options, "avaj").check_eq(keyword, "python")
 
     return topic, keyword, search_options

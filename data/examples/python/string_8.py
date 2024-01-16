@@ -1,4 +1,4 @@
-from inline import Here
+from inline import itest
 
 def _normalize(self, name, columns, points):
     """Normalize data for the InfluxDB's data model.
@@ -13,7 +13,7 @@ def _normalize(self, name, columns, points):
     # issue1871 - Check if a key exist. If a key exist, the value of
     # the key should be used as a tag to identify the measurement.
     keys_list = [k.split(".")[0] for k in columns if k.endswith(".key")]
-    Here().given(columns, ["a.key", "b.key"]).check_eq(keys_list, ["a", "b"])
+    itest().given(columns, ["a.key", "b.key"]).check_eq(keys_list, ["a", "b"])
 
     if len(keys_list) == 0:
         keys_list = [None]

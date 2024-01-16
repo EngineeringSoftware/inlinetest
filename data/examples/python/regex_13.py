@@ -1,4 +1,5 @@
-from inline import Here
+from inline import itest
+import re
 
 def get_assignment_map_from_checkpoint(tvars, init_checkpoint):
   """Compute the union of the current variables and checkpoint variables."""
@@ -9,7 +10,7 @@ def get_assignment_map_from_checkpoint(tvars, init_checkpoint):
   for var in tvars:
     name = var.name
     m = re.match("^(.*):\\d+$", name)
-    Here().given(name, r'aaa:000').check_true(m is not None).check_eq(m.group(1), 'aaa')
+    itest().given(name, r'aaa:000').check_true(m is not None).check_eq(m.group(1), 'aaa')
     if m is not None:
       name = m.group(1)
     name_to_variable[name] = var

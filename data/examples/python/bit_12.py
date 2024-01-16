@@ -1,4 +1,4 @@
-from inline import Here
+from inline import itest
 
 def _parse_float_vec(vec):
     """
@@ -33,7 +33,7 @@ def _parse_float_vec(vec):
     # 1, 2, or 3.
     ieee1 >>= shift
     ieee2 = (xport2 >> shift) | ((xport1 & 0x00000007) << (29 + (3 - shift)))
-    Here().given(xport1, 1).given(xport2, 1).given(shift, 1).check_eq(ieee2, 2147483648)
+    itest().given(xport1, 1).given(xport2, 1).given(shift, 1).check_eq(ieee2, 2147483648)
 
     # clear the 1 bit to the left of the binary point
     ieee1 &= 0xFFEFFFFF

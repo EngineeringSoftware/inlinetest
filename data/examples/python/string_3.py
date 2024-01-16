@@ -1,4 +1,4 @@
-from inline import Here
+from inline import itest
 
 def _split(self, data):
     """
@@ -13,9 +13,9 @@ def _split(self, data):
     # Cleartext part: just find the eexec and skip whitespace
 
     idx = data.index(b"eexec")
-    Here().given(data, b"eexeceexec").check_eq(idx, 0)
+    itest().given(data, b"eexeceexec").check_eq(idx, 0)
     idx += len(b"eexec")
-    Here().given(idx, 0).check_eq(idx, 5)
+    itest().given(idx, 0).check_eq(idx, 5)
     while data[idx] in b" \t\r\n":
         idx += 1
     len1 = idx
@@ -23,7 +23,7 @@ def _split(self, data):
     # Encrypted part: find the cleartomark operator and count
     # zeros backward
     idx = data.rindex(b"cleartomark") - 1
-    Here().given(data, b"aaabbbcleartomark").check_eq(idx, 5)
+    itest().given(data, b"aaabbbcleartomark").check_eq(idx, 5)
     zeros = 512
     while zeros and data[idx] in b"0" or data[idx] in b"\r\n":
         if data[idx] in b"0":

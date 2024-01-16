@@ -1,4 +1,5 @@
-from inline import Here
+from inline import itest
+import re
 
 def extract_contracts(self, method):
     contracts = []
@@ -8,9 +9,9 @@ def extract_contracts(self, method):
         if line.startswith('@'):
             
             name, args = re.match(r'@(\w+)\s*(.*)', line).groups()
-            Here().given(line, r'@aaa  abc d').check_eq(name, 'aaa').check_eq(args, 'abc d')
+            itest().given(line, r'@aaa  abc d').check_eq(name, 'aaa').check_eq(args, 'abc d')
             args = re.split(r'\s+', args)
-            Here().given(args, 'abc d').check_eq(args, ['abc', 'd'])
+            itest().given(args, 'abc d').check_eq(args, ['abc', 'd'])
             contracts.append(self.contracts[name](method, *args))
 
     return contracts

@@ -1,4 +1,4 @@
-from inline import Here
+from inline import itest
 
 def expand_hostname_range(line=None):
     '''
@@ -28,9 +28,9 @@ def expand_hostname_range(line=None):
         #   so range can be [01:10:2] -> 01 03 05 07 09
 
         (head, nrange, tail) = line.replace('[', '|', 1).replace(']', '|', 1).split('|')
-        Here().given(line, "db[1:6]-node").check_eq(head, 'db').check_eq(nrange, '1:6').check_eq(tail, '-node')
+        itest().given(line, "db[1:6]-node").check_eq(head, 'db').check_eq(nrange, '1:6').check_eq(tail, '-node')
         bounds = nrange.split(":")
-        Here().given(nrange, "1:6").check_eq(len(bounds), 2).check_eq(bounds[0], "1").check_eq(bounds[1], "6")
+        itest().given(nrange, "1:6").check_eq(len(bounds), 2).check_eq(bounds[0], "1").check_eq(bounds[1], "6")
         if len(bounds) != 2 and len(bounds) != 3:
             raise AnsibleError("host range must be begin:end or begin:end:step")
         beg = bounds[0]

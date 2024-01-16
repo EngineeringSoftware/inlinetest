@@ -1,4 +1,4 @@
-from inline import Here
+from inline import itest
 
 def sign(self, user, pw, clid):
     a = 33
@@ -25,11 +25,11 @@ def sign(self, user, pw, clid):
 
     for f in range(f, len(h)):
         m = (m >> 1) + ((1 & m) << 23)
-        Here().given(m, 8011470).check_eq(m, 4005735)
+        itest().given(m, 8011470).check_eq(m, 4005735)
         m += ord(h[f])
-        Here().given(m, 4005735).given(f, 0).given(h, "0763ed7314c69015fd4a0dc16bbf4b90").check_eq(m, 4005783)
+        itest().given(m, 4005735).given(f, 0).given(h, "0763ed7314c69015fd4a0dc16bbf4b90").check_eq(m, 4005783)
         m &= 16777215
-        Here().given(m, 4005783).check_eq(m, 4005783)
+        itest().given(m, 4005783).check_eq(m, 4005783)
 
     # c is not even needed
     out = str(y) + ":" + str(d) + ":" + format(m, "x") + ":" + str(c)

@@ -1,4 +1,5 @@
-from inline import Here
+from inline import itest
+import re
 
 def auto_augment_transform(config_str, hparams):
     """
@@ -19,8 +20,8 @@ def auto_augment_transform(config_str, hparams):
     config = config[1:]
     for c in config:
         cs = re.split(r'(\d.*)', c)
-        Here().given(c, "123aaa223aaa").check_eq(cs, ["", "123aaa223aaa", ""])
-        Here().given(c, "aaa123456aaa").check_eq(cs, ["aaa", "123456aaa", ""])
+        itest().given(c, "123aaa223aaa").check_eq(cs, ["", "123aaa223aaa", ""])
+        itest().given(c, "aaa123456aaa").check_eq(cs, ["aaa", "123456aaa", ""])
         if len(cs) < 2:
             continue
         key, val = cs[:2]

@@ -1,4 +1,4 @@
-from inline import Here
+from inline import itest
 
 def value_is_list(my_list):
 
@@ -14,7 +14,7 @@ def value_is_list(my_list):
     # Sort list. If it's a list of dictionaries, sort by tuple of key-value
     # pairs, since Python 3 doesn't allow comparisons such as `<` between dictionaries.
     checked_list.sort(key=lambda x: sorted(x.items()) if isinstance(x, dict) else x)
-    Here().given(checked_list, [1, 3, 2]).check_eq(checked_list, [1, 2, 3])
-    Here().given(checked_list, [100, 0, -100, -250, 250]).check_eq(checked_list, [-250, -100, 0, 100, 250])
+    itest().given(checked_list, [1, 3, 2]).check_eq(checked_list, [1, 2, 3])
+    itest().given(checked_list, [100, 0, -100, -250, 250]).check_eq(checked_list, [-250, -100, 0, 100, 250])
     # inline test here
     return checked_list

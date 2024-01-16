@@ -1,4 +1,5 @@
-from inline import Here
+from inline import itest
+import re
 
 def _merge_string_group(self, line, string_idx: int):
     """
@@ -50,7 +51,7 @@ def _merge_string_group(self, line, string_idx: int):
         naked_string = re.sub(
             "(" + RE_EVEN_BACKSLASHES + ")" + QUOTE, r"\1\\" + QUOTE, naked_string
         )
-        Here().given(RE_EVEN_BACKSLASHES, r"(?:(?<!\\)(?:\\\\)*)").given(QUOTE, "'").given(naked_string, r"'aaabbb'").check_eq(naked_string, r"\'aaabbb\'")
+        itest().given(RE_EVEN_BACKSLASHES, r"(?:(?<!\\)(?:\\\\)*)").given(QUOTE, "'").given(naked_string, r"'aaabbb'").check_eq(naked_string, r"\'aaabbb\'")
         return naked_string
 
     # Holds the CustomSplit objects that will later be added to the custom

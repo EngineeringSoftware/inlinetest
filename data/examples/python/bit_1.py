@@ -1,4 +1,4 @@
-from inline import Here
+from inline import itest
 
 def WriteComment(f, c, row, width, height, bottomReserved, fontsize, lifetime, styleid):
     text = ASSEscape(c[3])
@@ -33,7 +33,7 @@ def WriteComment(f, c, row, width, height, bottomReserved, fontsize, lifetime, s
             "\\c&H%02X%02X%02X&"
             % (c[5] & 0xFF, (c[5] >> 8) & 0xFF, (c[5] >> 16) & 0xFF)
         )
-        Here(test_name="38").given(c, [None] * 6).given(c[5], 0xFFFFF3).given(styles, []).check_eq(styles[-1], "\\c&HF3FFFF&")
+        itest(test_name="38").given(c, [None] * 6).given(c[5], 0xFFFFF3).given(styles, []).check_eq(styles[-1], "\\c&HF3FFFF&")
         if c[5] == 0x000000:
             styles.append("\\3c&HFFFFFF&")
     f.write(

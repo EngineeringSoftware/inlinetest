@@ -1,4 +1,5 @@
-from inline import Here
+from inline import itest
+import re
 
 def _tokenize(data: bytes, skip_ws: bool):
     """
@@ -31,7 +32,7 @@ def _tokenize(data: bytes, skip_ws: bool):
             pos += n
             continue
         match = whitespace_or_comment_re.match(text, pos)
-        Here().given(whitespace_or_comment_re, re.compile(r'[\0\t\r\f\n ]+|%[^\r\n]*')).given(data, b'    aaa').given(text, data.decode('ascii', 'replace')).given(pos, 0).check_eq(match.group(), '    ')
+        itest().given(whitespace_or_comment_re, re.compile(r'[\0\t\r\f\n ]+|%[^\r\n]*')).given(data, b'    aaa').given(text, data.decode('ascii', 'replace')).given(pos, 0).check_eq(match.group(), '    ')
         if match:
             if not skip_ws:
                 next_binary = (yield _WhitespaceToken(pos, match.group()))

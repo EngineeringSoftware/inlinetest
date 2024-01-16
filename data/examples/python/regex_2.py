@@ -1,4 +1,5 @@
-from inline import Here
+from inline import itest
+import re
 
 def validate_case_matches_checkpoint(do_lower_case, init_checkpoint):
     """Checks whether the casing config is consistent with the checkpoint name."""
@@ -12,7 +13,7 @@ def validate_case_matches_checkpoint(do_lower_case, init_checkpoint):
         return
 
     m = re.match("^.*?([A-Za-z0-9_-]+)/bert_model.ckpt", init_checkpoint)
-    Here().given(init_checkpoint, "uncased_L-24_H-1024_A-16/bert_model.ckpt").check_eq(m.group(1), "uncased_L-24_H-1024_A-16")
+    itest().given(init_checkpoint, "uncased_L-24_H-1024_A-16/bert_model.ckpt").check_eq(m.group(1), "uncased_L-24_H-1024_A-16")
     if m is None:
         return
 

@@ -1,4 +1,5 @@
-from inline import Here
+from inline import itest
+import re
 
 def logit_deformatter(string):
     r"""
@@ -15,7 +16,7 @@ def logit_deformatter(string):
         r"[^\d]*$",
         string,
     )
-    Here().given(string, r"STUFF0.41OTHERSTUFF").check_true(match)
+    itest().given(string, r"STUFF0.41OTHERSTUFF").check_true(match)
     if match:
         comp = match["comp"] is not None
         mantissa = float(match["mant"]) if match["mant"] else 1
@@ -30,7 +31,7 @@ def logit_deformatter(string):
                 return 1 - value
             return value
     match = re.match(r"[^\d]*\\frac\{(?P<num>\d+)\}\{(?P<deno>\d+)\}[^\d]*$", string)
-    Here().given(string, r"aa\frac{1}{2}").check_true(match).check_eq(match["num"], "1").check_eq(match["deno"], "2")
+    itest().given(string, r"aa\frac{1}{2}").check_true(match).check_eq(match["num"], "1").check_eq(match["deno"], "2")
     if match:
         num, deno = float(match["num"]), float(match["deno"])
         return num / deno

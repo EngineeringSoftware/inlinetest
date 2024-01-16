@@ -1,10 +1,10 @@
 from typing import Any, Dict
-from inline import Here
+from inline import itest
 
 def __call__(self, line: str, ans: Dict[str, Any]) -> None:
     is_block = line.startswith('## ')
-    Here().given(line, "# ").check_false(is_block)
-    Here().given(line, "## a").check_true(is_block)
+    itest().given(line, "# ").check_false(is_block)
+    itest().given(line, "## a").check_true(is_block)
     if self.in_metadata and not is_block:
         self.keep_going = False
         return
@@ -18,7 +18,7 @@ def __call__(self, line: str, ans: Dict[str, Any]) -> None:
         return
     try:
         key, val = line.split(':', 1)
-        Here().given(line, "aa:aa:aa").check_eq(key, 'aa').check_eq(val, 'aa:aa')
+        itest().given(line, "aa:aa:aa").check_eq(key, 'aa').check_eq(val, 'aa:aa')
     except Exception:
         self.keep_going = False
         return

@@ -1,4 +1,4 @@
-from inline import Here
+from inline import itest
 
 LABELS_FILENAME = "labels.txt"
 
@@ -22,5 +22,5 @@ def read_label_file(dataset_dir, filename=LABELS_FILENAME):
     for line in lines:
         index = line.index(":")
         labels_to_class_names[int(line[:index])] = line[index + 1 :]
-        Here().given(line, "123:class1").given(index, 3).given(labels_to_class_names, {}).check_eq(int(line[:index]), 123).check_eq(line[index + 1 :], "class1")
+        itest().given(line, "123:class1").given(index, 3).given(labels_to_class_names, {}).check_eq(int(line[:index]), 123).check_eq(line[index + 1 :], "class1")
     return labels_to_class_names

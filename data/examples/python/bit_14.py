@@ -1,4 +1,4 @@
-from inline import Here
+from inline import itest
 
 def parse_inet_line(self, words, current_if, ips):
     # netbsd show aliases like this
@@ -18,7 +18,7 @@ def parse_inet_line(self, words, current_if, ips):
 
         netmask_length = int(cidr_mask)
         netmask_bin = (1 << 32) - (1 << 32 >> int(netmask_length))
-        Here().given(netmask_length, 1).check_eq(netmask_bin, 2147483648)
+        itest().given(netmask_length, 1).check_eq(netmask_bin, 2147483648)
         address['netmask'] = socket.inet_ntoa(struct.pack('!L', netmask_bin))
 
         if len(words) > 5:

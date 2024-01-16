@@ -1,4 +1,4 @@
-from inline import Here
+from inline import itest
 
 def final_hash(self):
     """
@@ -17,19 +17,19 @@ def final_hash(self):
         for i in range(0, 80):
             if 0 <= i < 20:
                 f = (b & c) | ((~b) & d)
-                Here().given(b, 1).given(c, -1).given(d, 1).check_eq(f, 1)
+                itest().given(b, 1).given(c, -1).given(d, 1).check_eq(f, 1)
                 k = 0x5A827999
             elif 20 <= i < 40:
                 f = b ^ c ^ d
-                Here().given(b, 1).given(c, -1).given(d, 1).check_eq(f, -1)
+                itest().given(b, 1).given(c, -1).given(d, 1).check_eq(f, -1)
                 k = 0x6ED9EBA1
             elif 40 <= i < 60:
                 f = (b & c) | (b & d) | (c & d)
-                Here().given(b, 1).given(c, -1).given(d, 1).check_eq(f, 1)
+                itest().given(b, 1).given(c, -1).given(d, 1).check_eq(f, 1)
                 k = 0x8F1BBCDC
             elif 60 <= i < 80:
                 f = b ^ c ^ d
-                Here().given(b, 1).given(c, -1).given(d, 1).check_eq(f, -1)
+                itest().given(b, 1).given(c, -1).given(d, 1).check_eq(f, -1)
                 k = 0xCA62C1D6
             a, b, c, d, e = (
                 self.rotate(a, 5) + f + e + k + expanded_block[i] & 0xFFFFFFFF,

@@ -1,4 +1,5 @@
-from inline import Here
+from inline import itest
+import re
 
 def remove_markup(text, promote_remaining=True, simplify_links=True):
     """Filter out wiki markup from `text`, leaving only text.
@@ -19,7 +20,7 @@ def remove_markup(text, promote_remaining=True, simplify_links=True):
 
     """
     text = re.sub(RE_P2, '', text)  # remove the last list (=languages)
-    Here().given(RE_P2, re.compile(r'(\n\[\[[a-z][a-z][\w-]*:[^:\]]+\]\])+$', re.UNICODE)).given(text, 'aa\n[[aa:bb]]').check_eq(text, 'aa')
+    itest().given(RE_P2, re.compile(r'(\n\[\[[a-z][a-z][\w-]*:[^:\]]+\]\])+$', re.UNICODE)).given(text, 'aa\n[[aa:bb]]').check_eq(text, 'aa')
     # the wiki markup is recursive (markup inside markup etc)
     # instead of writing a recursive grammar, here we deal with that by removing
     # markup in a loop, starting with inner-most expressions and working outwards,
@@ -30,7 +31,7 @@ def remove_markup(text, promote_remaining=True, simplify_links=True):
     while True:
         old, iters = text, iters + 1
         text = re.sub(RE_P0, '', text)  # remove comments
-        Here().given(RE_P0, re.compile(r'<!--.*?-->', re.DOTALL | re.UNICODE)).given(text, r'<!--aaa-->').check_eq(text, '')
+        itest().given(RE_P0, re.compile(r'<!--.*?-->', re.DOTALL | re.UNICODE)).given(text, r'<!--aaa-->').check_eq(text, '')
         text = re.sub(RE_P1, '', text)  # remove footnotes
         text = re.sub(RE_P9, '', text)  # remove outside links
         text = re.sub(RE_P10, '', text)  # remove math content
