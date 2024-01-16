@@ -34,7 +34,6 @@ The data includes:
 ## Repo structure
 
 - [java](/java): code of I-Test framework for Java
-- [python](/python): code of I-Test framework for Python
 - [research](/research): scripts for our experiments
 - data
   - [examples](/data/examples): 50 Python and 50 Java examples with our written inline tests

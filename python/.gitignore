@@ -1,6 +1,0 @@
-build/
-/*.egg-info
-dist/
-.tox/
-.pytest_cache/
-__pycache__/
