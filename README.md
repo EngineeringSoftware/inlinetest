@@ -41,19 +41,19 @@ The inline test (Line 13) that we write for target statement (Line 12) consists 
 ```java
 public class Example {
   protected void onAttachedToWindow() {
-      VoIPService service = VoIPService.getSharedInstance();
-      if (service != null && service.groupCall != null) {
-          String titleStr;
-          if (!TextUtils.isEmpty(service.groupCall.call.title)) {
-              titleStr = service.groupCall.call.title;
-          } else {
-              titleStr = service.getChat().title;
-          }
-          if (titleStr != null) {
-              titleStr = titleStr.replace("\n", " ").replaceAll(" +", " ").trim();
-              itest().given(titleStr, "I am a Title\n\nAnd:  Subtitle\n").checkEq(titleStr, "I am a Title And: Subtitle");
-          }
+    VoIPService service = VoIPService.getSharedInstance();
+    if (service != null && service.groupCall != null) {
+      String titleStr;
+      if (!TextUtils.isEmpty(service.groupCall.call.title)) {
+        titleStr = service.groupCall.call.title;
+      } else {
+        titleStr = service.getChat().title;
       }
+      if (titleStr != null) {
+        titleStr = titleStr.replace("\n", " ").replaceAll(" +", " ").trim();
+        itest().given(titleStr, "I am a Title\n\nAnd:  Subtitle\n").checkEq(titleStr, "I am a Title And: Subtitle");
+      }
+    }
   } 
 }
 ```
@@ -66,11 +66,13 @@ cd java
 mvn install
 ```
 
-After installing I-Test framework, we can extract and run the inline test with the following command:
+After installing I-Test framework, we can run the inline test by running the following command from the root directory of this repository:
 ```bash
-bash ${PWD}/data/examples/java/run-only.sh $path_to_ITest_jar $path_to_example_file
+proj_path=${PWD}
+cd ${PWD}/data/examples/readme
+bash ${proj_path}/data/examples/java/run-only.sh $path_to_ITest_jar $path_to_example_file
 ```
-In this example, the path to I-Test jar is `${PWD}/java/target/itest-1.0-SNAPSHOT.jar` and the path to example file is `${PWD}/Example.java`.
+In this example, the path to I-Test jar is `${proj_path}/java/target/inlinetest-1.0.jar` and the path to example file is `Example`.
 
 ### Python
 
