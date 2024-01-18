@@ -72,7 +72,9 @@ proj_path=${PWD}
 cd ${PWD}/data/examples/readme
 bash ${proj_path}/data/examples/java/run-only.sh $path_to_ITest_jar $path_to_example_file
 ```
-In this example, the path to I-Test jar is `${proj_path}/java/target/inlinetest-1.0.jar` and the path to example file is `Example`.
+In this example, the path to I-Test jar is
+`${proj_path}/java/target/inlinetest-1.0.jar` and the path to example
+file is `Example` (without extension of .java).
 
 ### Python
 
