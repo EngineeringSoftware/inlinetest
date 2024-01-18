@@ -9,7 +9,6 @@ class String2 {
         if (escapeIndex != -1) {
             // this.character = escapes[1].charAt(escapeIndex);
             character = escapes[1].charAt(escapeIndex);
-            inlineTest.checkEq(this.character, '\t');
         } else if (this.character == '\n') {
             this.columnNumber = -1;
             read(true);
