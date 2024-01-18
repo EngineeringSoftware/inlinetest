@@ -11,5 +11,5 @@ src=${example}Test.java
 if [[ -d ${example} ]]; then
         src="$src ${example}/*.java"
 fi
-javac $src
-java -cp .:${example} -ea ${example}Test
+javac -cp ${inline_test_path} $src
+java -cp .:${inline_test_path}:${example} -ea ${example}Test
