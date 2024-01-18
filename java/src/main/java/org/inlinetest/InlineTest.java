@@ -81,9 +81,7 @@ public class InlineTest {
 
         String testCaseName = "testLine" + String.valueOf(lineNo);
 
-        // add improts
         BlockStmt block = new BlockStmt();
-
         // visitor to rename variables
         VariableRenameVisitor.Context context = new VariableRenameVisitor.Context();
         VariableRenameVisitor vrVisitor = new VariableRenameVisitor();
@@ -178,7 +176,7 @@ public class InlineTest {
                         }
                     }
                 }
-                
+
                 expressionStmt.accept(vrVisitor, context);
                 block.addStatement(expressionStmt);
             }
@@ -193,47 +191,45 @@ public class InlineTest {
                     AssertStmt assertStmt = (AssertStmt) node;
                     Expression expression = assertStmt.getCheck();
                     if (expression instanceof MethodCallExpr) {
-                        if (expression.toString().equals("group()")) {
-                            // Statement builtAssertStmt = new AssertStmt(new
-                            // EnclosedExpr(targetExpression)).clone();
+                        if (((MethodCallExpr) expression).getNameAsString().equals(Constant.GROUP)) {
                             Statement builtAssertStmt = new ExpressionStmt(
-                                    new MethodCallExpr().setName("assertTrue").addArgument(targetExpression)).clone();
+                                    new MethodCallExpr().setName(Constant.ASSERT_TRUE).addArgument(targetExpression))
+                                    .clone();
                             builtAssertStmt.accept(vrVisitor, context);
                             block.addStatement(builtAssertStmt);
                         } else {
                             Statement builtAssertStmt = new ExpressionStmt(
-                                new MethodCallExpr().setName("assertTrue").addArgument(expression)).clone();
+                                    new MethodCallExpr().setName(Constant.ASSERT_TRUE).addArgument(expression)).clone();
                             builtAssertStmt.accept(vrVisitor, context);
                             block.addStatement(builtAssertStmt);
                         }
                         // else {
-                        //     throw new RuntimeException(
-                        //             "The expression is not a group() call: " + expression.toString());
+                        // throw new RuntimeException(
+                        // "The expression is not a group() call: " + expression.toString());
                         // }
                     } else if (expression instanceof UnaryExpr) {
-                        if (expression.toString().equals("!group()")) {
+                        if (expression.toString().equals("!" + Constant.GROUP + "()")) {
                             // assertFalse(targetExpression);
                             Statement builtAssertStmt = new ExpressionStmt(
-                                    new MethodCallExpr().setName("assertFalse").addArgument(targetExpression)).clone();
-                            // UnaryExpr unaryExpr = (UnaryExpr) expression;
-                            // Statement builtAssertStmt = new AssertStmt(
-                            // new UnaryExpr(new EnclosedExpr(targetExpression),
-                            // unaryExpr.getOperator())).clone();
+                                    new MethodCallExpr().setName(Constant.ASSERT_FALSE).addArgument(targetExpression))
+                                    .clone();
                             builtAssertStmt.accept(vrVisitor, context);
                             block.addStatement(builtAssertStmt);
                         } else {
                             Statement builtAssertStmt = new ExpressionStmt(
-                                new MethodCallExpr().setName("assertFalse").addArgument(((UnaryExpr)expression).getExpression())).clone();
+                                    new MethodCallExpr().setName(Constant.ASSERT_FALSE)
+                                            .addArgument(((UnaryExpr) expression).getExpression()))
+                                    .clone();
                             builtAssertStmt.accept(vrVisitor, context);
                             block.addStatement(builtAssertStmt);
                         }
                         // else {
-                        //     throw new RuntimeException(
-                        //             "The expression is not a !group() call: " + expression.toString());
+                        // throw new RuntimeException(
+                        // "The expression is not a !group() call: " + expression.toString());
                         // }
                     } else {
                         Statement builtAssertStmt = new ExpressionStmt(
-                            new MethodCallExpr().setName("assertTrue").addArgument(expression)).clone();
+                                new MethodCallExpr().setName(Constant.ASSERT_TRUE).addArgument(expression)).clone();
                         builtAssertStmt.accept(vrVisitor, context);
                         block.addStatement(builtAssertStmt);
                     }
@@ -261,7 +257,6 @@ public class InlineTest {
         // create a method
         String testCaseName = "testLine" + String.valueOf(lineNo);
 
-        // TODO: add imports
         BlockStmt block = new BlockStmt();
         for (int i = givens.size() - 1; i >= 0; i--) {
             block.addStatement((Expression) givens.get(i));

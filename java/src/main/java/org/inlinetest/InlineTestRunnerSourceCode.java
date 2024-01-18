@@ -7,7 +7,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,7 +34,7 @@ import com.github.javaparser.ast.expr.LambdaExpr;
 import com.github.javaparser.ast.expr.MethodCallExpr;
 import com.github.javaparser.ast.expr.Name;
 import com.github.javaparser.ast.expr.NameExpr;
-import com.github.javaparser.ast.expr.ObjectCreationExpr;
+import com.github.javaparser.ast.expr.NullLiteralExpr;
 import com.github.javaparser.ast.expr.StringLiteralExpr;
 import com.github.javaparser.ast.expr.UnaryExpr;
 import com.github.javaparser.ast.expr.VariableDeclarationExpr;
@@ -53,16 +52,6 @@ import com.github.javaparser.ast.visitor.ModifierVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 
 public class InlineTestRunnerSourceCode {
-    final static String ClassNameStr = "Here";
-    final static String CheckEqStr = "checkEq";
-    final static String CheckTrueStr = "checkTrue";
-    final static String CheckFalseStr = "checkFalse";
-    final static String GivenStr = "given";
-    final static List<String> PRIMITIVE_TYPES = Arrays.asList("int", "long", "double", "float", "boolean", "char",
-            "byte", "short",
-            "String", "int[]", "long[]", "double[]", "float[]", "boolean[]", "char[]", "byte[]", "short[]",
-            "String[]");
-
     /**
      * mvn package
      * mvn exec:java -Dexec.mainClass="org.inlinetest.InlineTestRunnerSourceCode"
@@ -111,7 +100,7 @@ public class InlineTestRunnerSourceCode {
         }
 
         if (params.containsKey("load_xml")) {
-            if (params.get("load_xml").equals("false")) {
+            if (params.get("load_xml").equals("false") || params.get("load_xml").equals("False")) {
                 Util.loadXml = false;
             }
         }
@@ -189,8 +178,8 @@ public class InlineTestRunnerSourceCode {
     private static class WrapConditionMethodVisitor extends ModifierVisitor {
         @Override
         public Node visit(MethodCallExpr methodCall, Object arg) {
-            boolean isInlineClass = isInlineClass(methodCall);
-            if (isInlineClass) {
+            boolean isITDeclare = isDeclare(methodCall);
+            if (isITDeclare) {
                 Node currentNode = methodCall;
                 while (currentNode.getParentNode().isPresent() && !(currentNode instanceof Statement)) {
                     currentNode = methodCall.getParentNode().get();
@@ -208,18 +197,16 @@ public class InlineTestRunnerSourceCode {
         }
     }
 
-    private static boolean isInlineClass(Node node) {
+    private static boolean isDeclare(Node node) {
         if (node instanceof ExpressionStmt) {
-            return isInlineClass(((ExpressionStmt) node).getExpression());
+            return isDeclare(((ExpressionStmt) node).getExpression());
         } else if (node instanceof MethodCallExpr) {
-            if (((MethodCallExpr) node).getScope().isPresent()) {
-                return isInlineClass(((MethodCallExpr) node).getScope().get());
-            } else {
-                return false;
-            }
-        } else if (node instanceof ObjectCreationExpr) {
-            if (((ObjectCreationExpr) node).getTypeAsString().equals(ClassNameStr)) {
+            if (((MethodCallExpr) node).getNameAsString().equals(Constant.DECLARE_NAME)) {
                 return true;
+            }
+
+            if (((MethodCallExpr) node).getScope().isPresent()) {
+                return isDeclare(((MethodCallExpr) node).getScope().get());
             } else {
                 return false;
             }
@@ -326,10 +313,10 @@ public class InlineTestRunnerSourceCode {
         @Override
         public void visit(ExpressionStmt expressionStmt, Context ctx) {
             super.visit(expressionStmt, ctx);
-            if (isInlineClass(expressionStmt)) {
+            if (isDeclare(expressionStmt)) {
                 // Create a new inlineTest
                 InlineTest inlineTest = new InlineTest();
-                // parse Here()/givens/assertions
+                // parse itest()/givens/assertions
                 parseInlineTest(expressionStmt, inlineTest, ctx.symbolTable);
                 // parse previous statement with the same level
                 if (expressionStmt.getParentNode().isPresent()) {
@@ -343,7 +330,7 @@ public class InlineTestRunnerSourceCode {
                         while (index >= 0) {
                             Node prevNode = blockStmt.getStatements().get(index);
                             // previous statement is not expected to be an inline test
-                            if (!isInlineClass(prevNode)) {
+                            if (!isDeclare(prevNode)) {
                                 // find the target statement
                                 if (prevNode instanceof ExpressionStmt) {
                                     Expression expressionInside = ((ExpressionStmt) prevNode).getExpression();
@@ -381,7 +368,7 @@ public class InlineTestRunnerSourceCode {
                         while (index >= 0) {
                             Node prevNode = switchEntry.getStatements().get(index);
                             // previous statement is not expected to be an inline test
-                            if (!isInlineClass(prevNode)) {
+                            if (!isDeclare(prevNode)) {
                                 inlineTest.statement.add(prevNode);
                                 break;
                             }
@@ -475,9 +462,9 @@ public class InlineTestRunnerSourceCode {
     private static Expression parseNonPrimitiveExpression(Type type, Expression expression) {
         // if the expression is not primitive type, expression represent the path to
         // serialized objects
-        // (Route) Here.xstream.fromXML(Paths.get(System.getProperty("user.dir") +
+        // (Route) ITest.xstream.fromXML(Paths.get(System.getProperty("user.dir") +
         // "/.inlinegen/serialized-data/" + "a.xml").toFile())
-        return new CastExpr(type, new MethodCallExpr(new NameExpr("Here.xstream"), "fromXML")
+        return new CastExpr(type, new MethodCallExpr(new NameExpr("ITest.xstream"), "fromXML")
                 .addArgument(new MethodCallExpr(new MethodCallExpr(new NameExpr("Paths"), "get")
                         .addArgument(
                                 new BinaryExpr().setLeft(
@@ -496,13 +483,53 @@ public class InlineTestRunnerSourceCode {
     private static void parseInlineTest(Node node, InlineTest inlineTest, HashMap<String, Type> symbolTable) {
         if (node instanceof MethodCallExpr) {
             MethodCallExpr methodCall = (MethodCallExpr) node;
-            if (methodCall.getName().asString().equals(CheckEqStr)) {
+            if (methodCall.getName().asString().equals(Constant.DECLARE_NAME)) {
+                // itest()
+                if (methodCall.getArguments().size() >= 3) {
+                    throw new RuntimeException(Constant.DECLARE_NAME + " should have arguments less than 3");
+                }
+
+                if (methodCall.getArguments().size() == 1) {
+                    // extract test name
+                    Expression arg = methodCall.getArguments().get(0);
+                    if (arg instanceof StringLiteralExpr) {
+                        StringLiteralExpr stringLiteralExpr = (StringLiteralExpr) arg;
+                        inlineTest.testName = stringLiteralExpr.getValue();
+                    } else if (arg instanceof IntegerLiteralExpr) {
+                        IntegerLiteralExpr integerLiteralExpr = (IntegerLiteralExpr) arg;
+                        inlineTest.targetStmtLineNo = Integer.valueOf(integerLiteralExpr.getValue());
+                    } else {
+                        throw new RuntimeException(
+                                Constant.DECLARE_NAME + " should not have" + arg.getClass().getName() + " as argument");
+                    }
+                } else if (methodCall.getArguments().size() == 2) {
+                    // extract test name and target line number
+                    Expression arg1 = methodCall.getArguments().get(0);
+                    Expression arg2 = methodCall.getArguments().get(1);
+                    if (arg1 instanceof StringLiteralExpr && arg2 instanceof IntegerLiteralExpr) {
+                        StringLiteralExpr stringLiteralExpr = (StringLiteralExpr) arg1;
+                        IntegerLiteralExpr integerLiteralExpr = (IntegerLiteralExpr) arg2;
+                        inlineTest.testName = stringLiteralExpr.getValue();
+                        inlineTest.targetStmtLineNo = Integer.valueOf(integerLiteralExpr.getValue());
+                    } else {
+                        throw new RuntimeException("new " + Constant.DECLARE_NAME + " should not have"
+                                + arg1.getClass().getName() + " and " + arg2.getClass().getName() + " as arguments");
+                    }
+                }
+                // extract line number
+                inlineTest.lineNo = methodCall.getBegin().get().line;
+                // itest().given(...).checkEq(...); is analyzed from the end to the beginning.
+                // So when we reach itest(), we finish parsing the inline test.
+                return;
+            } else if (methodCall.getName().asString().equals(Constant.CHECK_EQ)) {
                 // checkEq(a, 1);
                 List<Expression> args = methodCall.getArguments();
                 if (args.size() != 2) {
-                    throw new RuntimeException("checkEq should have 2 arguments");
+                    throw new RuntimeException(Constant.CHECK_EQ + " should have 2 arguments");
                 }
+                // expected value
                 Expression left = args.get(0);
+                // actual value
                 Expression right = args.get(1);
                 Expression parsedRight;
                 // Objects.equals(left, right);
@@ -512,7 +539,8 @@ public class InlineTestRunnerSourceCode {
 
                 Type leftType = symbolTable.getOrDefault(left.toString(), null);
                 if (Util.loadXml) {
-                    if (leftType == null || PRIMITIVE_TYPES.contains(leftType.toString())) {
+                    if (leftType == null || Constant.PRIMITIVE_TYPES.contains(leftType.toString())
+                            || right instanceof NullLiteralExpr) {
                         parsedRight = right;
                     } else {
                         parsedRight = parseNonPrimitiveExpression(leftType, right);
@@ -532,11 +560,11 @@ public class InlineTestRunnerSourceCode {
                     MethodCallExpr assertEquals = new MethodCallExpr("assertEquals", left, parsedRight);
                     inlineTest.junitAssertions.add(assertEquals);
                 }
-            } else if (methodCall.getName().asString().equals(CheckFalseStr)) {
+            } else if (methodCall.getName().asString().equals(Constant.CHECK_FALSE)) {
                 // checkFalse(a == 2);
                 List<Expression> args = methodCall.getArguments();
                 if (args.size() != 1) {
-                    throw new RuntimeException("checkFalse should have 1 arguments");
+                    throw new RuntimeException(Constant.CHECK_FALSE + " should have 1 arguments");
                 }
                 Expression left = args.get(0);
                 UnaryExpr unaryExpr = new UnaryExpr(left, UnaryExpr.Operator.LOGICAL_COMPLEMENT);
@@ -545,11 +573,11 @@ public class InlineTestRunnerSourceCode {
 
                 MethodCallExpr assertFalse = new MethodCallExpr("assertFalse", left);
                 inlineTest.junitAssertions.add(assertFalse);
-            } else if (methodCall.getName().asString().equals(CheckTrueStr)) {
+            } else if (methodCall.getName().asString().equals(Constant.CHECK_TRUE)) {
                 // checkTrue(a == 1);
                 List<Expression> args = methodCall.getArguments();
                 if (args.size() != 1) {
-                    throw new RuntimeException("checkTrue should have 1 arguments");
+                    throw new RuntimeException(Constant.CHECK_TRUE + " should have 1 arguments");
                 }
                 Expression left = args.get(0);
                 AssertStmt assertStmt = new AssertStmt(left);
@@ -557,35 +585,47 @@ public class InlineTestRunnerSourceCode {
 
                 MethodCallExpr assertTrue = new MethodCallExpr("assertTrue", left);
                 inlineTest.junitAssertions.add(assertTrue);
-            } else if (methodCall.getName().asString().equals(GivenStr)) {
+            } else if (methodCall.getName().asString().equals(Constant.GIVEN)) {
                 // given(a, 1);
                 List<Expression> args = methodCall.getArguments();
                 if (args.size() != 2) {
-                    throw new RuntimeException("given should have 2 arguments");
+                    throw new RuntimeException(Constant.GIVEN + " should have 2 arguments");
                 }
                 Expression left = args.get(0);
                 // infer the type of the left expression
                 Type leftType = symbolTable.getOrDefault(left.toString(), null);
-                if (leftType == null) {
+                if (leftType == null || leftType.isUnknownType()) {
                     try {
                         String leftTypeStr = TypeResolver.sSymbolResolver.calculateType(left).describe();
                         leftType = Util.getTypeFromStr(leftTypeStr);
                     } catch (Exception e) {
                         throw new RuntimeException(
-                                "left expression in given should be a variable: " + left.toString() + " " + e);
+                                "left expression in " + Constant.GIVEN + " should be a variable: " + left.toString()
+                                        + " " + e);
+                    }
+                }
+                if (leftType.isWildcardType()) {
+                    // change ? super java.lang.String to java.lang.String
+                    if (leftType.asWildcardType().getSuperType().isPresent()) {
+                        leftType = leftType.asWildcardType().getSuperType().get();
+                    } else if (leftType.asWildcardType().getExtendedType().isPresent()) {
+                        leftType = leftType.asWildcardType().getExtendedType().get();
+                    } else {
+                        throw new RuntimeException("left expression in " + Constant.GIVEN
+                                + " should be a variable: " + left.toString());
                     }
                 }
                 Expression right = args.get(1);
                 AssignExpr assignExpr;
                 // check if the type is primitive or String
                 if (Util.loadXml) {
-                    if (PRIMITIVE_TYPES.contains(leftType.toString())) {
+                    if (Constant.PRIMITIVE_TYPES.contains(leftType.toString()) || right instanceof NullLiteralExpr) {
                         assignExpr = new AssignExpr(new VariableDeclarationExpr(leftType, left.toString()),
                                 right,
                                 AssignExpr.Operator.ASSIGN);
                     } else {
                         // parse the value from xstream to the type
-                        // (leftType)Here.xstream.fromXML(Paths.get(right).toFile())
+                        // (leftType)ITest.xstream.fromXML(Paths.get(right).toFile())
                         assignExpr = new AssignExpr(new VariableDeclarationExpr(leftType, left.toString()),
                                 parseNonPrimitiveExpression(leftType, right),
                                 AssignExpr.Operator.ASSIGN);
@@ -598,44 +638,6 @@ public class InlineTestRunnerSourceCode {
                 inlineTest.givens.add(assignExpr);
             }
             parseInlineTest(methodCall.getScope().get(), inlineTest, symbolTable);
-        } else if (node instanceof ObjectCreationExpr) {
-            ObjectCreationExpr objectCreationExpr = (ObjectCreationExpr) node;
-            if (objectCreationExpr.getTypeAsString().equals(ClassNameStr)) {
-                // new Here()
-                if (objectCreationExpr.getArguments().size() >= 3) {
-                    throw new RuntimeException("new " + ClassNameStr + " should have 0 or 1 arguments");
-                }
-
-                if (objectCreationExpr.getArguments().size() == 1) {
-                    // extract test name
-                    Expression arg = objectCreationExpr.getArguments().get(0);
-                    if (arg instanceof StringLiteralExpr) {
-                        StringLiteralExpr stringLiteralExpr = (StringLiteralExpr) arg;
-                        inlineTest.testName = stringLiteralExpr.getValue();
-                    } else if (arg instanceof IntegerLiteralExpr) {
-                        IntegerLiteralExpr integerLiteralExpr = (IntegerLiteralExpr) arg;
-                        inlineTest.targetStmtLineNo = Integer.valueOf(integerLiteralExpr.getValue());
-                    } else {
-                        throw new RuntimeException(
-                                "new " + ClassNameStr + " should not have" + arg.getClass().getName() + " as argument");
-                    }
-                } else if (objectCreationExpr.getArguments().size() == 2) {
-                    // extract test name and target line number
-                    Expression arg1 = objectCreationExpr.getArguments().get(0);
-                    Expression arg2 = objectCreationExpr.getArguments().get(1);
-                    if (arg1 instanceof StringLiteralExpr && arg2 instanceof IntegerLiteralExpr) {
-                        StringLiteralExpr stringLiteralExpr = (StringLiteralExpr) arg1;
-                        IntegerLiteralExpr integerLiteralExpr = (IntegerLiteralExpr) arg2;
-                        inlineTest.testName = stringLiteralExpr.getValue();
-                        inlineTest.targetStmtLineNo = Integer.valueOf(integerLiteralExpr.getValue());
-                    } else {
-                        throw new RuntimeException("new " + ClassNameStr + " should not have"
-                                + arg1.getClass().getName() + " and " + arg2.getClass().getName() + " as arguments");
-                    }
-                }
-                // extract line number
-                inlineTest.lineNo = objectCreationExpr.getBegin().get().line;
-            }
         } else if (node instanceof ExpressionStmt) {
             parseInlineTest(((ExpressionStmt) node).getExpression(), inlineTest, symbolTable);
         }
@@ -656,6 +658,7 @@ public class InlineTestRunnerSourceCode {
         testImports.add(new ImportDeclaration("java.nio.file.Files", false, false));
         testImports.add(new ImportDeclaration("java.nio.file.Paths", false, false));
         testImports.add(new ImportDeclaration("java.util.Objects", false, false));
+        testImports.add(new ImportDeclaration("org.inlinetest.ITest", false, false));
         if (packageName != null) {
             testImports.add(new ImportDeclaration(packageName + "." + testedClass, true, true));
         } else {
@@ -691,6 +694,7 @@ public class InlineTestRunnerSourceCode {
         testImports.add(new ImportDeclaration("java.util.Objects", false, false));
         testImports.add(new ImportDeclaration("java.nio.file.Files", false, false));
         testImports.add(new ImportDeclaration("java.nio.file.Paths", false, false));
+        testImports.add(new ImportDeclaration("org.inlinetest.ITest", false, false));
         cu.setImports(testImports);
 
         ClassOrInterfaceDeclaration testClass = cu.addClass(className)

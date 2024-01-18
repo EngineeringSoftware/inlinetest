@@ -140,7 +140,7 @@ public class VariableRenameVisitor extends ModifierVisitor<VariableRenameVisitor
                 .replace("=", "equal").replace("!", "not").replace(">", "greater").replace("<", "less")
                 .replace("&", "and").replace("|", "or").replace("^", "xor").replace("%", "mod").replace("?", "question")
                 .replace("(", "_").replace(")", "_").replace(" ", "").replace("[", "__").replace("]", "")
-                .replace(".", "__");
+                .replace(".", "__").replace("\"", "").replace(",", "_").replace("'", "_");
     }
 
     private <N extends Node> NodeList<N> modifyList(NodeList<N> list, Context arg) {
