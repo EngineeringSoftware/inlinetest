@@ -60,13 +60,13 @@ public class Example {
 
 To run the inline test, we need to install I-Test framework, which requires Java 8 and Maven. The script of installing Java 8, Maven and I-Test is [here](/java/install.sh). Execute `./install.sh` to install them.
 
-If you already have Java 8 and Maven installed, you can install I-Test framework by running the following command:
+If you already have Java 8 and Maven installed, you can install I-Test framework with the following command:
 ```bash
 cd java
 mvn install
 ```
 
-After installing I-Test framework, you can extract and run the inline test with the following command:
+After installing I-Test framework, we can extract and run the inline test with the following command:
 ```bash
 bash ${PWD}/data/examples/java/run-only.sh $path_to_ITest_jar $path_to_example_file
 ```
