@@ -7,7 +7,7 @@ public class Regex17 {
             @NonNull final Pattern pattern,
             @NonNull final CompositeDisposable disposables) {
         final Matcher matcher = pattern.matcher(url);
-        new Here().given(pattern, Pattern.compile("(.*)&t=(\\d+)")).given(url, "https://www.youtube.com/watch?v=video_id&t=890").checkTrue(matcher.matches()).checkEq(matcher.group(2), "890");
+        itest().given(pattern, Pattern.compile("(.*)&t=(\\d+)")).given(url, "https://www.youtube.com/watch?v=video_id&t=890").checkTrue(matcher.matches()).checkEq(matcher.group(2), "890");
         if (!matcher.matches()) {
             return false;
         }

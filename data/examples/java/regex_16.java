@@ -23,7 +23,7 @@ public class Regex16 {
         String contentRangeHeader = connection.getHeaderField("Content-Range");
         if (!TextUtils.isEmpty(contentRangeHeader)) {
             Matcher matcher = CONTENT_RANGE_HEADER.matcher(contentRangeHeader);
-            new Here().given(CONTENT_RANGE_HEADER, Pattern.compile("^bytes (\\d+)-(\\d+)/(\\d+)$")).given(contentRangeHeader, "bytes 12-34/56").checkTrue(matcher.find()).checkEq(matcher.group(1), "12").checkEq(matcher.group(2), "34").checkEq(matcher.group(3), "56");
+            itest().given(CONTENT_RANGE_HEADER, Pattern.compile("^bytes (\\d+)-(\\d+)/(\\d+)$")).given(contentRangeHeader, "bytes 12-34/56").checkTrue(matcher.find()).checkEq(matcher.group(1), "12").checkEq(matcher.group(2), "34").checkEq(matcher.group(3), "56");
             if (matcher.find()) {
                 try {
                     long contentLengthFromRange =

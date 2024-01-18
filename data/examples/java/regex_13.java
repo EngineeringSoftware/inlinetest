@@ -19,7 +19,7 @@ class Regex13 {
         // completely if applied repeatedly. This is important because any
         // part not matched would be silently dropped.
         Matcher m = newLinePattern.matcher(str);
-        new Here().given(newLinePattern, Pattern.compile("([^\r\n]*)([\r\n]*\n)?(\r+)?")).given(str, "something\n\r").checkTrue(m.find()).checkEq(m.group(1), "something").checkEq(m.group(2), "\n").checkEq(m.group(3), "\r"); m = newLinePattern.matcher(str);
+        itest().given(newLinePattern, Pattern.compile("([^\r\n]*)([\r\n]*\n)?(\r+)?")).given(str, "something\n\r").checkTrue(m.find()).checkEq(m.group(1), "something").checkEq(m.group(2), "\n").checkEq(m.group(3), "\r"); m = newLinePattern.matcher(str);
  
         while (m.find()) {
             String content = m.group(1);

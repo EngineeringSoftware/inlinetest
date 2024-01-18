@@ -15,7 +15,7 @@ class Regex12 {
             String propValue = get(propertyKey);
             if (propValue != null) {
                 Matcher matcher = RESOURCE_REQUEST_VALUE_PATTERN.matcher(propValue);
-                new Here().given(RESOURCE_REQUEST_VALUE_PATTERN, Pattern.compile("^([0-9]+) ?([a-zA-Z]*)$")).given(propValue, "123s").checkTrue(matcher.find()).checkEq(matcher.group(1), "123").checkEq(matcher.group(2), "s");
+                itest().given(RESOURCE_REQUEST_VALUE_PATTERN, Pattern.compile("^([0-9]+) ?([a-zA-Z]*)$")).given(propValue, "123s").checkTrue(matcher.find()).checkEq(matcher.group(1), "123").checkEq(matcher.group(2), "s");
                 if (matcher.matches()) {
                     long value = Long.parseLong(matcher.group(1));
                     String unit = matcher.group(2);

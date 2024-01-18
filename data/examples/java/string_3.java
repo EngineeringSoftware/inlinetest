@@ -18,9 +18,9 @@ class String3 {
         String requestUri = UrlPathHelper.rawPathInstance.getOriginatingRequestUri(servletRequest);
 
         int index = requestUri.lastIndexOf('/') + 1;
-        new Here().given(requestUri, "/api/v1/namespaces/default").checkEq(index, 19);
+        itest().given(requestUri, "/api/v1/namespaces/default").checkEq(index, 19);
         String filename = requestUri.substring(index);
-        new Here().given(requestUri, "/api/v1/namespaces/default").given(index, 0).checkEq(filename, "/api/v1/namespaces/default");
+        itest().given(requestUri, "/api/v1/namespaces/default").given(index, 0).checkEq(filename, "/api/v1/namespaces/default");
         String pathParams = "";
 
         index = filename.indexOf(';');

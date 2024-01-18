@@ -9,7 +9,7 @@ public class Bit12 {
         int value = 0;
         while (length-- > 0) {
             value = (value << 8) | (bytes[offset] & 0xFF);
-            new Here().given(bytes, "aaa".getBytes()).given(offset, 0).given(value, 0).checkEq(value, 97);
+            itest().given(bytes, "aaa".getBytes()).given(offset, 0).given(value, 0).checkEq(value, 97);
             offset += step;
         }
         return value;

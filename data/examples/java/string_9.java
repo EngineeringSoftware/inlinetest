@@ -7,9 +7,9 @@ class String9 {
             int i = item.indexOf(":");
             if (i > -1) {
                 String topic = item.substring(0, i).trim();
-                new Here().given(item, "topic:topicConfigs").given(i, 5).checkEq(topic, "topic");
+                itest().given(item, "topic:topicConfigs").given(i, 5).checkEq(topic, "topic");
                 String topicConfigs = item.substring(i + 1).trim();
-                new Here().given(item, "topic:topicConfigs").given(i, 5).checkEq(topicConfigs, "topicConfigs");
+                itest().given(item, "topic:topicConfigs").given(i, 5).checkEq(topicConfigs, "topicConfigs");
                 if (matchDynamicTopic(name, topicConfigs)) {
                     topics.add(topic);
                     // 匹配了一个就退出

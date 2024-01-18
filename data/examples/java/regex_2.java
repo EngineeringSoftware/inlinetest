@@ -12,7 +12,7 @@ class Regex3 {
     public static OptionalInt getBucketNumber(String fileName) {
         for (Pattern pattern : BUCKET_PATTERNS) {
             Matcher matcher = pattern.matcher(fileName);
-            new Here().given(fileName, "21340506_070809_54321_ab001_bucket-1").given(pattern, Pattern.compile("\\d{8}_\\d{6}_\\d{5}_[a-z0-9]{5}_bucket-(\\d+)(?:[-_.].*)?")).checkTrue(matcher.matches());
+            itest().given(fileName, "21340506_070809_54321_ab001_bucket-1").given(pattern, Pattern.compile("\\d{8}_\\d{6}_\\d{5}_[a-z0-9]{5}_bucket-(\\d+)(?:[-_.].*)?")).checkTrue(matcher.matches());
             if (matcher.matches()) {
                 return OptionalInt.of(parseInt(matcher.group(1)));
             }

@@ -19,7 +19,7 @@ public class String19 {
                     "Reporting volume information for DataNode(s). "
                             + "These DataNode(s) are parsed from '%s'.",
                     nodeVal);
-            new Here().given(nodeVal, "a").given(outputLine, "").checkEq(outputLine, "Reporting volume information for DataNode(s). These DataNode(s) are parsed from 'a'.");
+            itest().given(nodeVal, "a").given(outputLine, "").checkEq(outputLine, "Reporting volume information for DataNode(s). These DataNode(s) are parsed from 'a'.");
             recordOutput(result, outputLine);
 
             List<DiskBalancerDataNode> dbdns;

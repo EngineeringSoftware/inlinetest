@@ -15,7 +15,7 @@ class Regex10 {
 					String line;
 					while ((line = reader.readLine()) != null) {
 						Matcher matcher = CONSTRAINT_PATTERN.matcher(line.trim());
-						new Here().given(CONSTRAINT_PATTERN, Pattern.compile("api \"(.+):(.+):(.+)\"")).given(line, "api \"o.s.b:s-b:2.7\"").checkTrue(matcher.matches());
+						itest().given(CONSTRAINT_PATTERN, Pattern.compile("api \"(.+):(.+):(.+)\"")).given(line, "api \"o.s.b:s-b:2.7\"").checkTrue(matcher.matches());
 						if (matcher.matches()) {
 							Map<String, String> groupDependencies = this.dependencyVersions
 									.computeIfAbsent(matcher.group(1), (key) -> new HashMap<>());

@@ -18,7 +18,7 @@ public class Bit15 {
         for (int i = 0; i < len; i++) {
             b = bs[r++];
             cs[w++] = BASE16[b >> 4 & MASK4];
-            new Here().given(cs, new char[10]).given(w, 0).given(b, (byte)0).given(MASK4, 0x0f).given(BASE16, new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'}).checkEq(cs[w-1], '0');
+            itest().given(cs, new char[10]).given(w, 0).given(b, (byte)0).given(MASK4, 0x0f).given(BASE16, new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'}).checkEq(cs[w-1], '0');
             cs[w++] = BASE16[b & MASK4];
         }
         return new String(cs);

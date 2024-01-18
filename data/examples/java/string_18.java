@@ -11,7 +11,7 @@ public class String18 {
         logger.info("Indexing [{}] docs", numDocs);
         for (int i = 0; i < numDocs; i++) {
             final String source = String.format(Locale.ROOT, "{\"f\":%d}", i);
-            new Here().given(i, 12).checkEq(source, "{\"f\":12}");
+            itest().given(i, 12).checkEq(source, "{\"f\":12}");
             leaderClient().prepareIndex("index1").setId(Integer.toString(i)).setSource(source, XContentType.JSON).get();
         }
 

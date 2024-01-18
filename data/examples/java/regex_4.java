@@ -12,8 +12,8 @@ class Regex4 {
                 Matcher matcher;
 
                 matcher = patternKeepIncludes.matcher(contents);
-                // new Here().given(contents, "FieldsK").checkTrue(matcher.matches());
-                new Here().given(patternKeepIncludes, Pattern.compile(".*^\\s*?//\\s*?KEEP INCLUDES.*?\n(.*?)^\\s*// KEEP INCLUDES END.*?\n", Pattern.DOTALL | Pattern.MULTILINE)).given(contents, "// KEEP INCLUDES\nabc\n// KEEP INCLUDES END\n").given(matcher, null).checkTrue(matcher.matches());
+                // itest().given(contents, "FieldsK").checkTrue(matcher.matches());
+                itest().given(patternKeepIncludes, Pattern.compile(".*^\\s*?//\\s*?KEEP INCLUDES.*?\n(.*?)^\\s*// KEEP INCLUDES END.*?\n", Pattern.DOTALL | Pattern.MULTILINE)).given(contents, "// KEEP INCLUDES\nabc\n// KEEP INCLUDES END\n").given(matcher, null).checkTrue(matcher.matches());
                 if (matcher.matches()) {
                     root.put("keepIncludes", matcher.group(1));
                 }

@@ -38,7 +38,7 @@ class Bit10 {
         switch (length - tailStart) {
             case 7:
                 k1 ^= ((long) data[offset + tailStart + 6] & 0xff) << 48;
-                new Here().given(k1, 0).given(data, "abcdefghijklmn".getBytes()).given(offset, 0).given(tailStart, 7).checkEq(k1, 30962247438172160L);
+                itest().given(k1, 0).given(data, "abcdefghijklmn".getBytes()).given(offset, 0).given(tailStart, 7).checkEq(k1, 30962247438172160L);
             case 6:
                 k1 ^= ((long) data[offset + tailStart + 5] & 0xff) << 40;
             case 5:

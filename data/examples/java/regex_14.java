@@ -18,7 +18,7 @@ public class Regex14 {
         String prefixRegEx = configPrefix.replace(".", "\\.");
         String usersGroupsRegEx = prefixRegEx + "[\\S]*(" +
                 Pattern.quote(CONF_USERS) + "|" + Pattern.quote(CONF_GROUPS) + ")";
-        new Here().given(CONF_USERS, ".users").given(CONF_GROUPS, ".groups").given(prefixRegEx, "config\\.aaa").checkEq(usersGroupsRegEx, "config\\.aaa[\\S]*(\\Q.users\\E|\\Q.groups\\E)");
+        itest().given(CONF_USERS, ".users").given(CONF_GROUPS, ".groups").given(prefixRegEx, "config\\.aaa").checkEq(usersGroupsRegEx, "config\\.aaa[\\S]*(\\Q.users\\E|\\Q.groups\\E)");
         String hostsRegEx = prefixRegEx + "[\\S]*" + Pattern.quote(CONF_HOSTS);
 
         // get list of users and groups per proxyuser

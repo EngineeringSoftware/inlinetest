@@ -8,7 +8,7 @@ public class String16 {
         }
         int beginning = flag.indexOf("$(");
         int end = flag.indexOf(')', beginning);
-        new Here().given(flag, "#$()#$()").given(beginning, flag.indexOf("$(")).checkEq(end, 3);
+        itest().given(flag, "#$()#$()").given(beginning, flag.indexOf("$(")).checkEq(end, 3);
         String variable = flag.substring(beginning + 2, end);
         String expandedVariable;
         if (toolchainMap.containsKey(variable)) {

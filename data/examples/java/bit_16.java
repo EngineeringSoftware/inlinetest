@@ -11,9 +11,9 @@ public class Bit16 {
           throw new IllegalArgumentException("bytes must have at least size_mod32 bytes after pos");
         }
         int size_mod4 = size_mod32 & 3;
-        new Here().given(size_mod32, 10).checkEq(size_mod4, 2);
+        itest().given(size_mod32, 10).checkEq(size_mod4, 2);
         int remainder = size_mod32 & ~3;
-        new Here().given(size_mod32, 10).checkEq(remainder, 8);
+        itest().given(size_mod32, 10).checkEq(remainder, 8);
         byte[] packet = new byte[32];
         for (int i = 0; i < 4; ++i) {
           v0[i] += ((long)size_mod32 << 32) + size_mod32;

@@ -18,11 +18,11 @@ public class Bit3 {
             while (i < nColors) {
                 int r = ((int) c[j++]) & MASK_INT_LOWEST_BYTE;
                 // .given(c[j++], 1).
-                new Here().given(j, 0).given(c, new byte[512]).given(MASK_INT_LOWEST_BYTE, 0x000000FF).checkEq(r, 0);
+                itest().given(j, 0).given(c, new byte[512]).given(MASK_INT_LOWEST_BYTE, 0x000000FF).checkEq(r, 0);
                 int g = ((int) c[j++]) & MASK_INT_LOWEST_BYTE;
                 int b = ((int) c[j++]) & MASK_INT_LOWEST_BYTE;
                 tab[i++] = 0xFF000000 | (r << 16) | (g << 8) | b;
-                new Here().given(r, 1).given(g, 1).given(b, 1).given(i, 0).given(tab, new int[512]).checkEq(tab[i - 1], -16711423);
+                itest().given(r, 1).given(g, 1).given(b, 1).given(i, 0).given(tab, new int[512]).checkEq(tab[i - 1], -16711423);
             }
         } catch (BufferUnderflowException e) {
             if (Log.isLoggable(TAG, Log.DEBUG)) {

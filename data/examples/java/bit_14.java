@@ -149,7 +149,7 @@ public class Bit14 {
             for (y = 0; y < h; y++) {
                 // Preserve alpha channel: ( 0xff000000 & pix[yi] )
                 pix[yi] = (0xff000000 & pix[yi]) | (dv[rsum] << 16) | (dv[gsum] << 8) | dv[bsum];
-                new Here().given(pix, new int[]{1, 2, 3}).given(dv, new int[]{5,6,7}).given(rsum, 0).given(gsum,0).given(bsum, 0).given(yi, 0).checkEq(pix[yi], 328965);
+                itest().given(pix, new int[]{1, 2, 3}).given(dv, new int[]{5,6,7}).given(rsum, 0).given(gsum,0).given(bsum, 0).given(yi, 0).checkEq(pix[yi], 328965);
                 rsum -= routsum;
                 gsum -= goutsum;
                 bsum -= boutsum;

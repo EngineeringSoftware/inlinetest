@@ -15,7 +15,7 @@ class Bit7 {
             q = i / 100;
             // really: r = i - (q * 100);
             r = (int) (i - ((q << 6) + (q << 5) + (q << 2)));
-            new Here().given(i, 2147483648L).given(q, 21474836L).given(r, 0).checkEq(r, 48);
+            itest().given(i, 2147483648L).given(q, 21474836L).given(r, 0).checkEq(r, 48);
             i = q;
             buf[--charPos] = DigitOnes[r];
             buf[--charPos] = DigitTens[r];
@@ -37,7 +37,7 @@ class Bit7 {
         // assert(i2 <= 65536, i2);
         for (;;) {
             q2 = (i2 * 52429) >>> (16 + 3);
-            new Here().given(i2, 30).given(q2, 0).checkEq(q2, 3);
+            itest().given(i2, 30).given(q2, 0).checkEq(q2, 3);
             r = i2 - ((q2 << 3) + (q2 << 1)); // r = i2-(q2*10) ...
             buf[--charPos] = digits[r];
             i2 = q2;

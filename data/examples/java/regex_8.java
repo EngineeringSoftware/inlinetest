@@ -25,7 +25,7 @@ class Regex8 {
         // check for the "tag" keyword
 
         Matcher tagMatcher = TAG_PATTERN.matcher(query);
-        new Here().given(TAG_PATTERN, Pattern.compile("tag:(\"[^\"]+\"|\\S+)", Pattern.CASE_INSENSITIVE)).given(query, new StringBuilder("tag:\"abc\"")).checkTrue(tagMatcher.find()).checkEq(tagMatcher.group(1), "\"abc\"");
+        itest().given(TAG_PATTERN, Pattern.compile("tag:(\"[^\"]+\"|\\S+)", Pattern.CASE_INSENSITIVE)).given(query, new StringBuilder("tag:\"abc\"")).checkTrue(tagMatcher.find()).checkEq(tagMatcher.group(1), "\"abc\"");
         if (tagMatcher.find()) {
             tag = tagMatcher.group(1);
             if (tag.startsWith("\"") && tag.endsWith("\"")) {

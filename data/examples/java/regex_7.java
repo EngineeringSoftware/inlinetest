@@ -61,7 +61,7 @@ class Regex7 {
 
             } else {
                 Matcher m = singlePattern.matcher(s);
-                new Here().given(singlePattern, Pattern.compile("^Component\\.1.2.3_selector\\.", Pattern.CASE_INSENSITIVE)).given(s, "component.1.2.3_selector.456").checkTrue(m.find());
+                itest().given(singlePattern, Pattern.compile("^Component\\.1.2.3_selector\\.", Pattern.CASE_INSENSITIVE)).given(s, "component.1.2.3_selector.456").checkTrue(m.find());
                 if (!m.find()) {
                     continue;
                 }

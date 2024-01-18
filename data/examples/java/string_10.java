@@ -18,9 +18,9 @@ class String10 {
         CLI.LOGGER.log(FINE, "Connecting via SSH to: {0}", endpointDescription);
 
         int sshPort = Integer.parseInt(endpointDescription.split(":")[1]);
-        new Here().given(endpointDescription, "localhost:22").checkEq(sshPort, 22);
+        itest().given(endpointDescription, "localhost:22").checkEq(sshPort, 22);
         String sshHost = endpointDescription.split(":")[0];
-        new Here().given(endpointDescription, "localhost:22").checkEq(sshHost, "localhost");
+        itest().given(endpointDescription, "localhost:22").checkEq(sshHost, "localhost");
         StringBuilder command = new StringBuilder();
 
         for (String arg : args) {

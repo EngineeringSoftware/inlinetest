@@ -14,7 +14,7 @@ class Regex3 {
     public void getFlatFields(
             String fieldExpression, int offset, List<FlatFieldDescriptor> result) {
         Matcher matcher = PATTERN_NESTED_FIELDS_WILDCARD.matcher(fieldExpression);
-        new Here().given(fieldExpression, "a.b").given(PATTERN_NESTED_FIELDS_WILDCARD, Pattern.compile("([\\p{L}_\\$][\\p{L}\\p{Digit}_\\$]*|[0-9]+)(\\.(.+))?|\\*|\\_")).checkTrue(matcher.find()).checkEq(matcher.group(0), "a.b");
+        itest().given(fieldExpression, "a.b").given(PATTERN_NESTED_FIELDS_WILDCARD, Pattern.compile("([\\p{L}_\\$][\\p{L}\\p{Digit}_\\$]*|[0-9]+)(\\.(.+))?|\\*|\\_")).checkTrue(matcher.find()).checkEq(matcher.group(0), "a.b");
         if (!matcher.matches()) {
             throw new InvalidFieldReferenceException(
                     "Invalid tuple field reference \"" + fieldExpression + "\".");

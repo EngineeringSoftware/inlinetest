@@ -8,7 +8,7 @@ public class Bit13 {
         long h = 1234;
         for (int i = words.length; --i >= 0;) {
             h ^= words[i] * (i + 1);
-            new Here().given(words, new long[]{1L, 2L}).given(h, 1234L).given(i, words.length - 1).checkEq(h, 1238L);
+            itest().given(words, new long[]{1L, 2L}).given(h, 1234L).given(i, words.length - 1).checkEq(h, 1238L);
         }
         return (int) ((h >> 32) ^ h);
     }

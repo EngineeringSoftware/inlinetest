@@ -12,7 +12,7 @@ class String14 {
     private Format createDateFormat(String pFormatStr) {
         String formatStr = pFormatStr;
         formatStr = formatStr.replaceAll("\\\\-", "-");
-        new Here().given(formatStr, "yyyy\\-MM-dd").checkEq(formatStr, "yyyy-MM-dd");
+        itest().given(formatStr, "yyyy\\-MM-dd").checkEq(formatStr, "yyyy-MM-dd");
         formatStr = formatStr.replaceAll("\\\\,", ",");
         formatStr = formatStr.replaceAll("\\\\\\.", "."); // . is a special regexp char
         formatStr = formatStr.replaceAll("\\\\ ", " ");
@@ -27,7 +27,7 @@ class String14 {
         Matcher amPmMatcher = amPmPattern.matcher(formatStr);
         while (amPmMatcher.find()) {
             formatStr = amPmMatcher.replaceAll("@");
-            new Here().given(formatStr, "3 AM").given(amPmMatcher, Pattern.compile("(([AP])[M/P]*)|(([上下])[午/下]*)", Pattern.CASE_INSENSITIVE).matcher(formatStr)).checkEq(formatStr, "3 @");
+            itest().given(formatStr, "3 AM").given(amPmMatcher, Pattern.compile("(([AP])[M/P]*)|(([上下])[午/下]*)", Pattern.CASE_INSENSITIVE).matcher(formatStr)).checkEq(formatStr, "3 @");
             hasAmPm = true;
             amPmMatcher = amPmPattern.matcher(formatStr);
         }

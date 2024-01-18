@@ -5,7 +5,7 @@ public class Bit17 {
             int first = in1 & 0x1F;
             int second = ((in1 & 0xE0) >> 5) + ((in0 & 0x03) << 3);
             int third = (in0 & 0x7C) >> 2;
-            new Here().given(in0, (byte)0).checkEq(third, 0);
+            itest().given(in0, (byte)0).checkEq(third, 0);
 
             // since this function handles languages & regions, we add the value(s) to the base char
             // which is usually 'a' or '0' depending on language or region.

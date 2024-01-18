@@ -13,7 +13,7 @@ public class Regex18 {
             FormatterNumberFormatException {
         ArrayList<FormatSpecifier> al = new ArrayList<FormatSpecifier>();
         Matcher m = fsPattern.matcher(s);
-        new Here().given(fsPattern, Pattern.compile("%(\\d+\\$)?([-#+ 0,(\\<]*)?(\\d+)?(\\.\\d+)?([tT])?([a-zA-Z%])")).given(s, "%33$#8.2tf").checkTrue(m.find()).checkEq(m.group(1), "33$").checkEq(m.group(2), "#").checkEq(m.group(3), "8").checkEq(m.group(4), ".2").checkEq(m.group(5), "t").checkEq(m.group(6), "f");
+        itest().given(fsPattern, Pattern.compile("%(\\d+\\$)?([-#+ 0,(\\<]*)?(\\d+)?(\\.\\d+)?([tT])?([a-zA-Z%])")).given(s, "%33$#8.2tf").checkTrue(m.find()).checkEq(m.group(1), "33$").checkEq(m.group(2), "#").checkEq(m.group(3), "8").checkEq(m.group(4), ".2").checkEq(m.group(5), "t").checkEq(m.group(6), "f");
         int i = 0;
         while (i < s.length()) {
             if (m.find(i)) {

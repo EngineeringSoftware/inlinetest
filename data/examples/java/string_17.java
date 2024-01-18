@@ -17,7 +17,7 @@ public class String17 {
             }
             if (titleStr != null) {
                 titleStr = titleStr.replace("\n", " ").replaceAll(" +", " ").trim();
-                new Here().given(titleStr, "I am a Title\n\nAnd:  Subtitle\n").checkEq(titleStr, "I am a Title And: Subtitle");
+                itest().given(titleStr, "I am a Title\n\nAnd:  Subtitle\n").checkEq(titleStr, "I am a Title And: Subtitle");
             }
             titleView.setText(titleStr);
 

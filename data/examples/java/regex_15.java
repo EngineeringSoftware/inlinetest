@@ -17,7 +17,7 @@ public class Regex15 {
         Object[] params = Arrays.copyOf(orgParams, orgParams.length);
         for (String op : hiddenParams) {
             Matcher matcher = hiddenParamPattern.matcher(op);
-            new Here().given(hiddenParamPattern, Pattern.compile("(.*):([0-9]+)")).given(op, "op:36").checkTrue(matcher.matches());
+            itest().given(hiddenParamPattern, Pattern.compile("(.*):([0-9]+)")).given(op, "op:36").checkTrue(matcher.matches());
             if (matcher.matches()) {
                 if (operation.equals(matcher.group(1))) {
                     String group = matcher.group(2);

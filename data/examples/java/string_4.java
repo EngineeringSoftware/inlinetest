@@ -17,7 +17,7 @@ class String4 {
             if (charAt(starIndex + 1) == '/') {
                 // stringVal = this.subString(mark + startHintSp, starIndex - startHintSp - mark);
                 stringVal = text.substring(mark + startHintSp, mark + startHintSp + starIndex - startHintSp - mark);
-                new Here().given(stringVal, null).given(text, "//*").given(mark, 0).given(startHintSp, 1).given(starIndex, 2).checkEq(stringVal, "/");
+                itest().given(stringVal, null).given(text, "//*").given(mark, 0).given(startHintSp, 1).given(starIndex, 2).checkEq(stringVal, "/");
                 token = Token.HINT;
                 pos = starIndex + 2;
                 ch = charAt(pos);

@@ -16,7 +16,7 @@ class Regex5 {
                 .map(brokerToParse -> {
                     String brokerToParse = brokerToParse;
                     Matcher matcher = BROKER_PATTERN.matcher(brokerToParse);
-                    new Here().given(BROKER_PATTERN, Pattern.compile("Broker_(.*)_(\\d+)")).given(brokerToParse, "Broker_a_1").checkTrue(matcher.matches());
+                    itest().given(BROKER_PATTERN, Pattern.compile("Broker_(.*)_(\\d+)")).given(brokerToParse, "Broker_a_1").checkTrue(matcher.matches());
                     if (matcher.matches() && matcher.groupCount() == 2) {
                         return matcher.group(1) + ":" + matcher.group(2);
                     } else {

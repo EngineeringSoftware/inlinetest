@@ -16,7 +16,7 @@ class Regex6 {
 			// original statement: String pattern = "^" + (StringUtil.isEmpty(realTableName, true) ? tableName : realTableName) + "\\." + "[a-zA-Z]+$";
 			String pattern = "^" + (realTableName.equals("") ? tableName : realTableName) + "\\."
 					+ "[a-zA-Z]+$";
-			new Here().given(realTableName, "name").given(tableName, "").given(key, "name.aaa").checkTrue(Pattern.matches(pattern, key));
+			itest().given(realTableName, "name").given(tableName, "").given(key, "name.aaa").checkTrue(Pattern.matches(pattern, key));
 			boolean isMatch = Pattern.matches(pattern, key);
 
 			if (isMatch) {

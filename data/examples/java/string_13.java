@@ -6,9 +6,9 @@ class String13 {
             String[] userSchemaPair = each.trim().split("=");
             String yamlUser = userSchemaPair[0];
             String username = yamlUser.substring(0, yamlUser.indexOf("@"));
-            new Here().given(yamlUser, "aaa@b.com").checkEq(username, "aaa");
+            itest().given(yamlUser, "aaa@b.com").checkEq(username, "aaa");
             String hostname = yamlUser.substring(yamlUser.indexOf("@") + 1);
-            new Here().given(yamlUser, "aaa@b.com").checkEq(hostname, "b.com");
+            itest().given(yamlUser, "aaa@b.com").checkEq(hostname, "b.com");
             ShardingSphereUser shardingSphereUser = new ShardingSphereUser(username, "", hostname);
             Set<String> schemas = result.getOrDefault(shardingSphereUser, new HashSet<>());
             schemas.add(userSchemaPair[1]);

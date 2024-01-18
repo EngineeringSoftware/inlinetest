@@ -12,7 +12,7 @@ public class Stream13 {
                 .map(alias -> ExpressionUtils.extractValue(alias, String.class)
                         .orElseThrow(() -> new ValidationException("Unexpected alias: " + alias)))
                 .collect(toList());
-        new Here().given(children, Arrays.asList(new Expression[] {new SqlCallExpression("SELECT MIN(Price) AS SmallestPrice FROM Products; "), new SqlCallExpression("SELECT COUNT(ProductID) FROM Products;") })).checkEq(aliases, Arrays.asList("SELECT COUNT(ProductID) FROM Products;"));
+        itest().given(children, Arrays.asList(new Expression[] {new SqlCallExpression("SELECT MIN(Price) AS SmallestPrice FROM Products; "), new SqlCallExpression("SELECT COUNT(ProductID) FROM Products;") })).checkEq(aliases, Arrays.asList("SELECT COUNT(ProductID) FROM Products;"));
 
         if (!isFunctionOfKind(children.get(0), FunctionKind.TABLE)) {
             throw fail();

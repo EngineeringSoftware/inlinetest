@@ -11,7 +11,7 @@ class Regex11 {
 
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(sql);
-        new Here().given(p, Pattern.compile("\\#\\{\\w+\\}")).given(sql, "before #{key} after").checkTrue(m.find()).checkEq(m.group(), "#{key}");
+        itest().given(p, Pattern.compile("\\#\\{\\w+\\}")).given(sql, "before #{key} after").checkTrue(m.find()).checkEq(m.group(), "#{key}");
         while (m.find()) {
             String var = m.group();
             varParams.add(var.substring(var.indexOf("{") + 1, var.indexOf("}")));

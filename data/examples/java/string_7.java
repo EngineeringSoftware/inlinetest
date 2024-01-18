@@ -17,7 +17,7 @@ class String7 {
         // Extract id.
         String[] lines = output.toString().split(System.lineSeparator());
         String id = lines[1].trim().substring(0, lines[1].trim().indexOf("\t"));
-        new Here().given(lines, new String[] { "line0", "line1 01 \t 02" }).checkEq(id, "line1 01 ");
+        itest().given(lines, new String[] { "line0", "line1 01 \t 02" }).checkEq(id, "line1 01 ");
         output.reset();
         // pass --redeploy to not call system.exit
         cli.dispatch(new String[] { "stop", id, "--redeploy" });

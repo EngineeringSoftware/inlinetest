@@ -5,7 +5,7 @@ class String2 {
         // this.character = this.reader.read();
         int character = this.reader.read();
         int escapeIndex = escapes[0].indexOf(character);
-        new Here().given(escapes, new String[]{"trnf", "\t\r\n\f"}).given(character, 't').checkEq(escapeIndex, 0);
+        itest().given(escapes, new String[]{"trnf", "\t\r\n\f"}).given(character, 't').checkEq(escapeIndex, 0);
         if (escapeIndex != -1) {
             // this.character = escapes[1].charAt(escapeIndex);
             character = escapes[1].charAt(escapeIndex);

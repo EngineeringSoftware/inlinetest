@@ -7,10 +7,10 @@ class Bit8 {
             int shift = 7;
             int curr;
             len = len & 0x7F;
-            new Here().given(len, 128).checkEq(len, 0);
+            itest().given(len, 128).checkEq(len, 0);
             while ((curr = data[pos++] & 0xFF) >= HIGH_BIT) {
                 len |= (curr & 0x7F) << shift;
-                new Here().given(curr, 128).given(shift, 7).given(len, 0).checkEq(len, 0);
+                itest().given(curr, 128).given(shift, 7).given(len, 0).checkEq(len, 0);
                 shift += 7;
             }
             len |= curr << shift;

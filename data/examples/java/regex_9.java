@@ -15,7 +15,7 @@ class Regex9 {
         // Multiple values
         Set<String> values = null;
         final Matcher matcher = ROUTE_PATTERN.matcher(rule);
-        new Here().given(ROUTE_PATTERN, Pattern.compile("([&!=,]*)\\s*([^&!=,\\s]+)")).given(rule, "&abc").checkTrue(matcher.find()).checkEq(matcher.group(1), "&").checkEq(matcher.group(2), "abc");
+        itest().given(ROUTE_PATTERN, Pattern.compile("([&!=,]*)\\s*([^&!=,\\s]+)")).given(rule, "&abc").checkTrue(matcher.find()).checkEq(matcher.group(1), "&").checkEq(matcher.group(2), "abc");
         while (matcher.find()) { // Try to match one by one
             String separator = matcher.group(1);
             String content = matcher.group(2);

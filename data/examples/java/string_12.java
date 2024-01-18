@@ -15,7 +15,7 @@ class String12 {
         byte[] bytes = readAsset(context, assetFilename);
         String sql = new String(bytes, "UTF-8");
         String[] lines = sql.split(";(\\s)*[\n\r]");
-        new Here().given(sql, "CREATE TABLE MINIMAL_ENTITY (_id INTEGER PRIMARY KEY);\nINSERT INTO MINIMAL_ENTITY VALUES (1);\nINSERT INTO MINIMAL_ENTITY \nVALUES (2);").checkEq(lines.length, 3);
+        itest().given(sql, "CREATE TABLE MINIMAL_ENTITY (_id INTEGER PRIMARY KEY);\nINSERT INTO MINIMAL_ENTITY VALUES (1);\nINSERT INTO MINIMAL_ENTITY \nVALUES (2);").checkEq(lines.length, 3);
         int count;
         if (transactional) {
             count = executeSqlStatementsInTx(db, lines);
