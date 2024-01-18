@@ -13,8 +13,6 @@ write inline tests in Java and Python. I-Test framework has been
 integrated with popular testing frameworks pytest and Junit. 
 
 The code includes:
-* I-Test framework for Python
-The tool for python is available as a plugin [pytest-inline](https://github.com/pytest-dev/pytest-inline)
 * I-Test framework for Java
 * scripts for collecting and filtering examples suitable for writing inline tests
 * scripts for evaluating the performance of I-Test
@@ -30,6 +28,53 @@ The data includes:
 * **install I-Test and the environment for replicating our study**: see detailed steps in [INSTALL.md](/INSTALL.md)
 * **replicate our performance evaluation of I-Test**: see detailed steps in [REPLICATION.md](/REPLICATION.md)
 * **replicate other parts of our paper, e.g., collecting examples and user study**: we already described the steps in the paper, and you may find the documents and intermediate files for those in this repository; see the remainder of this README for more details
+
+## Examples
+
+### Java
+The string manipulation (Line 12) in this code snippet takes the original String `titleStr`, removes all newline characters, replaces any sequences of multiple spaces with a single space, and trims any leading or trailing whitespace. `titleStr` is updated to be a more uniform string with single spaces separating words and no extraneous whitespace at the beginning or end.
+The inline test (Line 13) that we write for target statement (Line 12) consists of three parts:
+- Declaration with itest() constructor
+- Assigning inputs with given() function calls
+- Specifying test oracles with check_*() function calls
+
+```java
+public class Example {
+  protected void onAttachedToWindow() {
+      VoIPService service = VoIPService.getSharedInstance();
+      if (service != null && service.groupCall != null) {
+          String titleStr;
+          if (!TextUtils.isEmpty(service.groupCall.call.title)) {
+              titleStr = service.groupCall.call.title;
+          } else {
+              titleStr = service.getChat().title;
+          }
+          if (titleStr != null) {
+              titleStr = titleStr.replace("\n", " ").replaceAll(" +", " ").trim();
+              itest().given(titleStr, "I am a Title\n\nAnd:  Subtitle\n").checkEq(titleStr, "I am a Title And: Subtitle");
+          }
+      }
+  } 
+}
+```
+
+To run the inline test, we need to install I-Test framework, which requires Java 8 and Maven. The script of installing Java 8, Maven and I-Test is [here](/java/install.sh). Execute `./install.sh` to install them.
+
+If you already have Java 8 and Maven installed, you can install I-Test framework by running the following command:
+```bash
+cd java
+mvn install
+```
+
+After installing I-Test framework, you can extract and run the inline test with the following command:
+```bash
+bash ${PWD}/data/examples/java/run-only.sh $path_to_ITest_jar $path_to_example_file
+```
+In this example, the path to I-Test jar is `${PWD}/java/target/itest-1.0-SNAPSHOT.jar` and the path to example file is `${PWD}/Example.java`.
+
+### Python
+
+The tool for python is available as a plugin [pytest-inline](https://github.com/pytest-dev/pytest-inline) for pytest. Refer to the [README](https://github.com/pytest-dev/pytest-inline/blob/main/README.md) for installation and usage.
 
 ## Repo structure
 
