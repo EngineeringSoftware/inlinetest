@@ -100,7 +100,7 @@ The tool for python is available as a plugin [pytest-inline](https://github.com/
   - B: API of I-Test framework
   - C: analysis of user study responses
 
-[paper-url]: /README.md
+[paper-url]: https://dl.acm.org/doi/abs/10.1145/3551349.3556952
 
 
 ## Including more examples to our experiments
