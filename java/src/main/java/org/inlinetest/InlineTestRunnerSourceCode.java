@@ -655,7 +655,6 @@ public class InlineTestRunnerSourceCode {
         NodeList<ImportDeclaration> testImports = new NodeList<>(imports);
         testImports.add(new ImportDeclaration("org.junit.jupiter.api.Test", false, false));
         testImports.add(new ImportDeclaration("org.junit.jupiter.api.Assertions", true, true));
-        testImports.add(new ImportDeclaration("java.nio.file.Files", false, false));
         testImports.add(new ImportDeclaration("java.nio.file.Paths", false, false));
         testImports.add(new ImportDeclaration("java.util.Objects", false, false));
         testImports.add(new ImportDeclaration("org.inlinetest.ITest", false, false));
@@ -692,7 +691,6 @@ public class InlineTestRunnerSourceCode {
         }
         NodeList<ImportDeclaration> testImports = new NodeList<>(imports);
         testImports.add(new ImportDeclaration("java.util.Objects", false, false));
-        testImports.add(new ImportDeclaration("java.nio.file.Files", false, false));
         testImports.add(new ImportDeclaration("java.nio.file.Paths", false, false));
         testImports.add(new ImportDeclaration("org.inlinetest.ITest", false, false));
         cu.setImports(testImports);
