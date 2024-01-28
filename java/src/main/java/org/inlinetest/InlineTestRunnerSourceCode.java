@@ -527,9 +527,9 @@ public class InlineTestRunnerSourceCode {
                 if (args.size() != 2) {
                     throw new RuntimeException(Constant.CHECK_EQ + " should have 2 arguments");
                 }
-                // expected value
-                Expression left = args.get(0);
                 // actual value
+                Expression left = args.get(0);
+                // expected value
                 Expression right = args.get(1);
                 Expression parsedRight;
                 // Objects.equals(left, right);
@@ -554,10 +554,10 @@ public class InlineTestRunnerSourceCode {
 
                 // assertArrayEquals
                 if (left instanceof ArrayCreationExpr || right instanceof ArrayCreationExpr) {
-                    MethodCallExpr assertArrayEquals = new MethodCallExpr("assertArrayEquals", left, parsedRight);
+                    MethodCallExpr assertArrayEquals = new MethodCallExpr("assertArrayEquals", parsedRight, left);
                     inlineTest.junitAssertions.add(assertArrayEquals);
                 } else {
-                    MethodCallExpr assertEquals = new MethodCallExpr("assertEquals", left, parsedRight);
+                    MethodCallExpr assertEquals = new MethodCallExpr("assertEquals", parsedRight, left);
                     inlineTest.junitAssertions.add(assertEquals);
                 }
             } else if (methodCall.getName().asString().equals(Constant.CHECK_FALSE)) {
