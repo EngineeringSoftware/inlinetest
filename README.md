@@ -39,6 +39,8 @@ The inline test (Line 13) that we write for target statement (Line 12) consists 
 - Specifying test oracles with check_*() function calls
 
 ```java
+import static org.inlinetest.ITest.itest;
+
 public class Example {
   protected void onAttachedToWindow() {
     VoIPService service = VoIPService.getSharedInstance();
