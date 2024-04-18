@@ -540,7 +540,7 @@ public class InlineTestRunnerSourceCode {
                 Type leftType = symbolTable.getOrDefault(left.toString(), null);
                 if (Util.loadXml) {
                     if (leftType == null || Constant.PRIMITIVE_TYPES.contains(leftType.toString())
-                            || right instanceof NullLiteralExpr) {
+                            || right instanceof NullLiteralExpr || !right.toString().endsWith(".xml\"")) {
                         parsedRight = right;
                     } else {
                         parsedRight = parseNonPrimitiveExpression(leftType, right);
@@ -618,8 +618,10 @@ public class InlineTestRunnerSourceCode {
                 Expression right = args.get(1);
                 AssignExpr assignExpr;
                 // check if the type is primitive or String
+                // we require saving the non-primitive object into a xml file
                 if (Util.loadXml) {
-                    if (Constant.PRIMITIVE_TYPES.contains(leftType.toString()) || right instanceof NullLiteralExpr) {
+                    if (Constant.PRIMITIVE_TYPES.contains(leftType.toString()) || right instanceof NullLiteralExpr
+                            || !right.toString().endsWith(".xml\"")) {
                         assignExpr = new AssignExpr(new VariableDeclarationExpr(leftType, left.toString()),
                                 right,
                                 AssignExpr.Operator.ASSIGN);
