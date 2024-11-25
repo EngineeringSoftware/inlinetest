@@ -126,12 +126,12 @@ def git_versions_from_keywords(keywords, tag_prefix, verbose):
     # First inline test
     Here().given(refs, ["tag: foo-1.0", "tag: bar-3.2"])
     .given(TAG, "tag: ")
-    .check_eq(tag, {"bar-3.2", "foo-1.0"})
+    .check_eq(tags, {"bar-3.2", "foo-1.0"})
 
     # Second inline test
     Here().given(refs, ["foo-1.0", "bar-3.2"])
     .given(TAG, "tag: ")
-    .check_eq(tag, set())
+    .check_eq(tags, set())
 
     if not tags:
         # Either we're using git < 1.8.3, or there really are no tags. We use
