@@ -26,13 +26,13 @@ def git_versions_from_keywords(keywords, tag_prefix, verbose):
     # starting in git-1.8.3, tags are listed as "tag: foo-1.0" instead of
     # just "foo-1.0". If we see a "tag: " prefix, prefer those.
     TAG = "tag: "
-    tag = set([r[len(TAG) :] for r in refs if r.startswith(TAG)])
+    tags = set([r[len(TAG) :] for r in refs if r.startswith(TAG)])
     # First inline test
     Here().given(refs, ["tag: foo-1.0", "tag: bar-3.2"]).given(TAG, "tag: ").check_eq(
-        tag, {"bar-3.2", "foo-1.0"}
+        tags, {"bar-3.2", "foo-1.0"}
     )
     # Second inline test
-    Here().given(refs, ["foo-1.0", "bar-3.2"]).given(TAG, "tag: ").check_eq(tag, set())
+    Here().given(refs, ["foo-1.0", "bar-3.2"]).given(TAG, "tag: ").check_eq(tags, set())
     if not tags:
         # Either we're using git < 1.8.3, or there really are no tags. We use
         # a heuristic: assume all version tags have a digit. The old git %d
